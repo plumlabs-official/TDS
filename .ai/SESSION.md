@@ -2,11 +2,29 @@
 
 > 세션 단기 기억 (compact 후 이어갈 내용)
 >
-> Last updated: 2026-02-12 | v3.4.0
+> Last updated: 2026-03-05 | v3.4.0
 
 ---
 
-## 현재 세션 (2026-02-23)
+## 현재 세션 (2026-03-05)
+
+### 진행중: shadcn/ui Figma Kit 비교 분석
+- Tryve 디자인 시스템 도입을 위한 Kit 비교
+- 8개 Kit 비교 (무료 5개, 유료 3개)
+- 확인 완료: Sitsiilia, Pietro, Obra, shadcndesign
+- 미확인: 2025 Kit, RAVN, Shadcn Studio, Shadcraft
+- 비교표 저장: `docs/shadcn-figma-kit-comparison.md`
+- Agent: Claude
+
+### 완료: Tryve 디자인 시스템 추천 (Team Mode)
+- Design Director, Engineering Lead, Product Leader 참여
+- 추천: shadcndesign Basic ($119)
+- 미팅 기록: lenny/meetings/2026-03-05_tryve-design-system-recommendation.md
+- Agent: Claude
+
+---
+
+## 이전 세션 (2026-02-23)
 
 ### 완료: Button Color Variant + Intent 정비
 - Color Variant 슬롯 공식화 (White — 컬러 배경 위 버튼)
