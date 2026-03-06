@@ -117,8 +117,20 @@ Day 4+: Phase 5 (Components)
 | Pro | 19 | 프리미엄 기능 | ❓ 선택 |
 
 ### 다음 단계
-1. TDS에서 Theme Collection 삭제
-2. Shadcraft Pro에서 Mode Collection Export
-3. TDS에 Mode Import
-4. Tryve 색상 팔레트 정리
-5. Primitives > colors 그룹의 값을 Tryve 색상으로 교체
+1. ~~TDS에서 Theme Collection 삭제~~ → Theme 필요 (Mode가 참조)
+2. ~~Shadcraft Pro에서 Mode Collection Export~~ ✅
+3. ~~TDS에 Mode Import~~ ✅
+4. ~~Tryve 색상 팔레트 정리~~ ✅
+5. Mode Collection에서 Tryve 색상으로 교체 ← **다음 작업**
+
+### Tryve 색상 매핑 (확정)
+| shadcn 변수 | Tryve 값 | 용도 |
+|-------------|----------|------|
+| `white` | `#FFFFFF` | 배경, 버튼 텍스트 |
+| `black` | `#1A1A1A` | 기본 텍스트 (소프트 블랙) |
+| `primary` | `#00CC61` | CTA 버튼, 강조 |
+| `secondary` | `#EFF5FD` | 카드 배경, 탭 pill |
+| `destructive` | `#F33939` | 알림 배지, 경고 |
+| `muted` | `#D3D8DC` | 배경, disabled |
+| `muted-foreground` | `#797979` | 서브 description |
+| `accent` | `#DFF7DF` | 스트릭 배지 배경 |

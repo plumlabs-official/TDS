@@ -19,9 +19,11 @@
 - [x] Phase 1: Archive & Reset ✅ (새 TDS 파일 생성)
 - [🔄] Phase 2: Variables - 진행 중
   - [x] Primitives Import (357개)
-  - [x] Theme Import (252개) → 삭제 예정
-  - [ ] Mode Import (62개)
-  - [ ] Tryve 색상 교체
+  - [x] Theme Import (252개) ← Mode가 참조하므로 유지
+  - [x] Mode Import (62개)
+  - [x] Pro Import (19개)
+  - [x] Tryve 색상 팔레트 분석 완료
+  - [ ] Mode Collection에 Tryve 색상 적용
 - [ ] Phase 3: Typography
 - [ ] Phase 4: Effects
 - [ ] Phase 5: Components
@@ -30,13 +32,24 @@
 **발견한 것:**
 - Figma Variables Export: Collection 우클릭 → Export → .zip
 - Import: .tokens.json 파일을 Variables 패널에 드래그 드롭
-- Theme Collection은 테마 프리셋(Soft Pop 등)이라 불필요
+- Theme Collection 필요 (Mode → Theme → Primitives 참조 체인)
 - Mode Collection이 Light/Dark 전환용 시맨틱 토큰
 
+**Tryve 색상 매핑 (확정):**
+| 변수 | 값 | 용도 |
+|------|-----|------|
+| white | #FFFFFF | 배경, 버튼 텍스트 |
+| black | #1A1A1A | 기본 텍스트 (소프트 블랙) |
+| primary | #00CC61 | CTA 버튼, 강조 |
+| secondary | #EFF5FD | 카드 배경, 탭 pill |
+| destructive | #F33939 | 알림 배지, 경고 |
+| muted | #D3D8DC | 배경, disabled |
+| muted-foreground | #797979 | 서브 description |
+| accent | #DFF7DF | 스트릭 배지 배경 |
+
 **다음 할 일:**
-1. Theme Collection 삭제
-2. Mode Collection Import
-3. Tryve 색상 팔레트 정리 → Primitives 값 교체
+1. TDS > Mode Collection에서 위 색상값 적용
+2. Light/Dark 모드별로 primary, secondary 등 교체
 
 ---
 

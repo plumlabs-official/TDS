@@ -96,10 +96,31 @@ Date: 2026-03-06 11:10:00
 Project: ~/Project/WDS
 Agent: Claude
 Summary: TDS 재구축 Phase 2 진행 중. 새 TDS 파일 생성 완료, Primitives/Theme Import 완료. Theme은 불필요하여 삭제 예정.
-Next-TODO: 
+Next-TODO:
   1. TDS Variables 패널에서 Theme Collection 삭제
   2. Shadcraft Pro에서 Mode Collection Export → TDS Import
   3. Tryve 색상 팔레트 정리
   4. Primitives > colors 값을 Tryve 색상으로 교체
 Commits: d1697af, b26010e
+---
+
+---
+HANDOFF: Claude -> Claude (다음 세션)
+Date: 2026-03-06 11:35:00
+Project: ~/Project/WDS
+Agent: Claude
+Summary: TDS 재구축 Phase 2 Variables Import 완료. 전체 Collection Import (Primitives 357 + Theme 252 + Mode 62 + Pro 19). Theme은 Mode가 참조하므로 유지. Tryve 색상 팔레트 분석 완료 (Figma MCP로 4개 화면 분석).
+Next-TODO:
+  1. TDS > Variables > Mode Collection 열기
+  2. 아래 색상 매핑 적용:
+     - primary: #00CC61 (CTA 버튼)
+     - secondary: #EFF5FD (카드 배경)
+     - destructive: #F33939 (알림/경고)
+     - muted: #D3D8DC (배경/disabled)
+     - muted-foreground: #797979 (서브 description)
+     - accent: #DFF7DF (스트릭 배지)
+     - black: #1A1A1A (소프트 블랙)
+     - white: #FFFFFF
+  3. Light/Dark 모드별로 적절한 값 지정
+Commits: 064c128
 ---
