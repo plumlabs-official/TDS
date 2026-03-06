@@ -8,25 +8,48 @@
 
 ## 현재 세션 (2026-03-06)
 
-### 완료: TDS 재구축 Phase 2-3
+### 진행 중: TDS 재구축 Phase 5 - Components
 
-**목표:** 기존 TDS 리셋 → shadcn Figma Kit 기반 재구축
-
-**마스터 플랜:** `.ai/plans/tds-rebuild-master-plan.md`
+**목표:** Shadcraft Kit 컴포넌트 → TDS 토큰으로 마이그레이션
 
 **Phase 체크리스트:**
 - [x] Phase 0: Inventory ✅
 - [x] Phase 1: Archive & Reset ✅
 - [x] Phase 2: Variables ✅
-  - tds 컬럼 생성 (Default → shadcn으로 rename, 원본 유지)
-  - Tryve 색상 적용 (Light 모드)
-  - tds를 default로 설정 → Mode 자동 참조
 - [x] Phase 3: Typography ✅
-  - font-sans → Pretendard
-  - Text Styles 자동 적용 (변수 참조)
-- [ ] Phase 4: Effects
-- [ ] Phase 5: Components
+- [x] Phase 4: Effects ✅ (Import 완료)
+- [ ] **Phase 5: Components** ← 진행 중
 - [ ] Phase 6: Publish & Test
+
+### Migrate to TDS 플러그인 개발
+
+**경로:** `figma-plugins/migrate-to-tds/`
+
+**기능:**
+| 대상 | 동작 |
+|------|------|
+| Fill | Mode Collection 변수로 교체 (루트 레벨 우선) |
+| Stroke | Mode Collection 변수로 교체 |
+| Effect Style | 동일 이름 TDS Effect Style로 교체 |
+| Text Style | 동일 이름 TDS Text Style로 교체 |
+| custom/* | 스킵 |
+| Icon/, Icon | 스킵 |
+
+**해결한 이슈:**
+1. ES5 문법 (optional chaining 미지원)
+2. `setBoundVariableForPaint` API 사용 (paint 직접 수정)
+3. `setEffectStyleIdAsync`, `setTextStyleIdAsync` (dynamic-page 모드)
+4. 루트 레벨 변수 우선 매칭 (primary > sidebar/primary)
+
+**다음 할 일:**
+1. Button 컴포넌트 전체에 플러그인 실행 → TDS 토큰 교체 확인
+2. Icon 라이브러리 TDS로 가져오기
+3. 나머지 컴포넌트 (Input, Card, Badge 등)
+4. Library Publish
+
+---
+
+### 이전: TDS 재구축 Phase 2-3 완료
 
 **Tryve 색상 매핑 (적용 완료):**
 | 변수 | 값 | 용도 |

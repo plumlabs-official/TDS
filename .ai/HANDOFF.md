@@ -17,8 +17,20 @@ Commits: <커밋 해시 또는 pending>
 ```
 
 ---
-
 <!-- 아래에 handoff 기록 추가 -->
+
+---
+HANDOFF: Claude -> Claude (다음 세션)
+Date: 2026-03-06 16:40:00
+Project: ~/Project/WDS
+Agent: Claude
+Summary: TDS Phase 5 시작 - Migrate to TDS 플러그인 개발 완료. Fill/Stroke/Effect/Text Style을 TDS 토큰으로 일괄 교체.
+Next-TODO:
+  1. Button 컴포넌트 전체에 플러그인 실행하여 TDS 토큰 교체 확인
+  2. Icon 라이브러리 TDS로 가져오기
+  3. 나머지 컴포넌트 마이그레이션 (Input, Card, Badge 등)
+Commits: fbebdf5
+---
 
 ---
 HANDOFF: Claude -> Claude (다음 세션)
@@ -33,8 +45,6 @@ Commits: 없음 (환경 설정만)
 ---
 HANDOFF: Claude -> Codex
 Date: 2026-03-05 17:00:00
-Project: ~/Project/WDS
-Agent: Claude
 Summary: shadcn/ui Figma Kit 최종 결정 - Shadcraft Pro $299 구매 + RAVN 보조 활용
 Next-TODO: Shadcraft Pro 구매, RAVN 복사, Tryve 디자인 시스템 구축 시작
 Commits: 9c8e796
