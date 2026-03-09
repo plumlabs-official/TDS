@@ -11,8 +11,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Migrate to TDS 플러그인 UI 패널 (Migrate / Remove Button Drop Shadow 버튼 분리)
 - Button Drop Shadow 제거 기능 (DROP_SHADOW만 제거, Ghost 타입 제외)
 - 선택 없으면 현재 페이지 전체 대상으로 동작
+- TDS Migrator: Swap Icon Sources 기능 (외부 라이브러리 → Icon Library 정식 소스 교체)
+- TDS Migrator: Bind Icon Colors 기능 (stroke/fill → foreground 변수 바인딩)
+- TDS Migrator: Migrate에 fontFamily(font-sans) + fontWeight 변수 바인딩 통합
 
 ### Changed
+- 플러그인 이름 변경: Migrate to TDS → TDS Migrator
+- UI 카테고리 재구성: Style Migration / Icon / Cleanup
+- replace-font-variable 플러그인 삭제 (TDS Migrator에 통합)
+
+### Fixed
+- bindChildStrokes에 try/catch 추가 (setBoundVariableForPaint 에러 안전 처리)
+- effectStyleId에 figma.mixed 체크 추가 (handleDetachEffects, handleMigrate)
+- processNode에 node.name null guard 추가
 - 아이콘 출처 확인: Lucide Icons = Shadcn Kit 로컬 컴포넌트 (Huge Icons Detach 불필요)
 - 아이콘 독립화 전략 수정 (Huge Icons Detach → 불필요, 색상 바인딩만 필요)
 - @wellwe → @tryve npm scope 전체 전환 (package.json, import, 주석)

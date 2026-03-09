@@ -10,16 +10,23 @@
   h2 {
     font-size: 13px;
     font-weight: 600;
-    margin-bottom: 12px;
-  }
-  .section {
     margin-bottom: 16px;
+  }
+  .category {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: #888;
+    margin-bottom: 8px;
   }
   .desc {
     color: #888;
     font-size: 11px;
-    margin-bottom: 8px;
+    margin-top: 4px;
     line-height: 1.4;
+  }
+  .group {
+    margin-bottom: 16px;
   }
   button {
     width: 100%;
@@ -33,6 +40,7 @@
   }
   button:hover { opacity: 0.85; }
   button:disabled { opacity: 0.4; cursor: not-allowed; }
+  button + button { margin-top: 6px; }
   .btn-primary {
     background: #171717;
     color: #fff;
@@ -41,10 +49,9 @@
     background: #F33939;
     color: #fff;
   }
-  hr {
-    border: none;
-    border-top: 1px solid #E4E4E7;
-    margin: 16px 0;
+  .btn-secondary {
+    background: #3B82F6;
+    color: #fff;
   }
   #status {
     margin-top: 12px;
@@ -54,18 +61,24 @@
   }
 </style>
 
-<h2>Migrate to TDS</h2>
+<h2>TDS Migrator</h2>
 
-<div class="section">
+<div class="group">
+  <div class="category">Style Migration</div>
   <button id="btn-migrate" class="btn-primary" onclick="onMigrate()">Migrate</button>
-  <div class="desc">Fill / Stroke / Effect / Text Style 교체</div>
+  <div class="desc">Fill / Stroke / Effect / Text Style / fontFamily 교체</div>
 </div>
 
-<hr>
+<div class="group">
+  <div class="category">Icon</div>
+  <button id="btn-icons" class="btn-secondary" onclick="onBindIconColors()">Bind Icon Colors</button>
+  <button id="btn-swap-icons" class="btn-secondary" onclick="onSwapIcons()">Swap Icon Sources</button>
+</div>
 
-<div class="section">
-  <button id="btn-detach" class="btn-danger" onclick="onDetachEffects()">Remove Button Drop Shadow</button>
-  <div class="desc">Button의 Drop Shadow 제거 (Ghost 제외)</div>
+<div class="group">
+  <div class="category">Cleanup</div>
+  <button id="btn-detach" class="btn-danger" onclick="onDetachEffects()">Remove Drop Shadow</button>
+  <div class="desc">Button Drop Shadow 제거 (Ghost 제외)</div>
 </div>
 
 <div id="status"></div>
@@ -77,6 +90,8 @@
 
   function setButtons(disabled) {
     document.getElementById('btn-migrate').disabled = disabled;
+    document.getElementById('btn-icons').disabled = disabled;
+    document.getElementById('btn-swap-icons').disabled = disabled;
     document.getElementById('btn-detach').disabled = disabled;
   }
 
@@ -86,8 +101,20 @@
     parent.postMessage({ pluginMessage: { type: 'migrate' } }, '*');
   }
 
+  function onBindIconColors() {
+    setStatus('Binding icon colors...');
+    setButtons(true);
+    parent.postMessage({ pluginMessage: { type: 'bind-icon-colors' } }, '*');
+  }
+
+  function onSwapIcons() {
+    setStatus('Swapping icon sources...');
+    setButtons(true);
+    parent.postMessage({ pluginMessage: { type: 'swap-icons' } }, '*');
+  }
+
   function onDetachEffects() {
-    setStatus('Detaching...');
+    setStatus('Removing shadows...');
     setButtons(true);
     parent.postMessage({ pluginMessage: { type: 'detach-effects' } }, '*');
   }

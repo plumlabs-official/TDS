@@ -1,7 +1,7 @@
-// Figma Plugin: Migrate to TDS v4
-// UI 패널 + Migrate / Detach Effect Styles
+// Figma Plugin: TDS Migrator
+// Style Migration / Icon / Cleanup
 
-figma.showUI(__html__, { width: 280, height: 240 });
+figma.showUI(__html__, { width: 280, height: 400 });
 
 figma.ui.onmessage = async function(msg) {
   try {
@@ -10,6 +10,12 @@ figma.ui.onmessage = async function(msg) {
       figma.ui.postMessage({ type: 'result', text: result });
     } else if (msg.type === 'detach-effects') {
       var result = await handleDetachEffects();
+      figma.ui.postMessage({ type: 'result', text: result });
+    } else if (msg.type === 'bind-icon-colors') {
+      var result = await handleBindIconColors();
+      figma.ui.postMessage({ type: 'result', text: result });
+    } else if (msg.type === 'swap-icons') {
+      var result = await handleSwapIcons();
       figma.ui.postMessage({ type: 'result', text: result });
     }
   } catch (error) {
@@ -44,7 +50,7 @@ async function handleDetachEffects() {
     }
 
     // effectStyleId가 있는 경우 — async API로 해제
-    if (hasEffectStyleId && node.effectStyleId) {
+    if (hasEffectStyleId && node.effectStyleId && node.effectStyleId !== figma.mixed) {
       try {
         var currentStyle = await figma.getStyleByIdAsync(node.effectStyleId);
         var styleName = currentStyle ? currentStyle.name : node.effectStyleId;
@@ -86,6 +92,126 @@ async function handleDetachEffects() {
   }
 
   var msg = 'Removed ' + count + ' effect(s) from ' + scope;
+  figma.notify(msg);
+  return msg;
+}
+
+// === Bind Icon Colors ===
+
+async function handleBindIconColors() {
+  var targets = figma.currentPage.selection.length > 0
+    ? figma.currentPage.selection
+    : figma.currentPage.children;
+  var scope = figma.currentPage.selection.length > 0 ? 'selection' : 'page';
+
+  // Mode Collection에서 foreground 변수 찾기
+  var variables = await figma.variables.getLocalVariablesAsync();
+  var collections = await figma.variables.getLocalVariableCollectionsAsync();
+  var modeCollection = null;
+  for (var c = 0; c < collections.length; c++) {
+    if (collections[c].name === 'Mode') {
+      modeCollection = collections[c];
+      break;
+    }
+  }
+  if (!modeCollection) {
+    figma.notify('Mode Collection not found.');
+    return 'Mode Collection not found';
+  }
+
+  var foregroundVar = null;
+  for (var v = 0; v < variables.length; v++) {
+    if (variables[v].variableCollectionId === modeCollection.id && variables[v].name === 'foreground') {
+      foregroundVar = variables[v];
+      break;
+    }
+  }
+  if (!foregroundVar) {
+    figma.notify('foreground variable not found in Mode Collection.');
+    return 'foreground variable not found';
+  }
+  console.log('Found foreground variable: ' + foregroundVar.id);
+
+  var count = 0;
+
+  async function bindNode(node) {
+    // Lucide Icons 컴포넌트 내부의 stroke 바인딩
+    var isLucideIcon = node.name && node.name.indexOf('Lucide Icons /') === 0;
+
+    if (isLucideIcon) {
+      // 아이콘 자식 노드의 stroke를 foreground로 바인딩
+      await bindChildStrokes(node);
+    }
+
+    if ('children' in node) {
+      for (var i = 0; i < node.children.length; i++) {
+        await bindNode(node.children[i]);
+      }
+    }
+  }
+
+  async function bindChildStrokes(node) {
+    if ('strokes' in node && node.strokes && node.strokes !== figma.mixed && node.strokes.length > 0) {
+      var newStrokes = [];
+      var changed = false;
+      for (var si = 0; si < node.strokes.length; si++) {
+        var stroke = JSON.parse(JSON.stringify(node.strokes[si]));
+        // 이미 바인딩되어 있으면 스킵
+        var alreadyBound = node.boundVariables && node.boundVariables.strokes && node.boundVariables.strokes[si];
+        if (!alreadyBound && stroke.type === 'SOLID') {
+          try {
+            stroke = figma.variables.setBoundVariableForPaint(stroke, 'color', foregroundVar);
+            changed = true;
+            count++;
+            console.log('Bound stroke to foreground on ' + node.name);
+          } catch (err) {
+            console.log('Stroke bind error on ' + node.name + ': ' + err.message);
+          }
+        }
+        newStrokes.push(stroke);
+      }
+      if (changed) node.strokes = newStrokes;
+    }
+
+    // fills도 확인 (일부 아이콘은 fill로 색상 적용)
+    if ('fills' in node && node.fills && node.fills !== figma.mixed && node.fills.length > 0) {
+      var newFills = [];
+      var fillChanged = false;
+      for (var fi = 0; fi < node.fills.length; fi++) {
+        var fill = JSON.parse(JSON.stringify(node.fills[fi]));
+        var alreadyBound = node.boundVariables && node.boundVariables.fills && node.boundVariables.fills[fi];
+        if (!alreadyBound && fill.type === 'SOLID') {
+          // 배경색(#FFFFFF)은 스킵, 전경색만 바인딩
+          var r = fill.color.r, g = fill.color.g, b = fill.color.b;
+          var isWhite = r > 0.95 && g > 0.95 && b > 0.95;
+          if (!isWhite) {
+            try {
+              fill = figma.variables.setBoundVariableForPaint(fill, 'color', foregroundVar);
+              fillChanged = true;
+              count++;
+              console.log('Bound fill to foreground on ' + node.name);
+            } catch (err) {
+              console.log('Fill bind error on ' + node.name + ': ' + err.message);
+            }
+          }
+        }
+        newFills.push(fill);
+      }
+      if (fillChanged) node.fills = newFills;
+    }
+
+    if ('children' in node) {
+      for (var i = 0; i < node.children.length; i++) {
+        await bindChildStrokes(node.children[i]);
+      }
+    }
+  }
+
+  for (var n = 0; n < targets.length; n++) {
+    await bindNode(targets[n]);
+  }
+
+  var msg = 'Bound ' + count + ' color(s) to foreground (' + scope + ')';
   figma.notify(msg);
   return msg;
 }
@@ -181,16 +307,56 @@ async function handleMigrate() {
     textStyleByName[textStyles[t].name] = textStyles[t];
   }
 
-  var stats = { effects: 0, fills: 0, strokes: 0, textStyles: 0, skipped: 0 };
+  // font-sans 변수 + font-weight 변수 맵 구축
+  var fontSans = null;
+  var fontWeightMap = {}; // { 100: var, 200: var, ... 900: var }
+  var weightNameMap = {
+    100: 'font-thin', 200: 'font-extralight', 300: 'font-light',
+    400: 'font-normal', 500: 'font-medium', 600: 'font-semibold',
+    700: 'font-bold', 800: 'font-extrabold', 900: 'font-black'
+  };
+  for (var fv = 0; fv < variables.length; fv++) {
+    var vName = variables[fv].name;
+    if (vName.indexOf('font-sans') !== -1 && !fontSans) {
+      fontSans = variables[fv];
+    }
+    // font-weight 변수 매칭 (예: font/weight/font-medium, font-medium 등)
+    for (var w in weightNameMap) {
+      if (vName.indexOf(weightNameMap[w]) !== -1 && !fontWeightMap[w]) {
+        fontWeightMap[w] = variables[fv];
+      }
+    }
+  }
+  if (fontSans) {
+    console.log('Found font-sans: ' + fontSans.name);
+    console.log('Font weight vars: ' + Object.keys(fontWeightMap).join(', '));
+    // Pretendard 폰트 로드
+    var fontStyleNames = ['Thin', 'ExtraLight', 'Light', 'Regular', 'Medium', 'SemiBold', 'Bold', 'ExtraBold', 'Black'];
+    for (var fl = 0; fl < fontStyleNames.length; fl++) {
+      try {
+        await figma.loadFontAsync({ family: 'Pretendard', style: fontStyleNames[fl] });
+      } catch (e) {}
+    }
+    // 텍스트 스타일 전역 font-sans 바인딩
+    for (var ts = 0; ts < textStyles.length; ts++) {
+      try {
+        await textStyles[ts].setBoundVariable('fontFamily', fontSans);
+      } catch (err) {
+        console.log('Style font bind error: ' + textStyles[ts].name + ': ' + err.message);
+      }
+    }
+  }
+
+  var stats = { effects: 0, fills: 0, strokes: 0, textStyles: 0, fonts: 0, skipped: 0 };
 
   async function processNode(node) {
-    if (node.name.indexOf('Icon/') === 0 || node.name === 'Icon') {
+    if (node.name && (node.name.indexOf('Icon/') === 0 || node.name === 'Icon')) {
       stats.skipped++;
       return;
     }
 
     // 1. Effect Style 교체
-    if ('effectStyleId' in node && node.effectStyleId) {
+    if ('effectStyleId' in node && node.effectStyleId && node.effectStyleId !== figma.mixed) {
       try {
         var currentEffectStyle = await figma.getStyleByIdAsync(node.effectStyleId);
         if (currentEffectStyle) {
@@ -287,6 +453,29 @@ async function handleMigrate() {
           console.log('Text Style error: ' + err.message);
         }
       }
+
+      // 5. fontFamily + fontWeight 바인딩 (스타일 미적용 텍스트만)
+      if (fontSans && !node.textStyleId) {
+        try {
+          // 현재 폰트 로드 (수정 전 필수)
+          if (node.fontName && node.fontName !== figma.mixed) {
+            await figma.loadFontAsync(node.fontName);
+            try {
+              await figma.loadFontAsync({ family: 'Pretendard', style: node.fontName.style });
+            } catch (e) {}
+          }
+          // fontFamily 바인딩
+          await node.setBoundVariable('fontFamily', fontSans);
+          // fontWeight 바인딩 (현재 weight에 매칭되는 TDS 토큰)
+          if (node.fontWeight && node.fontWeight !== figma.mixed && fontWeightMap[node.fontWeight]) {
+            await node.setBoundVariable('fontWeight', fontWeightMap[node.fontWeight]);
+            console.log('Font weight bound: ' + node.fontWeight + ' on ' + node.name);
+          }
+          stats.fonts++;
+        } catch (err) {
+          console.log('Font bind error on ' + node.name + ': ' + err.message);
+        }
+      }
     }
 
     if ('children' in node) {
@@ -300,9 +489,91 @@ async function handleMigrate() {
     await processNode(targets[n]);
   }
 
-  var total = stats.effects + stats.fills + stats.strokes + stats.textStyles;
-  var msg = 'Effect ' + stats.effects + ', Fill ' + stats.fills + ', Stroke ' + stats.strokes + ', Text ' + stats.textStyles + ' (' + scope + ', skip: ' + stats.skipped + ')';
+  var total = stats.effects + stats.fills + stats.strokes + stats.textStyles + stats.fonts;
+  var msg = 'Effect ' + stats.effects + ', Fill ' + stats.fills + ', Stroke ' + stats.strokes + ', Text ' + stats.textStyles + ', Font ' + stats.fonts + ' (' + scope + ', skip: ' + stats.skipped + ')';
   figma.notify('Done: ' + msg);
   console.log('Stats:', stats);
   return msg;
 }
+
+// === Swap Icon Sources ===
+
+async function handleSwapIcons() {
+  // 1. Icon Library 페이지 로드
+  var iconLibraryPage = null;
+  for (var p = 0; p < figma.root.children.length; p++) {
+    if (figma.root.children[p].name === 'Icon Library') {
+      iconLibraryPage = figma.root.children[p];
+      break;
+    }
+  }
+  if (!iconLibraryPage) {
+    var msg = 'Icon Library page not found.';
+    figma.notify(msg);
+    return msg;
+  }
+  await iconLibraryPage.loadAsync();
+
+  // 2. Icon Library 페이지 전체에서 모든 COMPONENT 수집 (Lucide, Tabler, Phosphor, Remix 등)
+  var allNodes = iconLibraryPage.findAll(function(n) {
+    return n.type === 'COMPONENT';
+  });
+
+  var canonicalMap = {};
+  for (var i = 0; i < allNodes.length; i++) {
+    var comp = allNodes[i];
+    if (comp.name) {
+      canonicalMap[comp.name] = comp;
+    }
+  }
+
+  var canonicalCount = Object.keys(canonicalMap).length;
+  console.log('Canonical icon components found: ' + canonicalCount);
+
+  if (canonicalCount === 0) {
+    var msg = 'No icon components found in Icon Library page.';
+    figma.notify(msg);
+    return msg;
+  }
+
+  // 4. 선택 노드 (없으면 페이지 전체) 재귀 순회
+  var targets = figma.currentPage.selection.length > 0
+    ? figma.currentPage.selection
+    : figma.currentPage.children;
+  var scope = figma.currentPage.selection.length > 0 ? 'selection' : 'page';
+
+  var swapCount = 0;
+
+  async function traverseAndSwap(node) {
+    // 5. INSTANCE 노드의 mainComponent가 정식이 아니면 교체
+    if (node.type === 'INSTANCE') {
+      try {
+        var mainComp = await node.getMainComponentAsync();
+        if (mainComp && mainComp.name) {
+          var compName = mainComp.name;
+          if (canonicalMap[compName] && canonicalMap[compName].id !== mainComp.id) {
+            node.swapComponent(canonicalMap[compName]);
+            swapCount++;
+            console.log('Swapped: ' + compName + ' on ' + node.name);
+          }
+        }
+      } catch (err) {
+        console.log('Swap error on ' + node.name + ': ' + err.message);
+      }
+    }
+    if ('children' in node) {
+      for (var i = 0; i < node.children.length; i++) {
+        await traverseAndSwap(node.children[i]);
+      }
+    }
+  }
+
+  for (var n = 0; n < targets.length; n++) {
+    await traverseAndSwap(targets[n]);
+  }
+
+  var msg = 'Swapped ' + swapCount + ' icon instance(s) to canonical sources (' + scope + ')';
+  figma.notify(msg);
+  return msg;
+}
+

@@ -16,6 +16,9 @@
 | 토큰 영구 저장 | `~/.zshrc`에 `FIGMA_PERSONAL_ACCESS_TOKEN` 환경변수 추가 |
 | Figma MCP 연결 확인 | 정상 작동 확인 (TDS, Shadcn Kit 파일 접근 가능) |
 | 아이콘 출처 확인 | Shadcn Kit: Lucide Icons = 로컬 COMPONENT (외부 라이브러리 아님). TDS 복사본도 동일. Huge Icons는 보너스 리소스 |
+| TDS Migrator 기능 확장 | QA 수정 3건 + Swap Icon Sources + Bind Icon Colors + fontFamily/fontWeight 바인딩 통합 |
+| UI 카테고리 재구성 | Style Migration / Icon / Cleanup 그룹핑, 플러그인명 TDS Migrator로 변경 |
+| replace-font-variable 삭제 | TDS Migrator에 통합 완료, 레거시 폴더+참조 제거 |
 | 아이콘 독립화 전략 수정 | ~~Huge Icons Detach~~ 불필요 → 이미 독립된 Lucide 벡터 컴포넌트 |
 | Figma 플러그인 경로 이슈 | Migrate to TDS 플러그인이 이전 경로(`WDS/`)를 참조 → `TDS/figma-plugins/migrate-to-tds/manifest.json`으로 재등록 필요 |
 | Migrate to TDS 플러그인 UI 패널 추가 | Migrate / Remove Button Drop Shadow 버튼 분리. IIFE → UI 메시지 핸들러 구조 리팩토링 |
@@ -59,8 +62,7 @@ TDS/
 │   └── agent-server/    (@tryve/agent-server)
 ├── figma-plugins/
 │   ├── tds/             (@tryve/figma-plugin, 메인 플러그인)
-│   ├── migrate-to-tds/
-│   └── replace-font-variable/
+│   └── migrate-to-tds/
 └── package.json         (tds, workspaces)
 ```
 
