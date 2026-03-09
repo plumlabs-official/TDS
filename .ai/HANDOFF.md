@@ -1,5 +1,15 @@
 ---
 HANDOFF: Claude -> Codex
+Date: 2026-03-09 15:10:00
+Project: ~/Project/TDS
+Agent: Claude
+Summary: Migrator focus/ Effect 보존 + Docs Generator TDS 변수 바인딩 (Migrator 불필요하도록)
+Next-TODO: 나머지 컴포넌트 마이그레이션 + Library Publish
+Commits: a2c8847
+---
+
+---
+HANDOFF: Claude -> Codex
 Date: 2026-03-09 14:45:00
 Project: ~/Project/TDS
 Agent: Claude
