@@ -1,6 +1,6 @@
 # Project Overview
 
-> Wellwe Design System Automator
+> Tryve Design System Automator
 >
 > Last updated: 2026-01-17 | v2.1.1
 

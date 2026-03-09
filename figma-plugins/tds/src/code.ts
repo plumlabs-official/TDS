@@ -1,5 +1,5 @@
 /**
- * Wellwe Design System Automator
+ * Tryve Design System Automator
  *
  * Figma 플러그인 메인 엔트리
  * - Auto Layout 적용

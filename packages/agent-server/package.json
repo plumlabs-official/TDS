@@ -1,5 +1,5 @@
 {
-  "name": "@wellwe/agent-server",
+  "name": "@tryve/agent-server",
   "version": "2.0.0",
   "description": "Multi-agent server for Figma Design System Automator",
   "main": "dist/index.js",

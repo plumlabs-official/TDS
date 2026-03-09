@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Changed
+- @wellwe → @tryve npm scope 전체 전환 (package.json, import, 주석)
 - WDS → TDS 플러그인 리네이밍 + 폴더 이동 (`packages/figma-plugin/` → `figma-plugins/tds/`)
 - WDS → TDS 리브랜딩: WellWe → Tryve 전환 (CONSTITUTION, README, CONTRIBUTING, docs)
 - Button Color Variant 슬롯 공식화 (`Button/Intent/Shape/[Color]/Size[/State][/Icon]`)

@@ -8,14 +8,14 @@
     "figma-plugins/tds"
   ],
   "scripts": {
-    "build": "npm run build --workspace=@wellwe/common && npm run build --workspace=@wellwe/figma-plugin",
-    "build:all": "npm run build && npm run build --workspace=@wellwe/agent-server",
-    "build:plugin": "npm run build --workspace=@wellwe/figma-plugin",
-    "build:server": "npm run build --workspace=@wellwe/agent-server",
-    "build:common": "npm run build --workspace=@wellwe/common",
-    "watch": "npm run watch --workspace=@wellwe/figma-plugin",
+    "build": "npm run build --workspace=@tryve/common && npm run build --workspace=@tryve/figma-plugin",
+    "build:all": "npm run build && npm run build --workspace=@tryve/agent-server",
+    "build:plugin": "npm run build --workspace=@tryve/figma-plugin",
+    "build:server": "npm run build --workspace=@tryve/agent-server",
+    "build:common": "npm run build --workspace=@tryve/common",
+    "watch": "npm run watch --workspace=@tryve/figma-plugin",
     "typecheck": "npm run typecheck --workspaces --if-present",
-    "server": "npm run start --workspace=@wellwe/agent-server"
+    "server": "npm run start --workspace=@tryve/agent-server"
   },
   "keywords": [
     "figma",

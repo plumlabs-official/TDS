@@ -2,8 +2,8 @@
  * 공통 타입 정의
  */
 
-// BaseResponse는 @wellwe/common에서 가져옴 (SSOT)
-import type { BaseResponse } from '@wellwe/common';
+// BaseResponse는 @tryve/common에서 가져옴 (SSOT)
+import type { BaseResponse } from '@tryve/common';
 export type { BaseResponse };
 
 // AI 모델 타입

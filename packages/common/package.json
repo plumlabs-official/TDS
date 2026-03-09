@@ -1,7 +1,7 @@
 {
-  "name": "@wellwe/common",
+  "name": "@tryve/common",
   "version": "2.0.0",
-  "description": "WellWe Design System Automator - 공유 타입/스키마/유틸리티",
+  "description": "Tryve Design System Automator - 공유 타입/스키마/유틸리티",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {

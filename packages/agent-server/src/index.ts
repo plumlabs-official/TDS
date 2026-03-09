@@ -25,7 +25,7 @@ import {
   resetPatterns,
 } from './patterns';
 import { findSimilarPatterns } from './patterns';
-import { CreatePatternRequestSchema, MatchPatternRequestSchema } from '@wellwe/common';
+import { CreatePatternRequestSchema, MatchPatternRequestSchema } from '@tryve/common';
 import type { NamingRequest, AutoLayoutRequest, ContextAwareNamingRequest, CleanupValidationRequest } from './types';
 
 const app = express();

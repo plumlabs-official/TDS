@@ -14,7 +14,7 @@ import {
   PatternSchema,
   CreatePatternRequest,
   PatternHistory,
-} from '@wellwe/common';
+} from '@tryve/common';
 
 // 저장소 파일 경로
 const STORE_PATH = join(__dirname, '../../data/naming-patterns.json');

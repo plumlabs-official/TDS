@@ -9,7 +9,7 @@
 import { readFileSync } from 'fs';
 import { join } from 'path';
 import { askClaudeWithImage, parseJsonResponse, ModelType } from '../utils/claude';
-import { validateNamingResponse, validateSuggestedName } from '@wellwe/common';
+import { validateNamingResponse, validateSuggestedName } from '@tryve/common';
 import type {
   NamingRequest,
   NamingResult,

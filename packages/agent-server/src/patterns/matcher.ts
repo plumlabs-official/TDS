@@ -10,7 +10,7 @@ import {
   MatchCandidate,
   MatchReason,
   MatchResult,
-} from '@wellwe/common';
+} from '@tryve/common';
 import { getAllPatterns } from './store';
 
 // ============================================

@@ -13,6 +13,7 @@
 | 작업 | 날짜 |
 |------|------|
 | refactor: WDS→TDS 플러그인 리네이밍 + 폴더 이동 (packages/figma-plugin → figma-plugins/tds) | 2026-03-09 |
+| refactor: @wellwe → @tryve npm scope 전체 전환 | 2026-03-09 |
 
 ---
 
