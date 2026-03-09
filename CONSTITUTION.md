@@ -6,7 +6,7 @@
 
 ## Tech Stack
 
-- **Figma Plugin**: TypeScript 기반 플러그인 (`packages/figma-plugin/`)
+- **Figma Plugin**: TypeScript 기반 플러그인 (`figma-plugins/tds/`)
 - **Agent Server**: Express + Claude API (`packages/agent-server/`, localhost:3001)
 - **Common**: 공유 타입/스키마 (`packages/common/`)
 - **Design System**: 자동화된 네이밍, 오토레이아웃, 컴포넌트화

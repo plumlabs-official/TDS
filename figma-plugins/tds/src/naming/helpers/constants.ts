@@ -180,9 +180,9 @@ export const HYPHEN_ICON_PATTERNS: Record<string, string> = {
 };
 
 /**
- * WDS 아이콘 명명 규칙 테이블
+ * TDS 아이콘 명명 규칙 테이블
  */
-export const WDS_ICON_MAP: Record<string, string> = {
+export const TDS_ICON_MAP: Record<string, string> = {
   // 탐색/발견
   'ibm-watson-discovery': 'Discovery',
   'discovery': 'Discovery',

@@ -19,7 +19,7 @@
 
 ## 컴포넌트
 
-### Figma Plugin (`packages/figma-plugin/`)
+### Figma Plugin (`figma-plugins/tds/`)
 
 - **역할**: Figma UI와 상호작용, 노드 조작
 - **기술**: TypeScript, Figma Plugin API

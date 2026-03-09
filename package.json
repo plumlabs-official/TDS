@@ -1,10 +1,11 @@
 {
-  "name": "wds",
+  "name": "tds",
   "version": "2.0.0",
-  "description": "WDS - Figma 디자인 시스템 자동화 플러그인",
+  "description": "TDS - Figma 디자인 시스템 자동화 플러그인",
   "private": true,
   "workspaces": [
-    "packages/*"
+    "packages/*",
+    "figma-plugins/tds"
   ],
   "scripts": {
     "build": "npm run build --workspace=@wellwe/common && npm run build --workspace=@wellwe/figma-plugin",

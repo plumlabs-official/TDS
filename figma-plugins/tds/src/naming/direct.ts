@@ -6,11 +6,11 @@
 
 import {
   isIconLibraryName,
-  convertIconLibraryToWDS,
+  convertIconLibraryToTDS,
   isKoreanLabel,
   convertKoreanLabel,
   isHyphenIconPattern,
-  convertHyphenIconToWDS,
+  convertHyphenIconToTDS,
   isInTabbarContext,
   isIconStateContainer,
   isCamelCase,
@@ -92,12 +92,12 @@ export function tryDirectNaming(node: SceneNode): string | null {
 
   // 1. 아이콘 라이브러리 형식 (carbon:xxx, solar:xxx 등)
   if (isIconLibraryName(name)) {
-    return convertIconLibraryToWDS(name);
+    return convertIconLibraryToTDS(name);
   }
 
   // 2. 하이픈 패턴 아이콘 (user-circle-02, award-04 등)
   if (isHyphenIconPattern(name)) {
-    return convertHyphenIconToWDS(name);
+    return convertHyphenIconToTDS(name);
   }
 
   // 3. 한글 레이블 (홈, 라운지, 마이페이지 등)
@@ -113,7 +113,7 @@ export function tryDirectNaming(node: SceneNode): string | null {
   // 4. 아이콘 상태 컨테이너 (자식에 on/off)
   if (isIconStateContainer(node)) {
     if (isHyphenIconPattern(name)) {
-      return convertHyphenIconToWDS(name);
+      return convertHyphenIconToTDS(name);
     }
     // 이름 유지
     return null;

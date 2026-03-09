@@ -23,7 +23,7 @@ npm run server  # localhost:3001
 
 **Figma 플러그인 로드:**
 1. Figma Desktop > `Plugins` > `Development` > `Import plugin from manifest...`
-2. `packages/figma-plugin/manifest.json` 선택
+2. `figma-plugins/tds/manifest.json` 선택
 3. 프레임 선택 후 플러그인 실행
 
 ---

@@ -1,6 +1,6 @@
 {
-  "name": "WDS",
-  "id": "wds",
+  "name": "TDS",
+  "id": "tds",
   "api": "1.0.0",
   "main": "dist/code.js",
   "ui": "dist/ui.html",

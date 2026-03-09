@@ -11,7 +11,7 @@ import {
   ICON_STYLE_SUFFIXES,
   ICON_FILLER_WORDS,
   HYPHEN_ICON_PATTERNS,
-  WDS_ICON_MAP,
+  TDS_ICON_MAP,
   STRUCTURAL_LAYER_NAMES,
   DOMAIN_KEYWORDS,
   CONTEXT_KEYWORDS,
@@ -30,9 +30,9 @@ import { shouldConvertToLayout } from './validate';
 // ============================================
 
 /**
- * 하이픈 패턴 아이콘 이름을 WDS 네이밍으로 변환
+ * 하이픈 패턴 아이콘 이름을 TDS 네이밍으로 변환
  */
-export function convertHyphenIconToWDS(name: string): string {
+export function convertHyphenIconToTDS(name: string): string {
   // 숫자 접미사 제거
   const withoutNumbers = name.replace(/-\d+$/, '');
 
@@ -42,9 +42,9 @@ export function convertHyphenIconToWDS(name: string): string {
   }
 
   // 부분 매칭
-  for (const [pattern, wdsName] of Object.entries(HYPHEN_ICON_PATTERNS)) {
+  for (const [pattern, tdsName] of Object.entries(HYPHEN_ICON_PATTERNS)) {
     if (withoutNumbers.startsWith(pattern)) {
-      return `Icon/${wdsName}`;
+      return `Icon/${tdsName}`;
     }
   }
 
@@ -56,10 +56,10 @@ export function convertHyphenIconToWDS(name: string): string {
 }
 
 /**
- * 아이콘 라이브러리 이름을 WDS 네이밍으로 변환
+ * 아이콘 라이브러리 이름을 TDS 네이밍으로 변환
  * e.g., "carbon:ibm-watson-discovery" → "Icon/Discovery"
  */
-export function convertIconLibraryToWDS(name: string): string {
+export function convertIconLibraryToTDS(name: string): string {
   const colonIndex = name.indexOf(':');
   if (colonIndex === -1) return name;
 
@@ -74,8 +74,8 @@ export function convertIconLibraryToWDS(name: string): string {
     }
   }
 
-  // 1. WDS 매핑 테이블에서 직접 찾기
-  const directMatch = WDS_ICON_MAP[iconPart];
+  // 1. TDS 매핑 테이블에서 직접 찾기
+  const directMatch = TDS_ICON_MAP[iconPart];
   if (directMatch) {
     return `Icon/${directMatch}`;
   }
@@ -86,7 +86,7 @@ export function convertIconLibraryToWDS(name: string): string {
   // 3. 각 파트에서 매핑 찾기 (뒤에서부터)
   for (let i = parts.length - 1; i >= 0; i--) {
     const part = parts[i];
-    const partMatch = WDS_ICON_MAP[part];
+    const partMatch = TDS_ICON_MAP[part];
     if (partMatch) {
       return `Icon/${partMatch}`;
     }

@@ -22,7 +22,7 @@ export {
   ICON_FILLER_WORDS,
   KOREAN_LABEL_MAP,
   HYPHEN_ICON_PATTERNS,
-  WDS_ICON_MAP,
+  TDS_ICON_MAP,
 
   // camelCase 예외 목록
   CAMEL_CASE_EXCEPTIONS,
@@ -122,8 +122,8 @@ export {
 // ============================================
 export {
   // 아이콘 변환
-  convertHyphenIconToWDS,
-  convertIconLibraryToWDS,
+  convertHyphenIconToTDS,
+  convertIconLibraryToTDS,
 
   // 탭 아이템 추론
   inferTabItemNameFromIcon,
