@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+- TDS Migrator: focus/ Effect Style 보존 (focus/default 등 비-shadow 스타일 교체 방지)
+- TDS Docs Generator: 모든 fill/stroke에 TDS 변수 바인딩 (Migrator 불필요하도록)
+- TDS Docs Generator: Effect 프리뷰 rect stroke 제거 (이펙트에 포함된 것으로 착각 방지)
+
 ### Added
 - TDS Docs Generator: Effect Showcase 페이지 생성 (effectToCSS 자동 변환, Tailwind 크기순 정렬)
 - TDS Docs Generator: Typography + Color + Effects 3개 페이지 완성

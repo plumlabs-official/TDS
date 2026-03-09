@@ -1,12 +1,50 @@
 // TDS Docs Generator — 1회용 플러그인
 // Typography 쇼케이스 + Color Chip 팔레트 + Effect Showcase 페이지 자동 생성
+// 모든 fill/stroke에 TDS Mode Collection 변수를 바인딩하여 Migrator 불필요
 
 // ─── Utilities ───────────────────────────────────────────
 
-// Accessible label color constants (WCAG AA 4.5:1+ on white)
-var LABEL_COLOR = { r: 0.388, g: 0.388, b: 0.4 };       // #636366, 5.5:1
+// Fallback colors (변수 룩업 실패 시만 사용)
+var LABEL_COLOR = { r: 0.388, g: 0.388, b: 0.4 };       // #636366
 var TITLE_COLOR = { r: 0.035, g: 0.035, b: 0.043 };      // #09090B
-var SUBTITLE_COLOR = { r: 0.388, g: 0.388, b: 0.4 };     // #636366
+
+// TDS 변수 캐시 (loadTdsVars에서 채워짐)
+var tdsVars = {};
+
+async function loadTdsVars() {
+  var collections = await figma.variables.getLocalVariableCollectionsAsync();
+  var modeCollection = null;
+  for (var c = 0; c < collections.length; c++) {
+    if (collections[c].name === 'Mode') {
+      modeCollection = collections[c];
+      break;
+    }
+  }
+  if (!modeCollection) return;
+
+  var allVars = await figma.variables.getLocalVariablesAsync();
+  for (var v = 0; v < allVars.length; v++) {
+    if (allVars[v].variableCollectionId === modeCollection.id && allVars[v].resolvedType === 'COLOR') {
+      tdsVars[allVars[v].name] = allVars[v];
+    }
+  }
+  console.log('TDS vars loaded: ' + Object.keys(tdsVars).length);
+  return modeCollection;
+}
+
+// Paint에 TDS 변수 바인딩 (실패 시 fallback color 사용)
+function bindPaint(color, varName) {
+  var paint = { type: 'SOLID', color: color };
+  var v = tdsVars[varName];
+  if (v) {
+    try {
+      paint = figma.variables.setBoundVariableForPaint(paint, 'color', v);
+    } catch(e) {
+      console.log('Bind failed: ' + varName + ' - ' + e.message);
+    }
+  }
+  return paint;
+}
 
 function getOrCreateDocPage(name) {
   for (var i = 0; i < figma.root.children.length; i++) {
@@ -36,14 +74,30 @@ function makeALFrame(opts) {
   return f;
 }
 
+// Root frame with background variable bound
+function makeRootFrame(name, width) {
+  var f = makeALFrame({
+    name: name,
+    layoutMode: 'VERTICAL',
+    itemSpacing: 48,
+    padding: 64,
+    fills: [bindPaint({ r: 1, g: 1, b: 1 }, 'background')],
+    counterSizing: 'FIXED',
+    width: width || 1200
+  });
+  return f;
+}
+
 // Sync — callers must pre-load Inter fonts before calling
-function makeLabel(text, fontSize, color, fontStyle) {
+function makeLabel(text, fontSize, varName, fontStyle) {
   var style = fontStyle || 'Regular';
   var t = figma.createText();
   t.fontName = { family: 'Inter', style: style };
   t.fontSize = fontSize || 12;
   t.characters = text;
-  t.fills = [{ type: 'SOLID', color: color || LABEL_COLOR }];
+  // varName으로 TDS 변수 바인딩, fallback은 역할별 색상
+  var fallback = varName === 'foreground' ? TITLE_COLOR : LABEL_COLOR;
+  t.fills = [bindPaint(fallback, varName)];
   return t;
 }
 
@@ -119,7 +173,6 @@ function getWeightOrder(styleName) {
   return 99;
 }
 
-// Figma font style name from TDS style name
 function figmaFontStyle(styleName) {
   if (styleName.indexOf('font-black') !== -1) return 'Black';
   if (styleName.indexOf('font-extrabold') !== -1) return 'ExtraBold';
@@ -141,7 +194,6 @@ async function handleGenTypography() {
     return;
   }
 
-  // Group by bucket
   var bucketMap = {};
   for (var i = 0; i < textStyles.length; i++) {
     var s = textStyles[i];
@@ -151,47 +203,32 @@ async function handleGenTypography() {
     bucketMap[bucket].push(s);
   }
 
-  // Sort each bucket by weight
   for (var key in bucketMap) {
     bucketMap[key].sort(function(a, b) {
       return getWeightOrder(a.name) - getWeightOrder(b.name);
     });
   }
 
-  // Create page
   var page = getOrCreateDocPage('Typography');
   figma.currentPage = page;
 
-  // Pre-load fonts
   await preloadInterFonts();
 
-  // Try loading Pretendard variants
   var pretendardStyles = ['Regular', 'Medium', 'SemiBold', 'Bold', 'ExtraBold', 'Black', 'Light', 'ExtraLight', 'Thin'];
   for (var pi = 0; pi < pretendardStyles.length; pi++) {
     try { await figma.loadFontAsync({ family: 'Pretendard', style: pretendardStyles[pi] }); } catch(e) {}
   }
 
-  // Root frame
-  var root = makeALFrame({
-    name: 'Typography Showcase',
-    layoutMode: 'VERTICAL',
-    itemSpacing: 48,
-    padding: 64,
-    fills: [{ type: 'SOLID', color: { r: 1, g: 1, b: 1 } }],
-    counterSizing: 'FIXED',
-    width: 1200
-  });
+  var root = makeRootFrame('Typography Showcase');
 
-  // Title
-  var title = makeLabel('Typography', 36, TITLE_COLOR, 'Semi Bold');
+  var title = makeLabel('Typography', 36, 'foreground', 'Semi Bold');
   root.appendChild(title);
 
-  var subtitle = makeLabel('TDS Text Styles — Pretendard', 16, SUBTITLE_COLOR);
+  var subtitle = makeLabel('TDS Text Styles — Pretendard', 16, 'muted-foreground');
   root.appendChild(subtitle);
 
   var totalCount = 0;
 
-  // Render each bucket
   for (var bi = 0; bi < BUCKETS.length; bi++) {
     var bk = BUCKETS[bi];
     var styles = bucketMap[bk];
@@ -203,12 +240,10 @@ async function handleGenTypography() {
       itemSpacing: 16
     });
 
-    // Section header
     var sizeInfo = styles[0].fontSize ? ' — ' + styles[0].fontSize + 'px' : '';
-    var header = makeLabel('text-' + bk + sizeInfo, 14, SUBTITLE_COLOR, 'Medium');
+    var header = makeLabel('text-' + bk + sizeInfo, 14, 'muted-foreground', 'Medium');
     section.appendChild(header);
 
-    // Each style row
     for (var si = 0; si < styles.length; si++) {
       var style = styles[si];
 
@@ -219,14 +254,12 @@ async function handleGenTypography() {
       });
       row.counterAxisAlignItems = 'CENTER';
 
-      // Left: style name label
-      var nameLabel = makeLabel(style.name, 12, LABEL_COLOR);
+      var nameLabel = makeLabel(style.name, 12, 'muted-foreground');
       nameLabel.resize(280, nameLabel.height);
       nameLabel.textAutoResize = 'HEIGHT';
       row.appendChild(nameLabel);
       nameLabel.layoutSizingHorizontal = 'FIXED';
 
-      // Right: example text with style applied
       var fStyle = figmaFontStyle(style.name);
       try {
         await figma.loadFontAsync({ family: 'Pretendard', style: fStyle });
@@ -237,9 +270,8 @@ async function handleGenTypography() {
       var example = figma.createText();
       example.fontName = { family: 'Pretendard', style: fStyle };
       example.characters = EXAMPLE_TEXTS[bk] || 'The quick brown fox';
-      example.fills = [{ type: 'SOLID', color: TITLE_COLOR }];
+      example.fills = [bindPaint(TITLE_COLOR, 'foreground')];
 
-      // Apply TDS text style
       try {
         await example.setTextStyleIdAsync(style.id);
       } catch(e) {
@@ -257,19 +289,17 @@ async function handleGenTypography() {
     root.appendChild(section);
     section.layoutSizingHorizontal = 'FILL';
 
-    // Divider (except last)
     if (bi < BUCKETS.length - 1 && bucketMap[BUCKETS[bi + 1]]) {
       var divider = figma.createLine();
       divider.name = 'Divider';
       divider.resize(1072, 0);
-      divider.strokes = [{ type: 'SOLID', color: { r: 0.89, g: 0.89, b: 0.91 } }];
+      divider.strokes = [bindPaint({ r: 0.89, g: 0.89, b: 0.91 }, 'border')];
       divider.strokeWeight = 1;
       root.appendChild(divider);
       divider.layoutSizingHorizontal = 'FILL';
     }
   }
 
-  // Position and zoom
   root.x = 100;
   root.y = 100;
   figma.viewport.scrollAndZoomIntoView([root]);
@@ -324,13 +354,11 @@ async function createColorSwatch(colorVar, resolvedRGB, ringVar) {
     itemSpacing: 6
   });
 
-  // Color rectangle
   var rect = figma.createRectangle();
   rect.name = 'Swatch';
   rect.resize(88, 56);
   rect.cornerRadius = 8;
 
-  // Bind variable to fill
   var paint = { type: 'SOLID', color: { r: resolvedRGB.r, g: resolvedRGB.g, b: resolvedRGB.b } };
   if (resolvedRGB.a !== undefined && resolvedRGB.a < 1) {
     paint.opacity = resolvedRGB.a;
@@ -342,33 +370,25 @@ async function createColorSwatch(colorVar, resolvedRGB, ringVar) {
   }
   rect.fills = [paint];
 
-  // Add 1px border with ring variable
   if (ringVar) {
-    var strokePaint = { type: 'SOLID', color: { r: 0.89, g: 0.89, b: 0.91 } };
-    try {
-      strokePaint = figma.variables.setBoundVariableForPaint(strokePaint, 'color', ringVar);
-    } catch(e) {
-      console.log('Ring bind failed: ' + e.message);
-    }
+    var strokePaint = bindPaint({ r: 0.89, g: 0.89, b: 0.91 }, 'ring');
     rect.strokes = [strokePaint];
     rect.strokeWeight = 1;
   }
 
   wrapper.appendChild(rect);
 
-  // Variable name label
-  var nameLabel = makeLabel(colorVar.name, 11, { r: 0.13, g: 0.13, b: 0.15 }, 'Medium');
+  var nameLabel = makeLabel(colorVar.name, 11, 'foreground', 'Medium');
   wrapper.appendChild(nameLabel);
   nameLabel.layoutSizingHorizontal = 'FIXED';
   nameLabel.resize(88, nameLabel.height);
   nameLabel.textAutoResize = 'HEIGHT';
 
-  // Hex label
   var hex = rgbToHex(resolvedRGB.r, resolvedRGB.g, resolvedRGB.b);
   if (resolvedRGB.a !== undefined && resolvedRGB.a < 1) {
     hex += ' ' + Math.round(resolvedRGB.a * 100) + '%';
   }
-  var hexLabel = makeLabel(hex, 10, LABEL_COLOR);
+  var hexLabel = makeLabel(hex, 10, 'muted-foreground');
   wrapper.appendChild(hexLabel);
 
   return wrapper;
@@ -377,7 +397,6 @@ async function createColorSwatch(colorVar, resolvedRGB, ringVar) {
 async function handleGenColors() {
   figma.notify('Generating color page...');
 
-  // Find Mode collection
   var collections = await figma.variables.getLocalVariableCollectionsAsync();
   var modeCollection = null;
   for (var c = 0; c < collections.length; c++) {
@@ -393,7 +412,6 @@ async function handleGenColors() {
 
   var defaultModeId = modeCollection.modes[0].modeId;
 
-  // Load all variables in Mode collection
   var allVars = await figma.variables.getLocalVariablesAsync();
   var modeVars = [];
   for (var v = 0; v < allVars.length; v++) {
@@ -409,16 +427,8 @@ async function handleGenColors() {
     return;
   }
 
-  // Find ring variable for swatch borders
-  var ringVar = null;
-  for (var rv0 = 0; rv0 < modeVars.length; rv0++) {
-    if (modeVars[rv0].name === 'ring') {
-      ringVar = modeVars[rv0];
-      break;
-    }
-  }
+  var ringVar = tdsVars['ring'] || null;
 
-  // Resolve all colors
   var resolvedMap = {};
   for (var rv = 0; rv < modeVars.length; rv++) {
     var resolved = await resolveColorValue(modeVars[rv], defaultModeId);
@@ -427,37 +437,23 @@ async function handleGenColors() {
     }
   }
 
-  // Group
   var grouped = groupColorVars(modeVars);
 
-  // Create page
   var page = getOrCreateDocPage('Colors');
   figma.currentPage = page;
 
-  // Pre-load fonts
   await preloadInterFonts();
 
-  // Root frame
-  var root = makeALFrame({
-    name: 'Color Showcase',
-    layoutMode: 'VERTICAL',
-    itemSpacing: 48,
-    padding: 64,
-    fills: [{ type: 'SOLID', color: { r: 1, g: 1, b: 1 } }],
-    counterSizing: 'FIXED',
-    width: 1200
-  });
+  var root = makeRootFrame('Color Showcase');
 
-  // Title
-  var title = makeLabel('Colors', 36, TITLE_COLOR, 'Semi Bold');
+  var title = makeLabel('Colors', 36, 'foreground', 'Semi Bold');
   root.appendChild(title);
 
-  var subtitle = makeLabel('TDS Mode Collection — Semantic Color Tokens', 16, SUBTITLE_COLOR);
+  var subtitle = makeLabel('TDS Mode Collection — Semantic Color Tokens', 16, 'muted-foreground');
   root.appendChild(subtitle);
 
   var totalCount = 0;
 
-  // Render grouped colors
   for (var gi = 0; gi < COLOR_GROUPS.length; gi++) {
     var groupKey = COLOR_GROUPS[gi].key;
     var groupLabel = COLOR_GROUPS[gi].label;
@@ -470,11 +466,9 @@ async function handleGenColors() {
       itemSpacing: 16
     });
 
-    // Group header
-    var groupHeader = makeLabel(groupLabel.toUpperCase(), 12, SUBTITLE_COLOR, 'Medium');
+    var groupHeader = makeLabel(groupLabel.toUpperCase(), 12, 'muted-foreground', 'Medium');
     section.appendChild(groupHeader);
 
-    // Swatch row
     var swatchRow = makeALFrame({
       name: 'Swatches: ' + groupLabel,
       layoutMode: 'HORIZONTAL',
@@ -498,7 +492,6 @@ async function handleGenColors() {
     section.layoutSizingHorizontal = 'FILL';
   }
 
-  // Ungrouped
   if (grouped.ungrouped.length > 0) {
     var otherSection = makeALFrame({
       name: 'Group: Other',
@@ -506,7 +499,7 @@ async function handleGenColors() {
       itemSpacing: 16
     });
 
-    var otherHeader = makeLabel('OTHER', 12, SUBTITLE_COLOR, 'Medium');
+    var otherHeader = makeLabel('OTHER', 12, 'muted-foreground', 'Medium');
     otherSection.appendChild(otherHeader);
 
     var otherRow = makeALFrame({
@@ -532,7 +525,6 @@ async function handleGenColors() {
     otherSection.layoutSizingHorizontal = 'FILL';
   }
 
-  // Position and zoom
   root.x = 100;
   root.y = 100;
   figma.viewport.scrollAndZoomIntoView([root]);
@@ -542,7 +534,6 @@ async function handleGenColors() {
 
 // ─── Effects ─────────────────────────────────────────────
 
-// Tailwind shadow size order
 var EFFECT_ORDER = ['shadow-sm', 'shadow', 'shadow-md', 'shadow-lg', 'shadow-xl', 'shadow-2xl', 'shadow-inner', 'shadow-none'];
 
 function getEffectOrder(name) {
@@ -581,11 +572,9 @@ async function handleGenEffects() {
     return;
   }
 
-  // Filter shadows/ prefix (TDS styles)
   var shadowStyles = [];
   for (var i = 0; i < effectStyles.length; i++) {
     var s = effectStyles[i];
-    // Accept both "shadows/shadow-md" and "shadow-md" patterns
     var baseName = s.name.indexOf('shadows/') === 0 ? s.name.substring(8) : s.name;
     shadowStyles.push({ style: s, baseName: baseName });
   }
@@ -595,34 +584,22 @@ async function handleGenEffects() {
     return;
   }
 
-  // Sort by Tailwind size order
   shadowStyles.sort(function(a, b) {
     return getEffectOrder(a.baseName) - getEffectOrder(b.baseName);
   });
 
-  // Create page
   var page = getOrCreateDocPage('Effects');
   figma.currentPage = page;
 
-  // Pre-load fonts
   await preloadInterFonts();
 
-  // Root frame
-  var root = makeALFrame({
-    name: 'Effects Showcase',
-    layoutMode: 'VERTICAL',
-    itemSpacing: 40,
-    padding: 64,
-    fills: [{ type: 'SOLID', color: { r: 1, g: 1, b: 1 } }],
-    counterSizing: 'FIXED',
-    width: 1200
-  });
+  var root = makeRootFrame('Effects Showcase');
+  root.itemSpacing = 40;
 
-  // Title
-  var title = makeLabel('Effects', 36, TITLE_COLOR, 'Semi Bold');
+  var title = makeLabel('Effects', 36, 'foreground', 'Semi Bold');
   root.appendChild(title);
 
-  var subtitle = makeLabel('TDS Effect Styles — Box Shadows', 16, SUBTITLE_COLOR);
+  var subtitle = makeLabel('TDS Effect Styles — Box Shadows', 16, 'muted-foreground');
   root.appendChild(subtitle);
 
   var totalCount = 0;
@@ -632,7 +609,6 @@ async function handleGenEffects() {
     var style = item.style;
     var baseName = item.baseName;
 
-    // Row frame
     var row = makeALFrame({
       name: baseName,
       layoutMode: 'HORIZONTAL',
@@ -640,16 +616,12 @@ async function handleGenEffects() {
     });
     row.counterAxisAlignItems = 'CENTER';
 
-    // Left: 96x96 white rect with effect style applied
     var rect = figma.createRectangle();
     rect.name = 'Preview';
     rect.resize(96, 96);
     rect.cornerRadius = 8;
-    rect.fills = [{ type: 'SOLID', color: { r: 1, g: 1, b: 1 } }];
-    rect.strokes = [{ type: 'SOLID', color: { r: 0.89, g: 0.89, b: 0.91 } }];
-    rect.strokeWeight = 1;
+    rect.fills = [bindPaint({ r: 1, g: 1, b: 1 }, 'background')];
 
-    // Apply effect style
     try {
       await rect.setEffectStyleIdAsync(style.id);
     } catch(e) {
@@ -658,16 +630,14 @@ async function handleGenEffects() {
 
     row.appendChild(rect);
 
-    // Middle: style name
-    var nameLabel = makeLabel(baseName, 14, TITLE_COLOR, 'Medium');
+    var nameLabel = makeLabel(baseName, 14, 'foreground', 'Medium');
     nameLabel.resize(160, nameLabel.height);
     nameLabel.textAutoResize = 'HEIGHT';
     row.appendChild(nameLabel);
     nameLabel.layoutSizingHorizontal = 'FIXED';
 
-    // Right: CSS properties
     var cssText = effectToCSS(style.effects);
-    var cssLabel = makeLabel(cssText, 12, LABEL_COLOR);
+    var cssLabel = makeLabel(cssText, 12, 'muted-foreground');
     row.appendChild(cssLabel);
     cssLabel.layoutSizingHorizontal = 'FILL';
 
@@ -676,7 +646,6 @@ async function handleGenEffects() {
     totalCount++;
   }
 
-  // Position and zoom
   root.x = 100;
   root.y = 100;
   figma.viewport.scrollAndZoomIntoView([root]);
@@ -688,6 +657,9 @@ async function handleGenEffects() {
 
 (async function() {
   try {
+    // TDS Mode Collection 변수 사전 로드
+    await loadTdsVars();
+
     var command = figma.command;
     console.log('TDS Docs Generator: command = ' + command);
     if (command === 'gen-typography') {

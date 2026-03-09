@@ -26,6 +26,7 @@
 
 | TDS Migrator Phase 2 | 컬러 토큰 바인딩 + Effect Style 근사 매칭 + Text Style 근사 매칭 |
 | TDS Docs Generator: Effect Showcase + Quick Wins | effectToCSS, makeLabel 최적화, 라벨 접근성 개선 |
+| fix: Migrator focus/ Effect 보존 + Docs Generator TDS 변수 바인딩 | Migrator 실행 시 focus/default 유지, Docs 출력물 전체 토큰화 |
 | alias resolve 버그 수정 | VARIABLE_ALIAS 시맨틱 토큰(foreground 등) colorToVariable 맵 등록 |
 | alpha 채널 구분 | rgba 5% ≠ 100% 정확 구분, custom/ 변수 맵 제외 |
 | lineHeight AUTO 처리 | Auto일 때도 fontSize+weight로 Text Style 근사 매칭 |

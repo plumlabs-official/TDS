@@ -584,11 +584,11 @@ async function handleMigrate() {
       return;
     }
 
-    // 1. Effect Style 교체
+    // 1. Effect Style 교체 (shadows/ 계열만 — focus/ 등 비-shadow 스타일 보존)
     if ('effectStyleId' in node && node.effectStyleId && node.effectStyleId !== figma.mixed) {
       try {
         var currentEffectStyle = await figma.getStyleByIdAsync(node.effectStyleId);
-        if (currentEffectStyle) {
+        if (currentEffectStyle && currentEffectStyle.name.indexOf('focus/') !== 0) {
           var tdsEffectStyle = findTdsEffectStyle(currentEffectStyle.name);
 
           // 이름 매칭 실패 → 속성 정확 매칭 → 근사 매칭 fallback
