@@ -21,6 +21,16 @@ Commits: <커밋 해시 또는 pending>
 
 ---
 HANDOFF: Claude -> User
+Date: 2026-03-09 09:55:00
+Project: ~/Project/TDS
+Agent: Claude
+Summary: @wellwe → @tryve npm scope 전체 전환 완료 (Phase 2). 13개 파일 변경, 빌드 검증 통과.
+Next-TODO: 없음 (파일명 레거시 wellwe-simplification-schedule.* 정리는 선택)
+Commits: 32b17eb
+---
+
+---
+HANDOFF: Claude -> User
 Date: 2026-03-09 09:51:00
 Project: ~/Project/TDS
 Agent: Claude
