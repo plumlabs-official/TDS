@@ -21,6 +21,16 @@ Commits: <커밋 해시 또는 pending>
 
 ---
 HANDOFF: Claude -> User
+Date: 2026-03-09 10:51:00
+Project: ~/Project/TDS
+Agent: Claude
+Summary: 아이콘 출처 확인 (Lucide = 로컬 컴포넌트, Huge Icons Detach 불필요). Migrate to TDS 플러그인 경로 이슈 파악 (WDS→TDS 재등록 필요).
+Next-TODO: Figma에서 플러그인 재등록 후 Button 전체 마이그레이션 실행
+Commits: 01d96e0
+---
+
+---
+HANDOFF: Claude -> User
 Date: 2026-03-09 09:55:00
 Project: ~/Project/TDS
 Agent: Claude
