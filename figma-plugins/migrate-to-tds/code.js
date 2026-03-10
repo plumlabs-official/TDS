@@ -594,23 +594,26 @@ async function handleMigrate() {
       try {
         var currentEffectStyle = await figma.getStyleByIdAsync(node.effectStyleId);
         if (currentEffectStyle && currentEffectStyle.name.indexOf('focus/') !== 0) {
-          var tdsEffectStyle = findTdsEffectStyle(currentEffectStyle.name);
+          // 이미 TDS 로컬 Effect Style이면 스킵
+          if (currentEffectStyle.remote) {
+            var tdsEffectStyle = findTdsEffectStyle(currentEffectStyle.name);
 
-          // 이름 매칭 실패 → 속성 정확 매칭 → 근사 매칭 fallback
-          if (!tdsEffectStyle || tdsEffectStyle.id === node.effectStyleId) {
-            var nodeEffectKey = serializeEffects(currentEffectStyle.effects);
-            if (nodeEffectKey && effectStyleByProps[nodeEffectKey]) {
-              tdsEffectStyle = effectStyleByProps[nodeEffectKey];
+            // 이름 매칭 실패 → 속성 정확 매칭 → 근사 매칭 fallback
+            if (!tdsEffectStyle || tdsEffectStyle.id === node.effectStyleId) {
+              var nodeEffectKey = serializeEffects(currentEffectStyle.effects);
+              if (nodeEffectKey && effectStyleByProps[nodeEffectKey]) {
+                tdsEffectStyle = effectStyleByProps[nodeEffectKey];
+              }
             }
-          }
-          if (!tdsEffectStyle || tdsEffectStyle.id === node.effectStyleId) {
-            tdsEffectStyle = findNearestTdsEffect(currentEffectStyle.effects);
-          }
+            if (!tdsEffectStyle || tdsEffectStyle.id === node.effectStyleId) {
+              tdsEffectStyle = findNearestTdsEffect(currentEffectStyle.effects);
+            }
 
-          if (tdsEffectStyle && tdsEffectStyle.id !== node.effectStyleId) {
-            await node.setEffectStyleIdAsync(tdsEffectStyle.id);
-            stats.effects++;
-            console.log('Effect: ' + currentEffectStyle.name + ' -> TDS ' + tdsEffectStyle.name);
+            if (tdsEffectStyle && tdsEffectStyle.id !== node.effectStyleId) {
+              await node.setEffectStyleIdAsync(tdsEffectStyle.id);
+              stats.effects++;
+              console.log('Effect: ' + currentEffectStyle.name + ' -> TDS ' + tdsEffectStyle.name);
+            }
           }
         }
       } catch (err) {
@@ -629,6 +632,11 @@ async function handleMigrate() {
           try {
             var currentFillVar = await figma.variables.getVariableByIdAsync(fillBinding.id);
             if (currentFillVar) {
+              // 이미 TDS(Mode Collection) 변수면 스킵
+              if (currentFillVar.variableCollectionId === modeCollection.id) {
+                newFills.push(fill);
+                continue;
+              }
               if (currentFillVar.name.indexOf('custom/') === 0) {
                 newFills.push(fill);
                 continue;
@@ -661,6 +669,11 @@ async function handleMigrate() {
           try {
             var currentStrokeVar = await figma.variables.getVariableByIdAsync(strokeBinding.id);
             if (currentStrokeVar) {
+              // 이미 TDS(Mode Collection) 변수면 스킵
+              if (currentStrokeVar.variableCollectionId === modeCollection.id) {
+                newStrokes.push(stroke);
+                continue;
+              }
               if (currentStrokeVar.name.indexOf('custom/') === 0) {
                 newStrokes.push(stroke);
                 continue;
@@ -687,7 +700,7 @@ async function handleMigrate() {
       if (node.textStyleId && typeof node.textStyleId === 'string') {
         try {
           var currentTextStyle = await figma.getStyleByIdAsync(node.textStyleId);
-          if (currentTextStyle) {
+          if (currentTextStyle && currentTextStyle.remote) {
             var tdsTextStyle = textStyleByName[currentTextStyle.name];
             if (tdsTextStyle && tdsTextStyle.id !== node.textStyleId) {
               await node.setTextStyleIdAsync(tdsTextStyle.id);
@@ -829,10 +842,14 @@ async function handleMigrate() {
     await processNode(targets[n]);
   }
 
+  // === Component Instance Swap (통합) ===
+  var compSwapResult = await swapComponentInstances(targets, scope);
+
   var total = stats.effects + stats.fills + stats.strokes + stats.textStyles + stats.inferredStyles + stats.colorTokens + stats.fonts;
-  var msg = 'Effect ' + stats.effects + ', Fill ' + stats.fills + ', Stroke ' + stats.strokes + ', Text ' + stats.textStyles + ', Inferred ' + stats.inferredStyles + ', Color ' + stats.colorTokens + ', Font ' + stats.fonts + ' (' + scope + ', skip: ' + stats.skipped + ')';
+  var msg = 'Effect ' + stats.effects + ', Fill ' + stats.fills + ', Stroke ' + stats.strokes + ', Text ' + stats.textStyles + ', Inferred ' + stats.inferredStyles + ', Color ' + stats.colorTokens + ', Font ' + stats.fonts + ', Comp ' + compSwapResult.swapped + ' (' + scope + ', skip: ' + stats.skipped + ')';
   figma.notify('Done: ' + msg);
   console.log('Stats:', stats);
+  console.log('Component swap:', compSwapResult);
   // 근사 매칭 요약
   if (nearestStats.colorCount > 0) {
     console.log('[SUMMARY] Nearest color matches: ' + nearestStats.colorCount + ' (avg dist: ' + Math.round(nearestStats.colorTotalDist / nearestStats.colorCount) + ')');
@@ -844,6 +861,182 @@ async function handleMigrate() {
     console.log('[SUMMARY] Nearest text style matches: ' + nearestStats.textCount);
   }
   return msg;
+}
+
+// === Swap Components (내부 함수 — handleMigrate에서 호출) ===
+
+async function swapComponentInstances(targets, scope) {
+  // 1. 소스 페이지 로드 (Components + Icon Library)
+  var sourcePages = [];
+  for (var p = 0; p < figma.root.children.length; p++) {
+    var pageName = figma.root.children[p].name;
+    if (pageName === 'Components' || pageName === 'Icon Library') {
+      sourcePages.push(figma.root.children[p]);
+    }
+  }
+  if (sourcePages.length === 0) {
+    console.log('Components/Icon Library pages not found — skipping component swap');
+    return { swapped: 0, skipped: 0 };
+  }
+
+  var compMap = {};
+  for (var sp = 0; sp < sourcePages.length; sp++) {
+    await sourcePages[sp].loadAsync();
+
+    // 2. 각 페이지에서 모든 COMPONENT 수집 (COMPONENT_SET 내부 포함)
+    var allComps = sourcePages[sp].findAll(function(n) {
+      return n.type === 'COMPONENT';
+    });
+    for (var i = 0; i < allComps.length; i++) {
+      var comp = allComps[i];
+      if (comp.name) {
+        compMap[comp.name] = comp;
+      }
+    }
+  }
+
+  // COMPONENT_SET도 수집 (variant 매칭용)
+  for (var sp2 = 0; sp2 < sourcePages.length; sp2++) {
+    var allSets = sourcePages[sp2].findAll(function(n) {
+      return n.type === 'COMPONENT_SET';
+    });
+    for (var i = 0; i < allSets.length; i++) {
+      var cs = allSets[i];
+      if (cs.name) {
+        compMap['__SET__' + cs.name] = cs;
+      }
+    }
+  }
+
+  var compCount = Object.keys(compMap).length;
+  var setNames = [];
+  for (var k in compMap) {
+    if (k.indexOf('__SET__') === 0) setNames.push(k.replace('__SET__', ''));
+  }
+  console.log('TDS components: ' + (compCount - setNames.length) + ', SETs: ' + setNames.length);
+
+  if (compCount === 0) {
+    return { swapped: 0, skipped: 0 };
+  }
+
+  var swapCount = 0;
+  var skipCount = 0;
+  var missCount = 0;
+
+  // SET에서 variant 매칭 헬퍼
+  function findVariantInSet(localSet, compName, node) {
+    // 1. 정확한 variant 이름 매칭
+    for (var c = 0; c < localSet.children.length; c++) {
+      if (localSet.children[c].name === compName) return localSet.children[c];
+    }
+    // 2. variant 프로퍼티 값 비교
+    var variantProps = {};
+    try {
+      var props = node.componentProperties;
+      for (var key in props) {
+        if (props[key].type === 'VARIANT') {
+          variantProps[key] = props[key].value;
+        }
+      }
+    } catch (e) {}
+    var propKeys = Object.keys(variantProps);
+    if (propKeys.length > 0) {
+      for (var c = 0; c < localSet.children.length; c++) {
+        var candidate = localSet.children[c];
+        var candidateProps = {};
+        try {
+          var cpArr = candidate.name.split(', ');
+          for (var cp = 0; cp < cpArr.length; cp++) {
+            var parts = cpArr[cp].split('=');
+            if (parts.length === 2) candidateProps[parts[0].trim()] = parts[1].trim();
+          }
+        } catch (e) {}
+        var matchAll = true;
+        var matchCount = 0;
+        for (var vk = 0; vk < propKeys.length; vk++) {
+          var k = propKeys[vk];
+          if (candidateProps[k] !== undefined) {
+            if (candidateProps[k] !== variantProps[k]) { matchAll = false; break; }
+            matchCount++;
+          }
+        }
+        if (matchAll && matchCount > 0) return candidate;
+      }
+    }
+    // 3. fallback: default variant (첫 번째)
+    return localSet.children.length > 0 ? localSet.children[0] : null;
+  }
+
+  async function traverseAndSwap(node) {
+    if (node.type === 'INSTANCE') {
+      try {
+        var mainComp = await node.getMainComponentAsync();
+
+        if (mainComp && mainComp.remote) {
+          var compName = mainComp.name;
+          var swapped = false;
+
+          // 1차: variant 이름으로 정확 매칭
+          if (compMap[compName]) {
+            node.swapComponent(compMap[compName]);
+            swapCount++;
+            swapped = true;
+            console.log('Swapped: ' + node.name + ' → ' + compName);
+          }
+
+          // 2차: mainComp.parent COMPONENT_SET으로 매칭
+          if (!swapped && mainComp.parent && mainComp.parent.type === 'COMPONENT_SET') {
+            var localSet = compMap['__SET__' + mainComp.parent.name];
+            if (localSet && localSet.type === 'COMPONENT_SET') {
+              var match = findVariantInSet(localSet, compName, node);
+              if (match) {
+                node.swapComponent(match);
+                swapCount++;
+                swapped = true;
+                console.log('Swapped (via parent set): ' + node.name + ' → ' + match.name);
+              }
+            }
+          }
+
+          // 3차: node.name으로 COMPONENT_SET 매칭
+          if (!swapped) {
+            var localSet = compMap['__SET__' + node.name];
+            if (localSet && localSet.type === 'COMPONENT_SET') {
+              var match = findVariantInSet(localSet, compName, node);
+              if (match) {
+                node.swapComponent(match);
+                swapCount++;
+                swapped = true;
+                console.log('Swapped (by node.name): ' + node.name + ' → ' + match.name);
+              }
+            }
+          }
+
+          if (!swapped) {
+            missCount++;
+            console.log('[MISS] remote: node.name=' + node.name + ', mainComp.name=' + compName + ', parent=' + (mainComp.parent ? mainComp.parent.name : 'null'));
+          }
+        } else if (mainComp) {
+          skipCount++;
+        }
+        // 로컬/원격 모두 children 순회 계속 (중첩 원격 인스턴스 탐지)
+      } catch (err) {
+        console.log('Swap error on ' + node.name + ': ' + err.message);
+      }
+    }
+    if ('children' in node) {
+      for (var i = 0; i < node.children.length; i++) {
+        await traverseAndSwap(node.children[i]);
+      }
+    }
+  }
+
+  for (var n = 0; n < targets.length; n++) {
+    await traverseAndSwap(targets[n]);
+  }
+
+  console.log('Component swap: ' + swapCount + ' swapped, ' + skipCount + ' local, ' + missCount + ' missed (' + scope + ')');
+  return { swapped: swapCount, skipped: skipCount, missed: missCount };
 }
 
 // === Swap Icon Sources ===

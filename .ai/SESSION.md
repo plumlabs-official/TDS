@@ -22,14 +22,22 @@
 | Remove Drop Shadow focus 버그 수정 | focus/ Effect Style 보존 로직 추가 (focus ring도 DROP_SHADOW 타입) |
 | Figma MCP 글로벌 등록 | `~/.mcp.json` 생성. `figma-developer-mcp` + PAT 설정. 세션 재시작 후 활성화 |
 | Figma MCP 사일런트 거부 진단 + 해결 | 원인: `figma-remote-mcp` OAuth 캐시 충돌. `~/.claude/mcp-needs-auth-cache.json` 삭제로 해결 |
+| Figma MCP 해결 검증 완료 | 세션 재시작 후 TDS 파일 정상 조회 확인 (Director QA PASS) |
+| Tabs 컴포넌트 추가 (사용자 직접) | Tabs (Type=Certification) + SubTab Addon Inline (Dot/Numb/Count) + TabsTrigger (Active/Inactive) |
+| OS/Native 컴포넌트 추가 (사용자 직접) | Keyboard (Text/Number) + iOS/StatusBar (Light/Dark) + iOS/HomeIndicator (Light/Dark) |
+| Mobile Header Bar → AppBar 리네이밍 (사용자 직접) | 내부 구조 동일. StatusComponent (Coin/Streaks) 정리 |
+| 스크래치 프레임 추가 (사용자 직접) | Frame 1430107481 — Status/Streaks, Badge/Membership, Logo/NavBar, Toggle. 정리 필요 여부 미정 |
+| feat: TDS Migrator 컴포넌트 인스턴스 스왑 | 외부 라이브러리 → TDS 로컬 컴포넌트 교체. Components + Icon Library 페이지 스캔. 멱등성 보장 |
 
 ### 컴포넌트 마이그레이션 현황
 
 | 컴포넌트 | 상태 |
 |----------|------|
 | Button | 완료 (7 Type: Default/Secondary/Destructive/Outline/Ghost/Link/Inverted × 6 State × 6 Size = 438 variant) |
-| Mobile Header Bar | 완료 (4 variant + Status/Streaks 배지) |
+| AppBar (구 Mobile Header Bar) | 완료 (4 variant + StatusComponent). 리네이밍 완료 |
 | Modal/Header | 완료 (3 variant: Nav+Title+Action, Nav+Title, Title) |
+| Tabs | 추가됨 (Tabs + SubTab Addon Inline + TabsTrigger) |
+| OS/Native | 추가됨 (Keyboard + iOS StatusBar + HomeIndicator) |
 
 ### 플랜 파일
 
