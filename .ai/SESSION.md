@@ -17,6 +17,9 @@
 | Button Type=Inverted 추가 완료 | 6 State × 3 Size = 18 variant. 컬러 배경 위 흰 버튼 |
 | Button font size 조정 결정 | TDS Text Style 기준 적용 (e.g. Large 20px→18px) |
 | Button 기존(20046:203) vs TDS(20012:238) 비교 완료 | 빠진 것 없음 확인. h48 제거, Intent/Color → Inverted로 커버 |
+| Input 3종 TDS 복사 완료 | Input Group + Input OTP + 서브 컴포넌트셋. Input 단독은 삭제 (Input Group이 상위 호환) |
+| Input Group 구조 설계 (Team 회의) | Variant=Default/Bare 프로퍼티 추가 결정. Phone은 Addon 조합. Validation은 Addon Block |
+| Remove Drop Shadow focus 버그 수정 | focus/ Effect Style 보존 로직 추가 (focus ring도 DROP_SHADOW 타입) |
 
 ### 컴포넌트 마이그레이션 현황
 

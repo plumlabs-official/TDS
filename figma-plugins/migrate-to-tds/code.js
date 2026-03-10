@@ -54,12 +54,17 @@ async function handleDetachEffects() {
       try {
         var currentStyle = await figma.getStyleByIdAsync(node.effectStyleId);
         var styleName = currentStyle ? currentStyle.name : node.effectStyleId;
-        await node.setEffectStyleIdAsync('');
-        // DROP_SHADOW만 제거, 나머지 effect 유지
-        var remaining = node.effects.filter(function(e) { return e.type !== 'DROP_SHADOW'; });
-        node.effects = remaining;
-        count++;
-        console.log('Removed: ' + styleName + ' on ' + node.name);
+        // focus/ 스타일은 보존 (focus ring도 DROP_SHADOW 타입이므로)
+        if (styleName && styleName.indexOf('focus/') === 0) {
+          console.log('Preserved focus style: ' + styleName + ' on ' + node.name);
+        } else {
+          await node.setEffectStyleIdAsync('');
+          // DROP_SHADOW만 제거, 나머지 effect 유지
+          var remaining = node.effects.filter(function(e) { return e.type !== 'DROP_SHADOW'; });
+          node.effects = remaining;
+          count++;
+          console.log('Removed: ' + styleName + ' on ' + node.name);
+        }
       } catch (err) {
         try {
           var remaining = node.effects.filter(function(e) { return e.type !== 'DROP_SHADOW'; });
