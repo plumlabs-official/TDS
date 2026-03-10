@@ -1,5 +1,15 @@
 ---
 HANDOFF: Claude -> Codex
+Date: 2026-03-10 20:22:00
+Project: ~/Project/TDS
+Agent: Claude
+Summary: Figma MCP 사일런트 거부 원인 진단 (figma-remote-mcp OAuth 캐시 충돌) + mcp-needs-auth-cache.json 삭제로 해결
+Next-TODO: 세션 재시작 후 Figma MCP 정상 동작 확인 → TDS 파일 조회로 누락 진행상황 파악
+Commits: 0810752
+---
+
+---
+HANDOFF: Claude -> Codex
 Date: 2026-03-10 11:20:00
 Project: ~/Project/TDS
 Agent: 혼합 (Claude 코드수정/리뷰 + 사용자 Figma 작업)
