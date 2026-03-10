@@ -66,13 +66,12 @@
 <div class="group">
   <div class="category">Style Migration</div>
   <button id="btn-migrate" class="btn-primary" onclick="onMigrate()">Migrate</button>
-  <div class="desc">Fill / Stroke / Effect / Text Style / fontFamily 교체</div>
+  <div class="desc">Style + Component 통합 마이그레이션</div>
 </div>
 
 <div class="group">
   <div class="category">Icon</div>
   <button id="btn-icons" class="btn-secondary" onclick="onBindIconColors()">Bind Icon Colors</button>
-  <button id="btn-swap-icons" class="btn-secondary" onclick="onSwapIcons()">Swap Icon Sources</button>
 </div>
 
 <div class="group">
@@ -91,7 +90,6 @@
   function setButtons(disabled) {
     document.getElementById('btn-migrate').disabled = disabled;
     document.getElementById('btn-icons').disabled = disabled;
-    document.getElementById('btn-swap-icons').disabled = disabled;
     document.getElementById('btn-detach').disabled = disabled;
   }
 
@@ -105,12 +103,6 @@
     setStatus('Binding icon colors...');
     setButtons(true);
     parent.postMessage({ pluginMessage: { type: 'bind-icon-colors' } }, '*');
-  }
-
-  function onSwapIcons() {
-    setStatus('Swapping icon sources...');
-    setButtons(true);
-    parent.postMessage({ pluginMessage: { type: 'swap-icons' } }, '*');
   }
 
   function onDetachEffects() {

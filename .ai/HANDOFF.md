@@ -1,5 +1,15 @@
 ---
 HANDOFF: Claude -> Codex
+Date: 2026-03-10 21:20:00
+Project: ~/Project/TDS
+Agent: Claude
+Summary: TDS Migrator에 컴포넌트 인스턴스 스왑 추가 (외부→로컬). Components+Icon Library 스캔. 멱등성 보장 (이미 TDS 바인딩된 스타일 재처리 방지)
+Next-TODO: Kbd 컴포넌트 TDS Components 페이지에 추가 필요 (현재 MISS). Separator, .Input Base Cursor도 동일
+Commits: 708eca8
+---
+
+---
+HANDOFF: Claude -> Codex
 Date: 2026-03-10 20:22:00
 Project: ~/Project/TDS
 Agent: Claude

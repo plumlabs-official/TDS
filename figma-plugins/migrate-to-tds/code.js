@@ -14,9 +14,6 @@ figma.ui.onmessage = async function(msg) {
     } else if (msg.type === 'bind-icon-colors') {
       var result = await handleBindIconColors();
       figma.ui.postMessage({ type: 'result', text: result });
-    } else if (msg.type === 'swap-icons') {
-      var result = await handleSwapIcons();
-      figma.ui.postMessage({ type: 'result', text: result });
     }
   } catch (error) {
     console.error('Plugin error:', error);
@@ -1039,84 +1036,5 @@ async function swapComponentInstances(targets, scope) {
   return { swapped: swapCount, skipped: skipCount, missed: missCount };
 }
 
-// === Swap Icon Sources ===
 
-async function handleSwapIcons() {
-  // 1. Icon Library 페이지 로드
-  var iconLibraryPage = null;
-  for (var p = 0; p < figma.root.children.length; p++) {
-    if (figma.root.children[p].name === 'Icon Library') {
-      iconLibraryPage = figma.root.children[p];
-      break;
-    }
-  }
-  if (!iconLibraryPage) {
-    var msg = 'Icon Library page not found.';
-    figma.notify(msg);
-    return msg;
-  }
-  await iconLibraryPage.loadAsync();
-
-  // 2. Icon Library 페이지 전체에서 모든 COMPONENT 수집 (Lucide, Tabler, Phosphor, Remix 등)
-  var allNodes = iconLibraryPage.findAll(function(n) {
-    return n.type === 'COMPONENT';
-  });
-
-  var canonicalMap = {};
-  for (var i = 0; i < allNodes.length; i++) {
-    var comp = allNodes[i];
-    if (comp.name) {
-      canonicalMap[comp.name] = comp;
-    }
-  }
-
-  var canonicalCount = Object.keys(canonicalMap).length;
-  console.log('Canonical icon components found: ' + canonicalCount);
-
-  if (canonicalCount === 0) {
-    var msg = 'No icon components found in Icon Library page.';
-    figma.notify(msg);
-    return msg;
-  }
-
-  // 4. 선택 노드 (없으면 페이지 전체) 재귀 순회
-  var targets = figma.currentPage.selection.length > 0
-    ? figma.currentPage.selection
-    : figma.currentPage.children;
-  var scope = figma.currentPage.selection.length > 0 ? 'selection' : 'page';
-
-  var swapCount = 0;
-
-  async function traverseAndSwap(node) {
-    // 5. INSTANCE 노드의 mainComponent가 정식이 아니면 교체
-    if (node.type === 'INSTANCE') {
-      try {
-        var mainComp = await node.getMainComponentAsync();
-        if (mainComp && mainComp.name) {
-          var compName = mainComp.name;
-          if (canonicalMap[compName] && canonicalMap[compName].id !== mainComp.id) {
-            node.swapComponent(canonicalMap[compName]);
-            swapCount++;
-            console.log('Swapped: ' + compName + ' on ' + node.name);
-          }
-        }
-      } catch (err) {
-        console.log('Swap error on ' + node.name + ': ' + err.message);
-      }
-    }
-    if ('children' in node) {
-      for (var i = 0; i < node.children.length; i++) {
-        await traverseAndSwap(node.children[i]);
-      }
-    }
-  }
-
-  for (var n = 0; n < targets.length; n++) {
-    await traverseAndSwap(targets[n]);
-  }
-
-  var msg = 'Swapped ' + swapCount + ' icon instance(s) to canonical sources (' + scope + ')';
-  figma.notify(msg);
-  return msg;
-}
 
