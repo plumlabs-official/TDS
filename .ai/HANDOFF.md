@@ -1,5 +1,15 @@
 ---
 HANDOFF: Claude -> Codex
+Date: 2026-03-10 11:20:00
+Project: ~/Project/TDS
+Agent: 혼합 (Claude 코드수정/리뷰 + 사용자 Figma 작업)
+Summary: Input 3종 TDS 복사 + Input Group 구조 설계 (Variant=Default|Bare) + Remove Drop Shadow focus 버그 수정
+Next-TODO: Input Group에 Variant=Default|Bare 프로퍼티 추가 → TDS Migrator 실행 → Tryve 커스텀
+Commits: 5b4209e
+---
+
+---
+HANDOFF: Claude -> Codex
 Date: 2026-03-10 10:05:00
 Project: ~/Project/TDS
 Agent: 혼합 (Claude 플래닝/리뷰 + 사용자 Figma 작업)
