@@ -1,5 +1,15 @@
 ---
 HANDOFF: Claude -> Codex
+Date: 2026-03-10 10:05:00
+Project: ~/Project/TDS
+Agent: 혼합 (Claude 플래닝/리뷰 + 사용자 Figma 작업)
+Summary: 온보딩 UX 컴포넌트 27개 플래닝 완료 (Team 리뷰). Button Type=Inverted 추가 결정. TDS Figma 파일 키 기록.
+Next-TODO: Button Inverted 스타일 검증 → 기존 버튼과 비교 확인 → Phase 1 (Input) 진행
+Commits: 62f8515
+---
+
+---
+HANDOFF: Claude -> Codex
 Date: 2026-03-09 17:35:00
 Project: ~/Project/TDS
 Agent: 혼합 (사용자 Figma 작업 + Claude 리뷰/조언)
