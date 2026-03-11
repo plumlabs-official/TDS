@@ -1,6 +1,12 @@
 // Figma Plugin: TDS Migrator
 // Style Migration / Icon / Cleanup
 
+// TDS 파일 페이지 ID (이름 변경 시 코드 수정 불필요)
+var TDS_PAGE_IDS = {
+  COMPONENTS: '20012:2',
+  ICONS: '20013:144'
+};
+
 figma.showUI(__html__, { width: 280, height: 400 });
 
 figma.ui.onmessage = async function(msg) {
@@ -714,7 +720,7 @@ async function handleMigrate() {
       // SF Pro (iOS native) 폰트는 스킵 — 의도적으로 사용하는 시스템 폰트
       var fontFamily = (node.fontName && node.fontName !== figma.mixed) ? node.fontName.family : '';
       if (fontFamily.indexOf('SF Pro') === 0) {
-        // SF Pro 텍스트는 스타일/폰트 바인딩 전체 스킵
+        console.log('Skipped SF Pro: ' + node.name + ' (' + fontFamily + ')');
       } else if (!node.textStyleId || node.textStyleId === '') {
         var canInfer = node.fontSize !== figma.mixed
           && node.lineHeight !== figma.mixed;
@@ -867,16 +873,16 @@ async function handleMigrate() {
 // === Swap Components (내부 함수 — handleMigrate에서 호출) ===
 
 async function swapComponentInstances(targets, scope) {
-  // 1. 소스 페이지 로드 (Components + Icon Library)
+  // 1. 소스 페이지 로드 (ID 기반 — 페이지 이름 변경에 안전)
+  var sourcePageIds = [TDS_PAGE_IDS.COMPONENTS, TDS_PAGE_IDS.ICONS];
   var sourcePages = [];
   for (var p = 0; p < figma.root.children.length; p++) {
-    var pageName = figma.root.children[p].name;
-    if (pageName === 'Components' || pageName === 'Icon Library') {
+    if (sourcePageIds.indexOf(figma.root.children[p].id) !== -1) {
       sourcePages.push(figma.root.children[p]);
     }
   }
   if (sourcePages.length === 0) {
-    console.log('Components/Icon Library pages not found — skipping component swap');
+    console.log('Source pages not found (IDs: ' + sourcePageIds.join(', ') + ') — skipping component swap');
     return { swapped: 0, skipped: 0 };
   }
 

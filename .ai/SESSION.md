@@ -48,6 +48,7 @@ TDS 컴포넌트 리뷰를 lenny 프로젝트에서 `/team`으로 실행하면, 
 | Checkbox 컴포넌트 탐색 시작 → **Figma MCP 장애로 중단** | 온보딩 캐시에서 발견: `lets-icons:check-ring-round`, `Toggle` 컴포넌트셋, `초대 선택` 화면 |
 | Figma MCP 재발 진단 | `figma-remote-mcp` HTTP 타입 OAuth 토큰 만료 추정. `mcp-needs-auth-cache.json` 이번엔 없음. 세션 재시작 필요 |
 | meetings/reviews 파일 lenny에서 이동 | 산출물 분산 정책 — TDS meetings 13개 + reviews 1개 수신 |
+| refactor: Migrator 소스 페이지 ID 기반 전환 + SF Pro 스킵 로그 | 페이지 이름 변경에 안전. /team 리뷰 PASS |
 
 ### 컴포넌트 마이그레이션 현황
 

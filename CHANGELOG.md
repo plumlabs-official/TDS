@@ -8,10 +8,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Changed
+- TDS Migrator: 소스 페이지 탐색을 문자열 비교에서 페이지 ID 상수 기반으로 전환 (페이지 이름 변경에 안전)
+- TDS Migrator: SF Pro 스킵 시 콘솔 로그 추가 (디버깅 사각지대 해소)
 - meetings/reviews 파일 lenny에서 TDS로 이동 (산출물 분산 정책)
 
 ### Added
-- TDS Migrator: 컴포넌트 인스턴스 스왑 기능 (외부 라이브러리 → TDS 로컬 컴포넌트, Components + Icon Library 페이지 스캔)
+- TDS Migrator: 컴포넌트 인스턴스 스왑 기능 (외부 라이브러리 → TDS 로컬 컴포넌트, Components + Icons 페이지 스캔)
 - TDS Migrator: 멱등성 보장 (이미 TDS 바인딩된 Effect/Fill/Stroke/Text Style 재처리 방지)
 - TDS Migrator: SF Pro 폰트 스킵 (iOS 네이티브 컴포넌트 텍스트 스타일/폰트 바인딩 제외)
 - TDS Migrator: 에러 로그 개선 (Infer/Font bind 에러에 styleId, fontName 상세 출력)
