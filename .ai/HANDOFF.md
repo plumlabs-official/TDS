@@ -1,4 +1,14 @@
 ---
+HANDOFF: Claude -> Codex
+Date: 2026-03-11 10:35:00
+Project: ~/Project/TDS
+Agent: Claude
+Summary: TDS Migrator 소스 페이지 탐색을 문자열→ID 상수 기반으로 전환. SF Pro 스킵 로그 추가. /team 리뷰 PASS.
+Next-TODO: 없음
+Commits: 01d5f41
+---
+
+---
 HANDOFF: Claude -> User
 Date: 2026-03-10 23:20:00
 Project: ~/Project/TDS
