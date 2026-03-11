@@ -47,6 +47,7 @@ TDS 컴포넌트 리뷰를 lenny 프로젝트에서 `/team`으로 실행하면, 
 | "참여 각오" 입력란 발견 | 온보딩 `18171:6664` (알림시간설정1). "한 마디" = 단일라인 Input으로 대체 가능 |
 | Checkbox 컴포넌트 탐색 시작 → **Figma MCP 장애로 중단** | 온보딩 캐시에서 발견: `lets-icons:check-ring-round`, `Toggle` 컴포넌트셋, `초대 선택` 화면 |
 | Figma MCP 재발 진단 | `figma-remote-mcp` HTTP 타입 OAuth 토큰 만료 추정. `mcp-needs-auth-cache.json` 이번엔 없음. 세션 재시작 필요 |
+| meetings/reviews 파일 lenny에서 이동 | 산출물 분산 정책 — TDS meetings 13개 + reviews 1개 수신 |
 
 ### 컴포넌트 마이그레이션 현황
 
@@ -72,20 +73,6 @@ TDS 컴포넌트 리뷰를 lenny 프로젝트에서 `/team`으로 실행하면, 
 | Textarea | ⏭️ SKIP | TDS Input Group의 Type=Textarea로 대체. /team PASS (98/95) |
 | **Checkbox** | ✅ 완료 | Shadcn→TDS 마이그레이션 + 초대확인 테스트 적용. /team PASS (95/92) |
 | Inline Link Text | ⏭️ SKIP | shadcn 별도 컴포넌트 없음. 약관 링크=`<a>` 스타일링, "자세히"=Button variant=link로 커버 |
-
-### Ralph Loop 상태 (Checkbox)
-
-- **목표**: Shadcn Kit에서 checkbox/check 검색 → 온보딩 사용처 비교 → 가장 유사한 컴포넌트 확정
-- **완료 조건**: /team 검수 효율성+유사도 90점 이상
-- **최대 반복**: 10회
-- **현재 반복**: 1회 (Figma MCP 장애로 미완료)
-- **온보딩 캐시 발견 노드**:
-  - `lets-icons:check-ring-round` (체크 아이콘) — onboarding1 `18171:3576`, onboarding2 `18626:6678`
-  - `Toggle` 컴포넌트셋 — onboarding1 `18765:4175`
-  - `초대 선택 - 연락처 연동시 - 미선택` — onboarding2 `18171:3770`
-  - `알림 동의` — onboarding2 `14332:1256`
-- **Shadcn Kit Checkbox**: 아직 미탐색 (fileKey: `aqyiOYPHsMCrWKPhkehP0g`)
-- **TDS Input Box Group**: `20052:406` (Type=Text/Textarea/Number 등 이미 존재. Checkbox Type은 미확인)
 
 ### 다음 할 일 (온보딩 컴포넌트 Phase 1~5)
 
