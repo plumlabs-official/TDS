@@ -49,6 +49,13 @@ TDS 컴포넌트 리뷰를 lenny 프로젝트에서 `/team`으로 실행하면, 
 | Figma MCP 재발 진단 | `figma-remote-mcp` HTTP 타입 OAuth 토큰 만료 추정. `mcp-needs-auth-cache.json` 이번엔 없음. 세션 재시작 필요 |
 | meetings/reviews 파일 lenny에서 이동 | 산출물 분산 정책 — TDS meetings 13개 + reviews 1개 수신 |
 | refactor: Migrator 소스 페이지 ID 기반 전환 + SF Pro 스킵 로그 | 페이지 이름 변경에 안전. /team 리뷰 PASS |
+| Figma MCP 좀비 프로세스 정리 | 만료 토큰 구 프로세스 kill. 현재 세션 MCP CPU 100% 행 상태 → 세션 재시작 필요 |
+| /record 커맨드 세션 기록 모드 추가 | 커밋 없어도 SESSION+HANDOFF 기록 가능. claude-center d8e4e43 |
+| statusline effort 풀네임 표시 | E:H → High. macOS BSD sed 호환. claude-center ecb9927 |
+| fix: Migrator compMap variant name 충돌 버그 수정 | Select→X버튼 오스왑 방지. 이중 방어 (빌드 + swap). /director PASS |
+| Alert Dialog TDS 마이그레이션 (사용자 직접) | Shadcn Kit Alert Dialog 기반. width fill + max-width. Breakpoint 2 variant |
+| Field, Select, Textarea, Card TDS 토큰 마이그레이션 (사용자 직접) | Shadcn Kit에서 가져와서 TDS 토큰 바인딩. Hi-Fi 스타일 미적용 |
+| Input Group COMPONENT_SET 이름 원복 | InputGroup→Input Group 등. Migrator SET 매칭 정상화 |
 
 ### 컴포넌트 마이그레이션 현황
 
@@ -61,6 +68,11 @@ TDS 컴포넌트 리뷰를 lenny 프로젝트에서 `/team`으로 실행하면, 
 | Modal/Header | 완료 (3 variant: Nav+Title+Action, Nav+Title, Title) |
 | Tabs | 완료 (Tabs/Primary 3v + Tabs/Secondary 2v + TabsTrigger 2종 + Addon Inline 3v). /team PASS (95/95) |
 | OS/Native | 추가됨 (Keyboard + iOS StatusBar + HomeIndicator) |
+| Alert Dialog | 완료 (Breakpoint 2 variant, width fill + max-width, TDS Button Large pill) |
+| Field | TDS 토큰 바인딩 완료 (Hi-Fi 미적용) |
+| Select | TDS 토큰 바인딩 완료 (Hi-Fi 미적용) |
+| Textarea | TDS 토큰 바인딩 완료 (Hi-Fi 미적용) |
+| Card | TDS 토큰 바인딩 완료 (Hi-Fi 미적용) |
 
 ### 플랜 파일
 
@@ -83,7 +95,7 @@ TDS 컴포넌트 리뷰를 lenny 프로젝트에서 `/team`으로 실행하면, 
 | 1 | ~~Textarea~~ | ⏭️ SKIP |
 | 1 | ~~Checkbox~~ | ✅ 완료 (/team PASS 95/92) |
 | 1 | ~~Inline Link Text~~ | ⏭️ SKIP (shadcn 컴포넌트 없음, `<a>` + Button link로 커버) |
-| 2 | **Dialog / Alert Dialog** | 알림 허용, 참가 확인 |
+| 2 | ~~Dialog / Alert Dialog~~ | ✅ 완료 (TDS 토큰 바인딩, Hi-Fi 미적용) |
 | 2 | **Toast (Sonner)** | 인증 피드백 |
 | 2 | **Progress** | 온보딩 단계 바 |
 | 2 | **Page Indicator** | 슬라이드 dots |

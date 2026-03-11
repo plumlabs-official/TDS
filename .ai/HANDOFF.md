@@ -1,4 +1,24 @@
 ---
+HANDOFF: Claude -> User
+Date: 2026-03-11 13:47:00
+Project: ~/Project/TDS
+Agent: 혼합 (Claude 코드수정/리뷰 + 사용자 Figma 작업)
+Summary: Migrator compMap variant name 충돌 버그 수정 (/director PASS). Alert Dialog TDS 마이그레이션 (width fill). Field/Select/Textarea/Card TDS 토큰 바인딩 (사용자). Input Group 이름 원복.
+Next-TODO: 1) Phase 2 나머지: Toast, Progress, Page Indicator 2) Alert Dialog Hi-Fi 스타일 적용 3) Field/Select/Textarea/Card Hi-Fi 스타일 적용
+Commits: (이번 커밋)
+---
+
+---
+HANDOFF: Claude -> Claude (세션 재시작)
+Date: 2026-03-11 11:55:00
+Project: ~/Project/TDS
+Agent: Claude
+Summary: Dialog 마이그레이션 시작 시도 → Figma MCP 행(CPU 100%)으로 중단. 좀비 프로세스 정리 완료. /record 세션 기록 모드 추가 + statusline effort 풀네임 표시 (claude-center).
+Next-TODO: 1) 세션 재시작으로 Figma MCP 정상화 2) Dialog/Alert Dialog 마이그레이션 (Phase 2) 3) Shadcn Kit에서 컴포넌트 확인 후 TDS 복사+Migrator
+Commits: 없음 (세션 기록)
+---
+
+---
 HANDOFF: Claude -> Codex
 Date: 2026-03-11 10:35:00
 Project: ~/Project/TDS

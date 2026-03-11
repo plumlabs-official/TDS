@@ -890,13 +890,18 @@ async function swapComponentInstances(targets, scope) {
   for (var sp = 0; sp < sourcePages.length; sp++) {
     await sourcePages[sp].loadAsync();
 
-    // 2. 각 페이지에서 모든 COMPONENT 수집 (COMPONENT_SET 내부 포함)
+    // 2. 각 페이지에서 standalone COMPONENT만 수집 (variant children 제외)
     var allComps = sourcePages[sp].findAll(function(n) {
       return n.type === 'COMPONENT';
     });
     for (var i = 0; i < allComps.length; i++) {
       var comp = allComps[i];
       if (comp.name) {
+        var isVariantChild = comp.parent && comp.parent.type === 'COMPONENT_SET';
+        if (isVariantChild) continue;
+        if (compMap[comp.name] && compMap[comp.name] !== comp) {
+          console.log('[WARN] compMap key collision: "' + comp.name + '" — overwriting');
+        }
         compMap[comp.name] = comp;
       }
     }
@@ -983,16 +988,19 @@ async function swapComponentInstances(targets, scope) {
           var compName = mainComp.name;
           var swapped = false;
 
-          // 1차: variant 이름으로 정확 매칭
-          if (compMap[compName]) {
+          // variant 여부 판별 (COMPONENT_SET 자식은 bare name 충돌 위험)
+          var isVariant = mainComp.parent && mainComp.parent.type === 'COMPONENT_SET';
+
+          // 1차: standalone 컴포넌트만 bare name 매칭 (variant는 스킵)
+          if (!isVariant && compMap[compName]) {
             node.swapComponent(compMap[compName]);
             swapCount++;
             swapped = true;
             console.log('Swapped: ' + node.name + ' → ' + compName);
           }
 
-          // 2차: mainComp.parent COMPONENT_SET으로 매칭
-          if (!swapped && mainComp.parent && mainComp.parent.type === 'COMPONENT_SET') {
+          // 2차: variant — parent COMPONENT_SET으로 매칭
+          if (!swapped && isVariant) {
             var localSet = compMap['__SET__' + mainComp.parent.name];
             if (localSet && localSet.type === 'COMPONENT_SET') {
               var match = findVariantInSet(localSet, compName, node);

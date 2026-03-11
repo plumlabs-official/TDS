@@ -7,7 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+- TDS Migrator: compMap variant name 충돌 버그 수정 (Select→X버튼 오스왑 방지, 이중 방어)
+
 ### Changed
+- TDS Migrator: compMap 빌드 시 variant children 제외 + 충돌 경고 로그 추가
+- TDS Migrator: traverseAndSwap에서 variant 컴포넌트는 1차 bare name 매칭 스킵, SET 매칭 우선
+- Figma: Alert Dialog 컴포넌트 TDS 마이그레이션 (width fill + max-width, Breakpoint 2 variant)
+- Figma: Field, Select, Textarea, Card 컴포넌트 TDS 토큰 마이그레이션 (Hi-Fi 미적용)
 - TDS Migrator: 소스 페이지 탐색을 문자열 비교에서 페이지 ID 상수 기반으로 전환 (페이지 이름 변경에 안전)
 - TDS Migrator: SF Pro 스킵 시 콘솔 로그 추가 (디버깅 사각지대 해소)
 - meetings/reviews 파일 lenny에서 TDS로 이동 (산출물 분산 정책)
