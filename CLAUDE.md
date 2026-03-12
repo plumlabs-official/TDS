@@ -66,16 +66,26 @@
 - 추측하지 말고 **질문 먼저**
 - "이해가 맞나요?" 확인
 
-### TDS 컴포넌트 논의/리뷰 시 (필수)
-> 프로덕트 디자인에서 TDS 컴포넌트를 언급하거나, 컴포넌트 구조를 설명할 때
+### TDS 컴포넌트 판단 시 — Evidence-First 프로토콜 (필수)
+> Figma 노드가 TDS인지, 컴포넌트 구조가 어떤지 판단할 때
 
-- [ ] **TDS 라이브러리 원본 먼저 확인** — 프로덕트 파일만 보고 컴포넌트 구조 추측 금지
-  - TDS fileKey: `H36eNEd6o7ZTv4R7VcyLf2`
-  - `get_figma_data`로 해당 컴포넌트 노드 직접 읽기
-- [ ] **프로퍼티/Slot 구분** — Boolean 프로퍼티, Variant, Slot 각각 무엇인지 원본에서 확인
-- [ ] **확인 안 했으면 "확인 안 했습니다" 먼저 말하기** — 추측으로 답변하지 않음
+**GATE: 증거 없는 결론 금지. 아래 순서를 반드시 따를 것.**
 
-> 근거: 2026-03-12 초대 바텀시트 사건 — Sheet의 footer 프로퍼티를 slot이라 잘못 답변 (3회 연속 오답)
+1. **EVIDENCE FIRST** — 결론 전에 아래를 먼저 출력:
+   - `node.type` (INSTANCE / FRAME / GROUP / COMPONENT)
+   - `componentId` 존재 여부 + 값
+   - TDS 라이브러리(`H36eNEd6o7ZTv4R7VcyLf2`) 소속 여부
+   - 프로퍼티/Slot/Variant 구분 (원본 `get_figma_data` 결과 인용)
+
+2. **THEN CONCLUDE** — 증거 기반으로만 결론
+
+3. **CORRECTION CHECK** — 사용자가 정정해도:
+   - "확인해보겠습니다" → `get_figma_data` 재호출
+   - "네, 알겠습니다"로 검증 없이 수용 **금지**
+
+> 근거: 2026-03-12 사건 2건
+> - Sheet footer→slot 3연속 오답 (확인 없이 추측)
+> - TabNav "이미 TDS야" 함정 → 검증 없이 수용 (정정도 맹신)
 
 ### 슬래시 커맨드 생성 시 (필수)
 > `/coach`, `/record` 같은 커맨드 만들 때
