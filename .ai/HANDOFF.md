@@ -10,6 +10,26 @@ Commits: (이번 커밋)
 
 ---
 HANDOFF: Claude -> User
+Date: 2026-03-11 16:54:00
+Project: ~/Project/TDS
+Agent: 혼합 (사용자 Figma 작업 + Claude 코드수정/리뷰)
+Summary: Docs Generator 버그 5건 수정 + Figma 검증 PASS + Library Publish 진행 (17,505개). TDS 첫 퍼블리시 완료.
+Next-TODO: 1) 온보딩 디자인 산출물 작업 시작 2) 필요 시 Molecule 컴포넌트 JIT 추가
+Commits: 8d2da11
+---
+
+---
+HANDOFF: Claude -> User
+Date: 2026-03-11 16:46:00
+Project: ~/Project/TDS
+Agent: 혼합 (사용자 Figma 작업 + Claude 코드수정/리뷰)
+Summary: Docs Generator 버그 5건 수정 + Figma 검증 PASS. 1) 페이지 prefix 매칭 2) 이름 보존 3) Light 모드 우선 탐색 4) Effect 정렬 baseName 기준 5) cross-collection alias resolve (foreground #09090B→#1A1A1A). Typography/Colors/Effects 3페이지 모두 정상 확인.
+Next-TODO: 1) Library Publish 2) 온보딩 디자인 산출물 작업 시작
+Commits: 8d2da11
+---
+
+---
+HANDOFF: Claude -> User
 Date: 2026-03-11 16:34:00
 Project: ~/Project/TDS
 Agent: 혼합 (사용자 Figma 작업 + Claude 코드수정/리뷰)

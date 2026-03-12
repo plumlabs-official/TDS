@@ -114,6 +114,7 @@ TDS 컴포넌트 리뷰를 lenny 프로젝트에서 `/team`으로 실행하면, 
 | TDS Color Docs 전체 점검 | 13개 토큰 중 11개 라벨 불일치 — Shadcn 기본값 텍스트, 실제 변수는 Tryve 값 |
 | TDS Effect Docs 점검 | Preview 바인딩 엇갈림 + CSS 라벨 불일치 + EFFECT_ORDER 정렬 고장 |
 | fix: Docs Generator 버그 5건 수정 (/director) | 1) 페이지 prefix 매칭 2) 원래 이름 보존 3) Light 모드 우선 탐색 4) Effect 정렬 baseName 기준 5) cross-collection alias resolve. Figma 검증 PASS |
+| TDS Library Publish (사용자) | 17,505개 항목 포함. Primitives(244)/Theme(123) + .서브컴포넌트 5개 Hidden 정상 확인 |
 
 ### 컴포넌트 마이그레이션 현황
 
