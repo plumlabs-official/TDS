@@ -2,7 +2,7 @@
 
 > 세션 단기 기억 (compact 후 이어갈 내용)
 >
-> Last updated: 2026-03-13
+> Last updated: 2026-03-14
 
 ---
 
@@ -72,8 +72,21 @@ TDS 컴포넌트 리뷰를 lenny 프로젝트에서 `/team`으로 실행하면, 
 | Composer 플러그인 모듈 신규 개발 | `modules/composer.ts` + code.ts 연결 + UI 버튼 3개. 코드리뷰/디자인리뷰 PASS (/director) |
 | Challenge Card 사용자 직접 제작 (Figma) | TDS Button+Badge+Content Header 조합. 바이브코딩 핏 A급 (/team 리뷰) |
 | Content Header에 Slot 추가 (사용자 직접) | Description Slot 확장 |
+| /record 커맨드 개선 (/team) | 세션 기록 모드에서도 커밋+푸시 자동 실행. "커밋 없음" 설계 결함 수정 |
+| 온보딩 화면 네이밍 리뷰 (/team) | 78→90점. Container/ 일관성 우수, 브랜드명/Text prefix 수정, 래퍼 구조 적용 |
+| Figma 리서치 3건 (/team) | 네이밍 깊이(인스턴스 내부 안 함), 인스턴스 rename(안전), Group vs Frame(Frame 기본) |
+| Figma 인스턴스 오버라이드 리서치 | underline=텍스트 스타일 포함(✓)→바인딩 깨짐. color=미포함(✕)→안전 |
+| /research 커맨드 설계 (/coach) | 커맨드 방식 추천. Explore+WebFetch 검증 루프, 95% 신뢰도 Gate |
+| Tooltip 컴포넌트 TDS 제작 (혼합) | 5 Style (Default/Primary/Inverted/Warning/Destructive) × 4 Caret (Top/Bottom/Right/Left) = 20v. 토큰 바인딩 완료 |
+| Placeholder Logo 컴포넌트 TDS 추가 (사용자 직접) | Type=White/Black × Size=lg/md/sm = 6v |
+| `primary-dark` (#01A54F) 변수 추가 | Theme → Mode alias 연결. 그래디언트 스탑용 |
+| Gradient Background Color Style 생성 | primary(0%) → primary-dark(100%). 온보딩 배경용 |
+| Docs Generator Figma 검증 PASS | Colors + Effects 재생성 정상 확인 |
+| Library Publish 완료 | Tooltip + Placeholder Logo + primary-dark + Gradient Background |
+| docs: 초대 바텀시트 컴포넌트화 결정 (/team) | 1회 사용 No-go. Bottom Sheet Container만 Phase 3에서 범용 컴포넌트로 |
+| docs: Challenge State Card + Content Header 구조 평가 (/team) | Content Header 정당성 확인 (레이아웃 전환+Slot). 아이콘 4종→Lucide 통일 필요. 수정 평가 7/10 |
 
-> 출처(상위 7건): claude-center SESSION.md (다른 로컬에서 작업, TDS SESSION 반영 누락)
+> 상위 항목 출처: claude-center SESSION.md (다른 로컬에서 작업, TDS SESSION 반영 누락)
 
 ### 컴포넌트 마이그레이션 현황
 
