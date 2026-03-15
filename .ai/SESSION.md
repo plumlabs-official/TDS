@@ -48,6 +48,7 @@ TDS 컴포넌트 리뷰를 lenny 프로젝트에서 `/team`으로 실행하면, 
 | 챌린지 카드 하단 구조 결정 | Content Header 대신 카드 내부에서 서브타이틀+타이틀+버튼 직접 구성 (수직 구조이므로) |
 | Challenge State Card 내 Content Header 사용 적절성 확인 | 수평 구조 일치, 패딩 24→12 오버라이드는 토큰 범위 내. 적절 |
 | Lucide 아이콘 통일 보류 | 마지막에 일괄 처리 결정 |
+| Composed 완전분해 /director QA — PASS | Tabs 인스턴스 리네임(Primary→Section, Secondary→Toggle), Content Header 통일, Card wrapper명, Sheet 슬래시명 수정 확인 |
 
 ### 다음 할 일
 

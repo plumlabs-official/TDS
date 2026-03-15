@@ -1,5 +1,15 @@
 ---
 HANDOFF: Claude -> User
+Date: 2026-03-15 14:16:00
+Project: ~/Project/TDS
+Agent: 혼합 (Claude 리뷰 + 사용자 Figma 수정)
+Summary: Composed 섹션 완전분해 /director QA — PASS. Tabs 인스턴스 레거시명(TabsTrigger Primary→Section, Secondary→Toggle), Content Header 내부 프레임 불일치(Content→Title and desc), Card wrapper명(Card→Card and Sheet), Sheet 슬래시 네이밍 제거. WIP 프레임 확인 후 제외.
+Next-TODO: 1) 하단 탭바 2) 9:16 카드 3) 챌린지 리스트+상세 4) 아코디언+리스트 5) 챌린지 인증 카드
+Commits: (이번 커밋)
+---
+
+---
+HANDOFF: Claude -> User
 Date: 2026-03-15 03:50:00
 Project: ~/Project/TDS
 Agent: Claude
