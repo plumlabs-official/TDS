@@ -70,6 +70,7 @@ TDS 컴포넌트 리뷰를 lenny 프로젝트에서 `/team`으로 실행하면, 
 | ├ Tab Bar COMPONENT_SET 5 variant 완성 (사용자) | Active=Home/Feed/Make/Task/Profile |
 | ├ Badge 작업 중 → Notification Badge 정합성 이슈 발견 | 공용 컴포넌트에 stroke 추가 시 영향도 미확인 |
 | └ 정합성 미확인 패턴 lessons-learned + CLAUDE.md 규칙 추가 | /team 논의 후 재발방지 기록 |
+| **Bottom Tab Bar 구조 리뷰 (/team)** | 네이밍 3건 + Badge 통합 방향 확정 |
 
 ### Bottom Tab Bar 현재 구조
 
