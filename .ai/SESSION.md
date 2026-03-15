@@ -72,7 +72,7 @@ TDS 컴포넌트 리뷰를 lenny 프로젝트에서 `/team`으로 실행하면, 
 | └ 정합성 미확인 패턴 lessons-learned + CLAUDE.md 규칙 추가 | /team 논의 후 재발방지 기록 |
 | **Bottom Tab Bar 구조 리뷰 (/team)** | 네이밍 3건 + Badge 통합 방향 확정 |
 | **Tab Bar 완성 (사용자)** | 네이밍 수정 (TabBar/TabBar Icon/variant값 단축) + Reddot Stroke Boolean + Badge Boolean + Migrator 완료 |
-| **버튼과 뱃지 아이콘 크기 최적화 (사용자)** | 진행 중 |
+| **버튼과 뱃지 아이콘 크기 최적화 (사용자)** | 완료 |
 
 ### Bottom Tab Bar 완성 구조
 
