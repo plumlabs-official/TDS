@@ -71,45 +71,30 @@ TDS 컴포넌트 리뷰를 lenny 프로젝트에서 `/team`으로 실행하면, 
 | ├ Badge 작업 중 → Notification Badge 정합성 이슈 발견 | 공용 컴포넌트에 stroke 추가 시 영향도 미확인 |
 | └ 정합성 미확인 패턴 lessons-learned + CLAUDE.md 규칙 추가 | /team 논의 후 재발방지 기록 |
 | **Bottom Tab Bar 구조 리뷰 (/team)** | 네이밍 3건 + Badge 통합 방향 확정 |
+| **Tab Bar 완성 (사용자)** | 네이밍 수정 (TabBar/TabBar Icon/variant값 단축) + Reddot Stroke Boolean + Badge Boolean + Migrator 완료 |
+| **버튼과 뱃지 아이콘 크기 최적화 (사용자)** | 진행 중 |
 
-### Bottom Tab Bar 현재 구조
+### Bottom Tab Bar 완성 구조
 
 ```
-Bottom Tabbar 6 (COMPONENT_SET) — Container Navbar 내
-├── Active=Home
-├── Active=Feed
-├── Active=Make
-├── Active=Task
-└── Active=Profile
+TabBar (COMPONENT_SET) — Container Navbar 내
+├── Active=Home/Feed/Make/Task/Profile (5 variant)
+└── 각 탭 내부: TabBar Icon 인스턴스 (Reddot Boolean 제어)
 
-Component Tabbar Icon (COMPONENT_SET) — 에셋
+TabBar Icon (COMPONENT_SET) — 에셋
 ├── On: Home, Feed, Make, Task, Profile (Filled)
-└── Off: Home, Feed, Make, Task, Profile (Stroke)
-```
-
-### Participant Card 현재 구조
-
-```
-Participant Card (COMPONENT_SET)
-├── Variants: Scale × State × Self
-│   Scale: 1:1 (4:5, 9:16 복제 예정)
-│   State: Not Authed | Authed | Empty
-│   Self: Self | Other
-├── Booleans: Host, Nudge, Determination, Description
-└── 5 variants (1:1): Not Authed×Self, Not Authed×Other, Authed×Self, Authed×Other, Empty×Other
+├── Off: Home, Feed, Make, Task, Profile (Stroke)
+└── Reddot Boolean → Notification Badge (Reddot Stroke Boolean) 인스턴스
 ```
 
 ### 다음 할 일
 
 | 순서 | 작업 | 비고 |
 |------|------|------|
-| 1 | **Tab Bar Badge 추가** | Notification Badge stroke 방향 결정 후 진행 |
-| 2 | **Tab Bar 네이밍 정리** | `Bottom Tabbar 6` → `Tab Bar` |
-| 3 | **Tab Bar Migrator 실행** | 토큰 바인딩 |
-| 4 | **챌린지 리스트 + 상세페이지** 컴포넌트 제작 | |
-| 5 | **아코디언 + 리스트** 컴포넌트 제작 | |
-| 6 | **캘린더** 컴포넌트 제작 | |
-| 7 | **버튼과 뱃지 아이콘 크기 최적화** | |
+| 1 | **챌린지 리스트 카드** 컴포넌트 제작 | |
+| 2 | **챌린지 상세페이지** 컴포넌트 제작 | |
+| 3 | **아코디언 + 리스트** 컴포넌트 제작 | |
+| 4 | **캘린더** 컴포넌트 제작 | |
 | 마지막 | Lucide 아이콘 일괄 통일 (Avatar의 Huge Icons 포함) | |
 
 ---
