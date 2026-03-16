@@ -80,6 +80,7 @@ TDS 컴포넌트 리뷰를 lenny 프로젝트에서 `/team`으로 실행하면, 
 | **Challenge List Card responsiveness 수정** | 최상위 H:hug, Card Body W/H:fill로 변경. Creator Row off 시 높이 늘어남 버그 수정 |
 | **바이브코딩 적합성 QA (/director × 5R)** | 3개 카드 전체 검증. Challenge List Card 39.6, ChallengeCard 27.4, Participant Card 56.4. Critical 8건 + Warnings 10건. FAIL — 네이밍 남용(Text/Description), Blur:mask-group 콜론, prop 설계 결함 |
 | **QA Fix Plan v3.1 (/team × 4R)** | DD:97/EL:96/PL:96 PASS. 76건 변경(Rename 43+Remove 2+Structural 10+Property 15+Variant 3+Avatar 3). Phase 0~3 실행 순서 + 이중 Gate(director 85+, team 95+) + 롤백 전략 확정 |
+| **챌린지 카드 4종 바이브코딩 분석 (/team)** | 프로덕트 디자인 4개 카드 Figma 직접 조회. 수정 33건 확정: Phase 0 네이밍 13 + Phase 1 Description 5 + Phase 2 프로퍼티 7 + Phase 3 아이콘 8. 아이콘 5종 혼용(Lucide+Huge+Phosphor+Remix+Tabler) 발견 |
 
 ### Bottom Tab Bar 완성 구조
 
