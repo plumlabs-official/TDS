@@ -18,6 +18,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - TDS Migrator: compMap variant name 충돌 버그 수정 (Select→X버튼 오스왑 방지, 이중 방어)
 
 ### Changed
+- docs: 챌린지 진행 화면 TDS 종합 리뷰 (/director) — 디자인 시스템 B, 바이브코딩 B-. P0 3건 (borderRadius 혼용, 터치영역, 색상 대비)
 - docs: 챌린지 카드 4종 바이브코딩 적합성 분석 (/team) — 수정 33건 확정 (네이밍 13 + Description 충돌 5 + 프로퍼티 7 + 아이콘 8)
 - docs: 챌린지 리스트 카드 구조 결정 — 별개 컴포넌트 분리 + Challenge 패밀리 네이밍 (/team)
 - docs: 챌린지 리스트 카드 제작 플랜 리뷰 PASS (/team × 3R, 96/96/96)
