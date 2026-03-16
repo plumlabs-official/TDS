@@ -68,6 +68,7 @@ TDS 컴포넌트 리뷰를 lenny 프로젝트에서 `/team`으로 실행하면, 
 | **챌린지 상세페이지 전체 체크** | 모든 TDS 컴포넌트 적용 확인. Frame 이름 정리(→Container Challenge Info), Disclaimer body 안으로 이동 |
 | **채팅 화면 TDS 컴포넌트화 플래닝 (/team)** | shadcn Kit Message 편입 Phase 0-5 확정. meetings/ 기록 |
 | **Message 컴포넌트 TDS 편입 완료 (사용자)** | Kit에서 복사 → 6 variants (Received/Sent text/attachment + Announcement + Date Separator). TDS Avatar 교체, Pretendard, radius/color 커스텀, Boolean 프로퍼티(Show Reactions, Show Button) 추가 |
+| **채팅 화면 바이브코딩 핏 리뷰 (/team) — PASS 90/100** | TDS 인스턴스 100%, 네이밍 시맨틱 완료. Container Chat Input absolute 레이아웃 -10점 |
 
 ### 잔여
 
