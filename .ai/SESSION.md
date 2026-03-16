@@ -59,6 +59,10 @@ TDS 컴포넌트 리뷰를 lenny 프로젝트에서 `/team`으로 실행하면, 
 | 일감 정리 | Migrator(✅), Variable 2개(패스), 인스턴스 테스트(✅) |
 | **Accordion Slot 패턴 설계 (/team)** | Slot 1개 vertical AL 채택. Slot2 삭제, hug height, Show Boolean 추가 |
 | **Breadcrumb + Profile Card 매핑 (/team)** | Category→Breadcrumb 사용, User Container→Profile Card Type=Challenge variant 추가 |
+| Accordion 스크롤 수정 | TabsList Tag Fill width + Clip content로 해결 |
+| Disclaimer 별도 컴포넌트 결정 (/coach) | Accordion Type으로 통합 부적합 — 정적 텍스트, 접기 불필요 |
+| Profile Card Type=Challenge Detail 네이밍 (/coach) | 다른 챌린지 컴포넌트에서도 프로필 사용 → Detail 구분 필요 |
+| **Block 컴포넌트화 불필요 결정 (/team)** | Breadcrumb+ProfileCard+Period 묶기 → 1회 사용, 기준 미달 |
 
 ### 잔여
 
@@ -66,7 +70,8 @@ TDS 컴포넌트 리뷰를 lenny 프로젝트에서 `/team`으로 실행하면, 
 - Icon Unifier 플러그인 구현 (펜딩)
 - Phase 3 패스 2건: play-fill, pencil-plus (Lucide 대안 불만족)
 - **검증 필요**: Icon 터치영역 44px 검증, 비활성 텍스트 대비 검증
-- **챌린지 상세페이지 다음 단계**: Breadcrumb 적용 → Profile Card Type=Challenge 추가 → 프로덕트 User Container 교체
+- **챌린지 상세페이지 다음 단계**: Figma에서 Breadcrumb 적용(완료) + Profile Card Type=Challenge Detail(완료) + Period Container TDS 검토 + Disclaimer 별도 컴포넌트화
+- Frame 이름 정리: `Frame 1430107119` → 의미 있는 이름으로
 - 사용자 제안: TDS `20199-6244`(List/Item 패턴) + `20145-10532` & `20159-2721`(활동 그리드) 활용
 
 ---

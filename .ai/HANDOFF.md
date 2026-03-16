@@ -1,5 +1,15 @@
 ---
 HANDOFF: Claude -> User
+Date: 2026-03-17 00:00:00
+Project: ~/Project/TDS
+Agent: 혼합
+Summary: 세션 기록 — Accordion 스크롤 수정 + Disclaimer 별도 결정 + Profile Card Type=Challenge Detail + Block 불필요(/team) + Breadcrumb/ProfileCard Figma 적용 완료(사용자)
+Next-TODO: Period Container TDS 검토 + Disclaimer 컴포넌트화 + Frame 이름 정리
+Commits: (이번 커밋)
+---
+
+---
+HANDOFF: Claude -> User
 Date: 2026-03-16 23:45:00
 Project: ~/Project/TDS
 Agent: Claude
