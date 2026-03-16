@@ -1,5 +1,15 @@
 ---
 HANDOFF: Claude -> User
+Date: 2026-03-16 23:15:00
+Project: ~/Project/TDS
+Agent: Claude
+Summary: Accordion Slot 패턴 설계 (/team) — Slot 1개 vertical auto layout 채택, Slot2 삭제, hug height, AccordionContent Show Boolean 추가
+Next-TODO: Figma에서 Slot2 삭제 + Slot1 수정(이름/height/gap) + Show Boolean 추가 → User Container Profile Card 매핑
+Commits: (이번 커밋)
+---
+
+---
+HANDOFF: Claude -> User
 Date: 2026-03-16 22:30:00
 Project: ~/Project/TDS
 Agent: Claude

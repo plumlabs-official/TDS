@@ -57,6 +57,7 @@ TDS 컴포넌트 리뷰를 lenny 프로젝트에서 `/team`으로 실행하면, 
 | **챌린지 진행 화면 TDS 종합 리뷰 (/director)** | 디자인 시스템 B+, 바이브코딩 B-. borderRadius P0 철회(토큰 확인) |
 | **챌린지 상세페이지 컴포넌트 탐색** | Shadcn Kit 매핑 완료. Accordion 1순위, List/Item 참고, 활동 일정 커스텀 |
 | 일감 정리 | Migrator(✅), Variable 2개(패스), 인스턴스 테스트(✅) |
+| **Accordion Slot 패턴 설계 (/team)** | Slot 1개 vertical AL 채택. Slot2 삭제, hug height, Show Boolean 추가 |
 
 ### 잔여
 
@@ -64,7 +65,7 @@ TDS 컴포넌트 리뷰를 lenny 프로젝트에서 `/team`으로 실행하면, 
 - Icon Unifier 플러그인 구현 (펜딩)
 - Phase 3 패스 2건: play-fill, pencil-plus (Lucide 대안 불만족)
 - **검증 필요**: Icon 터치영역 44px 검증, 비활성 텍스트 대비 검증
-- **챌린지 상세페이지 다음 단계**: Accordion TDS 추가 → 기간/비용 행 패턴 → 활동 일정 그리드(커스텀)
+- **챌린지 상세페이지 다음 단계**: Accordion Slot2 삭제 + Slot1 hug + Show Boolean → User Container Profile Card 매핑 → 활동 일정 그리드(커스텀)
 - 사용자 제안: TDS `20199-6244`(List/Item 패턴) + `20145-10532` & `20159-2721`(활동 그리드) 활용
 
 ---
