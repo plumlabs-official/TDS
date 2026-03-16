@@ -63,6 +63,11 @@ TDS 컴포넌트 리뷰를 lenny 프로젝트에서 `/team`으로 실행하면, 
 | Disclaimer 별도 컴포넌트 결정 (/coach) | Accordion Type으로 통합 부적합 — 정적 텍스트, 접기 불필요 |
 | Profile Card Type=Challenge Detail 네이밍 (/coach) | 다른 챌린지 컴포넌트에서도 프로필 사용 → Detail 구분 필요 |
 | **Block 컴포넌트화 불필요 결정 (/team)** | Breadcrumb+ProfileCard+Period 묶기 → 1회 사용, 기준 미달 |
+| **Item Type=Info 추가 (사용자)** | 기간/가격 등 icon+label+value 패턴. Item COMPONENT_SET에 Type=Info variant 추가 |
+| **Profile Card Type=Flip (사용자)** | Challenge Detail → Flip 리네이밍. 이름 작게+제목 크게 역전 패턴 |
+| **챌린지 상세페이지 전체 체크** | 모든 TDS 컴포넌트 적용 확인. Frame 이름 정리(→Container Challenge Info), Disclaimer body 안으로 이동 |
+| **채팅 화면 TDS 컴포넌트화 플래닝 (/team)** | shadcn Kit Message 편입 Phase 0-5 확정. meetings/ 기록 |
+| **Message 컴포넌트 TDS 편입 완료 (사용자)** | Kit에서 복사 → 6 variants (Received/Sent text/attachment + Announcement + Date Separator). TDS Avatar 교체, Pretendard, radius/color 커스텀, Boolean 프로퍼티(Show Reactions, Show Button) 추가 |
 
 ### 잔여
 
@@ -70,8 +75,8 @@ TDS 컴포넌트 리뷰를 lenny 프로젝트에서 `/team`으로 실행하면, 
 - Icon Unifier 플러그인 구현 (펜딩)
 - Phase 3 패스 2건: play-fill, pencil-plus (Lucide 대안 불만족)
 - **검증 필요**: Icon 터치영역 44px 검증, 비활성 텍스트 대비 검증
-- **챌린지 상세페이지 다음 단계**: Figma에서 Breadcrumb 적용(완료) + Profile Card Type=Challenge Detail(완료) + Period Container TDS 검토 + Disclaimer 별도 컴포넌트화
-- Frame 이름 정리: `Frame 1430107119` → 의미 있는 이름으로
+- **챌린지 상세페이지**: Breadcrumb(✅) + Profile Card Flip(✅) + Item Info(✅) + Frame 이름(✅) + Disclaimer 위치(✅) — 완료
+- **채팅 화면 다음 단계**: 프로덕트 디자인 화면에 Message 인스턴스 적용 + Chat Input 조합 + 오늘 인증 현황 섹션
 - 사용자 제안: TDS `20199-6244`(List/Item 패턴) + `20145-10532` & `20159-2721`(활동 그리드) 활용
 
 ---
