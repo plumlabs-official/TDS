@@ -1,7 +1,7 @@
-# TDS Figma Node Naming Policy v1.1
+# TDS Figma Node Naming Policy v1.2
 
-> 2026-03-17 /team 2차 토론 반영 (Container 대체 어휘 확정)
-> v1.0: 초기 정책. v1.1: Container 금지 논거 재검증 + 대안 어휘 체계 추가
+> 2026-03-17 /team Ralph 2R 반영
+> v1.0: 초기 정책. v1.1: Container 금지 + 대안 어휘. v1.2: Content 래퍼 접미사 폐기 + Area 통일 + 복수형 2순위
 
 ## 1. 스코프
 
@@ -90,18 +90,23 @@ TDS 커스텀 (없으면): Challenge Mission Card, Profile Card
 | **View** | React Native 전용 |
 | **Div** | 구현 상세, 디자인 의도 아님 |
 
-### Container 대체 어휘 (레이아웃 래퍼가 필요할 때)
+### 래퍼 프레임 네이밍 (금지어 대체)
 
-| 순위 | 어휘 | 사용 조건 | 예시 |
-|------|------|----------|------|
-| 1순위 | **[컨텍스트] Content** | 프레임 안의 것들이 "내용물"일 때 (대부분) | `Main Content`, `Chat Content` |
-| 2순위 | **[컨텍스트] Area** | 순수 배치/정렬 목적 (콘텐츠라 부르기 어색) | `Action Area`, `Input Area` |
-| 3순위 | **[컨텍스트] Group** | 동종 요소 반복 묶음 | `Button Group`, `Card Group` |
+래퍼가 필요할 때 우선순위:
+
+| 순위 | 방법 | 예시 | AI 해석 |
+|------|------|------|---------|
+| 1순위 | **역할명만** | `Header`, `Footer`, `Sidebar`, `Form` | 시맨틱 HTML 직매핑 |
+| 2순위 | **복수형** | `Actions`, `Cards`, `Fields` | 안의 것을 설명하는 컨테이너 |
+| 3순위 | **[컨텍스트] Area** | `Input Area`, `Bottom Area` | 최후 수단 래퍼 |
+| 예외 | **[컨텍스트] Group** | `Card Group`, `Avatar Group` | 시각적 동종 묶음 |
+
+**Content는 래퍼 접미사로 사용 금지.** `Main Content`(= `<main>`)처럼 고유 역할명으로만 사용.
 
 판단 기준:
-1. "안의 것들이 내용물인가?" → Content
-2. "순수 레이아웃 래퍼인가?" → Area
-3. "같은 종류 반복인가?" → Group
+1. "시맨틱 HTML 태그에 매핑되나?" → 역할명만 (`Header`, `Footer`)
+2. "같은 역할의 요소가 2개+인가?" → 복수형 (`Actions`, `Fields`)
+3. "위 두 가지로 안 되나?" → `[컨텍스트] Area`
 4. "이 프레임이 정말 필요한가?" → 필요 없으면 삭제
 
 ### 금지 패턴
@@ -154,11 +159,15 @@ O  Lucide COMPONENT 인스턴스 → <ChevronRight /> 직매핑
 
 | Before (기존) | After (새 정책) | 이유 |
 |--------------|-----------------|------|
-| `Container Chat` | `Chat Content` | Container→Content (내용물을 담는 영역) |
+| `Container Chat` | `Chat Area` | Container→Area (래퍼) |
 | `Container Chat Input` | `Chat Input` | Container 불필요 (Input이 역할) |
 | `Container Navbar` | `Navbar` | 래퍼 불필요 (인스턴스 직접 배치) |
 | `Container Challenge Info` | `Challenge Info` | Container 불필요 (2단어로 충분) |
-| `Container Header` (레이아웃 래퍼) | `Header Area` | 순수 레이아웃 래퍼 → Area |
+| `Container Header` | `Header` | 역할명만 (1순위) |
+| `Container CTA` | `Actions` | 복수형 (2순위) |
+| `Container Button` | `Button Area` | Area (3순위) |
+| `Chat Content` (래퍼) | `Chat Area` | Content 래퍼 접미사 폐기 |
+| `Main Content` | `Main Content` | 예외: 고유 역할명 (= `<main>`) |
 | `List Message` | `Message List` | [컨텍스트] [역할] 순서 |
 | `AlertDialog` | `Alert Dialog` | Title Case 공백 |
 | `Show Icon` (property) | `showIcon` | camelCase property |
@@ -168,8 +177,8 @@ O  Lucide COMPONENT 인스턴스 → <ChevronRight /> 직매핑
 
 기존 TDS 화면에서 `Container` 접두어 제거:
 1. `Container X` → `X` (접두어 제거만으로 충분한 경우)
-2. `Container X` → `X Content` 또는 `X Section` (역할 명시 필요 시)
-3. Figma Rename 기능으로 일괄 변환 가능
+2. `Container X` → `X Area` (래퍼 역할 명시 필요 시)
+3. Renamer 플러그인으로 자동 변환
 
 ---
-*Established by Lenny's Product Team — Team Mode + Ralph Loop 2R*
+*Established by Lenny's Product Team — Team Mode + Ralph Loop*

@@ -1,5 +1,15 @@
 ---
 HANDOFF: Claude -> User
+Date: 2026-03-17 15:40:00
+Project: ~/Project/TDS
+Agent: Claude
+Summary: naming-policy v1.2 — Content 래퍼 접미사 폐기+Area 통일, 래퍼 우선순위(역할명>복수형>Area), toTitleCase(body→Body), determineRole Content 폴백 제거. Gate 5/5 PASS.
+Next-TODO: Figma 리로드 → 테스트 + qa-rubric v1.1→v1.2 참조 업데이트
+Commits: (이번 커밋)
+---
+
+---
+HANDOFF: Claude -> User
 Date: 2026-03-17 15:24:00
 Project: ~/Project/TDS
 Agent: 혼합
