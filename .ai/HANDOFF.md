@@ -1,4 +1,39 @@
 ---
+HANDOFF: Claude -> Next Session
+Date: 2026-03-17 16:47:00
+Project: ~/Project/TDS
+Agent: Claude
+Summary: |
+  오늘 세션 전체 요약:
+  1. Phase 2-4 완료 — 레거시 19,000줄 삭제, 문서 11개 수정, 빌드 219→22kb
+  2. Renamer v1.0→v1.1 — 1:1 래퍼 감지+Unwrap, 시맨틱 역할(Area/Group), PascalCase 변환
+  3. Renamer 리팩토링 — 파이프라인 누적 변환, Area Area 중복 방지, ES6 통일
+  4. naming-policy v1.0→v2.0 — Content 래퍼 폐기→Area 통일, Main Content→Body, CTA 금지, 복수형 제거
+  5. Dissolve 기능 시도→롤백 — AL 부모에서 StatusBar 고정 해제 문제
+  6. Step 7 과잉 수정 — Actions→Actions Area 버그, bannedRemoved 플래그로 해결
+  7. Figma 구조 리뷰 — Screen scroll→Body scroll, Top Bar 고정, 컴포넌트화 기준
+
+  현재 Renamer 상태:
+  - computeProductName() 파이프라인: 한글→금지어→슬래시→PascalCase→toTitleCase→특수문자→역할접미사(금지어 제거 시만)
+  - Step 7은 bannedRemoved=true일 때만 발동 (사용자 의도적 이름 보호)
+  - INSTANCE 전체 skip, isTDSInstance componentProperties 에러 방어
+  - LEGACY_NAME_MAP: Sheet→Drawer
+  - ALLOWED_ROLES: Content→Body로 교체
+
+  사용자 피드백:
+  - 룰베이스 한계 체감 — "에이전트가 스크린샷+구조 기반으로 네이밍하면 좋겠다"
+  - Figma 플러그인 UI에서 Claude API 직접 호출 방식 제안
+  - naming-policy v2.0 안정화 후 다음 단계로 검토
+
+Next-TODO: |
+  1. Figma 리로드 → bannedRemoved 수정 테스트
+  2. 레거시 이름 수동 수정 (Header Area Area 등)
+  3. qa-rubric.md v2.0 정책 반영
+  4. 에이전트 네이밍 플래닝 (시기 미정)
+Commits: 41fce76, 53a06fa, c1c662d, f589061, 7179ef5, 58c949e + (이번 커밋)
+---
+
+---
 HANDOFF: Claude -> User
 Date: 2026-03-17 16:40:00
 Project: ~/Project/TDS

@@ -269,8 +269,9 @@ function computeProductName(node: SceneNode): string | null {
   }
 
   // Step 3: 금지 접미사 대체
+  var bannedRemoved = false;
   var bannedResult = replaceBannedSuffix(node, name);
-  if (bannedResult) name = bannedResult;
+  if (bannedResult) { name = bannedResult; bannedRemoved = true; }
 
   // Step 4: 슬래시 → 공백
   if (name.indexOf('/') !== -1 && node.type !== 'INSTANCE') {
@@ -286,8 +287,9 @@ function computeProductName(node: SceneNode): string | null {
     name = name.replace(SPECIAL_CHARS_IN_NAMES, '').trim();
   }
 
-  // Step 7: 시맨틱 역할 접미사 (단어 1개 FRAME + 역할 아님)
-  if (node.type === 'FRAME'
+  // Step 7: 시맨틱 역할 접미사 — 금지어 제거 후 1단어가 된 경우만
+  if (bannedRemoved
+    && node.type === 'FRAME'
     && name.split(/\s+/).length === 1
     && !endsWithRole(name)) {
     name = name + ' ' + determineRole(node);

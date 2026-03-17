@@ -44,6 +44,7 @@ TDS 컴포넌트 리뷰를 lenny 프로젝트에서 `/team`으로 실행하면, 
 
 | 작업 | 비고 |
 |------|------|
+| **Step 7 과잉 수정** | `Actions`→`Actions Area` 버그 — Step 7(역할 접미사 추가)이 사용자 의도적 이름에도 발동. `bannedRemoved` 플래그 추가로 금지어 제거 후에만 Step 7 실행하도록 수정 |
 | **naming-policy v2.0 클린 재작성** | 4회 개정 누적 모순 7건 해소. Content 완전 제거(Main Content→Body). CTA 금지. 복수형 제거. 역할명/Area/Group 3개만. ALLOWED_ROLES Content→Body |
 | **naming-policy v1.2.1** (/director) | 피드백 5건: 복수형 제거 + 사용처 규칙 + 접미사 중복 금지 + §2/§3/§9 예시 정합성 + Sheet→Drawer + INSTANCE skip + isTDSInstance 방어 + toTitleCase |
 | **naming-policy v1.2** (/director) | Content 래퍼 접미사 폐기→Area 통일. 래퍼 우선순위: 역할명>Area. toTitleCase 추가. determineRole Content 폴백 제거 |
@@ -63,13 +64,26 @@ TDS 컴포넌트 리뷰를 lenny 프로젝트에서 `/team`으로 실행하면, 
 | **`/qa` 커맨드 생성** (/director) | Figma MCP 2단계 조회 + 8축 점수 + PASS/CONDITIONAL/FAIL |
 | **QA 구현 플랜 최종 정리** (/director) | Phase 0 리서치 → Phase 1 루브릭 → Phase 2 검증 → Phase 3 실전 |
 
-### 잔여
+### 잔여 + 다음 세션 TODO
 
-- 리서치 Phase A (RS1/RS2/RS3) 미실행
-- 리서치 Phase B (RS4/RS5/RS6) 미실행
+**즉시:**
+- Figma 리로드 → Renamer `bannedRemoved` 수정 테스트 (Actions에 Area 안 붙는지 확인)
+- `Header Area Area` 등 레거시 이름 수동 수정 (Renamer가 이미 역할로 끝나는 이름은 변경 안 함)
+
+**Renamer 한계 — 에이전트 네이밍 검토:**
+- 사용자가 "에이전트가 스크린샷+구조 기반으로 네이밍 보정하면 좋겠다" 의견 제시
+- 룰베이스 한계: `Actions`가 적절한지, `Footer`가 더 나은지 시맨틱 판단 불가
+- 방향: Figma 플러그인 UI에서 Claude API 직접 호출 (로컬 서버 없이)
+- 타이밍: naming-policy v2.0 안정화 후
+
+**QA/검증:**
 - `/qa` 검증 3건 (채팅/챌린지진행/카드4종) + 감점 캘리브레이션
-- 기존 화면 Container→Content/Area 마이그레이션
-- Figma에서 TDS Tools 플러그인 리로드 + Renamer UI 테스트
+- qa-rubric.md 업데이트 (v2.0 정책 반영 — Content→Body, CTA 금지 등)
+- 기존 화면 Container→Area 마이그레이션 (Renamer 일괄 실행)
+
+**리서치:**
+- Phase A (RS1/RS2/RS3) 미실행
+- Phase B (RS4/RS5/RS6) 미실행
 
 ---
 
