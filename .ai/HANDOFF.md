@@ -1,5 +1,15 @@
 ---
 HANDOFF: Claude -> User
+Date: 2026-03-17 11:26:00
+Project: ~/Project/TDS
+Agent: Claude
+Summary: TDS 전체 정리 플랜 v4.0 확정 — 삭제 16건(Agent Server+레거시 코드+문서) + 수정 11건(CLAUDE.md 등 의존 문서) + Renamer 신규 4건. /team Ralph 2R Amb 0.
+Next-TODO: Phase 1 Renamer 구현 시작 (renamer.ts + rules.ts + property-checker.ts + utils.ts)
+Commits: (이번 커밋)
+---
+
+---
+HANDOFF: Claude -> User
 Date: 2026-03-17 11:15:00
 Project: ~/Project/TDS
 Agent: Claude

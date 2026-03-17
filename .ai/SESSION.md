@@ -44,6 +44,8 @@ TDS 컴포넌트 리뷰를 lenny 프로젝트에서 `/team`으로 실행하면, 
 
 | 작업 | 비고 |
 |------|------|
+| **전체 정리 플랜 v4.0 확정** (/team Ralph 2R Amb 0) | 삭제 16건 + 수정 11건 + 신규 4건. 문서 의존성 체인 전수 추적. Phase 1~4 실행 순서 |
+| **레거시 재판정: 유지 5→2개** (/team Ralph 2R) | Detach/DeleteHidden/Groups→Frames 삭제. Docs Generator+Migrator만 유지 |
 | **자동 리네이밍 플러그인 설계** (/team) | renamer 모듈 구조. Mode 1 Product + Mode 2 TDS Library. 규칙 기반(AI 불필요) |
 | **`/qa` 첫 테스트: Sheet Invite** | 96.8/100 PASS. R2 순서역전 1건 + R4 Boolean 접두어 4건 |
 | **Figma 레이어 네이밍 리서치** (/research 5건 병렬) | Figma 공식, Container vs Wrapper, Title Case, shadcn 패턴, Figma-to-code 영향 |
