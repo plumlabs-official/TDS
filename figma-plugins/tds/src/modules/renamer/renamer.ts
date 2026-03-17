@@ -99,8 +99,12 @@ export function analyzeProductDesign(): RenamerResult {
   for (var node of walkTree(targets)) {
     total++;
 
-    // 모든 인스턴스 skip (TDS든 아니든 — 인스턴스 이름은 건드리지 않음)
+    // 인스턴스 + 프리미티브 도형 skip (리네임 대상 아님)
     if (node.type === 'INSTANCE') { skipped++; continue; }
+    if (node.type === 'VECTOR' || node.type === 'LINE' || node.type === 'ELLIPSE'
+      || node.type === 'RECTANGLE' || node.type === 'STAR' || node.type === 'POLYGON') {
+      skipped++; continue;
+    }
     if (isInsideTDSInstance(node)) { skipped++; continue; }
 
     var newName = computeProductName(node);

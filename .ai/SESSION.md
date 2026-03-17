@@ -44,6 +44,7 @@ TDS 컴포넌트 리뷰를 lenny 프로젝트에서 `/team`으로 실행하면, 
 
 | 작업 | 비고 |
 |------|------|
+| **프리미티브 도형 스킵** | Vector/Line/Ellipse/Rectangle/Star/Polygon 타입 리네임 스킵 처리. Vector→Unnamed Section 버그 해소 |
 | **qa-rubric.md v1.1** | v2.0 정책 반영 — Content 금지, CTA 감점, 접미사 중복 감점, Body 허용어휘, 래퍼 우선순위, Sheet→Drawer |
 | **rules.ts v2.0 정합성 수정** | `BANNED_SUFFIXES`에 `Content` 추가 + `STRUCTURAL_LAYER_NAMES`에서 body/content→`Body` 변경. 빌드 25.2kb |
 | **Step 7 과잉 수정** | `Actions`→`Actions Area` 버그 — Step 7(역할 접미사 추가)이 사용자 의도적 이름에도 발동. `bannedRemoved` 플래그 추가로 금지어 제거 후에만 Step 7 실행하도록 수정 |

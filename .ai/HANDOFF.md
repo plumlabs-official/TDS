@@ -1,10 +1,10 @@
 ---
 HANDOFF: Claude -> Next Session
-Date: 2026-03-17 17:14:00
+Date: 2026-03-17 17:20:00
 Project: ~/Project/TDS
 Agent: Claude
-Summary: qa-rubric.md v1.1 — naming-policy v2.0 반영 (Content 금지, CTA 감점, 접미사 중복, Body, Sheet→Drawer)
-Next-TODO: Figma 리로드 → Renamer 테스트 (Content 금지 + Body 변환 확인)
+Summary: 프리미티브 도형(Vector/Line/Ellipse/Rectangle/Star/Polygon) 리네임 스킵 처리
+Next-TODO: Figma 리로드 → Renamer 테스트
 Commits: (이번 커밋)
 ---
 
