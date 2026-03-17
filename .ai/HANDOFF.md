@@ -1,9 +1,9 @@
 ---
 HANDOFF: Claude -> Next Session
-Date: 2026-03-17 17:00:00
+Date: 2026-03-17 17:14:00
 Project: ~/Project/TDS
 Agent: Claude
-Summary: rules.ts v2.0 정합성 수정 — BANNED_SUFFIXES에 Content 추가, STRUCTURAL_LAYER_NAMES body/content→Body 변경
+Summary: qa-rubric.md v1.1 — naming-policy v2.0 반영 (Content 금지, CTA 감점, 접미사 중복, Body, Sheet→Drawer)
 Next-TODO: Figma 리로드 → Renamer 테스트 (Content 금지 + Body 변환 확인)
 Commits: (이번 커밋)
 ---

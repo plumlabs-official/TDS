@@ -1,7 +1,7 @@
-# TDS Vibe-Coding QA Rubric v1.0
+# TDS Vibe-Coding QA Rubric v1.1
 
 > 바이브코딩(Tailwind+React+shadcn) 적합성 점검 루브릭
-> 참조: naming-policy.md v1.1
+> 참조: naming-policy.md v2.0
 
 ## 점수 체계
 
@@ -34,25 +34,32 @@ UI 요소 중 TDS 컴포넌트 인스턴스 비율.
 
 ## R2. 네이밍 시맨틱 (20%)
 
-레이어명이 시맨틱 역할을 설명하는지. naming-policy.md v1.1 준수.
+레이어명이 시맨틱 역할을 설명하는지. naming-policy.md v2.0 준수.
 
 **감점 규칙:**
 
 | 위반 | 등급 | 감점 | 예시 |
 |------|------|------|------|
-| 금지 접미사 (Container/Wrapper/Box/View/Div) | Major | -10 | `Container Header` |
+| 금지 접미사 (Container/Wrapper/Content/Box/View/Div) | Major | -10 | `Container Header`, `Chat Content` |
+| CTA 사용 (마케팅 용어, AI 오역 리스크) | Minor | -5 | `CTA Area` |
+| 접미사 중복 (`Area Area`, `Group Group`) | Major | -10 | `Header Area Area` |
 | 자동 생성명 (Text, Frame *, Group *) | Minor | -5 | `Frame 1234` |
 | 특수문자 (`:`, `↳`, 레이어명 내 `/`) | Minor | -5 | `Blur:mask-group` |
 | 하드코딩 데이터 | Minor | -3 | `Sophie Tan`, `5명` |
-| 역할 미설명 일반명 (Wrapper 외) | Warning | -2 | `Box`, `Item` |
+| 역할 미설명 일반명 | Warning | -2 | `Box`, `Item` |
 
 **허용 어휘 (시맨틱 역할):**
-`Screen`, `Content`, `Header`, `Footer`, `Section`, `Area`, `Sidebar`, `Scroll Area`, `List`, `Grid`, `Navbar`, `Tab Bar`, `Input`, `Form`, `Card`, `Group`
+`Screen`, `Body`, `Header`, `Footer`, `Section`, `Area`, `Sidebar`, `Scroll Area`, `List`, `Grid`, `Navbar`, `Tab Bar`, `Input`, `Form`, `Card`, `Group`
+
+**래퍼 프레임 우선순위:**
+1순위: 역할명만 — `Header`, `Footer`, `Sidebar`, `Form`, `Body`
+2순위: `[컨텍스트] Area` — `Input Area`, `Bottom Area`
+예외: `[컨텍스트] Group` — `Card Group`, `Avatar Group` (동종 반복)
 
 **텍스트 노드:** `Title`, `Description`, `Label`, `Subtitle`, `Caption`, `Value`
 **이미지 노드:** `[컨텍스트] Image/Thumbnail/Avatar/Banner/Icon/Illustration`
 
-**케이싱:** Title Case 공백 필수 (`Chat Content` O, `chatContent` X, `ChatContent` X)
+**케이싱:** Title Case 공백 필수 (`Chat Area` O, `chatArea` X, `ChatArea` X)
 
 **TDS 인스턴스 내부 레이어:** 검사 제외 (오버라이드 안 했으면 원본 구조)
 
@@ -135,7 +142,8 @@ Figma 컴포넌트명 → shadcn import 직매핑 가능 여부.
 | 아이콘이 Lucide 인스턴스가 아님 (인라인 SVG) | Major | -10/건 |
 | 아이콘 세트 혼용 (Lucide + Huge + Phosphor 등) | Major | -10 |
 
-**shadcn 공식명 = Title Case 공백:** `Alert Dialog`, `Scroll Area`, `Toggle Group`
+**shadcn 공식명 = Title Case 공백:** `Alert Dialog`, `Scroll Area`, `Toggle Group`, `Drawer`
+**레거시명 자동 매핑:** `Sheet` → `Drawer`
 **아이콘 = Lucide 공식명 Title Case:** `Chevron Right`, `Arrow Left`, `Plus`
 
 ---
@@ -160,7 +168,7 @@ WCAG 2.1 AA 기준.
 ```
 ## QA Report: [화면명]
 
-> 날짜: YYYY-MM-DD | 루브릭: v1.0 | 노드: [node-id]
+> 날짜: YYYY-MM-DD | 루브릭: v1.1 | 노드: [node-id]
 
 ### 총점: XX/100 — [PASS/CONDITIONAL/FAIL]
 

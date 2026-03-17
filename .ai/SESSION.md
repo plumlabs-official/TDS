@@ -44,6 +44,7 @@ TDS 컴포넌트 리뷰를 lenny 프로젝트에서 `/team`으로 실행하면, 
 
 | 작업 | 비고 |
 |------|------|
+| **qa-rubric.md v1.1** | v2.0 정책 반영 — Content 금지, CTA 감점, 접미사 중복 감점, Body 허용어휘, 래퍼 우선순위, Sheet→Drawer |
 | **rules.ts v2.0 정합성 수정** | `BANNED_SUFFIXES`에 `Content` 추가 + `STRUCTURAL_LAYER_NAMES`에서 body/content→`Body` 변경. 빌드 25.2kb |
 | **Step 7 과잉 수정** | `Actions`→`Actions Area` 버그 — Step 7(역할 접미사 추가)이 사용자 의도적 이름에도 발동. `bannedRemoved` 플래그 추가로 금지어 제거 후에만 Step 7 실행하도록 수정 |
 | **naming-policy v2.0 클린 재작성** | 4회 개정 누적 모순 7건 해소. Content 완전 제거(Main Content→Body). CTA 금지. 복수형 제거. 역할명/Area/Group 3개만. ALLOWED_ROLES Content→Body |
@@ -79,7 +80,7 @@ TDS 컴포넌트 리뷰를 lenny 프로젝트에서 `/team`으로 실행하면, 
 
 **QA/검증:**
 - `/qa` 검증 3건 (채팅/챌린지진행/카드4종) + 감점 캘리브레이션
-- qa-rubric.md 업데이트 (v2.0 정책 반영 — Content→Body, CTA 금지 등)
+- ~~qa-rubric.md 업데이트~~ ✅ v1.1 반영 완료
 - 기존 화면 Container→Area 마이그레이션 (Renamer 일괄 실행)
 
 **리서치:**
