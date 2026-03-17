@@ -1,5 +1,15 @@
 ---
 HANDOFF: Claude -> User
+Date: 2026-03-17 14:53:00
+Project: ~/Project/TDS
+Agent: Claude
+Summary: Dissolve v1.2 구현→테스트→롤백. AL 부모에서 StatusBar 고정 해제 문제. 최상위 scroll을 Body scroll로 바꿔야 하는 구조 이슈 확인. toTitleCase(body→Body) 보류. 현재 c1c662d(리팩토링) 상태 clean.
+Next-TODO: 1) 모바일 Screen 레이아웃 패턴 정립 (scroll 위치), 2) Dissolve 재설계 여부 판단, 3) toTitleCase 별도 적용
+Commits: (변경 없음, 세션 기록만)
+---
+
+---
+HANDOFF: Claude -> User
 Date: 2026-03-17 14:30:00
 Project: ~/Project/TDS
 Agent: Claude
