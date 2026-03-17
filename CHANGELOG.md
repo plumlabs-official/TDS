@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- feat: TDS Renamer 모듈 Phase 1 — naming-policy v1.1 기반 자동 리네이밍 (Product Mode + TDS Library Mode). 빌드 성공
 - Figma: Tooltip 컴포넌트 TDS 제작 (5 Style × 4 Caret = 20v, 토큰 바인딩 완료)
 - Figma: Placeholder Logo 컴포넌트 TDS 추가 (Type=White/Black × Size=lg/md/sm = 6v)
 - Figma: `primary-dark` (#01A54F) 변수 추가 (Theme → Mode alias)

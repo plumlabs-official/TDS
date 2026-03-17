@@ -44,6 +44,7 @@ TDS 컴포넌트 리뷰를 lenny 프로젝트에서 `/team`으로 실행하면, 
 
 | 작업 | 비고 |
 |------|------|
+| **Renamer Phase 1 구현 완료** (/director) | renamer/ 4파일 + code.ts 핸들러. 빌드 성공 219.2kb. Phase 2~3 다음 세션 |
 | **전체 정리 플랜 v4.0 확정** (/team Ralph 2R Amb 0) | 삭제 16건 + 수정 11건 + 신규 4건. 문서 의존성 체인 전수 추적. Phase 1~4 실행 순서 |
 | **레거시 재판정: 유지 5→2개** (/team Ralph 2R) | Detach/DeleteHidden/Groups→Frames 삭제. Docs Generator+Migrator만 유지 |
 | **자동 리네이밍 플러그인 설계** (/team) | renamer 모듈 구조. Mode 1 Product + Mode 2 TDS Library. 규칙 기반(AI 불필요) |

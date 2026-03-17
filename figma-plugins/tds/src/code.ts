@@ -47,6 +47,14 @@ import {
   NamingContextResultMessage,
 } from './naming';
 
+// Renamer (naming-policy v1.1 기반)
+import {
+  analyzeProductDesign,
+  applyProductRenames,
+  analyzeTDSLibrary,
+  RenamerResult,
+} from './modules/renamer/renamer';
+
 // 현재 명령어 가져오기
 const command = figma.command;
 
@@ -123,6 +131,15 @@ function handleCommandWithUI(cmd: string) {
       handleRunAll();
       break;
 
+    // ===== Renamer (naming-policy v1.1) =====
+    case 'rename-product':
+      handleRenameProduct();
+      break;
+
+    case 'rename-tds':
+      handleRenameTDS();
+      break;
+
     default:
       figma.notify('알 수 없는 명령입니다.', { error: true });
   }
@@ -166,6 +183,24 @@ type UIMessage =
  * UI 메시지 핸들러
  */
 async function handleUIMessage(msg: UIMessage) {
+  // ===== Renamer 메시지 핸들러 =====
+  if (msg.type === 'rename-product') {
+    handleRenameProduct();
+    return;
+  }
+  if (msg.type === 'rename-tds') {
+    handleRenameTDS();
+    return;
+  }
+  if (msg.type === 'apply-renames') {
+    const entries = (msg as any).entries;
+    if (entries) {
+      const count = applyProductRenames(entries);
+      figma.notify(`✅ ${count}건 리네이밍 완료`);
+    }
+    return;
+  }
+
   // confirm-delete-hidden은 selectedIds 포함하므로 특별 처리
   if (msg.type === 'confirm-delete-hidden') {
     const selectedIds = (msg as { type: string; selectedIds?: string[] }).selectedIds;
@@ -1904,5 +1939,42 @@ async function handleRunAllAgent() {
   // 완료
   figma.ui.postMessage({ type: 'pipeline-complete' });
   figma.notify('AI 파이프라인 완료', { timeout: 3000 });
+}
+
+// ============================================
+// Renamer 핸들러 (naming-policy v1.1)
+// ============================================
+
+function handleRenameProduct() {
+  const result = analyzeProductDesign();
+  if (result.entries.length === 0) {
+    figma.notify('변경할 레이어가 없습니다.', { timeout: 2000 });
+    return;
+  }
+  figma.ui.postMessage({
+    type: 'rename-preview',
+    mode: 'product',
+    entries: result.entries,
+    skipped: result.skipped,
+    total: result.total,
+  });
+  figma.notify(`${result.entries.length}건 변경 제안 (${result.skipped}건 TDS skip)`, { timeout: 3000 });
+}
+
+function handleRenameTDS() {
+  const result = analyzeTDSLibrary();
+  figma.ui.postMessage({
+    type: 'rename-preview',
+    mode: 'library',
+    entries: result.entries,
+    propertyIssues: result.propertyIssues,
+    total: result.total,
+  });
+  const issueCount = result.entries.length + result.propertyIssues.length;
+  if (issueCount === 0) {
+    figma.notify('이슈 없음. 정책 준수 ✅', { timeout: 2000 });
+  } else {
+    figma.notify(`${issueCount}건 이슈 발견`, { timeout: 3000 });
+  }
 }
 
