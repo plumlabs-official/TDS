@@ -18,8 +18,10 @@ import {
   SHADCN_COMPONENTS,
 } from './rules';
 
-import { isTDSInstance, walkTree, getTargetNodes } from '../../shared/tree-utils';
 import {
+  isTDSInstance,
+  walkTree,
+  getTargetNodes,
   inferContext,
   pascalToTitleCase,
   allChildrenSameType,

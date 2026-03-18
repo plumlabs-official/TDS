@@ -1,5 +1,5 @@
 {
-  "name": "TDS Tools",
+  "name": "TDS",
   "id": "tds",
   "api": "1.0.0",
   "main": "dist/code.js",
@@ -7,5 +7,20 @@
   "capabilities": [],
   "enableProposedApi": false,
   "editorType": ["figma"],
-  "documentAccess": "dynamic-page"
+  "documentAccess": "dynamic-page",
+  "networkAccess": { "allowedDomains": ["none"] },
+  "menu": [
+    { "name": "Open TDS Panel", "command": "open-ui" },
+    { "separator": true },
+    { "name": "Rename: Product Design", "command": "rename-product" },
+    { "name": "Rename: TDS Library", "command": "rename-tds" },
+    { "separator": true },
+    { "name": "Generate Typography Page", "command": "gen-typography" },
+    { "name": "Generate Color Page", "command": "gen-colors" },
+    { "name": "Generate Effects Page", "command": "gen-effects" },
+    { "separator": true },
+    { "name": "Migrate Styles", "command": "migrate" },
+    { "name": "Bind Icon Colors", "command": "bind-icon-colors" },
+    { "name": "Remove Drop Shadows", "command": "detach-effects" }
+  ]
 }

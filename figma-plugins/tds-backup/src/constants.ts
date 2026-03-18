@@ -1,15 +1,8 @@
 /**
- * TDS Plugin — Shared Constants
+ * Figma Plugin 공통 상수
+ *
+ * cleanup.ts 등에서 중복 정의된 상수를 통합
  */
-
-/** TDS Figma library file key */
-export const TDS_FILE_KEY = 'H36eNEd6o7ZTv4R7VcyLf2';
-
-/** TDS file page IDs (stable across renames) */
-export const TDS_PAGE_IDS = {
-  COMPONENTS: '20012:2',
-  ICONS: '20013:144',
-} as const;
 
 // Shape 노드 타입 (Vector 계열)
 export const SHAPE_TYPES = [

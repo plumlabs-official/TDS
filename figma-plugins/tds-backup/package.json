@@ -1,7 +1,7 @@
 {
-  "name": "@tryve/figma-plugin-tds",
-  "version": "3.0.0",
-  "description": "TDS Figma Plugin — Rename, Migrate, Generate",
+  "name": "@tryve/figma-plugin",
+  "version": "2.0.0",
+  "description": "Tryve 디자인 시스템 자동화 Figma 플러그인",
   "main": "dist/code.js",
   "scripts": {
     "build": "esbuild src/code.ts --bundle --outfile=dist/code.js --format=iife --target=es6 && cp src/ui.html dist/ui.html",

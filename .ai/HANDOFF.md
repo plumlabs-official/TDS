@@ -1,10 +1,10 @@
 ---
 HANDOFF: Claude -> User
-Date: 2026-03-18 16:05:00
+Date: 2026-03-18 17:03:00
 Project: ~/Project/TDS
-Agent: 혼합 (Claude QA/버그수정 + 사용자 Figma TDS 편입/AL 전환)
-Summary: Dropdown Menu QA PASS(91.5). Renamer setBusy 버그 수정(0건 시 UI 잠김). Figma 구조 논의(Actions responsive, Title+Badge fill 한계). fill 3종 유지 결정.
-Next-TODO: /qa 섹션 전체 검증 + Renamer 리로드 테스트 + 나머지 화면 AL 패턴 적용
+Agent: 혼합 (Claude QA/버그수정 + 사용자 Figma TDS 편입)
+Summary: Dropdown Menu QA PASS(91.5) + Determination Drawer QA PASS(100). Renamer setBusy 버그 수정. 플러그인 누적 변경분 일괄 커밋.
+Next-TODO: /qa 섹션 나머지 검증 + Renamer 리로드 테스트 + 나머지 화면 AL 패턴 적용
 Commits: (이번 커밋)
 ---
 

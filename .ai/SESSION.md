@@ -49,6 +49,7 @@ TDS 컴포넌트 리뷰를 lenny 프로젝트에서 `/team`으로 실행하면, 
 | **Figma 구조 논의 (혼합)** | Actions absolute fill 비활성화 → Screen AL 패턴(Body scroll + Actions fill/hug) 권장. Title+Badge fill vs hug Figma 한계 확인 (CSS flex-shrink 대응 없음) |
 | **인스턴스 fill 커스텀 확인** | 토큰 바인딩된 오버라이드(컬러/스타일)는 안전. 원본 블록 내 중첩 인스턴스는 expose 필요 |
 | **Challenge Mission Card fill 3종 유지 결정** | Linear+Image+#000 풀어두기 — Style로 묶으면 Image 교체 시 detach 필요 |
+| **Determination Drawer QA — 100/100 PASS** | TDS Drawer(White) + Slot Holder + Footer + HomeIndicator. 이슈 없음 |
 
 ### 잔여 + 다음 세션 TODO
 
