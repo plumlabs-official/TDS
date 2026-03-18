@@ -2,7 +2,7 @@
 
 > 세션 단기 기억 (compact 후 이어갈 내용)
 >
-> Last updated: 2026-03-17
+> Last updated: 2026-03-18
 
 ---
 
@@ -38,7 +38,35 @@ TDS 컴포넌트 리뷰를 lenny 프로젝트에서 `/team`으로 실행하면, 
 
 ---
 
-## 현재 세션 (2026-03-17)
+## 현재 세션 (2026-03-18)
+
+### 완료된 작업
+
+| 작업 | 비고 |
+|------|------|
+| **Dropdown Menu QA — 91.5/100 PASS** | TDS Primitive 편입 완료. shadcn DropdownMenu 1:1 매핑. `.Dropdown Menu Item` COMPONENT_SET + Section 그루핑 |
+| **Renamer setBusy 버그 수정** | Product Design 클릭 → 변경 0건 시 UI 잠김 — `postMessage` 누락. 0건일 때도 result 메시지 전송하도록 수정 |
+| **Figma 구조 논의 (혼합)** | Actions absolute fill 비활성화 → Screen AL 패턴(Body scroll + Actions fill/hug) 권장. Title+Badge fill vs hug Figma 한계 확인 (CSS flex-shrink 대응 없음) |
+| **인스턴스 fill 커스텀 확인** | 토큰 바인딩된 오버라이드(컬러/스타일)는 안전. 원본 블록 내 중첩 인스턴스는 expose 필요 |
+| **Challenge Mission Card fill 3종 유지 결정** | Linear+Image+#000 풀어두기 — Style로 묶으면 Image 교체 시 detach 필요 |
+
+### 잔여 + 다음 세션 TODO
+
+**즉시:**
+- `/qa` 섹션 전체 검증 (Onboarding_link 26개 프레임)
+- Renamer 리로드 → 테스트 (setBusy 수정 확인)
+- 나머지 화면에 모바일 Screen AL 패턴 적용
+
+**미션 (3/17 기록, 진행 중):**
+1. 챌린지 현황 그룹 진행도 TDS 컴포넌트 제작
+2. 친구 리스트 컴포넌트 + Marquee 커스텀
+3. 초대권 상점 전체 컴포넌트
+4. 아이콘/버튼/프로필이미지 전수 점검
+5. 온보딩 전체 TDS 교체
+
+---
+
+## 이전 세션 (2026-03-17)
 
 ### 완료된 작업
 
