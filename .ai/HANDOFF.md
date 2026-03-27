@@ -1,5 +1,15 @@
 ---
 HANDOFF: Claude -> 정재
+Date: 2026-03-27 21:25:00
+Project: ~/Project/TDS
+Agent: Claude
+Summary: TDS 폰트 IBM Plex Sans KR 전환 완료. font/family/font-sans 변수 변경 + Publish. 프로덕트 파일 4개 노드에서 Pretendard 미바인딩 텍스트 setBoundVariable 일괄 처리 + 텍스트 스타일 211건 적용. 인스턴스 오버라이드 잔여 52건은 라이브러리 업데이트 수락 또는 Find & Replace Font으로 처리.
+Next-TODO: IBM Plex Sans KR 기반 MCP 디자인 생성 테스트 + 인스턴스 오버라이드 잔여분 정리
+Commits: (이번 커밋)
+---
+
+---
+HANDOFF: Claude -> 정재
 Date: 2026-03-27 16:25:00
 Project: ~/Project/TDS
 Agent: Claude

@@ -55,21 +55,28 @@ TDS 컴포넌트 리뷰를 lenny 프로젝트에서 `/team`으로 실행하면, 
 | **/team 폰트 전략 결정 (2차)** | Engineering Lead + Design Director + Product Leader. 사용자 제안(Inter 전면 전환) 검토 → **Inter 단독은 No-go** (한글 글리프 없음, fallback 발생). **결론: Pretendard TDS 표준 유지 + MCP 생성 시 Noto Sans KR 중간체 → Pretendard 일괄 전환**. 미팅 기록: `meetings/2026-03-27_mcp-pretendard-font-workaround.md` |
 | **Desktop MCP 검증** | `figma-desktop` MCP 연결 성공 (읽기 전용). `use_figma` 미제공 확인 → 이전 세션 해결책(Desktop MCP 쓰기) 무효화 |
 | **MCP 폰트 실측** | `listAvailableFontsAsync` = 7,658개. Inter ✅, Noto Sans KR ✅, Pretendard ❌. `loadFontAsync("Pretendard")` = FAIL |
+| **다른 로컬 MCP 설정 + 도구 검증** | figma-remote-mcp OAuth 인증 (zen@plumlabs.im). Read/Write 6/6 PASS. Noto Sans/Gothic A1/IBM Plex Sans KR appendChild 검증 |
+| **한글 Google Fonts 전수 리서치** | /research — MCP 1,719개 폰트 중 한글 네이티브 + SemiBold + appendChild PASS = Gothic A1, IBM Plex Sans KR 2개. Asta Sans는 MCP 미등록 |
+| **/team 폰트 마이그레이션 최종 플랜** | Ralph Loop 3 iterations, 전원 96+. 사용자 판단으로 IBM Plex Sans KR 확정. 미팅 기록: `meetings/2026-03-27_tds-font-migration-final-plan.md` |
+| **TDS 변수 교체** | `font/family/font-sans` TDS 모드: Pretendard → IBM Plex Sans KR. `use_figma` `setValueForMode` 1줄로 변경. Publish 완료 |
+| **프로덕트 파일 토큰 바인딩** | 3개 노드(14332:318711, 14332:125821, 14332:1201, 21688:26710)에서 Pretendard 미바인딩 텍스트 `setBoundVariable("fontFamily")` 일괄 처리. 인스턴스 오버라이드 잔여분은 수동/라이브러리 업데이트로 해결 |
+| **프로덕트 파일 텍스트 스타일 적용** | fontSize 매핑(13→12, 15→14, 17→16, 21→18) + `text-xx/leading-normal` TDS 스타일 import 후 적용. 4개 노드 합계 211건 |
 
 ### 다음 세션 TODO
 
-**즉시 (Spike — 10분):**
-1. `use_figma`로 Noto Sans KR 텍스트 노드 생성 → 한글 렌더링 확인
-2. Pretendard'em All 플러그인 설치 → Noto Sans KR → Pretendard 전환 테스트
-3. 전환 후 레이아웃 깨짐 여부 + Text Style 바인딩 유지 확인
-
-**Spike 결과 기반:**
-4. 성공 시: Phase 3 S1 재시도 — `use_figma`(Noto Sans KR) → Pretendard 전환 → `get_screenshot`
-5. 실패 시: TDS Tools에 Font Replace 모듈 추가 (~2시간)
+**폰트 전환 잔여:**
+1. 프로덕트 파일 인스턴스 오버라이드 잔여분 정리 (Figma Find & Replace Font 또는 Reset overrides)
+2. Mixed font 텍스트 수동 정리 (AccordionContent 등 이모지+한글 혼합 건)
+3. 인스턴스 오버라이드 52건 — TDS 라이브러리 재Publish 후 업데이트 수락으로 해결 가능 여부 확인
 
 **Phase 3 잔여:**
-6. S2 naming-enforcer 테스트
-7. S3~S6 나머지 Skills 테스트
+4. IBM Plex Sans KR 기반 MCP 디자인 생성 테스트 (Login Screen 등)
+5. S2 naming-enforcer 테스트
+6. S3~S6 나머지 Skills 테스트
+
+**모니터링:**
+- Figma MCP 커스텀 폰트 지원 출시 시 → Pretendard 복원 검토
+- Asta Sans MCP 등록 시 → 재평가 트리거
 
 **병행:**
 8. Figma MCP changelog 분기별 모니터링 (커스텀 폰트 지원 출시 시 워크어라운드 폐기)

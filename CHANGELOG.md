@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+- TDS 폰트 IBM Plex Sans KR 전환 — `font/family/font-sans` 변수 Pretendard → IBM Plex Sans KR. MCP use_figma 완전 호환
+- 프로덕트 파일 토큰 바인딩 — `setBoundVariable("fontFamily")` 활용, 미바인딩 텍스트 일괄 처리
+- 프로덕트 파일 텍스트 스타일 적용 — fontSize 매핑(13→12, 15→14, 17→16, 21→18) + `text-xx/leading-normal` 스타일
+- 폰트 마이그레이션 최종 플랜 미팅 기록 (Ralph Loop 3 iterations, 전원 96+)
+
 ### Changed
 - MCP Pretendard 폰트 리서치 (19소스, 94%) + /team 전략 결정: Inter 전면전환 No-go, Pretendard 유지 + Noto Sans KR 중간체
 
