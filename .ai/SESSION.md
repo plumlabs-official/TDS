@@ -49,19 +49,25 @@ TDS 컴포넌트 리뷰를 lenny 프로젝트에서 `/team`으로 실행하면, 
 | **MCP 서버 교체** | `figma-developer-mcp` (third-party, API 키) → 공식 Figma MCP (`mcp.figma.com/mcp`, HTTP, OAuth). 백업 완료 |
 | **Phase 1 완료 — OAuth + 도구 검증** | OAuth 인증 성공 (zen@plumlabs.im). 도구 T0~T5 6/6 PASS. CLAUDE.md 도구명 업데이트 (`get_figma_data` → `get_design_context`). MCP 글로벌 설정 (`~/.claude/.mcp.json`) |
 | **Phase 2 완료 — Skills 작성** | 공식 5개 복사 + 커뮤니티 1개 Fork + TDS 커스텀 3개 = 8 Skills, 11 파일. `figma-generate-design`에 TDS 오버레이 추가. `.claude/skills/` 디렉토리 |
+| **Phase 3 S1 테스트 — generate-design** | Draft 파일(`AhnTqeIcvzcQAI9Pe90dh8`)에서 Login Screen 생성 시도. Wrapper 프레임 + 변수 바인딩 PASS. TDS 인스턴스 import/생성 PASS (페이지 레벨). **appendChild FAIL** — 원격 MCP 클라우드에 Pretendard 폰트 없음 |
+| **폰트 블로커 리서치** | 근본 원인: 원격 MCP(`mcp.figma.com`)는 클라우드 샌드박스, Google Fonts만 지원. Pretendard 미등록. **해결책: Desktop MCP 서버(`127.0.0.1:3845`)** — 데스크톱 앱 경유로 로컬 폰트 접근 가능. `figma-desktop` MCP 추가 완료. |
 
 ### 다음 세션 TODO
 
-**Phase 3 (검증):**
-1. Draft 파일에서 통합 테스트 S1~S6 (generate-design, naming-enforcer, sync-token, property-optimizer, qa-auditor, 통합)
-2. Skills 로딩 경로 확인 (T6) — `.claude/skills/` SKILL.md가 자동 인식되는지
+**즉시 (폰트 블로커 해결):**
+1. 세션 재시작 → `figma-desktop` MCP 로드 확인
+2. Desktop MCP에서 `listAvailableFontsAsync` → Pretendard 존재 확인
+3. Desktop MCP `use_figma`로 TDS 인스턴스 appendChild 재시도
+4. 성공 시 Login Screen 완성 → S1 PASS
+
+**Phase 3 잔여:**
+5. S2 naming-enforcer 테스트 (프로덕트 디자인 파일 읽기 전용)
+6. S3~S5 나머지 Skills 테스트
+7. S6 통합 테스트
 
 **Phase 2 잔여 (선택):**
-3. figma-implement-design 추가 (Figma→코드 변환용, 공식 레포에 존재)
-4. figma-code-connect-components 추가 (Org/Ent 플랜 필요 — 현재 Pro이므로 보류)
-6. tds-naming-enforcer 커스텀 Skill 작성 (rules.ts → rename-pipeline.md 자동 생성)
-7. sync-figma-token Fork + TDS 변수 매핑
-8. tds-property-optimizer, tds-qa-auditor 커스텀 Skill
+8. figma-implement-design 추가 (Figma→코드 변환용)
+9. MCP 서버 이중화 전략 결정 — 원격(읽기) + Desktop(쓰기) 병행 여부
 
 **Phase 3 (검증):**
 9. Draft 파일에서 통합 테스트 S1~S6

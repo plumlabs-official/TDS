@@ -1,5 +1,15 @@
 ---
 HANDOFF: Claude -> 정재
+Date: 2026-03-27 15:51:00
+Project: ~/Project/TDS
+Agent: Claude
+Summary: Phase 3 S1 테스트 — Login Screen 생성 시도. 원격 MCP에 Pretendard 없어서 appendChild FAIL. 근본 원인 리서치 → Desktop MCP 서버(127.0.0.1:3845)가 해결책. figma-desktop MCP 추가 완료. 테스트 파일: AhnTqeIcvzcQAI9Pe90dh8.
+Next-TODO: 세션 재시작 → figma-desktop MCP로 Pretendard 로딩 테스트 → Login Screen 완성
+Commits: (이번 커밋)
+---
+
+---
+HANDOFF: Claude -> 정재
 Date: 2026-03-27 11:02:00
 Project: ~/Project/TDS
 Agent: Claude
