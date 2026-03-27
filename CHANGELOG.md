@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Changed
+- update Figma MCP tool name get_figma_data → get_design_context
 - naming-policy v1.2.1 — 피드백 5건 반영: 복수형 제거 + 사용처 [목적]+[타입] 규칙 + 접미사 중복 금지 + 예시 정합성 + Sheet→Drawer + isTDSInstance 에러 방어
 - naming-policy v1.2 — Content 래퍼 접미사 폐기 + Area 통일 + 래퍼 우선순위(역할명>Area) + toTitleCase 추가
 - Renamer 리팩토링 — 파이프라인 누적 변환 + 역할 중복 방지(Area Area) + ES6 var 통일 + require→import + 레거시 제거
@@ -25,6 +26,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - TDS Migrator: compMap variant name 충돌 버그 수정 (Select→X버튼 오스왑 방지, 이중 방어)
 
 ### Changed
+- update Figma MCP tool name get_figma_data → get_design_context
 - docs: TDS 자동 리네이밍 플러그인 설계 — naming-policy v1.1 기반 2모드(Product+Library) + renamer 모듈 구조 확정
 - docs: TDS 바이브코딩 QA 시스템 — 네이밍 정책 v1.1 + 루브릭 v1.0 + `/qa` 커맨드 생성
 - docs: TDS 채팅 화면 컴포넌트화 플래닝 — shadcn Kit Message 편입 + Phase 0-5 작업 순서 확정 (/team)
@@ -57,6 +59,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - TDS Migrator: Swap Icon Sources 버튼 삭제 (Migrate에 통합, 중복 제거)
 
 ### Changed
+- update Figma MCP tool name get_figma_data → get_design_context
 - 온보딩 UX 컴포넌트 플래닝 완료 (Phase 0~5, 27개 컴포넌트)
 - TDS Figma 파일 키 SESSION.md에 기록 (H36eNEd6o7ZTv4R7VcyLf2)
 - Button Type=Inverted variant 추가 결정 (컬러 배경 위 흰 버튼)
@@ -85,6 +88,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - TDS Migrator Phase 2: 근사 매칭 요약 로그 ([SUMMARY] color/effect/text 건수 + 평균 거리)
 
 ### Changed
+- update Figma MCP tool name get_figma_data → get_design_context
 - 플러그인 이름 변경: Migrate to TDS → TDS Migrator
 - UI 카테고리 재구성: Style Migration / Icon / Cleanup
 
@@ -118,6 +122,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - 워크샵 필요 여부 구분 (정책 결정 vs 실무 완성도)
 
 ### Changed
+- update Figma MCP tool name get_figma_data → get_design_context
 - AGENTS.md → CONSTITUTION.md rename (Codex 전용 AGENTS.md와 혼동 방지)
 - WellWe TF 간트차트 일정 수정
   - 타임라인 → 간트차트 형태로 변경
@@ -130,6 +135,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - 비고 보강: 라운지 입장 조건에 유료 챌린지 전용 명시
 
 ### Changed
+- update Figma MCP tool name get_figma_data → get_design_context
 - `.ai/prompts/` 문서 간소화 - 상세 규칙은 `docs/specs/` 링크로 SSOT 통합 (중복 제거)
 
 ### Added
@@ -150,6 +156,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Top-level 강제 STRETCH**: AI가 INHERIT 반환해도 80% 이상 요소는 강제 STRETCH
 
 ### Changed
+- update Figma MCP tool name get_figma_data → get_design_context
 - `naming-patterns.json` 로컬 전용 (git 추적 해제, PR 노이즈 제거)
 - Content → Body 슬롯 네이밍 변경 (SSOT 준수)
 - autolayout-rules.md v3.1.0 (후처리 안전 규칙 추가)

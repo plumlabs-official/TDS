@@ -46,18 +46,19 @@ TDS 컴포넌트 리뷰를 lenny 프로젝트에서 `/team`으로 실행하면, 
 |------|------|
 | **Figma MCP Write 리서치** | /research — 3/24 MCP 서버 오픈 베타 조사. 3개 트랙(First Draft/Make/MCP+Skills) 분석. 18소스, 91% 신뢰도. 리포트: `report/2026-03-27_figma-design-system-ai-generation.md` |
 | **Figma MCP Write + TDS Skills 플랜** | /director 플랜 모드 — 공식 Skills 래퍼 패턴 + TDS 커스텀 3개. /team 리뷰로 충돌 10건 식별 (HIGH 2, MED 5, LOW 3). 플랜: `~/.claude/plans/cuddly-honking-lantern.md` |
-| **MCP 서버 교체** | `figma-developer-mcp` (third-party, API 키) → 공식 Figma MCP (`mcp.figma.com/mcp`, HTTP, OAuth). 백업 완료. **OAuth 인증 필요 (다음 세션 재시작 후)** |
+| **MCP 서버 교체** | `figma-developer-mcp` (third-party, API 키) → 공식 Figma MCP (`mcp.figma.com/mcp`, HTTP, OAuth). 백업 완료 |
+| **Phase 1 완료 — OAuth + 도구 검증** | OAuth 인증 성공 (zen@plumlabs.im). 도구 T0~T5 6/6 PASS. CLAUDE.md 도구명 업데이트 (`get_figma_data` → `get_design_context`). MCP 글로벌 설정 (`~/.claude/.mcp.json`) |
+| **Phase 2 완료 — Skills 작성** | 공식 5개 복사 + 커뮤니티 1개 Fork + TDS 커스텀 3개 = 8 Skills, 11 파일. `figma-generate-design`에 TDS 오버레이 추가. `.claude/skills/` 디렉토리 |
 
 ### 다음 세션 TODO
 
-**즉시 (Phase 1 잔여):**
-1. 세션 재시작 → OAuth 인증 (브라우저)
-2. 도구 검증 T1~T6 (get_design_context, get_variable_defs, search_design_system, create_new_file, use_figma, Skills 경로)
-3. CLAUDE.md 도구명 업데이트 (get_figma_data → get_design_context)
-4. MCP 서버 scope 결정 — 현재 TDS 프로젝트 로컬에만 추가됨. 글로벌로 변경 여부
+**Phase 3 (검증):**
+1. Draft 파일에서 통합 테스트 S1~S6 (generate-design, naming-enforcer, sync-token, property-optimizer, qa-auditor, 통합)
+2. Skills 로딩 경로 확인 (T6) — `.claude/skills/` SKILL.md가 자동 인식되는지
 
-**Phase 2 (Skills 작성):**
-5. figma/mcp-server-guide 레포에서 공식 Skills 복사 (figma-use, figma-generate-design, figma-create-new-file 등)
+**Phase 2 잔여 (선택):**
+3. figma-implement-design 추가 (Figma→코드 변환용, 공식 레포에 존재)
+4. figma-code-connect-components 추가 (Org/Ent 플랜 필요 — 현재 Pro이므로 보류)
 6. tds-naming-enforcer 커스텀 Skill 작성 (rules.ts → rename-pipeline.md 자동 생성)
 7. sync-figma-token Fork + TDS 변수 매핑
 8. tds-property-optimizer, tds-qa-auditor 커스텀 Skill

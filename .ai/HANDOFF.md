@@ -1,5 +1,15 @@
 ---
 HANDOFF: Claude -> 정재
+Date: 2026-03-27 11:02:00
+Project: ~/Project/TDS
+Agent: Claude
+Summary: Phase 1+2 완료 — OAuth 인증(zen@plumlabs.im) + 도구 검증 6/6 PASS + CLAUDE.md 도구명 업데이트 + MCP 글로벌 설정 + Skills 8개 작성(공식 5 + 커뮤니티 1 + TDS 커스텀 3). figma-generate-design에 TDS 네이밍/토큰 오버레이 추가.
+Next-TODO: Phase 3 통합 테스트 S1~S6 (Draft 파일에서) + Skills 자동 인식 확인
+Commits: (이번 커밋)
+---
+
+---
+HANDOFF: Claude -> 정재
 Date: 2026-03-27 17:30:00
 Project: ~/Project/TDS
 Agent: Claude
