@@ -1,5 +1,15 @@
 ---
 HANDOFF: Claude -> 정재
+Date: 2026-03-27 22:56:00
+Project: ~/Project/TDS
+Agent: 혼합 (Claude MCP + 사용자 Figma 수동)
+Summary: TDS Thumbnail 컴포넌트 생성 (11 sizes + Thumbnail Group 5 sizes + Notification Badge Boolean). 라운지 스크린 TDS 리디자인. naming-policy 업데이트 — Boolean Property Title Case 공백 + Figma↔코드 매핑 규칙 추가.
+Next-TODO: Thumbnail Publish + Lounge Card TDS화 검토 + 기존 Boolean property Show Xxx 포맷 통일
+Commits: (이번 커밋)
+---
+
+---
+HANDOFF: Claude -> 정재
 Date: 2026-03-27 21:25:00
 Project: ~/Project/TDS
 Agent: Claude

@@ -19,8 +19,19 @@
 | 컴포넌트 Display Name | **Title Case 공백** | `Alert Dialog`, `Profile Card` |
 | Variant Property Key | **camelCase** | `size`, `variant`, `showIcon` |
 | Variant Property Value | **lowercase** | `default`, `destructive`, `sm` |
-| Boolean Property | **camelCase + show/is/has** | `showIcon`, `isActive` |
+| Boolean Property | **Title Case 공백 + Show/Is/Has** | `Show Icon`, `Is Active`, `Show Badge` |
 | Variant 슬래시 | **Title Case** | `Button/Primary`, `Card/Outline` |
+
+### Figma ↔ 코드 매핑 규칙
+
+> Figma property 네이밍은 디자이너 가독성 우선. 코드 변환은 MCP/AI가 처리.
+
+| Figma (디자이너) | 코드 (React prop) | 변환 규칙 |
+|-----------------|-------------------|----------|
+| `Show Badge` | `showBadge` | Title Case 공백 → camelCase |
+| `Is Active` | `isActive` | 동일 |
+| `Size` | `size` | lowercase 유지 |
+| `Type` | `type` (또는 `variant`) | lowercase 유지 |
 
 ## 3. 네이밍 공식
 

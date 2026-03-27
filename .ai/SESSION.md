@@ -61,25 +61,28 @@ TDS 컴포넌트 리뷰를 lenny 프로젝트에서 `/team`으로 실행하면, 
 | **TDS 변수 교체** | `font/family/font-sans` TDS 모드: Pretendard → IBM Plex Sans KR. `use_figma` `setValueForMode` 1줄로 변경. Publish 완료 |
 | **프로덕트 파일 토큰 바인딩** | 3개 노드(14332:318711, 14332:125821, 14332:1201, 21688:26710)에서 Pretendard 미바인딩 텍스트 `setBoundVariable("fontFamily")` 일괄 처리. 인스턴스 오버라이드 잔여분은 수동/라이브러리 업데이트로 해결 |
 | **프로덕트 파일 텍스트 스타일 적용** | fontSize 매핑(13→12, 15→14, 17→16, 21→18) + `text-xx/leading-normal` TDS 스타일 import 후 적용. 4개 노드 합계 211건 |
+| **TDS Thumbnail 컴포넌트 생성** | Avatar 레퍼런스 기반. Type=Image only, Size 11단계 (20~128px), cornerRadius 비율 20% (사이즈별 4~26px). Thumbnail Group 5 variants (negative overlap). Notification Badge RedDot + `Show Badge` Boolean property |
+| **naming-policy 업데이트** | Boolean Property: Title Case 공백 (`Show Badge`) Figma 기준 + camelCase (`showBadge`) 코드 매핑 규칙 추가. /team 논의 후 확정 |
+| **라운지 스크린 TDS 리디자인** | 기존 화면 옆에 TDS 인스턴스 기반 재구성. StatusBar/Navbar/InputGroup/TabsList/ContentHeader/Avatar/Badge/Button/Separator/TabBar 전부 TDS. Lounge Card는 TDS 없어서 로컬 프레임 |
 
 ### 다음 세션 TODO
 
+**TDS 컴포넌트:**
+1. Thumbnail 컴포넌트 Publish + 프로덕트 파일에서 라운지 카드에 적용
+2. Lounge Card 컴포넌트 TDS화 검토 (Thumbnail + Body + Button 조합)
+3. 기존 TDS 컴포넌트 Boolean property `Show Xxx` 포맷 통일
+
 **폰트 전환 잔여:**
-1. 프로덕트 파일 인스턴스 오버라이드 잔여분 정리 (Figma Find & Replace Font 또는 Reset overrides)
-2. Mixed font 텍스트 수동 정리 (AccordionContent 등 이모지+한글 혼합 건)
-3. 인스턴스 오버라이드 52건 — TDS 라이브러리 재Publish 후 업데이트 수락으로 해결 가능 여부 확인
+4. 프로덕트 파일 인스턴스 오버라이드 잔여분 정리 (Find & Replace Font / Reset overrides)
+5. Mixed font 텍스트 수동 정리 (AccordionContent 등)
 
 **Phase 3 잔여:**
-4. IBM Plex Sans KR 기반 MCP 디자인 생성 테스트 (Login Screen 등)
-5. S2 naming-enforcer 테스트
-6. S3~S6 나머지 Skills 테스트
+6. IBM Plex Sans KR 기반 MCP 디자인 생성 테스트
+7. S2~S6 Skills 테스트
 
 **모니터링:**
 - Figma MCP 커스텀 폰트 지원 출시 시 → Pretendard 복원 검토
 - Asta Sans MCP 등록 시 → 재평가 트리거
-
-**병행:**
-8. Figma MCP changelog 분기별 모니터링 (커스텀 폰트 지원 출시 시 워크어라운드 폐기)
 
 ---
 
