@@ -1,5 +1,15 @@
 ---
 HANDOFF: Claude -> 정재
+Date: 2026-03-27 23:36:00
+Project: ~/Project/TDS
+Agent: Claude
+Summary: TDS 교차 검증 보고서 + tds-cross-verify Skill 신규 생성 + 기존 3개 Skill(naming-enforcer, property-optimizer, qa-auditor)에 오탐 방지 원칙(componentKey 기반, mainComponent.remote, figma.root.findAll) 일괄 적용.
+Next-TODO: 교차 검증 보고서 기반 네이밍 수정 + 페이지 구조 재편(Primitives/Composed 분리) + 통합 후보 검토
+Commits: (이번 커밋)
+---
+
+---
+HANDOFF: Claude -> 정재
 Date: 2026-03-27 22:56:00
 Project: ~/Project/TDS
 Agent: 혼합 (Claude MCP + 사용자 Figma 수동)

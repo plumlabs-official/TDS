@@ -64,6 +64,9 @@ TDS 컴포넌트 리뷰를 lenny 프로젝트에서 `/team`으로 실행하면, 
 | **TDS Thumbnail 컴포넌트 생성** | Avatar 레퍼런스 기반. Type=Image only, Size 11단계 (20~128px), cornerRadius 비율 20% (사이즈별 4~26px). Thumbnail Group 5 variants (negative overlap). Notification Badge RedDot + `Show Badge` Boolean property |
 | **naming-policy 업데이트** | Boolean Property: Title Case 공백 (`Show Badge`) Figma 기준 + camelCase (`showBadge`) 코드 매핑 규칙 추가. /team 논의 후 확정 |
 | **라운지 스크린 TDS 리디자인** | 기존 화면 옆에 TDS 인스턴스 기반 재구성. StatusBar/Navbar/InputGroup/TabsList/ContentHeader/Avatar/Badge/Button/Separator/TabBar 전부 TDS. Lounge Card는 TDS 없어서 로컬 프레임 |
+| **TDS 교차 검증 보고서** | TDS 라이브러리(90+ 세트) ↔ 프로덕트 파일(118 컴포넌트 사용) 교차 분석. 네이밍 위반, 통합/분리 후보, 페이지 이동 후보 도출. **오탐 발견** — 이름 기반 매칭으로 "TDS에 없음" 3건 잘못 보고 → componentKey 기반으로 수정, 실제 비-TDS 0건 |
+| **tds-cross-verify Skill 신규 생성** | 5 Phase 교차 검증 스킬. componentKey 기반 오탐 방지, 네이밍 위반 탐지, 통합/분리 후보 탐지, 일관성 검사 |
+| **기존 3개 Skill 오탐 방지 원칙 추가** | tds-naming-enforcer, tds-property-optimizer, tds-qa-auditor에 `mainComponent.remote` + `componentKey` + `figma.root.findAll` 원칙 일괄 적용 |
 
 ### 다음 세션 TODO
 

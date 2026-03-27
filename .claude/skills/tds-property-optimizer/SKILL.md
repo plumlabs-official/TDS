@@ -15,6 +15,16 @@ TDS 라이브러리 컴포넌트의 프로퍼티를 점검하고 최적화합니
 - 규칙 원본: `.claude/rules/naming-policy.md` v2.0 (Section 2: 케이싱)
 - 로직 원본: `figma-plugins/tds/src/modules/renamer/property-checker.ts`
 
+## 오탐 방지 원칙
+
+| 규칙 | 이유 |
+|------|------|
+| `mainComponent.remote === true` → TDS 소속 | 프로덕트 파일에서 검사 시 라이브러리 원본과 혼동 방지 |
+| `figma.root.findAll` 전체 트리 검색 | 중첩 프레임 안 컴포넌트 누락 방지 |
+| `componentKey` 기반 TDS 소속 판별 | 이름 기반 매칭 금지 |
+| Property 검사는 반드시 TDS 원본(COMPONENT_SET)에서 | 인스턴스 오버라이드 값이 아닌 원본 정의 기준 |
+| 일관성 검사: 동일 의미 property를 전체 라이브러리에서 비교 | 예: `Show Reddot` vs `Show Red Dot` 혼재 탐지 |
+
 ## Workflow
 
 ### Step 1: 컴포넌트 프로퍼티 읽기

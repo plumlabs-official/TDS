@@ -16,6 +16,15 @@ Figma 레이어명을 TDS naming-policy v2.0 기준으로 점검하고 수정합
 - 데이터 원본: `figma-plugins/tds/src/modules/renamer/rules.ts`
 - 상세 파이프라인: `references/rename-pipeline.md`
 
+## 오탐 방지 원칙
+
+| 규칙 | 이유 |
+|------|------|
+| `mainComponent.remote === true` → TDS 소속, 내부 레이어 검사 제외 | 라이브러리 컴포넌트 내부를 프로덕트 파일에서 검사하면 오탐 |
+| `figma.root.findAll` 전체 트리 검색 | 중첩 프레임 안 컴포넌트 누락 방지 |
+| `componentKey` 기반 TDS 소속 판별 | 이름 변경/오타에 강건 |
+| 컴포넌트 Property 검사 시 TDS 원본에서 확인 | 프로덕트 파일의 인스턴스 오버라이드와 원본 구분 |
+
 ## Workflow
 
 ### Step 1: 대상 트리 읽기
