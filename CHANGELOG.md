@@ -15,27 +15,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - 프로덕트 파일 토큰 바인딩 — `setBoundVariable("fontFamily")` 활용, 미바인딩 텍스트 일괄 처리
 - 프로덕트 파일 텍스트 스타일 적용 — fontSize 매핑(13→12, 15→14, 17→16, 21→18) + `text-xx/leading-normal` 스타일
 - 폰트 마이그레이션 최종 플랜 미팅 기록 (Ralph Loop 3 iterations, 전원 96+)
-
+- Figma MCP Skills — 공식 5개 + 커뮤니티 1개 + TDS 커스텀 3개
 ### Changed
 - session record — Org Plan 폰트 리서치 + /team Inter전면전환 No-go 결정
 - MCP Pretendard 폰트 리서치 (19소스, 94%) + /team 전략 결정: Inter 전면전환 No-go, Pretendard 유지 + Noto Sans KR 중간체
-
-
-### Changed
-- session record — Org Plan 폰트 리서치 + /team Inter전면전환 No-go 결정
-- session record — Phase 3 S1 테스트 + Pretendard 폰트 블로커 + Desktop MCP 추가
-### Added
-- add Figma MCP Skills — 공식 5개 + 커뮤니티 1개 + TDS 커스텀 3개
-### Changed
-- session record — Org Plan 폰트 리서치 + /team Inter전면전환 No-go 결정
 - session record — Phase 3 S1 테스트 + Pretendard 폰트 블로커 + Desktop MCP 추가
 - update Figma MCP tool name get_figma_data → get_design_context
 - naming-policy v1.2.1 — 피드백 5건 반영: 복수형 제거 + 사용처 [목적]+[타입] 규칙 + 접미사 중복 금지 + 예시 정합성 + Sheet→Drawer + isTDSInstance 에러 방어
 - naming-policy v1.2 — Content 래퍼 접미사 폐기 + Area 통일 + 래퍼 우선순위(역할명>Area) + toTitleCase 추가
 - Renamer 리팩토링 — 파이프라인 누적 변환 + 역할 중복 방지(Area Area) + ES6 var 통일 + require→import + 레거시 제거
-
-### Added
-- add Figma MCP Skills — 공식 5개 + 커뮤니티 1개 + TDS 커스텀 3개
 - Renamer v1.1 — 1:1 래퍼 감지+언래핑 + 시맨틱 역할 자동 할당 + PascalCase 변환 수정
 - feat: TDS Renamer 모듈 Phase 1 — naming-policy v1.1 기반 자동 리네이밍 (Product Mode + TDS Library Mode). 빌드 성공
 - Figma: Tooltip 컴포넌트 TDS 제작 (5 Style × 4 Caret = 20v, 토큰 바인딩 완료)
@@ -74,6 +62,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - meetings/reviews 파일 lenny에서 TDS로 이동 (산출물 분산 정책)
 
 ### Added
+- Figma MCP 도구 선택 가이드 + 20KB 제한 대응 체계화
 - add Figma MCP Skills — 공식 5개 + 커뮤니티 1개 + TDS 커스텀 3개
 - TDS Migrator: 컴포넌트 인스턴스 스왑 기능 (외부 라이브러리 → TDS 로컬 컴포넌트, Components + Icons 페이지 스캔)
 - TDS Migrator: 멱등성 보장 (이미 TDS 바인딩된 Effect/Fill/Stroke/Text Style 재처리 방지)
@@ -99,6 +88,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - TDS Docs Generator: Effect 프리뷰 rect stroke 제거 (이펙트에 포함된 것으로 착각 방지)
 
 ### Added
+- Figma MCP 도구 선택 가이드 + 20KB 제한 대응 체계화
 - add Figma MCP Skills — 공식 5개 + 커뮤니티 1개 + TDS 커스텀 3개
 - TDS Docs Generator: Effect Showcase 페이지 생성 (effectToCSS 자동 변환, Tailwind 크기순 정렬)
 - TDS Docs Generator: Typography + Color + Effects 3개 페이지 완성
@@ -146,6 +136,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - UI: "간격 표준화" 버튼을 전처리 섹션 마지막으로 이동
 
 ### Added
+- Figma MCP 도구 선택 가이드 + 20KB 제한 대응 체계화
 - add Figma MCP Skills — 공식 5개 + 커뮤니티 1개 + TDS 커스텀 3개
 - WellWe 프로덕트 디자인 간소화 TF 일정표 생성 (TSV + Apps Script)
   - 140개 항목 MECE 분류 (12개 대분류)
@@ -174,6 +165,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `.ai/prompts/` 문서 간소화 - 상세 규칙은 `docs/specs/` 링크로 SSOT 통합 (중복 제거)
 
 ### Added
+- Figma MCP 도구 선택 가이드 + 20KB 제한 대응 체계화
 - add Figma MCP Skills — 공식 5개 + 커뮤니티 1개 + TDS 커스텀 3개
 - **네이밍 충돌 안정화 Phase A** (SSOT 정책)
   - 충돌 후보 전부 보류 (자동 suffix `_2`, `/id` 금지)
@@ -203,6 +195,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 - 인덱스 매핑 버그 수정 (AI 응답 인덱스 ↔ 재정렬 후 노드 불일치)
 ### Added
+- Figma MCP 도구 선택 가이드 + 20KB 제한 대응 체계화
 - add Figma MCP Skills — 공식 5개 + 커뮤니티 1개 + TDS 커스텀 3개
 - 컴포넌트 속성 확장 (cornerRadius, effects, strokeWidth) - Avatar/Card/Input/Toggle 힌트
 - 버튼 속성 자동 감지 (Intent/Shape/State/Icon)
