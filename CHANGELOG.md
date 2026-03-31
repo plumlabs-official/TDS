@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 
 ### Changed
+- session record — 라운지 리뷰 회의 결정 Figma 반영 플랜
 - 프로젝트 비효율 정리 — 106파일 삭제, 문서 누적 제거
 ### Fixed
 - auto-changelog 중복 엔트리 버그 2건 수정
