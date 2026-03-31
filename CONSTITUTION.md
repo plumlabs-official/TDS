@@ -32,14 +32,7 @@
 
 ## Memory Bank
 
-| 용도 | 파일 |
-|------|------|
-| SSOT 인덱스 | `docs/specs/index.md` |
-| 실패 패턴 | `docs/architecture/lessons-learned.md` |
-| 현재 상태 | `.ai/SESSION.md` |
-| 네이밍 정책 | `.claude/rules/naming-policy.md` |
-| QA 루브릭 | `.claude/rules/qa-rubric.md` |
-| 반복 작업 | `.ai/RECIPES.md` |
+> 문서 참조 테이블: `CLAUDE.md` → "Quick Reference" 참조
 
 ## Project Structure
 
@@ -111,11 +104,4 @@
 
 ## 관련 문서
 
-| 문서 | 역할 |
-|------|------|
-| [CLAUDE.md](CLAUDE.md) | 작업 지침 및 체크리스트 |
-| [docs/specs/index.md](docs/specs/index.md) | SSOT 인덱스 |
-| [docs/architecture/lessons-learned.md](docs/architecture/lessons-learned.md) | 버그 패턴 및 해결책 |
-| [.claude/rules/naming-policy.md](.claude/rules/naming-policy.md) | 네이밍 정책 |
-| [.claude/rules/qa-rubric.md](.claude/rules/qa-rubric.md) | QA 루브릭 |
-| [.ai/RECIPES.md](.ai/RECIPES.md) | 반복 작업 레시피 |
+> `CLAUDE.md` → "Quick Reference" 참조

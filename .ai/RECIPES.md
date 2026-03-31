@@ -27,17 +27,6 @@ Figma > Plugins > Development > Open Console
 
 ---
 
-## 문서 참조 (링크)
-
-| 용도 | 문서 |
-|------|------|
-| 네이밍 정책 | [.claude/rules/naming-policy.md](../.claude/rules/naming-policy.md) |
-| QA 루브릭 | [.claude/rules/qa-rubric.md](../.claude/rules/qa-rubric.md) |
-| 토큰 구조 | [docs/specs/token-structure.md](../docs/specs/token-structure.md) |
-| 버그 패턴 | [docs/architecture/lessons-learned.md](../docs/architecture/lessons-learned.md) |
-
----
-
 ## 커밋 형식
 
 ```
