@@ -11,6 +11,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 
 
+
+### Changed
+- session record — Pro Creator Card 분리 + Team-Director Pipeline 크로스 작업 기록
 ### Added
 - Updates Card TDS 컴포넌트 — 4 variant(State×Expanded) + Thumbnail/Content 슬롯
 - /review Phase 3-B Instance Replace + 크로스 스크린 패턴 참고
