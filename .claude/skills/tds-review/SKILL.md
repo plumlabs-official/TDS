@@ -8,6 +8,7 @@ description: "TDS 화면 리뷰 — 네이밍 검사 + TDS 커버리지 + 반복
 네이밍 검사, TDS 커버리지, 반복 패턴 감지, QA 간이 점수를 통합한 화면 리뷰 도구입니다.
 
 **MANDATORY**: load `figma-use` skill before every `use_figma` call.
+**Always pass `skillNames: "tds-review"` when calling `use_figma`.**
 
 ## Trigger
 
@@ -160,7 +161,7 @@ R1, R2 간이 점수 산출:
 1. **Read**: Phase 1 스캔 결과의 violations 목록 확인
 2. **Approve**: 사용자에게 Before/After 리포트 출력 → 승인 대기
 3. **Write**: `use_figma`로 `node.name` 변경 (한 번에 50개 이하)
-4. **Validate**: `get_screenshot`으로 변경 확인
+4. **Validate**: `get_design_context`로 idempotency 체크 (2회 연속 실행 = 변경 0건 확인). 시각 변화 우려 시 `get_screenshot` 병행.
 
 **MUST STOP**: 리포트 출력 후 사용자 승인 없이 write 금지.
 
@@ -198,3 +199,4 @@ R1, R2 간이 점수 산출:
 | TDS INSTANCE 내부 레이어 네이밍 검사 제외 | 오버라이드 안 했으면 원본 구조 |
 | Component Candidates 최소 3회 반복 | 2회는 우연 가능, 3회부터 패턴 |
 | hidden 노드 검사 포함, 리포트에 표시 | 숨겨도 코드 대상일 수 있음 |
+| 스캔~Fix 사이 삭제된 노드는 skip | 삭제 노드에 rename 시도하면 에러 → skip 후 리포트에 기록 |
