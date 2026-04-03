@@ -2,7 +2,7 @@
 
 > 세션 단기 기억 (compact 후 이어갈 내용)
 >
-> Last updated: 2026-03-31
+> Last updated: 2026-04-03
 
 ---
 
@@ -15,14 +15,20 @@
 
 ---
 
-## 현재 세션 (2026-03-31)
+## 현재 세션 (2026-04-03)
 
 ### 완료된 작업
 
 | 작업 | 비고 |
 |------|------|
-| **프로젝트 비효율 진단 + 정리** | HANDOFF.md 754→9줄, SESSION.md 1,090→40줄, meetings/ 46파일 삭제, screenshots/ 58파일 삭제, review-images/ 2파일 삭제, CONSTITUTION.md/RECIPES.md 중복 참조 테이블 제거 |
-| **라운지 리뷰 회의 결정사항 Figma 반영 플랜** | 2/26 회의록 9건 결정 → 기존 화면 수정 4건 + 신규 화면 4건 매핑 완료. 프로덕트 파일 `DxrzwmdzqAi4m4F0pp83gd` Review Version 섹션(`22206:21655`) 대상. Content Header(`20233:11574`) 활용처 확인. 패딩은 부모 A/L 책임 원칙 확인 |
+| **Select vs Combobox vs Date Picker 분석** | TDS 컴포넌트 구조 비교. Date Picker = Combobox 인스턴스 확인. Select/Combobox 분리 유지 권장 (Coach A안) |
+| **Creator Case 라운지 피드탭 17화면 스캔** | 전체 TDS 인스턴스 100%, 로컬 인스턴스 0건. 커스텀 프레임 5종 (Announcement Header, Lounge Card, Profile Card, Feed Card, Reply Card) |
+| **Lounge Screen 리뷰** | 네이밍 위반 4건 (Updates Content + lets-icons 3건). Profile Card 4회·Challenge Talk Card 3회 반복 감지 |
+| **Profile Card → TDS 인스턴스 교체** | 프로덕트 파일에서 커스텀 프레임 4개 → TDS Profile Card (Type=Vertical) 교체 완료 |
+| **Challenge Talk Card 신규 컴포넌트 생성** | TDS 파일 Components 페이지에 생성. Challenge Thumbnail + Badge + Icon Scaler + Button TDS 인스턴스 활용. 프로퍼티 6개 (Title, Message Preview, Timestamp, Attendee Count, Show Badge, Show Attendee) |
+| **Figma MCP 인증 복구** | `mcp__figma` REST API OAuth 인증 → `use_figma` 도구 복원 |
+| **`/review` 스킬 생성** | tds-review — QA + 화면 리뷰 통합 (네이밍 + TDS 커버리지 + 반복 패턴 + QA 간이 점수) |
+| **`/make-component` 스킬 생성** | tds-make-component — 참조 프레임 → TDS 컴포넌트 자동 생성 |
 
 ---
 
@@ -32,20 +38,23 @@
 1. Thumbnail 컴포넌트 Publish + 프로덕트 파일에서 라운지 카드에 적용
 2. Lounge Card 컴포넌트 TDS화 검토
 3. 기존 TDS 컴포넌트 Boolean property `Show Xxx` 포맷 통일
+4. Challenge Talk Card Publish
+5. Announcement Header 컴포넌트화 검토 (3화면 공통)
+
+**스크린 리뷰 (Creator Case 잔여):**
+6. Creator Lounge Updates Screen 리뷰
+7. Creator Lounge Chatting List/Screen 리뷰
+8. Feed Screen 리뷰
+9. 소식 작성 플로우 리뷰
+10. 나머지 화면 네이밍 수정 (Updates Content, lets-icons 교체)
+
+**스킬 테스트:**
+11. `/review` 스킬 실전 테스트
+12. `/make-component` 스킬 실전 테스트
 
 **폰트 전환 잔여:**
-4. 프로덕트 파일 인스턴스 오버라이드 잔여분 정리
-5. Mixed font 텍스트 수동 정리
-
-**MCP Skills:**
-6. IBM Plex Sans KR 기반 MCP 디자인 생성 테스트
-7. S2~S6 Skills 테스트
-8. 가이드 실전 테스트 (교차 검증 + 화면 생성)
-9. designer.md 작성 (TDS 컴포넌트 조립 지침)
-
-**교차 검증 후속:**
-10. 네이밍 수정
-11. 페이지 구조 재편 (Primitives/Composed 분리)
+13. 프로덕트 파일 인스턴스 오버라이드 잔여분 정리
+14. Mixed font 텍스트 수동 정리
 
 **모니터링:**
 - Figma MCP 커스텀 폰트 지원 출시 시 → Pretendard 복원 검토
