@@ -36,6 +36,11 @@
 | **Updates Card TDS 컴포넌트 생성** | 4 variant (State=default/locked × Expanded=true/false). Thumbnail Slot + Content Slot 적용. 프로퍼티 8개 (4 TEXT + 2 BOOLEAN + 2 VARIANT). 혼합 작업 (Claude 구조 생성 + 사용자 슬롯 전환) |
 | **[크로스] Team-Director Pipeline 구축** | claude-center + lenny 작업. 전 프로젝트 워크플로우 자동화 (Tier 0-3 분류, /team→/director→/ralph-loop). Execution/QA Layer 분리 + 헤드리스 QA 격리 (`claude -p` foreground). QA Reviewer 스킬 신규 생성. |
 | **Pro Creator Card 분리** | Challenge List Card에서 독립 컴포넌트로 분리. Container + .Utility/Title + Main content 패턴 적용. 이름 변경 (Challenge List Card → Pro Creator Card) |
+| **Lounge Cards 그룹 통합** | Lounge Card + Updates Card + Pro Creator Card → 하나의 "Lounge Cards" 컴포넌트 그룹으로 통합. .Utility/Title + Main content 패턴 |
+| **Lounge Screen QA** | 8축 풀 QA — 98점 PASS (R5 중첩4 -20점만) |
+| **Write Updates Screen 리뷰** | 84점 CONDITIONAL. 인풋 포맷 계열 점검 → Select/Input Group에 Label 부재 확인 |
+| **인풋 포맷 계열 점검** | Date Picker/Combobox(Label 내장) vs Select/Input Group(Label 없음) 불일치 발견 |
+| **Form Field 컴포넌트 생성** | Label + Field Slot + Help text 범용 래퍼. Input Group 그룹 안에 배치. Date Picker 패턴 참고 |
 
 ---
 
