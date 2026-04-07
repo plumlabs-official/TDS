@@ -54,6 +54,7 @@
 | **Boolean property `Show Xxx` 포맷 통일** | 전체 50개 컴포넌트 스캔, 30건 네이밍 수정 (Show/Is/Has 접두어). ↳ 접두어 6건 적용 (Combobox, Date Picker, Profile Card, Invite Profile Card) |
 | **Announcement Header 통합 확인** | Lounge Card 슬롯 개선으로 이미 흡수 완료 확인 |
 | **Thumbnail/Challenge Talk Card/Updates Card Publish 확인** | 사용자 직접 Publish 완료 확인 |
+| **Write Updates Screen 리뷰** | 91점 PASS (R1=82, R2=100). TDS 9건, 로컬 0건, 네이밍 위반 0건 |
 
 ---
 
