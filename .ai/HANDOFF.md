@@ -1,5 +1,15 @@
 ---
 HANDOFF: Claude -> 정재
+Date: 2026-04-08 20:39:00
+Project: ~/Project/TDS
+Agent: 혼합
+Summary: Participant Card 네이밍 5건 수정 (Container, 오타, 공백). masonry Slot 구조 검토 — 현행 유지. Pinterest형 UX 리서치.
+Next-TODO: P0 4건 (초대 플로우 삭제, 소식 잠금 표기, Slot→Instance Swap ~25건, Participant Card 분리)
+Commits: (이번 커밋)
+---
+
+---
+HANDOFF: Claude -> 정재
 Date: 2026-04-08 19:47:00
 Project: ~/Project/TDS
 Agent: Claude
