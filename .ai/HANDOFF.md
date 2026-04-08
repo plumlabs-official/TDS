@@ -1,5 +1,15 @@
 ---
 HANDOFF: Claude -> 정재
+Date: 2026-04-08 17:30:00
+Project: ~/Project/TDS
+Agent: 혼합
+Summary: Slot→Instance Swap 전환 분석 (~25건 후보 도출). P0 TODO 추가 (초대 플로우 삭제, 챌린지별 소식 잠금 표기, Slot 전환).
+Next-TODO: P0 1번(초대 플로우 삭제), P0 2번(소식 잠금 표기) 프로덕트 디자인 작업
+Commits: (이번 커밋)
+---
+
+---
+HANDOFF: Claude -> 정재
 Date: 2026-04-08 12:05:00
 Project: ~/Project/TDS
 Agent: 혼합
