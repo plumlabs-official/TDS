@@ -1,5 +1,15 @@
 ---
 HANDOFF: Claude -> 정재
+Date: 2026-04-11 (세션 종료 v2)
+Project: ~/Project/TDS
+Agent: Claude
+Summary: Paywall Host 안 D 최종화 (Team 2회 경유 + Director). Plan Card 반복 수정 → 완전 제거 → Hero+Subtitle로 차별점 통합. **단체 완주 인증서 정합성 이슈 발견**: 204 단독 주장, 기획 리뷰 전 상태로 확인 → 사용자 결정으로 Host Pro 스펙 제외. 최종 프레임: 24806:1250 (월간 state). HOST 15 ₩12,000 사용자 확정.
+Next-TODO: (P0) plumlabs-context 204 §3.2/§5.4 단체 완주 인증서 정리. (P1) 204 §3.1 HOST 15 가격 재확정. 기획 본문 수정 전 사용자 확인 필수.
+Commits: 4ffdd0f
+---
+
+---
+HANDOFF: Claude -> 정재
 Date: 2026-04-11 (세션 종료)
 Project: ~/Project/TDS
 Agent: Claude
