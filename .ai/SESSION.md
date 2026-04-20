@@ -101,6 +101,10 @@
 | **Stitch/Pencil 대안 리서치** | Claude Design Max 20x 한도 소진 대응. Stitch는 .fig 업로드 불가(DESIGN.md만), Pencil은 복붙 1계층만 + CDS 인스턴스 바인딩 소실. 둘 다 "프롬프트→UI" 수준으로 CDS 대체 부적합. 리포트: `report/2026-04-20_stitch-pencil-alternatives.md` |
 | **Pencil + CDS 이식 PoC 플랜 수립** | /team plan 모드. 실험 A(Figma 원본 복제) + B(PRD만으로 생성) 2종 설계. 7-Phase 자동 실행 플랜 + RESUME 재개 규약. 플랜 파일: `~/.claude/plans/wobbly-churning-kurzweil.md`. 산출물 폴더: `exports/2026-04-20_cds-migration/` (gitignore) |
 | **Pencil PoC 사전 체크리스트 진행** | Figma MCP/CDS 라이브러리/폴더 생성 PASS. **Pencil 데스크톱 앱 WebSocket 연결 실패로 블로킹** (`get_editor_state` 3회 재시도 실패). 다음 세션에서 앱 MCP 세션 활성화 후 재개 |
+| **Pencil MCP 연결 복구 + Figma import flatten 발견** | `/mcp` 재연결로 Pencil WebSocket 복구. 추가 발견: Pencil의 `File > Import > Figma...` 은 COMPONENT→FRAME flatten (variants/properties 유실). Claude Design과 동일 한계 확정. 메모리 저장: `project_pencil-figma-import-flattens.md` |
+| **Pencil Button baseline 측정** | 1 reusable + 3 override 인스턴스 빌드. MCP 3분. Button의 Figma 228 variants 전체 재구축 수작업 추정 ~157h (50 컴포넌트) |
+| **Claude Design × Pencil 대조군 리포트** | Claude Design이 토큰 정확 (`#00CC61` 등 + Brand/Semantic/Neutrals/Chart 그룹화) 확인. 둘 다 variant flatten 공통, Pencil은 .pen 네이티브 편집성 우위. 세 도구 역할 분리안 합의 |
+| **[Director] CDS → Pencil 네이티브 이관 실행** | Hybrid 전략 (Theme + Structural reusables). 3 QA 사이클 PASS (87→92→94.6). 51 variables + 27 reusables (Buttons 5, Containers 4 w/ Dialog+Drawer, Controls 5 w/ Select+Dropdown, Domain 2: Challenge Mission Card + Participant Card) + 11 PNG export + Home Feed 390×844 합성. 산출: `exports/2026-04-20_cds-migration/`(.pen + MIGRATION-PLAN.md + QA-INBOX.md + screenshots/) + reviews/2026-04-20_cds-pencil-migration.md |
 
 ---
 
