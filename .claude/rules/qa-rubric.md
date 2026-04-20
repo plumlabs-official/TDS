@@ -1,4 +1,4 @@
-# TDS Vibe-Coding QA Rubric v1.1
+# CDS Vibe-Coding QA Rubric v1.1
 
 > 바이브코딩(Tailwind+React+shadcn) 적합성 점검 루브릭
 > 참조: naming-policy.md v2.0
@@ -17,18 +17,18 @@
 
 ---
 
-## R1. TDS 인스턴스 커버리지 (20%)
+## R1. CDS 인스턴스 커버리지 (20%)
 
-UI 요소 중 TDS 컴포넌트 인스턴스 비율.
+UI 요소 중 CDS 컴포넌트 인스턴스 비율.
 
 **자동 검사:**
 - `node.type === "INSTANCE"` 카운트
-- `componentId` → TDS fileKey(`H36eNEd6o7ZTv4R7VcyLf2`) 소속 확인
-- detached instance = 비-TDS (로컬 프레임)
+- `componentId` → CDS fileKey(`H36eNEd6o7ZTv4R7VcyLf2`) 소속 확인
+- detached instance = 비-CDS (로컬 프레임)
 
 **점수:**
-- 100%: TDS 인스턴스 100%, 로컬 프레임 0건
-- 비-TDS 노드 1건당: -10 (비율 비례로 조정 가능)
+- 100%: CDS 인스턴스 100%, 로컬 프레임 0건
+- 비-CDS 노드 1건당: -10 (비율 비례로 조정 가능)
 
 ---
 
@@ -61,7 +61,7 @@ UI 요소 중 TDS 컴포넌트 인스턴스 비율.
 
 **케이싱:** Title Case 공백 필수 (`Chat Area` O, `chatArea` X, `ChatArea` X)
 
-**TDS 인스턴스 내부 레이어:** 검사 제외 (오버라이드 안 했으면 원본 구조)
+**CDS 인스턴스 내부 레이어:** 검사 제외 (오버라이드 안 했으면 원본 구조)
 
 ---
 
@@ -174,7 +174,7 @@ WCAG 2.1 AA 기준.
 
 | 축 | 점수 | 가중 | 이슈 수 |
 |----|------|------|---------|
-| R1 TDS 커버리지 | /100 | ×0.20 | |
+| R1 CDS 커버리지 | /100 | ×0.20 | |
 | R2 네이밍 | /100 | ×0.20 | |
 | R3 레이아웃 | /100 | ×0.10 | |
 | R4 프로퍼티 | /100 | ×0.10 | |

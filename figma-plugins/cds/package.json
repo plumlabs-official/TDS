@@ -1,0 +1,17 @@
+{
+  "name": "@challify/figma-plugin-cds",
+  "version": "3.0.0",
+  "description": "CDS Figma Plugin — Rename, Migrate, Generate",
+  "main": "dist/code.js",
+  "scripts": {
+    "build": "esbuild src/code.ts --bundle --outfile=dist/code.js --format=iife --target=es6 && cp src/ui.html dist/ui.html",
+    "watch": "esbuild src/code.ts --bundle --outfile=dist/code.js --format=iife --target=es6 --watch",
+    "build:ui": "cp src/ui.html dist/ui.html",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@figma/plugin-typings": "^1.90.0",
+    "esbuild": "^0.20.0",
+    "typescript": "^5.3.0"
+  }
+}

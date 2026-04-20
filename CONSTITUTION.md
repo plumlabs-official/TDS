@@ -1,15 +1,15 @@
 # Project Constitution
 
-> TDS (Tryve Design System) - AI 행동 지침
+> CDS (Challify Design System) - AI 행동 지침
 >
 > Last updated: 2026-03-17 | v3.0.0
 
 ## Tech Stack
 
 - **Figma Plugins**: TypeScript 기반 플러그인 (`figma-plugins/`)
-  - `tds/` — TDS Tools (Renamer, Docs Generator)
-  - `tds-docs/` — 문서 생성기
-  - `migrate-to-tds/` — TDS 마이그레이션
+  - `cds/` — CDS Tools (Renamer, Docs Generator)
+  - `cds-docs/` — 문서 생성기
+  - `migrate-to-cds/` — CDS 마이그레이션
 - **Design System**: 바이브코딩(Tailwind+React+shadcn) 최적화
 
 ## Core Rules
@@ -47,9 +47,9 @@
 │   ├── how-to/             # 작업별 실행 레시피
 │   └── architecture/       # 설계/배경/ADR
 ├── figma-plugins/
-│   ├── tds/                # TDS Tools (Renamer + Docs Generator)
-│   ├── tds-docs/           # 문서 생성기
-│   └── migrate-to-tds/     # TDS 마이그레이션
+│   ├── cds/                # CDS Tools (Renamer + Docs Generator)
+│   ├── cds-docs/           # 문서 생성기
+│   └── migrate-to-cds/     # CDS 마이그레이션
 ├── .ai/                    # AI 전용 메모리 (링크 중심)
 │   ├── SESSION.md          # 세션 단기 기억
 │   └── RECIPES.md          # 반복 작업 레시피

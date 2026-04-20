@@ -1,4 +1,4 @@
-# TDS (Tryve Design System)
+# CDS (Challify Design System)
 
 > 바이브코딩(Tailwind+React+shadcn) 최적화 Figma 디자인 시스템 도구 모음
 
@@ -21,7 +21,7 @@ npm run build
 ```bash
 # Figma에서 플러그인 로드
 # Plugins > Development > Import plugin from manifest
-# figma-plugins/tds/manifest.json 선택
+# figma-plugins/cds/manifest.json 선택
 ```
 
 ## 프로젝트 구조
@@ -29,9 +29,9 @@ npm run build
 ```
 /
 ├── figma-plugins/
-│   ├── tds/               # TDS Tools (Renamer)
-│   ├── tds-docs/          # 문서 생성기
-│   └── migrate-to-tds/    # TDS 마이그레이션
+│   ├── cds/               # CDS Tools (Renamer)
+│   ├── cds-docs/          # 문서 생성기
+│   └── migrate-to-cds/    # CDS 마이그레이션
 ├── docs/                  # 문서
 │   ├── specs/             # 규칙/사양 (SSOT)
 │   ├── how-to/            # 작업별 가이드
@@ -44,8 +44,8 @@ npm run build
 ## 주요 기능
 
 - **Renamer**: 네이밍 정책 v1.1 기반 자동 리네이밍 (2모드: Product + Library)
-- **Docs Generator**: TDS 라이브러리 문서 자동 생성
-- **Migrator**: 기존 디자인 → TDS 컴포넌트 마이그레이션
+- **Docs Generator**: CDS 라이브러리 문서 자동 생성
+- **Migrator**: 기존 디자인 → CDS 컴포넌트 마이그레이션
 - **QA Agent**: `/qa` 커맨드로 바이브코딩 적합성 8축 자동 점검
 
 ## 문서

@@ -10,11 +10,11 @@ Use this skill to create or update full-page screens in Figma by **reusing the p
 
 **MANDATORY**: You MUST also load [figma-use](../figma-use/SKILL.md) before any `use_figma` call. That skill contains critical rules (color ranges, font loading, etc.) that apply to every script you write.
 
-**TDS PROJECT RULES**: This file has TDS-specific overrides. Read [references/tds-design-rules.md](references/tds-design-rules.md) before Step 2. Key points:
-- TDS fileKey: `H36eNEd6o7ZTv4R7VcyLf2` — use `search_design_system` with this fileKey
+**CDS PROJECT RULES**: This file has CDS-specific overrides. Read [references/cds-design-rules.md](references/cds-design-rules.md) before Step 2. Key points:
+- CDS fileKey: `H36eNEd6o7ZTv4R7VcyLf2` — use `search_design_system` with this fileKey
 - Naming: Title Case 공백, 금지 접미사 6개 (Container/Wrapper/Content/Box/View/Div)
 - Icons: Lucide 인스턴스 필수, 인라인 SVG 금지
-- Tokens: 모든 색상/타이포/이펙트 TDS 변수 바인딩 필수
+- Tokens: 모든 색상/타이포/이펙트 CDS 변수 바인딩 필수
 
 **Always pass `skillNames: "figma-generate-design"` when calling `use_figma` as part of this skill.** This is a logging parameter — it does not affect execution.
 

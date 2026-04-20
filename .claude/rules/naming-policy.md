@@ -1,4 +1,4 @@
-# TDS Figma Node Naming Policy v2.0
+# CDS Figma Node Naming Policy v2.0
 
 > 2026-03-17 | 클린 재작성
 
@@ -7,8 +7,8 @@
 | 대상 | 적용 |
 |------|------|
 | 프로덕트 디자인 화면의 프레임/레이어 | O |
-| TDS 라이브러리 컴포넌트 Display Name | O |
-| TDS 컴포넌트 내부 파트(anatomy) | O (M3 예외) |
+| CDS 라이브러리 컴포넌트 Display Name | O |
+| CDS 컴포넌트 내부 파트(anatomy) | O (M3 예외) |
 | Figma Variables/Tokens | X (별도 정책) |
 
 ## 2. 케이싱
@@ -65,11 +65,11 @@
 `[컨텍스트] [유형]` — `Hero Image`, `User Avatar`, `Card Thumbnail`
 유형: `Image`, `Thumbnail`, `Avatar`, `Banner`, `Icon`, `Illustration`
 
-### 컴포넌트명 (TDS 라이브러리)
+### 컴포넌트명 (CDS 라이브러리)
 
 ```
 shadcn 공식명: Alert Dialog, Scroll Area, Toggle Group, Drawer
-TDS 커스텀:   Challenge Mission Card, Profile Card
+CDS 커스텀:   Challenge Mission Card, Profile Card
 ```
 
 ## 4. 허용 어휘
@@ -145,7 +145,7 @@ X  아이콘 세트 혼용 (Lucide 외)
 
 | 예외 | 조건 |
 |------|------|
-| M3 "Container" | TDS 컴포넌트 anatomy 내부 최외곽 파트 |
+| M3 "Container" | CDS 컴포넌트 anatomy 내부 최외곽 파트 |
 | `.` `_` 접두어 | 퍼블리시 제외 (Figma 공식) |
 
 ## 9. Before → After
@@ -164,4 +164,4 @@ X  아이콘 세트 혼용 (Lucide 외)
 | `Show Icon` (property) | `showIcon` | camelCase |
 
 ---
-*TDS Figma Node Naming Policy v2.0*
+*CDS Figma Node Naming Policy v2.0*

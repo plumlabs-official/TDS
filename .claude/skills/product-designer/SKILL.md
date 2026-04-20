@@ -1,12 +1,12 @@
 ---
 name: product-designer
-description: "미팅 기록/요구사항 → Figma 화면 디자인. Design Director 관점 IA/UX 설계 + TDS 컴포넌트 Figma 생성. 트리거: '/design', '화면 디자인해줘', '미팅 기록 기반 디자인'"
+description: "미팅 기록/요구사항 → Figma 화면 디자인. Design Director 관점 IA/UX 설계 + CDS 컴포넌트 Figma 생성. 트리거: '/design', '화면 디자인해줘', '미팅 기록 기반 디자인'"
 disable-model-invocation: false
 ---
 
 # Product Designer
 
-미팅 기록, 요구사항, 결정사항을 입력받아 Design Director 관점으로 설계하고 TDS 컴포넌트로 Figma 화면을 생성하는 스킬.
+미팅 기록, 요구사항, 결정사항을 입력받아 Design Director 관점으로 설계하고 CDS 컴포넌트로 Figma 화면을 생성하는 스킬.
 
 ## 역할: Design Director
 
@@ -20,12 +20,12 @@ Lenny's Product Team의 **Design Director** 페르소나를 겸임한다.
 - "사용자가 이 화면에서 무엇을 달성하려 하는가?"
 - "비즈니스 결정이 UI에서 어떻게 표현되어야 하는가?"
 - "기존 화면과 패턴이 일관되는가?"
-- "TDS에 이미 있는 컴포넌트로 해결 가능한가?"
+- "CDS에 이미 있는 컴포넌트로 해결 가능한가?"
 
 ## Prerequisites
 
 - Figma MCP 서버 연결
-- TDS 라이브러리 (fileKey: `H36eNEd6o7ZTv4R7VcyLf2`)
+- CDS 라이브러리 (fileKey: `H36eNEd6o7ZTv4R7VcyLf2`)
 - 프로덕트 Figma 파일 (fileKey: `t0SK7XaNqw8qIY3PpZw4s7`)
 
 **필수 스킬 로드:**
@@ -35,7 +35,7 @@ Lenny's Product Team의 **Design Director** 페르소나를 겸임한다.
 **필수 규칙 참조:**
 - [figma-mcp-tool-guide](../../rules/figma-mcp-tool-guide.md) — MCP 도구 선택 (read 우선)
 - [naming-policy](../../rules/naming-policy.md) — 네이밍 v2.0
-- [tds-design-rules](../figma-generate-design/references/tds-design-rules.md) — TDS 규칙
+- [cds-design-rules](../figma-generate-design/references/cds-design-rules.md) — CDS 규칙
 
 **Always pass `skillNames: "product-designer"` when calling `use_figma`.**
 
@@ -184,14 +184,14 @@ Phase 1-3의 lockPattern과 일치시킨다.
 - [ ] **IA**: 정보 위계가 사용자 목표와 일치하는가?
 - [ ] **UX 패턴**: 기존 화면과 일관되는가? 잠금 시각 언어가 통일되었는가?
 - [ ] **접근성**: 터치 타겟 44x44px, 색상 대비 4.5:1, 폰트 16px+ 설계 시점 반영?
-- [ ] **Atomic 분해**: 화면 → 섹션 → 컴포넌트 매핑이 TDS 구조와 대응하는가?
+- [ ] **Atomic 분해**: 화면 → 섹션 → 컴포넌트 매핑이 CDS 구조와 대응하는가?
 
-### 2-6. TDS 실현가능성 확인
+### 2-6. CDS 실현가능성 확인
 
 `search_design_system` (fileKey: `H36eNEd6o7ZTv4R7VcyLf2`)으로 필요 컴포넌트 사전 조회:
 
-- **발견됨** → TDS 컴포넌트 key 기록
-- **미발견** → 사용자에게 보고, `tds-make-component` 위임 여부 확인
+- **발견됨** → CDS 컴포넌트 key 기록
+- **미발견** → 사용자에게 보고, `cds-make-component` 위임 여부 확인
 
 플로우 연결 정리:
 ```
@@ -206,7 +206,7 @@ ScreenPlan {
   screens: [{
     name, type, purpose, entryPoint,
     infoHierarchy[], stateBranches[],
-    tdsComponents[], missingComponents[],
+    cdsComponents[], missingComponents[],
     acceptanceCriteria[], relatedDecisions[]
   }]
   stateMatrix: { [screenName]: { free, creator, superCreator } }
@@ -239,7 +239,7 @@ ScreenPlan을 요약 형식으로 제시:
 ### Design Director Checklist
 (5개 체크포인트 결과)
 
-### TDS 컴포넌트
+### CDS 컴포넌트
 - 기존 사용: N건
 - 신규 필요: N건
 
@@ -301,7 +301,7 @@ product-designer의 Phase 2 출력이 `figma-generate-design`의 **Step 1 (Under
 ### 신규 컴포넌트 필요 시
 
 1. 사용자에게 보고
-2. 승인 시 → `tds-make-component` 위임
+2. 승인 시 → `cds-make-component` 위임
 3. 컴포넌트 생성 완료 후 Phase 4 재개
 
 ---
@@ -311,9 +311,9 @@ product-designer의 Phase 2 출력이 `figma-generate-design`의 **Step 1 (Under
 ### QA Decision Tree
 
 ```
-1. tds-review 실행 (2축: 네이밍 + TDS 커버리지)
+1. cds-review 실행 (2축: 네이밍 + CDS 커버리지)
    ├─ PASS (92+) → Step 3
-   └─ FAIL → tds-review --fix → 재검증
+   └─ FAIL → cds-review --fix → 재검증
               └─ 여전히 FAIL → 사용자에게 수동 수정 요청
 
 2. (자동 수정 실패 시) 사용자 개입
@@ -327,11 +327,11 @@ product-designer의 Phase 2 출력이 `figma-generate-design`의 **Step 1 (Under
    - 페이월 진입 패턴 통일
    - 기존 화면과 레이아웃 패턴 일관성
 
-5. (선택) tds-qa-auditor 8축 풀 QA
+5. (선택) cds-qa-auditor 8축 풀 QA
    - 사용자 요청 시 또는 복잡한 화면에만
 ```
 
-**PASS 기준: tds-review 92+ AND Decision Coverage 100%**
+**PASS 기준: cds-review 92+ AND Decision Coverage 100%**
 
 ---
 
@@ -341,7 +341,7 @@ product-designer의 Phase 2 출력이 `figma-generate-design`의 **Step 1 (Under
 ## Design Complete
 
 ### 생성된 화면 (N건)
-| # | 화면 | 노드 ID | 유형 | tds-review 점수 |
+| # | 화면 | 노드 ID | 유형 | cds-review 점수 |
 |---|------|---------|------|----------------|
 
 ### Decision Coverage Matrix
@@ -351,7 +351,7 @@ product-designer의 Phase 2 출력이 `figma-generate-design`의 **Step 1 (Under
 ### 스크린샷
 (각 화면 get_screenshot)
 
-### 신규 TDS 컴포넌트
+### 신규 CDS 컴포넌트
 (목록 또는 "없음")
 
 ### 다음 단계
@@ -370,12 +370,12 @@ product-designer의 Phase 2 출력이 `figma-generate-design`의 **Step 1 (Under
 |------|----------|------|
 | Figma 쓰기 전 | `figma-use` | 필수 로드 |
 | 화면 생성 | `figma-generate-design` | Step 2-6만 |
-| TDS 컴포넌트 탐색 | `search_design_system` | read 도구 우선 |
-| 화면 리뷰 | `tds-review` | 2축 빠른 검증 |
-| 풀 QA | `tds-qa-auditor` | 8축, 선택적 |
-| 신규 컴포넌트 | `tds-make-component` | 사용자 승인 후 |
-| 네이밍 수정 | `tds-naming-enforcer` | QA FAIL 시 |
-| 프로퍼티 수정 | `tds-property-optimizer` | QA FAIL 시 |
+| CDS 컴포넌트 탐색 | `search_design_system` | read 도구 우선 |
+| 화면 리뷰 | `cds-review` | 2축 빠른 검증 |
+| 풀 QA | `cds-qa-auditor` | 8축, 선택적 |
+| 신규 컴포넌트 | `cds-make-component` | 사용자 승인 후 |
+| 네이밍 수정 | `cds-naming-enforcer` | QA FAIL 시 |
+| 프로퍼티 수정 | `cds-property-optimizer` | QA FAIL 시 |
 
 ## Error Recovery
 
@@ -383,7 +383,7 @@ product-designer의 Phase 2 출력이 `figma-generate-design`의 **Step 1 (Under
 
 | 상황 | 대응 |
 |------|------|
-| TDS 컴포넌트 미발견 | 사용자 보고 → `tds-make-component` 분기 |
+| CDS 컴포넌트 미발견 | 사용자 보고 → `cds-make-component` 분기 |
 | 기존 화면 구조 파악 실패 | `get_screenshot` 시각 확인 후 재시도 |
 | 문서 충돌 감지 | 사용자에게 어떤 문서가 권위인지 확인 |
 | Figma MCP 인증 오류 | `use_figma` 재시도, 실패 시 사용자에게 보고 |
@@ -394,7 +394,7 @@ product-designer의 Phase 2 출력이 `figma-generate-design`의 **Step 1 (Under
 |------|------|
 | [figma-use](../figma-use/SKILL.md) | `use_figma` 필수 규칙 |
 | [figma-generate-design](../figma-generate-design/SKILL.md) | 화면 생성 엔진 |
-| [tds-design-rules](../figma-generate-design/references/tds-design-rules.md) | TDS 규칙 |
+| [cds-design-rules](../figma-generate-design/references/cds-design-rules.md) | CDS 규칙 |
 | [naming-policy](../../rules/naming-policy.md) | 네이밍 v2.0 |
 | [qa-rubric](../../rules/qa-rubric.md) | QA 루브릭 v1.1 |
 | [figma-mcp-tool-guide](../../rules/figma-mcp-tool-guide.md) | MCP 도구 선택 |

@@ -1,6 +1,6 @@
 # Start Here
 
-> Tryve Design System - 5분 시작 가이드
+> Challify Design System - 5분 시작 가이드
 
 ---
 
@@ -9,7 +9,7 @@
 ```bash
 # 1. 설치
 git clone <repository-url>
-cd TDS
+cd CDS
 npm install
 
 # 2. 환경 설정
@@ -23,7 +23,7 @@ npm run server  # localhost:3001
 
 **Figma 플러그인 로드:**
 1. Figma Desktop > `Plugins` > `Development` > `Import plugin from manifest...`
-2. `figma-plugins/tds/manifest.json` 선택
+2. `figma-plugins/cds/manifest.json` 선택
 3. 프레임 선택 후 플러그인 실행
 
 ---

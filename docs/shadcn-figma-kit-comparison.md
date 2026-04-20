@@ -1,6 +1,6 @@
 # shadcn/ui Figma Kit 비교표
 
-> 2026-03-05 작성 | Tryve 디자인 시스템 도입을 위한 Kit 비교
+> 2026-03-05 작성 | Challify 디자인 시스템 도입을 위한 Kit 비교
 
 ## 비교표
 
@@ -13,7 +13,7 @@
 | 5 | RAVN | 🟢 | - | 🟢 | 🟢 | 🟢 | 🟢 | 🟢 | 🟢 | 🟢 | 🟢 | 🟢 | Blocks 적음, 모바일 예시 부족 |
 | 6 | shadcndesign | ❌ | $299 | 🟢 | 🟢 | 🟢 | 🟢 | 🟢 | 🟢 | 🟢 | 🟢 | 🟢 | 코드 1:1 매핑 최고, 모바일 블록 |
 | 7 | Shadcn Studio | ❌ | $249 | 🟢 | 🟢 | 🟢 | 🟢 | 🟢 | 🟢 | 🟢 | 🟢 | ❌ 탈락 | 디자인 품질 낮음 |
-| 8 | Shadcraft Pro | ❌ | $299 | 🟢 | 🟢 | 🟢 | 🟢 | 🟢 | 🟢 | 🟢 | 🟢 | 🟢 | Tryve 적합 템플릿 많음, Lucide Icons |
+| 8 | Shadcraft Pro | ❌ | $299 | 🟢 | 🟢 | 🟢 | 🟢 | 🟢 | 🟢 | 🟢 | 🟢 | 🟢 | Challify 적합 템플릿 많음, Lucide Icons |
 
 ## 범례
 
@@ -45,7 +45,7 @@
 | **State** | State ✅ | State ✅ | state ✅ |
 | **추가 prop** | Kbd | Kbd, Icon-only, Lucide | shape, Badge, info/warning/success |
 | **토큰 네이밍** | spacing/, height/, border-radius/ | height/, radius/, p-# | spacing/, border radius/ |
-| **Tryve 적합 템플릿** | 보통 | **많음** | 많지만 품질 낮음 |
+| **Challify 적합 템플릿** | 보통 | **많음** | 많지만 품질 낮음 |
 
 **shadcn 오리지널 코드:**
 ```tsx
@@ -56,17 +56,17 @@
 
 ## 최종 결론
 
-### 🏆 Tryve 디자인 시스템 선택
+### 🏆 Challify 디자인 시스템 선택
 
 | 구분 | Kit | 가격 | 역할 |
 |------|-----|------|------|
-| **메인** | Shadcraft Pro | $299 | Tryve 적합 템플릿 활용, Lucide Icons 통합 |
+| **메인** | Shadcraft Pro | $299 | Challify 적합 템플릿 활용, Lucide Icons 통합 |
 | **보조** | RAVN | 무료 | 전 항목 🟢, Variants 정확, 참고용 |
 
 ### 선택 이유
 
 **Shadcraft Pro:**
-- Tryve 프로젝트에 적합한 템플릿 다수
+- Challify 프로젝트에 적합한 템플릿 다수
 - Lucide Icons 통합
 - 토큰 시스템 완비
 - Type→Variant 네이밍 차이는 AI가 충분히 보정 가능
@@ -81,7 +81,7 @@
 | Kit | 이유 |
 |-----|------|
 | Shadcn Studio | 디자인 품질 낮음 |
-| shadcndesign | Tryve 적합 템플릿 부족 (1:1 매핑은 우수) |
+| shadcndesign | Challify 적합 템플릿 부족 (1:1 매핑은 우수) |
 | Pietro | Variables 없음, 다크모드 미지원 |
 | 2025 Kit | Variants 구조 비표준 (버튼 타입별 별도 컴포넌트) |
 

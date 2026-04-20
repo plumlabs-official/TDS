@@ -28,7 +28,7 @@
 
 ## Figma Plugin Modules
 
-### TDS Tools (`figma-plugins/tds/`)
+### CDS Tools (`figma-plugins/cds/`)
 
 | 모듈 | 역할 |
 |------|------|
@@ -40,7 +40,7 @@
 ```
 UI 버튼 클릭
   → code.ts: 선택 노드 수집
-  → renamer.analyzeProductDesign() 또는 analyzeTDSLibrary()
+  → renamer.analyzeProductDesign() 또는 analyzeCDSLibrary()
   → UI: rename 목록 표시 (before → after)
   → 사용자 확인
   → code.ts: node.name = newName 일괄 적용

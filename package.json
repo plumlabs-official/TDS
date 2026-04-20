@@ -1,12 +1,12 @@
 {
-  "name": "tds",
+  "name": "cds",
   "version": "3.0.0",
-  "description": "TDS - Figma 디자인 시스템 도구 모음",
+  "description": "CDS - Figma 디자인 시스템 도구 모음",
   "private": true,
   "scripts": {
-    "build": "cd figma-plugins/tds && npm run build",
-    "watch": "cd figma-plugins/tds && npm run watch",
-    "typecheck": "cd figma-plugins/tds && npx tsc --noEmit"
+    "build": "cd figma-plugins/cds && npm run build",
+    "watch": "cd figma-plugins/cds && npm run watch",
+    "typecheck": "cd figma-plugins/cds && npx tsc --noEmit"
   },
   "keywords": [
     "figma",

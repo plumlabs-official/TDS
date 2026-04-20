@@ -44,7 +44,7 @@
 | Naming/Renamer 작업 | `.claude/rules/naming-policy.md` | 전체 |
 | QA 점검 | `.claude/rules/qa-rubric.md` | 전체 |
 | **Figma MCP 작업** | `.claude/rules/figma-mcp-tool-guide.md` | 전체 |
-| **TDS 컴포넌트 논의/리뷰** | TDS Figma 라이브러리 (fileKey: `H36eNEd6o7ZTv4R7VcyLf2`) | 해당 컴포넌트 노드 직접 확인 |
+| **CDS 컴포넌트 논의/리뷰** | CDS Figma 라이브러리 (fileKey: `H36eNEd6o7ZTv4R7VcyLf2`) | 해당 컴포넌트 노드 직접 확인 |
 | 빌드/디버깅 | `.ai/RECIPES.md` | "빌드", "디버깅" 섹션 |
 | 문서 구조 변경 | `CONSTITUTION.md` | "문서 관리 원칙" 섹션 |
 | 새 기능 설계 | `docs/architecture/ADRs/` | 관련 ADR |
@@ -67,15 +67,15 @@
 - 추측하지 말고 **질문 먼저**
 - "이해가 맞나요?" 확인
 
-### TDS 컴포넌트 판단 시 — Evidence-First 프로토콜 (필수)
-> Figma 노드가 TDS인지, 컴포넌트 구조가 어떤지 판단할 때
+### CDS 컴포넌트 판단 시 — Evidence-First 프로토콜 (필수)
+> Figma 노드가 CDS인지, 컴포넌트 구조가 어떤지 판단할 때
 
 **GATE: 증거 없는 결론 금지. 아래 순서를 반드시 따를 것.**
 
 1. **EVIDENCE FIRST** — 결론 전에 아래를 먼저 출력:
    - `node.type` (INSTANCE / FRAME / GROUP / COMPONENT)
    - `componentId` 존재 여부 + 값
-   - TDS 라이브러리(`H36eNEd6o7ZTv4R7VcyLf2`) 소속 여부
+   - CDS 라이브러리(`H36eNEd6o7ZTv4R7VcyLf2`) 소속 여부
    - 프로퍼티/Slot/Variant 구분 (원본 `get_design_context` 결과 인용)
 
 2. **THEN CONCLUDE** — 증거 기반으로만 결론
@@ -86,7 +86,7 @@
 
 > 근거: 2026-03-12 사건 2건
 > - Sheet footer→slot 3연속 오답 (확인 없이 추측)
-> - TabNav "이미 TDS야" 함정 → 검증 없이 수용 (정정도 맹신)
+> - TabNav "이미 CDS야" 함정 → 검증 없이 수용 (정정도 맹신)
 
 ### 슬래시 커맨드 생성 시 (필수)
 > `/coach`, `/record` 같은 커맨드 만들 때
@@ -104,8 +104,8 @@
 - [ ] 금지 접미사 (Container/Wrapper/Box/View/Div) 사용 금지
 - [ ] 대체 어휘: Content > Area > Group 순서
 
-### TDS 컴포넌트 수정 제안 시 (필수)
-> 근거: [lessons-learned.md#tds-컴포넌트-정합성-미확인-패턴](docs/architecture/lessons-learned.md#tds-컴포넌트-정합성-미확인-패턴)
+### CDS 컴포넌트 수정 제안 시 (필수)
+> 근거: [lessons-learned.md#cds-컴포넌트-정합성-미확인-패턴](docs/architecture/lessons-learned.md#cds-컴포넌트-정합성-미확인-패턴)
 
 - [ ] **사용처 확인** — 해당 컴포넌트가 공용인지, 어디서 참조되는지 확인
 - [ ] **원본 vs 인스턴스 구분** — 원본 수정은 전파 영향, 인스턴스 오버라이드는 깨짐 리스크 명시

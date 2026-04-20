@@ -1,6 +1,6 @@
 ---
 name: sync-figma-token
-description: "Syncs design tokens between code and Figma variables with drift detection. Use when user says '토큰 동기화', 'drift 체크', '변수 비교', 'token sync'. For naming issues use tds-naming-enforcer, for property issues use tds-property-optimizer."
+description: "Syncs design tokens between code and Figma variables with drift detection. Use when user says '토큰 동기화', 'drift 체크', '변수 비교', 'token sync'. For naming issues use cds-naming-enforcer, for property issues use cds-property-optimizer."
 ---
 
 # sync-figma-token
@@ -9,9 +9,9 @@ Use this skill for token parity workflows (code tokens vs Figma variables).
 
 **MANDATORY prerequisite**: load `figma-use` before every `use_figma` call.
 
-## TDS-Specific Configuration
+## CDS-Specific Configuration
 
-- **TDS fileKey**: `H36eNEd6o7ZTv4R7VcyLf2`
+- **CDS fileKey**: `H36eNEd6o7ZTv4R7VcyLf2`
 - **Direction default**: `code_to_figma`
 - **deletePolicy**: `archive_only`
 - **conflictPolicy**: `manual_review`

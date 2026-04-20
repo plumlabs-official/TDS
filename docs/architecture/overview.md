@@ -1,6 +1,6 @@
 # 시스템 아키텍처
 
-> Tryve Design System 전체 구조
+> Challify Design System 전체 구조
 >
 > Last updated: 2026-03-17 | v3.0.0
 
@@ -11,32 +11,32 @@
 │         Figma Plugins               │
 │                                     │
 │  ┌───────────┐  ┌───────────────┐   │
-│  │ TDS Tools │  │ TDS Docs      │   │
+│  │ CDS Tools │  │ CDS Docs      │   │
 │  │ (Renamer) │  │ (Doc Gen)     │   │
 │  └───────────┘  └───────────────┘   │
 │                                     │
 │  ┌───────────────────────────────┐  │
-│  │ Migrate to TDS                │  │
+│  │ Migrate to CDS                │  │
 │  └───────────────────────────────┘  │
 └─────────────────────────────────────┘
 ```
 
 ## 컴포넌트
 
-### TDS Tools (`figma-plugins/tds/`)
+### CDS Tools (`figma-plugins/cds/`)
 
 - **역할**: Figma UI와 상호작용, 노드 조작
 - **기술**: TypeScript, Figma Plugin API, esbuild
 - **주요 모듈**:
   - `modules/renamer/` — 네이밍 정책 기반 자동 리네이밍 (2모드)
 
-### TDS Docs (`figma-plugins/tds-docs/`)
+### CDS Docs (`figma-plugins/cds-docs/`)
 
-- **역할**: TDS 라이브러리 문서 자동 생성
+- **역할**: CDS 라이브러리 문서 자동 생성
 
-### Migrate to TDS (`figma-plugins/migrate-to-tds/`)
+### Migrate to CDS (`figma-plugins/migrate-to-cds/`)
 
-- **역할**: 기존 디자인 → TDS 컴포넌트 마이그레이션
+- **역할**: 기존 디자인 → CDS 컴포넌트 마이그레이션
 
 ## 데이터 흐름
 
@@ -46,8 +46,8 @@
 1. [선택된 노드 / 페이지 전체]
       ↓
 2. [walkTree 순회]
-      ├── TDS 인스턴스 → skip
-      └── 비-TDS 노드 → 분석
+      ├── CDS 인스턴스 → skip
+      └── 비-CDS 노드 → 분석
             ↓
 3. [규칙 기반 이름 추론]
    (컨텍스트 + 시맨틱 역할)

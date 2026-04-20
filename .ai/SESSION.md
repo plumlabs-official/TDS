@@ -85,7 +85,7 @@
 1. 방장이 아직 일정을 정하지 않은 상태로 초대받는 경우 플로우 삭제
 2. 라운지 소식 작성할 때, 챌린지별 소식은 잠금 상태(슈퍼 크리에이터 구독 유도) 표기
 
-**P0 (TDS 컴포넌트):**
+**P0 (CDS 컴포넌트):**
 3. Slot → Instance Swap 전환 (~25건, 단일 인스턴스 패턴)
 4. Participant Card 분리 — `Participant Card`(미인증 12 variant) + `Participant Card Authed`(인증 3 variant). 프로퍼티 완전 분리
 

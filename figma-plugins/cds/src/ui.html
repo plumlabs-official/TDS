@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>CDS</title>
+  <style>
+    :root {
+      /* CDS Foundation Tokens */
+      --primary: #00CC61;
+      --primary-hover: #00B356;
+      --primary-subtle: rgba(0, 204, 97, 0.08);
+      --foreground: #1A1A1A;
+      --muted-foreground: #797979;
+      --muted: #D3D8DC;
+      --border: #E4E4E7;
+      --border-light: #F0F0F0;
+      --background: #FFFFFF;
+      --background-hover: #FAFAFA;
+      --background-muted: #F4F4F5;
+      --secondary: #EFF5FD;
+      --destructive: #F33939;
+      --destructive-subtle: rgba(243, 57, 57, 0.08);
+      --warning: #FF6600;
+      --warning-subtle: rgba(255, 102, 0, 0.08);
+      --info: #3B82F6;
+      --info-subtle: rgba(59, 130, 246, 0.08);
+      /* CDS radius */
+      --radius-sm: 8px;
+      --radius-md: 12px;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 11px;
+      color: var(--foreground);
+      background: var(--background);
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ─── Tab Bar ─── */
+    .tab-bar {
+      display: flex;
+      gap: 0;
+      border-bottom: 1px solid var(--border);
+      flex-shrink: 0;
+      background: var(--background);
+    }
+    .tab-btn {
+      flex: 1;
+      padding: 9px 0;
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--muted-foreground);
+      background: none;
+      border: none;
+      border-bottom: 2px solid transparent;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      width: auto;
+      margin: 0;
+      letter-spacing: 0.01em;
+      border-radius: 0;
+    }
+    .tab-btn:hover:not(:disabled) {
+      color: var(--foreground);
+      background: var(--background-hover);
+    }
+    .tab-btn.active {
+      color: var(--foreground);
+      font-weight: 600;
+      border-bottom-color: var(--foreground);
+    }
+    .tab-btn:disabled { opacity: 0.35; cursor: not-allowed; }
+
+    /* ─── Panels ─── */
+    .panel {
+      flex: 1;
+      overflow-y: auto;
+      padding: 12px;
+    }
+
+    /* ─── Action Card ─── */
+    .action-card {
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      margin-bottom: 8px;
+    }
+    .action-card:last-child { margin-bottom: 0; }
+
+    .action-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 12px;
+      cursor: pointer;
+      transition: background 0.1s ease;
+      border-bottom: 1px solid var(--border-light);
+      user-select: none;
+    }
+    .action-row:last-child { border-bottom: none; }
+    .action-row:hover { background: var(--background-hover); }
+    .action-row:active { background: var(--background-muted); }
+    .action-row.disabled { opacity: 0.4; cursor: not-allowed; pointer-events: none; }
+
+    .action-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .dot-primary { background: var(--primary); }
+    .dot-foreground { background: var(--foreground); }
+    .dot-info { background: var(--info); }
+    .dot-destructive { background: var(--destructive); }
+    .dot-warning { background: var(--warning); }
+
+    .action-text {
+      flex: 1;
+      min-width: 0;
+    }
+    .action-title {
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--foreground);
+      line-height: 1.3;
+    }
+    .action-desc {
+      font-size: 10px;
+      color: var(--muted-foreground);
+      line-height: 1.3;
+      margin-top: 1px;
+    }
+
+    .action-arrow {
+      color: var(--muted-foreground);
+      font-size: 10px;
+      flex-shrink: 0;
+    }
+
+    /* ─── Section Label ─── */
+    .section-label {
+      font-size: 10px;
+      font-weight: 600;
+      color: var(--muted-foreground);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 8px 4px 6px;
+    }
+    .section-label:first-child { padding-top: 0; }
+
+    /* ─── Preview (Rename) ─── */
+    .preview-container { display: none; margin-top: 8px; }
+    .preview-container.active { display: block; }
+    .preview-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 6px;
+    }
+    .preview-header span {
+      font-size: 10px;
+      font-weight: 500;
+      color: var(--muted-foreground);
+    }
+    .btn-sm {
+      padding: 4px 10px;
+      font-size: 10px;
+      font-weight: 600;
+      border-radius: 4px;
+      border: none;
+      cursor: pointer;
+      width: auto;
+      margin: 0;
+      transition: all 0.1s;
+    }
+    .btn-sm-primary {
+      background: var(--foreground);
+      color: #fff;
+    }
+    .btn-sm-primary:hover { opacity: 0.85; }
+    .btn-sm-warning {
+      background: var(--warning-subtle);
+      color: #92400e;
+      border: 1px solid rgba(255, 102, 0, 0.2);
+    }
+    .btn-sm-warning:hover { background: rgba(255, 102, 0, 0.12); }
+
+    .preview-list {
+      max-height: 220px;
+      overflow-y: auto;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+    }
+    .preview-item {
+      padding: 6px 10px;
+      border-bottom: 1px solid var(--border-light);
+      font-size: 10px;
+      line-height: 1.4;
+    }
+    .preview-item:last-child { border-bottom: none; }
+    .preview-before { color: var(--text-tertiary); text-decoration: line-through; }
+    .preview-after { color: var(--primary); font-weight: 500; }
+    .preview-reason { color: var(--text-tertiary); font-size: 9px; margin-top: 1px; }
+
+    .issue-item {
+      padding: 6px 10px;
+      border-bottom: 1px solid var(--border-light);
+      font-size: 10px;
+      line-height: 1.4;
+    }
+    .issue-severity {
+      display: inline-block;
+      font-size: 9px;
+      font-weight: 600;
+      padding: 1px 4px;
+      border-radius: 3px;
+      margin-right: 3px;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+    }
+    .severity-major { background: var(--destructive-subtle); color: var(--destructive); }
+    .severity-minor { background: var(--warning-subtle); color: var(--warning); }
+    .severity-warning { background: var(--background-muted); color: var(--muted-foreground); }
+
+    .wrapper-section { margin-top: 6px; border-top: 1px solid var(--border); padding-top: 6px; }
+    .wrapper-section-title { font-size: 10px; font-weight: 600; color: #b45309; margin-bottom: 4px; }
+    .wrapper-item { padding: 3px 0; font-size: 10px; display: flex; align-items: center; gap: 5px; }
+    .wrapper-item input[type="checkbox"] { margin: 0; width: 12px; height: 12px; }
+    .wrapper-label { color: var(--text-secondary); }
+    .wrapper-child { color: #b45309; font-weight: 500; }
+
+    /* ─── Status Bar ─── */
+    .status-bar {
+      flex-shrink: 0;
+      border-top: 1px solid var(--border);
+      padding: 6px 12px;
+      font-size: 10px;
+      color: var(--muted-foreground);
+      min-height: 26px;
+      line-height: 14px;
+    }
+    .status-bar:empty::after {
+      content: 'Ready';
+      color: #ccc;
+    }
+  </style>
+</head>
+<body>
+  <!-- Tab Bar -->
+  <div class="tab-bar">
+    <button class="tab-btn active" id="tab-rename" onclick="switchTab('rename')">Rename</button>
+    <button class="tab-btn" id="tab-migrate" onclick="switchTab('migrate')">Migrate</button>
+    <button class="tab-btn" id="tab-docs" onclick="switchTab('docs')">Docs</button>
+  </div>
+
+  <!-- ═══ Rename Panel ═══ -->
+  <div class="panel" id="panel-rename">
+    <div class="action-card">
+      <div class="action-row" onclick="send('rename-product')">
+        <span class="action-dot dot-primary"></span>
+        <div class="action-text">
+          <div class="action-title">Product Design</div>
+          <div class="action-desc">naming-policy 기반 자동 리네이밍</div>
+        </div>
+        <span class="action-arrow">&#8250;</span>
+      </div>
+      <div class="action-row" onclick="send('rename-cds')">
+        <span class="action-dot dot-foreground"></span>
+        <div class="action-text">
+          <div class="action-title">CDS Library</div>
+          <div class="action-desc">컴포넌트 이름 + 프로퍼티 점검</div>
+        </div>
+        <span class="action-arrow">&#8250;</span>
+      </div>
+    </div>
+
+    <div class="preview-container" id="preview-container">
+      <div class="preview-header">
+        <span id="preview-title">Preview</span>
+        <button class="btn-sm btn-sm-primary" id="btn-apply-renames" onclick="applyRenames()">Apply</button>
+      </div>
+      <div class="preview-list" id="preview-list"></div>
+      <div class="wrapper-section" id="wrapper-section" style="display:none">
+        <div class="wrapper-section-title">Wrapper Warnings</div>
+        <div id="wrapper-list"></div>
+        <button class="btn-sm btn-sm-warning" style="margin-top:4px" onclick="unwrapSelected()">Unwrap Selected</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ Migrate Panel ═══ -->
+  <div class="panel" id="panel-migrate" style="display:none">
+    <div class="action-card">
+      <div class="action-row" onclick="send('migrate')">
+        <span class="action-dot dot-foreground"></span>
+        <div class="action-text">
+          <div class="action-title">Migrate Styles</div>
+          <div class="action-desc">Style + Component 통합 마이그레이션</div>
+        </div>
+        <span class="action-arrow">&#8250;</span>
+      </div>
+    </div>
+
+    <div class="section-label">Tools</div>
+    <div class="action-card">
+      <div class="action-row" onclick="send('bind-icon-colors')">
+        <span class="action-dot dot-info"></span>
+        <div class="action-text">
+          <div class="action-title">Bind Icon Colors</div>
+          <div class="action-desc">아이콘 stroke/fill을 foreground 변수에 바인딩</div>
+        </div>
+        <span class="action-arrow">&#8250;</span>
+      </div>
+      <div class="action-row" onclick="send('detach-effects')">
+        <span class="action-dot dot-destructive"></span>
+        <div class="action-text">
+          <div class="action-title">Remove Drop Shadow</div>
+          <div class="action-desc">Button Drop Shadow 제거 (Ghost 제외)</div>
+        </div>
+        <span class="action-arrow">&#8250;</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ Docs Panel ═══ -->
+  <div class="panel" id="panel-docs" style="display:none">
+    <div class="action-card">
+      <div class="action-row" onclick="send('gen-typography')">
+        <span class="action-dot dot-primary"></span>
+        <div class="action-text">
+          <div class="action-title">Typography</div>
+          <div class="action-desc">텍스트 스타일 쇼케이스 페이지 생성</div>
+        </div>
+        <span class="action-arrow">&#8250;</span>
+      </div>
+      <div class="action-row" onclick="send('gen-colors')">
+        <span class="action-dot dot-primary"></span>
+        <div class="action-text">
+          <div class="action-title">Colors</div>
+          <div class="action-desc">컬러 토큰 팔레트 페이지 생성</div>
+        </div>
+        <span class="action-arrow">&#8250;</span>
+      </div>
+      <div class="action-row" onclick="send('gen-effects')">
+        <span class="action-dot dot-primary"></span>
+        <div class="action-text">
+          <div class="action-title">Effects</div>
+          <div class="action-desc">이펙트(그림자) 쇼케이스 페이지 생성</div>
+        </div>
+        <span class="action-arrow">&#8250;</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Status Bar -->
+  <div class="status-bar" id="status"></div>
+
+  <script>
+    function switchTab(name) {
+      ['rename', 'migrate', 'docs'].forEach(function(n) {
+        document.getElementById('panel-' + n).style.display = n === name ? 'block' : 'none';
+        var tab = document.getElementById('tab-' + n);
+        if (n === name) tab.classList.add('active');
+        else tab.classList.remove('active');
+      });
+    }
+
+    function send(type, extra) {
+      setBusy(true, type.replace(/-/g, ' ') + '...');
+      var msg = { type: type };
+      if (extra) for (var k in extra) msg[k] = extra[k];
+      parent.postMessage({ pluginMessage: msg }, '*');
+    }
+
+    function setBusy(busy, statusText) {
+      var rows = document.querySelectorAll('.action-row');
+      for (var i = 0; i < rows.length; i++) {
+        if (busy) rows[i].classList.add('disabled');
+        else rows[i].classList.remove('disabled');
+      }
+      var tabs = document.querySelectorAll('.tab-btn');
+      for (var i = 0; i < tabs.length; i++) tabs[i].disabled = busy;
+      setStatus(busy ? statusText : '');
+    }
+
+    function setStatus(text) {
+      document.getElementById('status').textContent = text || '';
+    }
+
+    var _pendingEntries = null;
+
+    function applyRenames() {
+      if (_pendingEntries) {
+        send('apply-renames', { entries: _pendingEntries });
+        document.getElementById('preview-container').classList.remove('active');
+        document.getElementById('wrapper-section').style.display = 'none';
+        _pendingEntries = null;
+      }
+    }
+
+    function unwrapSelected() {
+      var checks = document.querySelectorAll('#wrapper-list input[type="checkbox"]:checked');
+      var ids = [];
+      for (var i = 0; i < checks.length; i++) ids.push(checks[i].getAttribute('data-node-id'));
+      if (ids.length > 0) {
+        send('unwrap-wrappers', { nodeIds: ids });
+        document.getElementById('wrapper-section').style.display = 'none';
+      }
+    }
+
+    function showRenamePreview(msg) {
+      var container = document.getElementById('preview-container');
+      var list = document.getElementById('preview-list');
+      var title = document.getElementById('preview-title');
+      var applyBtn = document.getElementById('btn-apply-renames');
+      list.innerHTML = '';
+
+      if (msg.mode === 'product') {
+        title.textContent = msg.entries.length + ' changes (' + (msg.skipped || 0) + ' skipped)';
+        _pendingEntries = msg.entries;
+        applyBtn.style.display = 'inline-block';
+        for (var i = 0; i < msg.entries.length; i++) {
+          var e = msg.entries[i];
+          var d = document.createElement('div');
+          d.className = 'preview-item';
+          d.innerHTML = '<div class="preview-before">' + esc(e.before) + '</div><div class="preview-after">' + esc(e.after) + '</div><div class="preview-reason">' + esc(e.reason) + '</div>';
+          list.appendChild(d);
+        }
+        var ws = document.getElementById('wrapper-section');
+        var wl = document.getElementById('wrapper-list');
+        wl.innerHTML = '';
+        if (msg.wrapperWarnings && msg.wrapperWarnings.length > 0) {
+          for (var j = 0; j < msg.wrapperWarnings.length; j++) {
+            var w = msg.wrapperWarnings[j];
+            var wi = document.createElement('div');
+            wi.className = 'wrapper-item';
+            wi.innerHTML = '<input type="checkbox" checked data-node-id="' + esc(w.nodeId) + '"><span class="wrapper-label">' + esc(w.nodeName) + ' → </span><span class="wrapper-child">' + esc(w.childName) + '</span>';
+            wl.appendChild(wi);
+          }
+          ws.style.display = 'block';
+        } else {
+          ws.style.display = 'none';
+        }
+      } else if (msg.mode === 'library') {
+        var total = msg.entries.length + (msg.propertyIssues ? msg.propertyIssues.length : 0);
+        title.textContent = total + ' issues';
+        applyBtn.style.display = 'none';
+        for (var i = 0; i < msg.entries.length; i++) {
+          var e = msg.entries[i];
+          var d = document.createElement('div');
+          d.className = 'preview-item';
+          d.innerHTML = '<div class="preview-before">' + esc(e.before) + '</div><div class="preview-after">' + esc(e.after) + '</div><div class="preview-reason">' + esc(e.reason) + '</div>';
+          list.appendChild(d);
+        }
+        if (msg.propertyIssues) {
+          for (var i = 0; i < msg.propertyIssues.length; i++) {
+            var p = msg.propertyIssues[i];
+            var d = document.createElement('div');
+            d.className = 'issue-item';
+            d.innerHTML = '<span class="issue-severity severity-' + p.severity + '">' + p.severity + '</span><strong>' + esc(p.nodeName) + '</strong>: ' + esc(p.property) + '<br><span style="color:var(--text-tertiary)">' + esc(p.current) + '</span> → <span style="color:var(--primary)">' + esc(p.suggested) + '</span>';
+            list.appendChild(d);
+          }
+        }
+      }
+      container.classList.add('active');
+    }
+
+    window.onmessage = function(event) {
+      var msg = event.data.pluginMessage;
+      if (!msg) return;
+      setBusy(false, '');
+      if (msg.type === 'rename-preview') showRenamePreview(msg);
+      else if (msg.type === 'result') setStatus(msg.text);
+      else if (msg.type === 'error') setStatus('Error: ' + msg.text);
+      else if (msg.type === 'status') setStatus(msg.text);
+    };
+
+    function esc(s) {
+      if (!s) return '';
+      return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+    }
+  </script>
+</body>
+</html>
