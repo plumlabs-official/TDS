@@ -40,9 +40,8 @@
 /
 ├── CONSTITUTION.md         # 프로젝트 헌법 (이 파일)
 ├── CLAUDE.md               # Claude Code 지침
-├── CONTRIBUTING.md         # SSOT 정책, 문서 업데이트 규칙
 ├── docs/                   # 문서 (목적 중심)
-│   ├── START-HERE.md       # 진입점 (5분 시작)
+│   ├── cds-overview.md     # CDS 컴포넌트/토큰 구조 개요
 │   ├── specs/              # SSOT (규칙/사양)
 │   ├── how-to/             # 작업별 실행 레시피
 │   └── architecture/       # 설계/배경/ADR
@@ -50,12 +49,14 @@
 │   ├── cds/                # CDS Tools (Renamer + Docs Generator)
 │   ├── cds-docs/           # 문서 생성기
 │   └── migrate-to-cds/     # CDS 마이그레이션
+├── report/                 # 리서치/분석 결과물
+├── reviews/                # QA/리뷰 기록
+├── meetings/               # 미팅 기록
 ├── .ai/                    # AI 전용 메모리 (링크 중심)
 │   ├── SESSION.md          # 세션 단기 기억
 │   └── RECIPES.md          # 반복 작업 레시피
-├── .claude/
-│   └── rules/              # 네이밍 정책, QA 루브릭
-└── research/               # 외부 참고자료 (SSOT 아님)
+└── .claude/
+    └── rules/              # 네이밍 정책, QA 루브릭
 ```
 
 ## Quick Commands
@@ -72,13 +73,10 @@
 
 ## 문서 관리 원칙
 
-> 출처: `reference/PM/` 바이브 코딩 가이드
-
-### 1. Diátaxis 구조
-- `docs/tutorials/`: 처음 따라 하는 가이드
-- `docs/guides/`: 목적 기반 레시피
+### 1. 문서 구조
 - `docs/specs/`: 규칙/사양 (SSOT)
-- `docs/architecture/`: 의사결정/아키텍처
+- `docs/how-to/`: 작업별 실행 레시피
+- `docs/architecture/`: 설계/배경/ADR
 
 ### 2. 플랜 모드 활용
 - 복잡한 작업 전 `plan mode`로 설계 승인

@@ -62,4 +62,4 @@ Type/Intent/Shape/Size[/State][/Icon]
 ## 참고
 
 - 디자이너 피드백 반영 (유연성, 확장성)
-- 상세 규칙: [docs/specs/naming-schema.md](../../specs/naming-schema.md)
+- 상세 규칙: [naming-policy.md](../../../.claude/rules/naming-policy.md)

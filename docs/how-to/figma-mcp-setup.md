@@ -64,5 +64,5 @@ Figma URL: https://www.figma.com/design/xxx/yyy?node-id=123-456
 
 ## 관련 문서
 
-- [Quickstart](../tutorials/quickstart.md)
-- [네이밍 에이전트 실행](run-naming-agent.md)
+- [릴리즈 체크리스트](release-checklist.md)
+- [네이밍 정책](../../.claude/rules/naming-policy.md)

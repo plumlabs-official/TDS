@@ -62,7 +62,7 @@
 | **Select 트리거 높이 통일** | 36px → 48px (Date Picker Field와 동일) |
 | **Select 컴포넌트 구조 개편** | flat → nested (root VERTICAL → Label → Field → Help text). Date Picker와 동일 아키텍처. 프로퍼티 9개 (Show Label/Help Text/Icon Left/Icon Right, Label, Help Text, Placeholder, ↳ Icon Left). min-width 160, max-width 512. description 업데이트 |
 | **프로덕트 파일 반영 확인** | TDS 퍼블리시 + 프로덕트 인스턴스 업데이트 사용자 완료 확인 |
-| **Slot → Instance Swap 전환 분석** | TDS 전체 26개 컴포넌트 50+ slot 스캔. ~25건 전환 후보 도출 (단일 인스턴스 패턴). 문서화 완료 (`research/2026-04-08_slot-instance-swap-analysis.md`) |
+| **Slot → Instance Swap 전환 분석** | TDS 전체 26개 컴포넌트 50+ slot 스캔. ~25건 전환 후보 도출 (단일 인스턴스 패턴). 문서화 완료 (`report/2026-04-08_slot-instance-swap-analysis.md`) |
 | **Icon Scaler 사용처 조사** | 20개 컴포넌트 ~150 인스턴스. Size 16이 90%, 28/32/36/Size6 미사용. 문서화 완료 |
 | **Participant Card 구조 리뷰** | Authed 이미 분리 확인. 네이밍 5건 수정 (Container×2, Frame 3/4, 오타 Show Determinded, Authed 공백 트림). Participant Card 분리를 P0 TODO에 추가 |
 | **Participant Left/Right Column Slot 검토** | masonry 레이아웃에서 복수 카드 자유 배치 용도 — Slot 유지 결정. Pinterest형 UX에서 비율은 서버 기반 랜덤이 표준, TDS의 Scale bucketing(1:1/4:5/9:16)은 실용적 접근 |

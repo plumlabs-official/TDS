@@ -93,6 +93,5 @@ const absoluteY = parent.y + child.y;
 
 | 문서 | 역할 |
 |------|------|
-| [../architecture/prd.md](../architecture/prd.md) | 제품 요구사항 |
 | [../architecture/lessons-learned.md](../architecture/lessons-learned.md) | 버그 패턴 |
 | [../../.claude/rules/naming-policy.md](../../.claude/rules/naming-policy.md) | 네이밍 정책 |

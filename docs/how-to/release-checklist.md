@@ -17,12 +17,6 @@
 - [ ] Auto Layout 기능 테스트
 - [ ] Cleanup 기능 테스트
 
-### Agent Server
-
-- [ ] 서버 재시작
-- [ ] Health check: `curl http://localhost:3001/health`
-- [ ] 각 엔드포인트 테스트
-
 ## 문서
 
 - [ ] CHANGELOG.md 업데이트
@@ -55,5 +49,5 @@ npm run build:all
 
 ## 관련 문서
 
-- [Quickstart](../tutorials/quickstart.md)
-- [CONTRIBUTING](../../CONTRIBUTING.md)
+- [네이밍 정책](../../.claude/rules/naming-policy.md)
+- [QA 루브릭](../../.claude/rules/qa-rubric.md)
