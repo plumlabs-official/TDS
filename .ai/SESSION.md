@@ -93,14 +93,19 @@
 | **Figma 라이브러리 CDS 리네이밍** | 사용자(재현) 직접 완료 |
 | **Claude Design × CDS 활용 전략 논의** | 3단계 비전 (하이파이 프로토타입 → 컴포넌트 이관 → Figma 의존도 0). 현재 1단계만 가능, 2-3은 Claude Design 진화 필요. 핸드오프 메커니즘 리서치 (URL → CLI 번들 생성). slot은 바이브코딩에 문제 없음 확인 |
 | **Claude Design 온보딩 시작** | CDS .fig 파일 업로드 + IBM Plex Sans KR 폰트 추가. 디자인 시스템 제너레이팅 진행 중 (결과 확인 대기) |
+| **Claude Design 요금 메커니즘 리서치** | researcher 에이전트. 구독 한도 기반(API 크레딧 불필요), 채팅/Code와 별도 쿼터, 공식 7일 주기. Extra Usage로 API 종량제 즉시 재개 가능. 리포트: `report/2026-04-20_claude-design-pricing-mechanism.md`. Project memory 저장 |
+| **Claude Design 파일 업로드 메커니즘 리서치** | researcher 에이전트. 추가 .fig 업로드 효과 제한적(공식 1급 입력 아님, multi-file 불안정). 이미지 레퍼런스 또는 Figma MCP 경로 권장. 리포트: `report/2026-04-20_claude-design-file-upload-mechanism.md` |
+| **크리에이터 큐레이션 홈 디자인 PRD v0.3** | 2026-04-15 미팅 §9 기반 초안. 핵심 제약 2개(별도 랜딩 페이지 없음 + 챌린지 정보 카드 노출 금지). v0.1→v0.2(에디터 제거 과해석)→v0.3(별도 랜딩 페이지 없음으로 재정의) 리비전. CDS 신규 컴포넌트 후보 3종(Creator Hero Card, Creator Discover Card, Creator Tier Badge). 리포트: `report/2026-04-20_creator-curation-home-prd.md` |
+| **Figma 레퍼런스 export 워크플로우** | REST API + Python 배치 스크립트(/tmp/figma_export.py). 40장 전체 → 10장 핵심 → 페이월 3장 + 할 일 1장 추가 = 최종 14장(라운지/피드/탐색 10, 페이월 3, 할 일 1). Claude Design 업로드 후 exports/ 정리 |
+| **P0 1~2 완료 처리** | 방장 일정 미정 초대 플로우 삭제 + 챌린지별 라운지 소식 잠금 표기 (사용자 완료) |
 
 ---
 
 ## 다음 TODO
 
-**P0 (프로덕트 디자인):**
-1. 방장이 아직 일정을 정하지 않은 상태로 초대받는 경우 플로우 삭제
-2. 라운지 소식 작성할 때, 챌린지별 소식은 잠금 상태(슈퍼 크리에이터 구독 유도) 표기
+**P0 (프로덕트 디자인):** ✅ 완료 (2026-04-20)
+1. ~~방장이 아직 일정을 정하지 않은 상태로 초대받는 경우 플로우 삭제~~ ✅
+2. ~~라운지 소식 작성할 때, 챌린지별 소식은 잠금 상태(슈퍼 크리에이터 구독 유도) 표기~~ ✅
 
 **P0 (CDS 컴포넌트):**
 3. Slot → Instance Swap 전환 (~25건, 단일 인스턴스 패턴)

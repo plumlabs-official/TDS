@@ -1,11 +1,21 @@
 ---
 HANDOFF: Claude -> 재현
+Date: 2026-04-20 15:35:13
+Project: ~/Project/CDS
+Agent: Claude
+Summary: Claude Design PoC 재점검. 요금 메커니즘 리서치(구독 한도, API 크레딧 불필요). 파일 업로드 메커니즘 리서치(추가 .fig 효과 제한적, 이미지 레퍼런스 또는 Figma MCP 권장). 크리에이터 큐레이션 홈 PRD v0.3 (별도 랜딩 페이지 없음 + 챌린지 정보 노출 금지). Figma 레퍼런스 14장 export 후 Claude Design 업로드.
+Next-TODO: (1) Claude Design 한도 복구 후 PRD §11 프롬프트 + 14장 레퍼런스로 PoC 재테스트 → §12 체크리스트 평가. (2) 결과 불만족 시 Figma MCP + Claude Code 경로 전환 검토. (3) P0-3 Slot → Instance Swap (~25건). (4) P0-4 Participant Card 분리.
+Commits: (이번 커밋)
+---
+
+---
+HANDOFF: Claude -> 재현
 Date: 2026-04-20 13:33:00
 Project: ~/Project/CDS
 Agent: 혼합
 Summary: Claude Design × CDS 활용 전략 논의 (3단계 비전). 핸드오프 메커니즘 리서치. CDS .fig 업로드로 Claude Design 온보딩 시작 (제너레이팅 대기 중). slot은 바이브코딩에 문제 없음 확인.
 Next-TODO: (1) Claude Design 디자인 시스템 생성 결과 확인 — CDS 컴포넌트 인식 수준 평가. (2) 결과 기반 활용 전략 구체화.
-Commits: (이번 커밋)
+Commits: d2794fb
 ---
 
 ---
