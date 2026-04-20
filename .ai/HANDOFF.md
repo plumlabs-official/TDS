@@ -1,5 +1,15 @@
 ---
 HANDOFF: Claude -> 정재
+Date: 2026-04-20 11:09:58
+Project: ~/Project/CDS
+Agent: Claude
+Summary: 프로젝트 구조 정리 — 60 files 삭제(-7337줄). research/, demo/, CONTRIBUTING, START-HERE, prd 등 제거. CONSTITUTION 트리 현실화 + 데드 링크 전수 정리. Team 2회+Coach+Director QA 5-Gate PASS. report/reviews/meetings는 audit trail 자산으로 유지 결정.
+Next-TODO: (1) P0 일감 재개 (초대 플로우 삭제, 소식 잠금 표기). (2) docs/cds-overview.md와 docs/architecture/overview.md 중복 검토 (선택).
+Commits: c8ce580
+---
+
+---
+HANDOFF: Claude -> 정재
 Date: 2026-04-20
 Project: ~/Project/CDS
 Agent: Claude

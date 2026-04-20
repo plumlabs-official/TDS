@@ -89,6 +89,7 @@
 |------|------|
 | **TDS → CDS 전면 리네이밍** | Team 모드 논의 → Plan 승인 → 6 Phase 실행. 85 files, 440+440 대칭 변경. Director QA 5-Gate PASS. GitHub 리포 리네임 완료 |
 | **Claude Design 출시 리서치** | /research 5에이전트 병렬, 14소스, 96% 신뢰도. 리포트: `report/2026-04-20_claude-design-launch-research.md` |
+| **프로젝트 구조 정리** | Team 2회 + Coach + Director QA 5-Gate PASS. research/, demo/, CONTRIBUTING, START-HERE, prd, shadcn-kit-comparison 삭제 (60 files, -7337줄). slot-analysis → report/로 이동. CONSTITUTION 트리 현실화 + 전체 데드 링크 정리. report/reviews/meetings는 audit trail 자산으로 유지 결정 |
 
 ---
 
