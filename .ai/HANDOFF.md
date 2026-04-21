@@ -1,20 +1,26 @@
 ---
 HANDOFF: Claude -> 재현 (다음 세션 재개용)
-Date: 2026-04-21 (Rev.18)
+Date: 2026-04-21 (Rev.18 + Team Plan)
 Project: ~/Project/CDS
 Agent: Claude
-Summary: CDS → Pencil **Rev.18 Avatar/Avatar Group Structural 재편 완료**. 사용자 요청 "pencil 관련 남은 작업 진행". Rev.17 신규 15종 screenshot 전수 렌더 검증 PASS(blank 0). Avatar Group 기존 KwYkH(Medium) CDS spec 불일치 발견 — 180×40/6children/gap -12 원본 vs 수정 전 fit_content/4children/gap -8. 동시에 F6A53 "Avatar Large"(56×56) 실제는 X Large 라벨 불일치. 수정: F6A53 rename "Avatar X Large" + KwYkH 6 children 재편 + 신규 Avatar 3종(2X Small 20/X Small 24/Large 48) + Avatar Group 4종(2X Small 85×20 gap -7 / X Small 94×24 gap -10 / Small 137×32 gap -11 / Large 218×48 gap -14). 각 6 avatars + 마지막 "+3" indicator. Variant Mapping Strategy 일관: Avatar simple scale → prop override, Avatar Group structural(내부 ref size 교체) → 분리. **148→155 reusables**. Step J 문서화(qa-tickets.md).
+Summary: 사용자 요청 "pencil 관련 남은 작업 진행" → Rev.17 렌더 검증 PASS + Rev.18 Avatar/Avatar Group structural 재편(148→155) + Layer 3 Visual Diff Agent PoC(PROTOCOL + 10 mapping + Tooltip 1회 실행으로 2 material diff catch) + 사용자 지적 "Segmented Progress 디자인이 완전치 않아" → CDS 원본 조회 후 구조 불일치 발견(5 단순 vs 원본 3 Segmentation bars + 4 emotion markers)·재구성 + Progress height 교정 → 사용자 제안 "전수 조사 /team 플래닝" → Team Meeting (Strategy Session · PL/DD/AI Ops/QA 4역할) Phase 1-5 Plan 도출 PASS 86.7/100. 누적 6 spec 불일치 사례 → L1+L2 inspection 자동화 + 155 전수 + Atomic/Molecule/Organism × structural/dim/label 분류 + Critical fix only + drift monitor.
 Next-TODO:
-  (1) **Layer 3 자동화** — rendered PNG diff 이미지 비교 에이전트 (Figma get_screenshot ↔ Pencil export_nodes → visual subagent 대조).
-  (2) **Drift Monitoring** — discovery.json 스냅샷 diff 알림.
-  (3) **Illust 업그레이드** — lucide placeholder → Figma REST API PNG export → Pencil image fill 교체.
-  (4) **프로덕트 작업 전환**: P0-3 Slot → Instance Swap (~25건), P0-4 Participant Card 분리.
-  (5) **Claude Design PoC 재테스트**.
-Commits: (이번 Rev.18 커밋)
+  (1) **Phase 1 착수** — `layer3/inspect.py` (use_figma + pencil.batch_get JSON diff). 1-2h.
+  (2) **Phase 2** — 155 전수 실행 → diff JSON. 1h 자동.
+  (3) **Phase 3** — Triage (Critical/Major/Minor × Atomic/Molecule/Organism). 1h.
+  (4) **Phase 4** — Critical fix only(~10건 추정, 분할 가능). 3-5h. Maker-Checker per fix.
+  (5) **Phase 5** — Re-verify + drift monitor. 30min.
+  (6) **보완 권고 반영**: Phase 4 fix 전 use-site grep + 영향 화면 spot screenshot; "~10건" 근거 문서화(Rev.7~18 누적 0.33건/rev × scaling).
+  (7) **Layer 3 자동 subagent 연결** — PoC는 육안 판정, 향후 subagent 호출 자동화.
+  (8) **Tooltip K3-1/K3-2 ticket resolve** (라벨 convention + Primary default style).
+  (9) **프로덕트 작업**: P0-3 Slot → Instance Swap (~25건), P0-4 Participant Card 분리.
+Commits: 0601d83 (Rev.18) + 이번 세션 기록 커밋
 Key-Files:
-  - Pencil: `exports/2026-04-20_cds-migration/pen/cds.pen` (155 reusables)
-  - Docs: `qa-tickets.md` Step J, `COVERAGE-REPORT.md` Variant Mapping Strategy
-  - 백업: `cds.pen.bak-rev18`
+  - Pencil: `exports/2026-04-20_cds-migration/pen/cds.pen` (155 reusables, Segmented Progress 재구성 포함)
+  - Docs: `qa-tickets.md` Step J + K, `layer3/PROTOCOL.md`, `layer3/mapping.sample.json`, `COVERAGE-REPORT.md`
+  - Meeting: `meetings/2026-04-21_pencil-cds-spec-audit-planning.md`
+  - QA inbox: `.ai/qa-inbox/2026-04-21_pencil-cds-spec-audit.md`
+  - 백업: `cds.pen.bak-rev18` (155 reusables 시점 스냅샷)
 ---
 
 ---
