@@ -37,3 +37,7 @@ packages/agent-server/data/naming-patterns.json
 
 # Temporary export assets (Claude Design / Pencil references, migration artifacts)
 exports/
+
+# Ralph autonomous loop artifacts (local only)
+.ralph/
+.ralphrc
