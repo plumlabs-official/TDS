@@ -1,0 +1,94 @@
+{
+  "_meta": {
+    "protocol": "PROTOCOL.md",
+    "cdsFileKey": "H36eNEd6o7ZTv4R7VcyLf2",
+    "pencilFilePath": "exports/2026-04-20_cds-migration/pen/cds.pen",
+    "scope": "Rev.18 PoC — Rev.17/Rev.18 신규 중심 10종 샘플",
+    "tolerancePolicy": {
+      "size_px": 2,
+      "padding_px": 2,
+      "description": "수치 차이 ±2px 이내는 minor 감점만, PASS 유지"
+    }
+  },
+  "components": [
+    {
+      "id": "tooltip-top-primary",
+      "name": "Tooltip Top / Style=Primary",
+      "figmaNodeId": "20098:1079",
+      "pencilNodeId": "DSVOy",
+      "rev": "Rev.17"
+    },
+    {
+      "id": "tooltip-bottom-primary",
+      "name": "Tooltip Bottom / Style=Primary",
+      "figmaNodeId": "20098:1083",
+      "pencilNodeId": "4RL2h",
+      "rev": "Rev.17"
+    },
+    {
+      "id": "tooltip-left-primary",
+      "name": "Tooltip Left / Style=Primary",
+      "figmaNodeId": "20098:1091",
+      "pencilNodeId": "hqq2X",
+      "rev": "Rev.17"
+    },
+    {
+      "id": "tooltip-right-primary",
+      "name": "Tooltip Right / Style=Primary",
+      "figmaNodeId": "20098:1087",
+      "pencilNodeId": "Wu0fc",
+      "rev": "Rev.17"
+    },
+    {
+      "id": "avatar-group-2xs",
+      "name": "Avatar Group / Size=2X Small",
+      "figmaNodeId": null,
+      "figmaComponentKey": "2e51c2f65048f8ed5cfb7f6a7c4519f2b7896109",
+      "figmaVariant": "Size=2X Small",
+      "pencilNodeId": "XS2C1",
+      "rev": "Rev.18",
+      "note": "figmaNodeId 채우려면 next run에서 componentSet children resolve 필요"
+    },
+    {
+      "id": "avatar-group-large",
+      "name": "Avatar Group / Size=Large",
+      "figmaNodeId": null,
+      "figmaComponentKey": "2e51c2f65048f8ed5cfb7f6a7c4519f2b7896109",
+      "figmaVariant": "Size=Large",
+      "pencilNodeId": "tJN2S",
+      "rev": "Rev.18"
+    },
+    {
+      "id": "footer-two-buttons",
+      "name": "Footer / Two Buttons",
+      "figmaNodeId": null,
+      "figmaSearchQuery": "Footer",
+      "pencilNodeId": "HC0Uh",
+      "rev": "Rev.17"
+    },
+    {
+      "id": "input-group-pill",
+      "name": "Input Group / Pill",
+      "figmaNodeId": null,
+      "figmaSearchQuery": "Input Group",
+      "pencilNodeId": "YfKtO",
+      "rev": "Rev.17"
+    },
+    {
+      "id": "dots-active",
+      "name": "Dots / Active",
+      "figmaNodeId": null,
+      "figmaSearchQuery": "Dots",
+      "pencilNodeId": "Oh3ER",
+      "rev": "Rev.17"
+    },
+    {
+      "id": "switch-card",
+      "name": "Switch / Card type",
+      "figmaNodeId": null,
+      "figmaSearchQuery": "Switch",
+      "pencilNodeId": "X9Wuc",
+      "rev": "Rev.17"
+    }
+  ]
+}

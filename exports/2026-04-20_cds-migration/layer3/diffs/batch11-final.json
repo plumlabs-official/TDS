@@ -1,0 +1,21 @@
+{
+  "_meta":{"batch":"11 (Final — Bell/Featured Icon 2/iOS 2/Keyboard/Page Indicator/Separator/Status/Challenge Thumbnail Group 5/Cover Pay/Creator Card Compact)","executedAt":"2026-04-21","passCount":7,"minorCount":2,"majorCount":6,"acceptedCount":1},
+  "results":[
+    {"pencilId":"l8Rwc","verdict":"PASS","note":"Bell Image 84×84"},
+    {"pencilId":"9zDUt","verdict":"PASS","note":"Featured Icon Circle Large 64×64 cr pill"},
+    {"pencilId":"wRyh9","verdict":"MAJOR","diffs":[{"dim":"width","figma":64,"pencil":48},{"dim":"cornerRadius","figma":9999,"pencil":8}],"note":"Featured Icon Square Medium — CDS Square Medium은 64×64 cr 9999 (실제 round-square), Pencil 48×48 cr 8 (작고 less rounded). variant scale 의심"},
+    {"pencilId":"vt3QU","verdict":"PASS","note":"iOS StatusBar Style=Light 매칭"},
+    {"pencilId":"70K2Q","verdict":"PASS","note":"iOS HomeIndicator 매칭"},
+    {"pencilId":"jw16H","verdict":"PASS","note":"Keyboard placeholder (iOS native 권장)"},
+    {"pencilId":"SymlN","verdict":"MINOR","diffs":[{"dim":"childCount","figma":4,"pencil":1}],"note":"Page Indicator — Pencil은 Dots ref, CDS 4 dots inline"},
+    {"pencilId":"iK2eK","verdict":"PASS","note":"Separator 315×10"},
+    {"pencilId":"LWBRD","verdict":"MINOR","diffs":[{"dim":"childCount","figma":3,"pencil":2}],"note":"Status — CDS 3 (icon+dot+text?), Pencil 2 (dot+text)"},
+    {"pencilId":"uhRL3","verdict":"MAJOR","diffs":[{"dim":"gap","figma":-26,"pencil":-12}],"note":"Challenge Thumbnail Group Medium — overlap 너무 작음. Avatar Group fix와 동일 패턴 필요"},
+    {"pencilId":"qPbQZ","verdict":"MAJOR","diffs":[{"dim":"width/height","figma":"64×24","pencil":"16×16"},{"dim":"childCount","figma":6,"pencil":3}],"note":"CT Group XS — 사이즈 + child count 모두 다름"},
+    {"pencilId":"Wp4Gz","verdict":"MAJOR","diffs":[{"dim":"width/height","figma":"92×32","pencil":"28×28"},{"dim":"childCount","figma":6,"pencil":3}],"note":"CT Group S — 동일 패턴"},
+    {"pencilId":"7SE3M","verdict":"MAJOR","diffs":[{"dim":"width/height","figma":"110×40","pencil":"40×40"},{"dim":"childCount","figma":6,"pencil":3}],"note":"CT Group M"},
+    {"pencilId":"pX06f","verdict":"MAJOR","diffs":[{"dim":"width/height","figma":"138×48","pencil":"56×56"},{"dim":"childCount","figma":6,"pencil":3}],"note":"CT Group L"},
+    {"pencilId":"qhKCi","verdict":"PASS","note":"Cover Pay Header 503"},
+    {"pencilId":"iXk8R","verdict":"ACCEPTED","note":"Creator Card Compact — Pencil ancillary, CDS 비소속"}
+  ]
+}

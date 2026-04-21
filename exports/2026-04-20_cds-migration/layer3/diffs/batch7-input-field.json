@@ -1,0 +1,20 @@
+{
+  "_meta":{"batch":"7 (Input Group/OTP/Field/Breadcrumb/Calendar Block)","executedAt":"2026-04-21","passCount":11,"minorCount":4,"majorCount":0},
+  "results":[
+    {"pencilId":"4JeWv","verdict":"PASS","diffs":[{"dim":"childCount","figma":5,"pencil":4}],"note":"286×40 match"},
+    {"pencilId":"qIFqk","verdict":"PASS","note":"Addon Block 280×46"},
+    {"pencilId":"CxAC4","verdict":"PASS","note":"Addon Inline 16×16 pill"},
+    {"pencilId":"rrvzF","verdict":"MINOR","diffs":[{"dim":"childCount","figma":3,"pencil":1}],"note":"Textarea"},
+    {"pencilId":"DROr4","verdict":"PASS","note":"Bare 286×48"},
+    {"pencilId":"YfKtO","verdict":"PASS","note":"Pill 286×40 cr 9999"},
+    {"pencilId":"0SJ1R","verdict":"PASS","note":"OTP row"},
+    {"pencilId":"kaawD","verdict":"PASS","note":"OTP Field 24×24 pill"},
+    {"pencilId":"vI713","verdict":"PASS","note":"Field 3 children (Label/Input/Help)"},
+    {"pencilId":"Q9HjO","verdict":"PASS","note":"Field Legend"},
+    {"pencilId":"FYyEb","verdict":"MINOR","diffs":[{"dim":"childCount","figma":9,"pencil":2}],"note":"Fieldset — Pencil simplified (Label + Field ref)"},
+    {"pencilId":"6YL6M","verdict":"PASS","diffs":[{"dim":"gap","figma":10,"pencil":6}],"note":"Form Message"},
+    {"pencilId":"jhTLl","verdict":"MINOR","diffs":[{"dim":"gap","figma":10,"pencil":4},{"dim":"childCount","figma":13,"pencil":5}],"note":"Breadcrumb — Pencil shorter path (3 items vs 6)"},
+    {"pencilId":"kSXCK","verdict":"PASS","note":"Breadcrumb Item"},
+    {"pencilId":"idVNI","verdict":"MINOR","diffs":[{"dim":"childCount","figma":3,"pencil":2}],"note":"Calendar Block 2 slots vs 3"}
+  ]
+}

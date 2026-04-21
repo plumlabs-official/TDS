@@ -1,0 +1,20 @@
+{
+  "_meta":{"batch":"6 (Checkbox/Switch/Combobox/Date/Dropdown/Select)","executedAt":"2026-04-21","passCount":6,"minorCount":8,"majorCount":1},
+  "results":[
+    {"pencilId":"gnNok","verdict":"PASS","note":"Checkbox 구조 매칭 (Box 20×20 primary + Label)"},
+    {"pencilId":"FwMJ3","verdict":"MINOR","diffs":[{"dim":"childCount","figma":8,"pencil":3}],"note":"Group sample count"},
+    {"pencilId":"r2dVq","verdict":"PASS","note":"Checkbox Toggle 20×20 pill border"},
+    {"pencilId":"RmT6o","verdict":"MAJOR","diffs":[{"dim":"size","figma":"411×42 (row with label)","pencil":"44×24 (toggle only)","severity":"major"}],"note":"CDS 'Switch' set default가 label 포함 row를 감쌈. Pencil은 pure toggle로 rebuilding — CDS의 '.Switch Toggle Core'에 해당. 라벨 교차 매핑 필요"},
+    {"pencilId":"1YbCR","verdict":"PASS","note":"Switch Toggle 40×24 matches"},
+    {"pencilId":"X9Wuc","verdict":"PASS","note":"Switch Card 411×74 padding 16"},
+    {"pencilId":"VXZeR","verdict":"MINOR","diffs":[{"dim":"childCount","figma":3,"pencil":2}],"note":"Pencil uses Label + Trigger. CDS 3 children"},
+    {"pencilId":"VQx3E","verdict":"MINOR","diffs":[{"dim":"childCount","figma":4,"pencil":3}],"note":"Menu sample item count"},
+    {"pencilId":"ErIi3","verdict":"MINOR","diffs":[{"dim":"childCount","figma":3,"pencil":2}],"note":"Pencil Label+Trigger, CDS 3 children"},
+    {"pencilId":"MFjKg","verdict":"PASS","note":"Dropdown Menu 220 vs CDS 224 minor"},
+    {"pencilId":"P51Wi","verdict":"MINOR","diffs":[{"dim":"childCount","figma":3,"pencil":2}],"note":"Trigger label+chevron vs label only"},
+    {"pencilId":"ssooQ","verdict":"MINOR","diffs":[{"dim":"childCount","figma":3,"pencil":2}],"note":"Select Label+Trigger"},
+    {"pencilId":"2Sa6W","verdict":"MINOR","diffs":[{"dim":"childCount","figma":5,"pencil":3}],"note":"Pencil up/section/down, CDS 5"},
+    {"pencilId":"4A39s","verdict":"MINOR","diffs":[{"dim":"childCount","figma":4,"pencil":2}],"note":"Item icon/label/trailing slot"},
+    {"pencilId":"23JJY","verdict":"PASS","note":"Select Menu Label matches"}
+  ]
+}

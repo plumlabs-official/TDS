@@ -1,0 +1,29 @@
+{
+  "timestamp": "2026-04-21",
+  "source_file": "t0SK7XaNqw8qIY3PpZw4s7 (Challify product)",
+  "total_unique_components_in_use": 240,
+  "top_40_components_by_usage": [
+    {"name":"Notification Badge","count":1290},
+    {"name":"Button","count":1258},
+    {"name":"Icon Scaler","count":1071},
+    {"name":"Avatar","count":898},
+    {"name":"Kbd","count":560},
+    {"name":"Badge","count":447},
+    {"name":"Separator","count":440},
+    {"name":"TabsTrigger Tag","count":423},
+    {"name":"Input Group Addon Inline","count":391},
+    {"name":"Coin","count":169},
+    {"name":"TabsTrigger Section","count":138},
+    {"name":"Message","count":133},
+    {"name":"Messaging Reaction","count":132},
+    {"name":"Challenge Thumbnail","count":120},
+    {"name":"iOS StatusBar","count":115},
+    {"name":"Navbar","count":112},
+    {"name":"Dots","count":108},
+    {"name":"iOS HomeIndicator","count":108},
+    {"name":"Status","count":96},
+    {"name":"Select Menu Item","count":96},
+    {"name":"TabBar Icon","count":95}
+  ],
+  "note": "Lucide icon and Icon/Color sub-components excluded from top_40 list"
+}

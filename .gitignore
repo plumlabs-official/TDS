@@ -35,8 +35,14 @@ packages/agent-server/data/naming-patterns.json
 # Figma local exports
 *.fig
 
-# Temporary export assets (Claude Design / Pencil references, migration artifacts)
-exports/
+# Exports: 문서/메타/활성 .pen만 tracking (대용량/백업 제외)
+exports/**/images/
+exports/**/images.bak-*/
+exports/**/web-standalone/
+exports/**/*.png
+exports/**/*.jpg
+exports/**/*.jpeg
+exports/**/*.bak-*
 
 # Ralph autonomous loop artifacts (local only)
 .ralph/

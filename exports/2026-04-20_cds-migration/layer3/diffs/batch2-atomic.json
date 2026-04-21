@@ -1,0 +1,30 @@
+{
+  "_meta": {
+    "batch": "2 (Atomic #2)",
+    "scope": "Challenge Thumbnail 3 + Badge family 7 + Fire/Coin/Notification/Creator Badge 4",
+    "executedAt": "2026-04-21",
+    "passCount": 7,
+    "minorCount": 2,
+    "majorCount": 2,
+    "criticalCount": 1
+  },
+  "results": [
+    {"pencilId":"MiRzL","name":"Challenge Thumbnail Small","verdict":"PASS","diffs":[{"dim":"cornerRadius","figma":6,"pencil":4,"severity":"minor"}],"note":"dim 매칭 32×32"},
+    {"pencilId":"1DpZI","name":"Challenge Thumbnail Medium","verdict":"MAJOR","diffs":[{"dim":"width","figma":40,"pencil":64,"delta":"+60%","severity":"major"},{"dim":"height","figma":40,"pencil":64,"delta":"+60%","severity":"major"}],"note":"라벨 불일치 — Pencil 'Medium' 실제 CDS 'Size=2X-Large' 매칭. F6A53 Avatar X Large 같은 패턴"},
+    {"pencilId":"gsauZ","name":"Challenge Thumbnail Large","verdict":"MAJOR","diffs":[{"dim":"width","figma":48,"pencil":128,"delta":"+166%","severity":"major"}],"note":"라벨 불일치 — Pencil 'Large' 실제 CDS 'Size=5X-Large' 매칭"},
+    {"pencilId":"Zp365","name":"Challenge Mission Card Thumbnail","verdict":"PASS","diffs":[],"note":"Single component, 423×249"},
+
+    {"pencilId":"quH1j","name":"Badge","verdict":"PASS","diffs":[{"dim":"childCount","figma":3,"pencil":1,"severity":"minor","reason":"optional slot flatten"}],"note":"Type=Default, Number=False 매칭. fill/padding/corner 일치"},
+    {"pencilId":"p2TeB","name":"Badge Outline","verdict":"PASS","diffs":[],"note":"Type=Outline 매칭"},
+    {"pencilId":"SQohC","name":"Badge Secondary","verdict":"PASS","diffs":[],"note":"Type=Secondary 매칭"},
+    {"pencilId":"nnrXX","name":"Badge Accent","verdict":"ACCEPTED","diffs":[{"dim":"variant","figma":"NOT in CDS","pencil":"Accent","severity":"critical","reason":"CDS Badge 10 variants에 Accent 없음 (Default/Ghost/Secondary/Outline/Destructive × Number False/True + Default Number=Ghost)"}],"note":"Pencil 임의 추가 variant. CDS 원본에 추가 요청 or Pencil 제거 or ancillary 처리 필요"},
+    {"pencilId":"4wJtS","name":"Badge Destructive","verdict":"PASS","diffs":[],"note":"Type=Destructive 매칭"},
+    {"pencilId":"EPnHc","name":"Badge Number","verdict":"PASS","diffs":[],"note":"Type=Default, Number=True 매칭 (pill shape)"},
+    {"pencilId":"Ti74H","name":"Label","verdict":"CRITICAL","diffs":[{"dim":"component","figma":"Badge (추정)","pencil":"Form Label","severity":"critical","reason":"mapping 오분류 — Pencil Ti74H는 Form Label(text+required asterisk). CDS Badge의 Label variant 아님. 실제 CDS에 별도 Label 컴포넌트 있는지 확인 필요"}],"note":"mapping.full.json 수정 필요 — cdsKey를 별도 Label 컴포넌트 또는 null(form primitive) 로"},
+
+    {"pencilId":"wvjOp","name":"Creator Badge","verdict":"PASS","diffs":[{"dim":"fill","figma":"(varies Grade)","pencil":"#7c3aed hardcoded","severity":"minor","reason":"토큰 대신 hardcode"}],"note":"Grade=Pro/Lite 중 Pencil은 Pro hardcoded"},
+    {"pencilId":"5TSjN","name":"Fire","verdict":"PASS","diffs":[],"note":"lucide flame icon, orange #ff6600"},
+    {"pencilId":"JQJLe","name":"Coin","verdict":"PASS","diffs":[],"note":"Scale=24 variant. amber #fbbf24 hardcoded (minor)"},
+    {"pencilId":"YewQW","name":"Notification Badge","verdict":"PASS","diffs":[],"note":"16×16 pill, destructive fill, number text"}
+  ]
+}

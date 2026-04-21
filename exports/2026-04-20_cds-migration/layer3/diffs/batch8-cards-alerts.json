@@ -1,0 +1,18 @@
+{
+  "_meta":{"batch":"8 (Participant 6 + Challenge Mission 3 + Alert 4)","executedAt":"2026-04-21","passCount":8,"minorCount":3,"acceptedCount":2,"note":"6sR1L Card Host Info Figma key invalid — CDS private component. Acceptable mapping uncertainty"},
+  "results":[
+    {"pencilId":"nwAys","verdict":"PASS","note":"Pencil 168 vertical cornerRadius 12 padding space-4 3 children (Header/Progress ref/Footer). CDS variant 'Scale=1:1 State=Not Authed Self=Other' — composition 매칭"},
+    {"pencilId":"nZEmh","verdict":"MINOR","diffs":[{"dim":"childCount","note":"Pencil 3 (Image/Profile/Desc), CDS Participant Card Authed 아마 Image slot만"}],"note":"Authed 1:1, 167.5 vertical"},
+    {"pencilId":"mfzeR","verdict":"PASS","note":"Authed 4:5, 167.5×(209.4 image)"},
+    {"pencilId":"2ZPTR","verdict":"PASS","note":"Authed 9:16, 167.5×(297.8 image)"},
+    {"pencilId":"4Hyoh","verdict":"PASS","note":"Left Column — 3 cards stacked (different heights for masonry)"},
+    {"pencilId":"ze5tv","verdict":"PASS","note":"Right Column — masonry inverse heights"},
+    {"pencilId":"SFtO6","verdict":"PASS","note":"Challenge Mission Card State=Ready 매칭. 344 vertical thumbnail+title+CTA"},
+    {"pencilId":"6sR1L","verdict":"ACCEPTED","note":"Card Host Info — CDS private key invalid. Rev.15+ 통합/내부화 이력. Pencil maintains as reusable"},
+    {"pencilId":"DHyHK","verdict":"ACCEPTED","note":"Card Meta Row — composition (badge/crown/timer). CDS 단독 매핑 없음"},
+    {"pencilId":"uzlqg","verdict":"PASS","note":"Alert Variant=Default 매칭 (secondary fill, info icon + body)"},
+    {"pencilId":"AAsfd","verdict":"PASS","note":"Alert Destructive 매칭"},
+    {"pencilId":"FZzbw","verdict":"PASS","note":"Alert Primary 매칭"},
+    {"pencilId":"pSekL","verdict":"MINOR","diffs":[{"dim":"childCount","note":"alertDefDot extra ellipse"}],"note":"Alert With Avatar"}
+  ]
+}

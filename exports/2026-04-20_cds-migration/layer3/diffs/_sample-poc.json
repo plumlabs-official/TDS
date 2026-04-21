@@ -1,0 +1,58 @@
+{
+  "_meta": {
+    "phase": "Phase 1 PoC — 3 samples, manual compare",
+    "executedAt": "2026-04-21",
+    "tolerance": { "size": 2, "padding": 2, "gap": 2 }
+  },
+  "results": [
+    {
+      "pencilId": "SfBW1",
+      "pencilName": "Avatar",
+      "cdsVariant": "Type=Fallback, Size=Medium",
+      "verdict": "MINOR",
+      "diffs": [
+        {
+          "dimension": "childCount",
+          "figma": 3,
+          "pencil": 1,
+          "severity": "minor",
+          "reason": "Figma optional slot flatten (hidden icon/badge), Pencil flatten to single text. Architectural divergence per protocol."
+        }
+      ],
+      "checkedFigma": { "width": 40, "height": 40, "layout": "NONE", "cornerRadius": 9999, "fill": "#00CC61" },
+      "checkedPencil": { "width": 40, "height": 40, "layout": "horizontal (alignItems+justifyContent)", "cornerRadius": 9999, "fill": "#00cc61" }
+    },
+    {
+      "pencilId": "KwYkH",
+      "pencilName": "Avatar Group Medium",
+      "cdsVariant": "Size=Medium",
+      "verdict": "PASS",
+      "diffs": [],
+      "note": "Rev.18 fix 검증 성공 — 180×40, 6 children, gap -12 일치"
+    },
+    {
+      "pencilId": "quH1j",
+      "pencilName": "Badge",
+      "cdsVariant": "Type=Default, Number=False",
+      "verdict": "MINOR",
+      "diffs": [
+        {
+          "dimension": "childCount",
+          "figma": 3,
+          "pencil": 1,
+          "severity": "minor",
+          "reason": "Figma optional slot (icon left/right + text), Pencil text only. Architectural divergence."
+        },
+        {
+          "dimension": "width",
+          "figma": 51,
+          "pencil": "fit_content (text dependent)",
+          "severity": "minor",
+          "reason": "Pencil uses fit_content (valid design choice). Figma variant hardcodes 51 based on 'NEW' text."
+        }
+      ],
+      "checkedFigma": { "width": 51, "height": 24, "layout": "HORIZONTAL", "gap": 4, "padding": [2,8,2,8], "cornerRadius": 8, "fill": "#00CC61" },
+      "checkedPencil": { "height": 24, "layout": "horizontal", "gap": 4, "padding": [2,8], "cornerRadius": 8, "fill": "#00cc61" }
+    }
+  ]
+}

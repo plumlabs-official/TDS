@@ -1,0 +1,30 @@
+{
+  "_meta":{"batch":"9-10 combined (Profile/Invite/Cards/Lounge/Item/Accordion/Message/Reaction/Nudge/Placeholder/Illust/Dots/Kbd)","executedAt":"2026-04-21","passCount":16,"minorCount":7,"majorCount":2},
+  "results":[
+    {"pencilId":"o3gN4","verdict":"MINOR","diffs":[{"dim":"childCount","figma":3,"pencil":2}],"note":"Profile Card Type=Default"},
+    {"pencilId":"2DWzZ","verdict":"PASS","note":"Invite Profile Card vertical 90×124"},
+    {"pencilId":"Wbz1S","verdict":"PASS","note":"Challenge List Card 537×755"},
+    {"pencilId":"IPV3S","verdict":"MINOR","diffs":[{"dim":"childCount","figma":1,"pencil":2}],"note":"Challenge Mini Card"},
+    {"pencilId":"ohHDE","verdict":"PASS","note":"Pro Creator Card 160×213"},
+    {"pencilId":"Pzopm","verdict":"MINOR","diffs":[{"dim":"width","figma":531,"pencil":360}],"note":"Lounge Card width diff"},
+    {"pencilId":"zyEbi","verdict":"MAJOR","diffs":[{"dim":"width","figma":35,"pencil":120},{"dim":"childCount","figma":1,"pencil":2}],"note":"Lounge Card Addon Block — 큰 width diff"},
+    {"pencilId":"8dk9T","verdict":"PASS","note":"Item 383×58 horizontal"},
+    {"pencilId":"lqsg4","verdict":"MINOR","diffs":[{"dim":"childCount","figma":9,"pencil":3}],"note":"Accordion sample count"},
+    {"pencilId":"dNqC0","verdict":"PASS","note":"Accordion Item 370×56"},
+    {"pencilId":"92QWU","verdict":"MINOR","diffs":[{"dim":"gap","figma":-8,"pencil":8}],"note":"Message Received"},
+    {"pencilId":"racHP","verdict":"MINOR","diffs":[{"dim":"gap","figma":-8,"pencil":8},{"dim":"childCount","figma":2,"pencil":1}],"note":"Message Sent"},
+    {"pencilId":"etzPD","verdict":"MINOR","diffs":[{"dim":"width","figma":43,"pencil":52}],"note":"Messaging Reaction"},
+    {"pencilId":"rQzLg","verdict":"PASS","note":"Nudge 24×24"},
+    {"pencilId":"BxOv9","verdict":"PASS","note":"Placeholder Logo 239×115"},
+    {"pencilId":"kU7Eg","verdict":"PASS","note":"Placeholder Creator 239×115"},
+    {"pencilId":"6HCOq","verdict":"PASS","note":"Placeholder Host 143×69"},
+    {"pencilId":"A8ARz","verdict":"PASS","note":"Character Illust 374×254"},
+    {"pencilId":"xdG5s","verdict":"PASS","note":"Contact Illust 300×330"},
+    {"pencilId":"HuL9C","verdict":"PASS","note":"Gift Illust 362×320"},
+    {"pencilId":"6OdJl","verdict":"PASS","note":"Lounge Badge Illust 345×370"},
+    {"pencilId":"ZUXhF","verdict":"PASS","note":"Ticket Item Illust 63×53"},
+    {"pencilId":"shXsW","verdict":"MAJOR","diffs":[{"dim":"childCount","figma":1,"pencil":3}],"note":"Dots — CDS single dot variant vs Pencil composition (3 dots). 구조 다름"},
+    {"pencilId":"88NGD","verdict":"MINOR","diffs":[{"dim":"width","figma":20,"pencil":32}],"note":"Kbd"},
+    {"pencilId":"wCxdu","verdict":"PASS","note":"Kbd Group 86×20"}
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "_meta":{"batch":"5 (Footer + Tabs + TabBar)","executedAt":"2026-04-21","passCount":7,"minorCount":5,"majorCount":2,"acceptedCount":1},
+  "results":[
+    {"pencilId":"lTJeL","verdict":"PASS","note":"Footer Type=Button right 매칭 348×68"},
+    {"pencilId":"HC0Uh","verdict":"PASS","note":"Two buttons 매칭 348×68"},
+    {"pencilId":"pPhdJ","verdict":"PASS","note":"Full width 매칭 348×80 vertical"},
+    {"pencilId":"3sQw9","verdict":"PASS","note":"Two FW Stacked 매칭 348×144"},
+    {"pencilId":"nGFfv","verdict":"MINOR","diffs":[{"dim":"padding","figma":"[16,16]","pencil":"[16,24]","severity":"minor"},{"dim":"childCount","figma":1,"pencil":2}],"note":"Alarm: padding H 16 vs 24"},
+    {"pencilId":"Pey6H","verdict":"MAJOR","diffs":[{"dim":"padding","figma":"[16,16]","pencil":"[16,24]"},{"dim":"gap","figma":12,"pencil":16},{"dim":"childCount","figma":4,"pencil":2}],"note":"Calendar: Figma 4 children (title+3 btns?), Pencil 2 only"},
+    {"pencilId":"jxJ1s","verdict":"PASS","note":"TabsTrigger Section 126×56 padding [8,16]"},
+    {"pencilId":"2VIG0","verdict":"MINOR","diffs":[{"dim":"width","figma":63,"pencil":80}],"note":"Tag width diff — Pencil fit_content friendly"},
+    {"pencilId":"Cbxgs","verdict":"MINOR","diffs":[{"dim":"childCount","figma":2,"pencil":1}],"note":"Toggle trigger childCount minor"},
+    {"pencilId":"fmFai","verdict":"PASS","note":"TabsList Section 375×56 vertical 2 (TriggerList + separator)"},
+    {"pencilId":"RbjCn","verdict":"MAJOR","diffs":[{"dim":"layout","figma":"NONE","pencil":"horizontal (implicit)","severity":"major"}],"note":"CDS absolute positioning vs Pencil flex"},
+    {"pencilId":"bfmP6","verdict":"PASS","note":"TabsList Toggle pill"},
+    {"pencilId":"iRUeV","verdict":"MINOR","diffs":[{"dim":"childCount","figma":2,"pencil":1}],"note":"CDS TabBar Icon 아마 icon + label (2), Pencil icon only"},
+    {"pencilId":"KYKIh","verdict":"MINOR","diffs":[{"dim":"layout","figma":"GRID","pencil":"horizontal space_around"}],"note":"Pencil의 flex space_around는 CDS GRID 5col 대체 가능"},
+    {"pencilId":"EKcrm","verdict":"ACCEPTED","note":"Pencil Tabs composition (CDS 단독 Tabs set 없음)"}
+  ]
+}

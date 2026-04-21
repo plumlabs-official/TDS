@@ -1,0 +1,23 @@
+{
+  "_meta": {
+    "batch": "3 (Atomic #3)",
+    "scope": "Button family 5 + Purchase Button + Input Group Button + Radio Group + Textarea + Input",
+    "executedAt": "2026-04-21",
+    "passCount": 8,
+    "minorCount": 2,
+    "criticalCount": 0
+  },
+  "_keyFinding": "CDS Button naming: 'Type=Default'가 실제로 초록 primary fill, 'Type=Inverted'가 흰색. mapping.full.json Button 항목의 'Variant=Filled'를 'Type=Default'로 수정 필요.",
+  "results": [
+    {"pencilId":"V9iZj","name":"Button-Filled","verdict":"PASS","diffs":[],"note":"CDS Type=Default 매칭. 44 h, pill, #00CC61, padding [8,16]"},
+    {"pencilId":"YCwzB","name":"Button-Outline","verdict":"PASS","diffs":[{"dim":"fill","figma":"(none)","pencil":"$--background","severity":"minor","reason":"CDS transparent, Pencil explicit bg. 실질 동일"}],"note":"Type=Outline 매칭"},
+    {"pencilId":"Y0u3G","name":"Button-Ghost","verdict":"PASS","diffs":[],"note":"Type=Ghost 매칭 (transparent fill)"},
+    {"pencilId":"m6wCU","name":"Button-Link","verdict":"PASS","diffs":[],"note":"Type=Link 매칭 (text primary color, transparent bg)"},
+    {"pencilId":"RBJ1k","name":"Button-Icon","verdict":"PASS","diffs":[],"note":"Type=Default Size=Icon 매칭 (36×36 pill)"},
+    {"pencilId":"1r47y","name":"Purchase Button","verdict":"PASS","diffs":[{"dim":"childCount","figma":6,"pencil":3,"severity":"minor","reason":"Figma 6 slots (icon L/R + extras), Pencil price|separator|label 3. visibleChildCount 2 vs Pencil 3 slight divergence"}],"note":"Type=Default State=Enabled 매칭. 56 h, pill, primary"},
+    {"pencilId":"4Zfh9","name":"Input Group Button","verdict":"MINOR","diffs":[{"dim":"height","figma":24,"pencil":28,"delta":4,"severity":"minor","reason":"Pencil Size unclear — CDS X-Small=24, 매핑 불확실"},{"dim":"variant","note":"Pencil cdsVariant 'Default' → 실제 Input Group Button 132 variants 중 어느 것인지 확인 필요"}],"note":"mapping 업데이트 필요"},
+    {"pencilId":"SGV94","name":"Radio Group","verdict":"PASS","diffs":[{"dim":"childCount","figma":6,"pencil":2,"severity":"minor","reason":"Pencil sample 2개, CDS vertical variant 6개 — 사용 시 fill_container"}],"note":"Orientation=Vertical 매칭, gap 12, width 219"},
+    {"pencilId":"gt47K","name":"Textarea","verdict":"PASS","diffs":[],"note":"State=Ghost 매칭, 384×126, cornerRadius 6, padding 12"},
+    {"pencilId":"uQsLv","name":"Input","verdict":"PASS","diffs":[{"dim":"width","figma":199,"pencil":280,"severity":"minor","reason":"dim difference but fill_container friendly"}],"note":"Type=Text State=Enabled 매칭"}
+  ]
+}

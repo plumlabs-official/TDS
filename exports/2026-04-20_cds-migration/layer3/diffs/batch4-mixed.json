@@ -1,0 +1,29 @@
+{
+  "_meta": {
+    "batch": "4 (Progress + Tooltip + Card + Headers + Navbar)",
+    "executedAt": "2026-04-21",
+    "passCount": 5,
+    "minorCount": 3,
+    "majorCount": 3,
+    "criticalCount": 2
+  },
+  "results": [
+    {"pencilId":"I7c2F","name":"Progress","verdict":"PASS","diffs":[],"note":"Rev.18 Fill h 교정 검증. 400×6 pill $--input + $--primary fill rect"},
+    {"pencilId":"cz8lS","name":"Challenge Day Progress","verdict":"PASS","diffs":[],"note":"450×52 vertical gap 8, 2 children"},
+    {"pencilId":"IeMdq","name":"Circle Progress","verdict":"MAJOR","diffs":[{"dim":"width/height","figma":300,"pencil":120,"severity":"major","reason":"60% size divergence"},{"dim":"childCount","figma":2,"pencil":3,"reason":"Pencil extra center text '35%'"}],"note":"Pencil은 사용 가능성 높은 smaller scale + text 포함. CDS 원본보다 유용한 dynamic variant"},
+    {"pencilId":"5c6L1","name":"Segmented Progress","verdict":"PASS","diffs":[],"note":"Rev.18 재구성 검증. 400×20 NONE, 2 slots (bar + point)"},
+    {"pencilId":"HrIXe","name":"Tooltip","verdict":"MAJOR","diffs":[{"dim":"caret","figma":"present (visible)","pencil":"missing","severity":"major","reason":"CDS Primary variant의 caret이 Pencil 기본 Tooltip에 없음. Pencil은 4 방향 별도 reusable만"}],"note":"K3-1 ticket: Pencil 기본 HrIXe = caret 없는 pill. CDS는 모든 variant이 caret 포함"},
+    {"pencilId":"DSVOy","name":"Tooltip Top","verdict":"ACCEPTED","diffs":[{"note":"라벨 convention 교차 매핑 K3-1. Pencil Top (caret-bottom) ↔ CDS Bottom"}],"note":"재매핑 후 PASS. K3-1 fix 적용 필요"},
+    {"pencilId":"4RL2h","name":"Tooltip Bottom","verdict":"ACCEPTED","diffs":[],"note":"K3-1 재매핑: Pencil Bottom ↔ CDS Top"},
+    {"pencilId":"hqq2X","name":"Tooltip Left","verdict":"ACCEPTED","diffs":[],"note":"K3-1 재매핑: Pencil Left ↔ CDS Right"},
+    {"pencilId":"Wu0fc","name":"Tooltip Right","verdict":"ACCEPTED","diffs":[],"note":"K3-1 재매핑: Pencil Right ↔ CDS Left"},
+    {"pencilId":"EctOI","name":"Card","verdict":"PASS","diffs":[],"note":"348 vertical gap 16 padding 24 corner 16, 3 slots (Header/Content/Actions)"},
+    {"pencilId":"5vMvg","name":"Sheet Header Card","verdict":"ACCEPTED","diffs":[],"note":"Ancillary, CDS 비소속 (Rev.7 추가)"},
+    {"pencilId":"5czSp","name":"Dialog","verdict":"ACCEPTED","diffs":[],"note":"CDS에 별도 Dialog set 없음. Pencil composed frame (Dialog Header + body + actions)"},
+    {"pencilId":"PAezh","name":"Drawer","verdict":"MAJOR","diffs":[{"dim":"childCount","figma":2,"pencil":4,"severity":"major","reason":"CDS 2 (Handle + Content), Pencil 4 (Handle + Header + Body + Footer). Pencil 더 세분화"}],"note":"Pencil 풍부한 composition 유지 선택. triage에서 accept or simplify 결정"},
+    {"pencilId":"P7iGE","name":"Dialog Header","verdict":"CRITICAL","diffs":[{"dim":"layout","figma":"VERTICAL","pencil":"horizontal","severity":"critical","reason":"근본 구조 다름. CDS VERTICAL gap 6, Pencil HORIZONTAL space_between"},{"dim":"childCount","figma":1,"pencil":3}],"note":"확인 필요 — CDS 'Nav+Title+Action' 이름상 horizontal 직관적. Figma plugin API 응답 재검증 or Pencil rebuild"},
+    {"pencilId":"LkCa2","name":"Content Header","verdict":"CRITICAL","diffs":[{"dim":"layout","figma":"HORIZONTAL","pencil":"vertical","severity":"critical","reason":"근본 구조 다름. CDS Size=Large 348×74 horizontal gap 12, Pencil vertical gap 4 (title + desc)"},{"dim":"childCount","figma":3,"pencil":2}],"note":"variants 6 (Alignment × Size). Pencil 어떤 variant 매칭인지 재확인 필요"},
+    {"pencilId":"DvnDV","name":"Navbar","verdict":"PASS","diffs":[{"dim":"width","figma":355,"pencil":375,"severity":"minor"},{"dim":"gap","figma":6,"pencil":12,"severity":"minor"}],"note":"Navbar Type=L 매칭. dim minor"},
+    {"pencilId":"kuiU9","name":"Navbar Addon Inline","verdict":"PASS","diffs":[],"note":"88×36 cornerRadius 8 primary 매칭"}
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "_meta": {
+    "batch": "1 (Atomic #1)",
+    "scope": "Avatar 6 + Challenge Thumbnail 3 + Icon Scaler 1",
+    "executedAt": "2026-04-21",
+    "passCount": 7,
+    "pendingCount": 3,
+    "failCount": 0
+  },
+  "results": [
+    {"pencilId":"SfBW1","name":"Avatar (Medium)","verdict":"PASS","diffs":[],"note":"visibleChildCount 1 vs 1, dim 40×40, cornerRadius pill, fill primary"},
+    {"pencilId":"UjAmH","name":"Avatar Small","verdict":"PASS","diffs":[],"note":"32×32 정합. fontSize $--text-xs"},
+    {"pencilId":"F6A53","name":"Avatar X Large","verdict":"PASS","diffs":[],"note":"56×56 정합 (Rev.18 라벨 교정 완료)"},
+    {"pencilId":"CFflV","name":"Avatar 2X Small","verdict":"MINOR","diffs":[{"dim":"fontSize","figma":"(varies)","pencil":10,"reason":"Pencil hardcoded 10 (Rev.18 created). Acceptable — visible size OK"}],"note":"20×20 dim 정합"},
+    {"pencilId":"cjpb4","name":"Avatar X Small","verdict":"MINOR","diffs":[{"dim":"fontSize","figma":"(varies)","pencil":14,"reason":"Pencil hardcoded 14 (Rev.18 created with $--text-2xs token, fallback to 14). Should likely be 11-12. Consider token binding"}],"note":"24×24 dim 정합"},
+    {"pencilId":"28aOe","name":"Avatar Large","verdict":"PASS","diffs":[],"note":"48×48 정합 (Rev.18 신규)"},
+    {"pencilId":"MiRzL","name":"Challenge Thumbnail Small","verdict":"PENDING","diffs":[],"reason":"mapping variant name mismatch. Figma has 'Size=Small, Type=Image'/'Size=Small, Type=Icon'. 재시도 필요"},
+    {"pencilId":"1DpZI","name":"Challenge Thumbnail Medium","verdict":"PENDING","diffs":[],"reason":"same as MiRzL"},
+    {"pencilId":"gsauZ","name":"Challenge Thumbnail Large","verdict":"PENDING","diffs":[],"reason":"same as MiRzL"},
+    {"pencilId":"sBr4L","name":"Icon Scaler","verdict":"PASS","diffs":[],"note":"16×16, HORIZONTAL layout, 1 child lucide icon_font 매칭"}
+  ]
+}
