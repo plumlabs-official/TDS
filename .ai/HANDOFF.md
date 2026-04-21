@@ -1,5 +1,29 @@
 ---
 HANDOFF: Claude -> 재현 (다음 세션 재개용)
+Date: 2026-04-21 (Rev.15)
+Project: ~/Project/CDS
+Agent: Claude
+Summary: CDS → Pencil **Rev.15 Illust PNG 업그레이드 + Detail Polish 완료**. Illust 8종 실제 Figma single-variant PNG 교체(`images/illust/*_v2.png`). Cover Pay Header 정확 매칭(주황 zap coin + "전체 대신 결제"). Pro Creator Card 완성(X close + follower count + "+팔로우" + dotted purple border). Rev.12 이전 92종 검토 — Variant Mapping Strategy 일관성 확인 추가 불필요. **133 유지**. Step G 문서화(qa-tickets.md).
+Key Learnings (재발 방지):
+  - Figma REST API export: component set ID = 모든 variants 겹침. 각 component set에서 **children[0].id** (첫 variant) 사용 필수.
+  - Pencil image fill cache: 디스크 overwrite 시 앱 cache 유지. 파일명 버전 접미(`_v2.png`) 필수.
+  - Rev.12 이전 Button 228v 등 size/state/theme는 prop 처리 일관 유지 (Variant Mapping Strategy).
+Next-TODO:
+  (1) **Pencil 앱 재시작 후 렌더 재검증** — Rev.14-2 신규 6 variants screenshot blank 이슈 해결.
+  (2) **Layer 3 자동화** — rendered PNG diff 이미지 비교 에이전트 구축.
+  (3) **Drift Monitoring** — discovery.json 스냅샷 diff 알림 메커니즘.
+  (4) **프로덕트 작업 전환**: P0-3 Slot → Instance Swap (~25건), P0-4 Participant Card 분리.
+  (5) **Claude Design PoC 재테스트** — 한도 복구 시.
+Commits: (이번 Rev.15 커밋)
+Key-Files:
+  - Pencil: `exports/2026-04-20_cds-migration/pen/cds.pen` (133 reusables)
+  - PNG: `exports/2026-04-20_cds-migration/images/illust/*_v2.png` (8개, 1.6MB)
+  - Docs: `qa-tickets.md` Step G, `COVERAGE-REPORT.md` Variant Mapping Strategy
+  - 백업: `cds.pen.bak-rev15` (생성 예정)
+---
+
+---
+HANDOFF: Claude -> 재현 (과거 — Rev.14-2)
 Date: 2026-04-21 (Rev.14-2)
 Project: ~/Project/CDS
 Agent: Claude
