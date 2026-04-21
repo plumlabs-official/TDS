@@ -111,7 +111,8 @@
 | **Rev. 7-9 — 자동 루프 + 인스턴스 활용 + 누락 컴포넌트 추가** | Ralph MCP validator 우회 → 세션 내 직접 Figma↔Pencil diff 루프 실행. 31 iter 전수. Alert colored variants/Card Host Info/Meta Row 내부 reusable 승격. Challenge Thumbnail/Avatar Group/Featured Icon/Navbar/Dialog Header/Dots/Nudge/Notification Badge/Message R&S/Lounge Card 15종 추가. **27→51 reusables** |
 | **Rev. 10 — NEW PLAN v2 Phase 0+1** | Team 재플래닝 후: Figma 102 컴포넌트 enumeration + Challify 240 usage 집계 → P0 18종 커버리지 감사 (55.6%→100%). P0 누락 9종 추가 (Icon Scaler/Kbd/TabsTrigger Tag/Section/Input Group Addon Inline/Coin/Messaging Reaction/iOS StatusBar+HomeIndicator). **51→60 reusables**. 산출: discovery.json, usage.json, COVERAGE-REPORT.md |
 | **Rev. 11 — A/B/C 연쇄 Director** | Step A Phase 2 3-Layer Diff (91/100) 5 tickets (Kbd arrows, TabsTrigger Tag/Section, Messaging Reaction, Coin accepted) → Step B P1 15종 추가 (Status, Select Menu Item, TabBar Icon, Dropdown Menu Trigger, Select Menu Label, Navbar Addon Inline, Creator Badge, Fire, Lounge Card Addon Block, Challenge Day Progress, Circle Progress, Segmented Progress, Accordion Item, Fieldset, Page Indicator) → Step C Icon Pipeline (99 icons inventoried, 48 mappings). **60→76 reusables** |
-| **Rev. 12 — P2 17종 추가 (현재 세션)** | Textarea, Tooltip, Breadcrumb + Breadcrumb Item, Combobox + Combobox Menu, Date Picker, Radio Group, Checkbox Group, Switch Toggle, TabsTrigger Toggle, Purchase Button, Content Header, Form Message, Profile Card, Invite Profile Card, TabBar (container w/ 5 tabs). **76→92 CDS reusables + 1 ancillary (Creator Card Compact) = 93 total**. CDS 커버리지 **90.2%** |
+| **Rev. 12 — P2 17종 추가** | Textarea, Tooltip, Breadcrumb + Breadcrumb Item, Combobox + Combobox Menu, Date Picker, Radio Group, Checkbox Group, Switch Toggle, TabsTrigger Toggle, Purchase Button, Content Header, Form Message, Profile Card, Invite Profile Card, TabBar (container w/ 5 tabs). **76→92 CDS reusables + 1 ancillary (Creator Card Compact) = 93 total**. CDS 커버리지 **90.2%** |
+| **Rev. 13 — P2 Structural 26종 + P3 Illust 8종 (현재 세션)** | Input Group family 5종 (Group/Addon Block/Button/OTP/OTP Field), Participant family 3종 (Authed/Left/Right Column), TabsList container 3종 (Section/Tag/Toggle), Challenge Card family 3종 (List/Mini Card/Thumbnail Group), Container 5종 (Kbd Group/Keyboard/Accordion/Select Menu/Item), 단독 7종 (Bell Image/Calendar Block/Field Legend/Footer/Cover Pay Header/Checkbox Toggle/Pro Creator Card), Illust 8종 (Character/Contact/Gift/Lounge Badge/Ticket Item/Placeholder ×3). **93→127 reusables (126 CDS + 1 ancillary)**. **CDS 102종 전체 매칭 100%**. Illust 8종은 lucide placeholder, Keyboard는 platform native 권장. |
 
 ---
 
@@ -143,13 +144,13 @@
 15. Claude Design 디자인 시스템 생성 결과 확인 — CDS 컴포넌트 인식 수준 평가
 16. 인식 결과 기반 CDS 활용 전략 구체화
 
-**Pencil 이관 다음 세션 재개 지점 (Rev.12 이후):**
-17. **P2 잔여 10여종 추가** — Accordion(standalone), Bell Image, Calendar Block, Challenge List/Mini Card, Challenge Thumbnail Group, Field Legend, Footer, Input Group + Addons + Button + OTP, Item, Kbd Group + Keyboard, Participant Card Authed, Participant Left/Right Column, Pro Creator Card, Select Menu(container), TabsList Section/Tag/Toggle
-18. **Illustrations (P3)** — Character/Contact/Gift/Lounge Badge/Ticket Item Illust, Placeholder Creator/Host/Logo
-19. **Pencil PNG export 버그 재현** — 앱 재시작 후 새 reusable export 재검증
-20. **Layer 3 자동화** — rendered PNG diff 이미지 비교 에이전트 구축
-21. **Drift Monitoring** — discovery.json 스냅샷 diff 알림 메커니즘
-22. **재개 키 파일**: `exports/2026-04-20_cds-migration/pen/cds.pen` (활성 편집 파일), `COVERAGE-REPORT.md`, `qa-tickets.md`, `diff-protocol.md`
+**Pencil 이관 다음 세션 재개 지점 (Rev.13 이후):**
+17. **렌더 검증** — 34종 신규 reusable PNG export (Pencil 앱 재시작 후 버그 우회)
+18. **Illust 업그레이드** — lucide placeholder 8종 → Figma REST API PNG export → Pencil image fill 교체
+19. **Layer 3 자동화** — rendered PNG diff 이미지 비교 에이전트 구축
+20. **Drift Monitoring** — discovery.json 스냅샷 diff 알림 메커니즘
+21. **Pencil MCP Ralph 호환** — subprocess MCP 허용 탐색
+22. **재개 키 파일**: `exports/2026-04-20_cds-migration/pen/cds.pen` (활성 편집, 127 reusables), `COVERAGE-REPORT.md`, `qa-tickets.md`, `discovery.json`, `diff-protocol.md`
 
 **모니터링:**
 - Figma MCP 커스텀 폰트 지원 출시 시 → Pretendard 복원 검토

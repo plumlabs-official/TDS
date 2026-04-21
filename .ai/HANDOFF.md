@@ -1,5 +1,23 @@
 ---
 HANDOFF: Claude -> 재현 (다음 세션 재개용)
+Date: 2026-04-21 (Rev.13)
+Project: ~/Project/CDS
+Agent: Claude
+Summary: CDS → Pencil 이관 **Rev.13 완료**. P2 Structural 26종 + P3 Illustrations 8종 추가. **Pencil reusable 93→127** (126 CDS + 1 ancillary). **CDS 102종 전체 매칭 100% 달성**. Illust 8종은 lucide icon placeholder(PNG export 버그 우회). Keyboard는 iOS native 권장으로 placeholder 만. 73 variables 유지. Step D 문서화 완료(qa-tickets.md).
+Next-TODO:
+  (1) **렌더 검증** (재개 우선) — Pencil 앱 재시작 후 34종 신규 reusable PNG export. 기존 get_screenshot 일부 blank 이슈, export_nodes scale 3x 시도.
+  (2) **Illust 업그레이드** — 8종 lucide placeholder를 Figma REST API PNG export로 교체. 정확한 비주얼 전달용.
+  (3) **Layer 3 자동화** — rendered PNG diff 이미지 비교 에이전트 (Figma get_screenshot ↔ Pencil export_nodes 동시 호출 → visual subagent 대조 판정).
+  (4) **Drift Monitoring** — discovery.json 스냅샷 diff 감지. CDS Figma 업데이트 시 알림.
+  (5) **Pencil MCP Ralph 호환** — subprocess MCP 허용 방법 탐색. 현재는 세션 내 직접 루프로 우회.
+Commits: (이번 Rev.13 커밋)
+Key-Files:
+  - Pencil: `exports/2026-04-20_cds-migration/pen/cds.pen` (활성 편집, 127 reusables)
+  - Docs: `exports/2026-04-20_cds-migration/COVERAGE-REPORT.md` (Rev.13 결과 포함, 100% 매칭), `qa-tickets.md` (Step D D1-D34 tickets)
+---
+
+---
+HANDOFF: Claude -> 재현 (과거 — Rev.12)
 Date: 2026-04-21 14:50:00
 Project: ~/Project/CDS
 Agent: Claude
