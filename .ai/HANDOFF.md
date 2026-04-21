@@ -1,5 +1,24 @@
 ---
 HANDOFF: Claude -> 재현 (다음 세션 재개용)
+Date: 2026-04-21 (Rev.17)
+Project: ~/Project/CDS
+Agent: Claude
+Summary: CDS → Pencil **Rev.17 Structural Variants Audit (Director+Ralph-loop) 완료**. 사용자 요청 "빠진 컴포넌트/분리 필요 variants 전수 점검". CDS 102 원본 vs Pencil 매핑 대조 — 누락 0. 10종 multi-variant 분석 후 5종 structural 분리 결정 + 15종 신규 reusable 추가: Tooltip 4방향(caret pointer 방향 structural) + Input Group 3타입(Textarea h=90/Bare h=48/Pill 모양 다름) + Footer 5레이아웃(Two Buttons/Full Width/Two Full Width Stacked/Alarm/Calendar) + Dots 2(Active 33×12/Inactive 12×12) + Switch Card 1(h=74). Sub-group M() 재배치. Purchase Button/Dialog Header/Notification Badge/Lounge Card는 prop 유지 결정. **133→148 reusables**. Step I 문서화(qa-tickets.md).
+Next-TODO:
+  (1) **신규 15종 렌더 검증** — Pencil 앱 재시작 후 screenshot 확인.
+  (2) **Avatar 추가 sizes** — 필요 시 2XS/XS/Medium/XL 등 Avatar sub-group에 추가 (현재 3 size만).
+  (3) **Layer 3 자동화** — rendered PNG diff 이미지 비교 에이전트.
+  (4) **프로덕트 작업 전환**: P0-3 Slot → Instance Swap (~25건), P0-4 Participant Card 분리.
+  (5) **Claude Design PoC 재테스트**.
+Commits: (이번 Rev.17 커밋)
+Key-Files:
+  - Pencil: `exports/2026-04-20_cds-migration/pen/cds.pen` (148 reusables)
+  - Docs: `qa-tickets.md` Step I, `COVERAGE-REPORT.md` Variant Mapping Strategy
+  - 백업: `cds.pen.bak-rev17` (생성 예정)
+---
+
+---
+HANDOFF: Claude -> 재현 (과거 — Rev.16)
 Date: 2026-04-21 (Rev.16)
 Project: ~/Project/CDS
 Agent: Claude
