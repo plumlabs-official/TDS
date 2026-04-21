@@ -1,5 +1,24 @@
 ---
 HANDOFF: Claude -> 재현 (다음 세션 재개용)
+Date: 2026-04-21 (Rev.16)
+Project: ~/Project/CDS
+Agent: Claude
+Summary: CDS → Pencil **Rev.16 CDS 원본 그루핑 재편 완료**. 사용자 피드백 "컴포넌트 그루핑 CDS 원본과 동일하게 맞춰줘"에 응답. CDS Figma `Components` 페이지 구조(Primitives 24 sub-group + Composed 20 sub-group) 복제. 2 section frame (ipBwo Primitives / jHjFG Composed) + 44 sub-group frame(이름 label + reusable row) 생성. 133 reusables을 M() 6 batch로 해당 sub-group 이동. **133 유지, 시각 구조화 완료**. Step H 문서화(qa-tickets.md).
+Next-TODO:
+  (1) **렌더 검증 (재개 우선)** — Pencil 앱에서 Primitives/Composed 섹션 눈으로 확인. 누락 reusable 점검.
+  (2) **Layer 3 자동화** — rendered PNG diff 이미지 비교 에이전트.
+  (3) **Drift Monitoring** — discovery.json 스냅샷 diff 알림.
+  (4) **프로덕트 작업 전환**: P0-3 Slot → Instance Swap (~25건), P0-4 Participant Card 분리.
+  (5) **Claude Design PoC 재테스트** — 한도 복구 시.
+Key-Files:
+  - Pencil: `exports/2026-04-20_cds-migration/pen/cds.pen` (133 reusables, 2 section + 44 sub-group 구조)
+  - Docs: `qa-tickets.md` Step H, `COVERAGE-REPORT.md` Variant Mapping Strategy
+  - 백업: `cds.pen.bak-rev16` (생성 예정)
+Commits: (이번 Rev.16 커밋)
+---
+
+---
+HANDOFF: Claude -> 재현 (과거 — Rev.15)
 Date: 2026-04-21 (Rev.15)
 Project: ~/Project/CDS
 Agent: Claude
