@@ -1,4 +1,23 @@
 ---
+HANDOFF: Claude -> 재현 (Claude Design 토큰 절약 꿀팁 리서치 완료)
+Date: 2026-04-24 09:10:00
+Project: /Users/zenkim_office/Project/CDS
+Agent: Claude (Opus 4.7 1M)
+Summary: /research 커맨드로 Claude Design(2026-04-17 출시) 사용량/토큰 절약 실전 팁 리서치. 5 researcher 병렬(공식 가이드/프롬프트 패턴/도구 분담/커뮤니티 경험담/Extra Usage 경제성) → 갭 분석 후 Step 4 skip(남은 갭은 Anthropic 의도적 비공개). 신뢰도 88%, 33 소스. **핵심 현실**: Pro=주 2~3프롬프트 / Max 5x=27~30분 intensive면 소진. **최대 레버**: DS 1회 셋업 + Inline Comment/Adjustment Knob + **CDS처럼 성숙 DS 있으면 Claude Design 대신 Figma MCP `use_figma` 직접 쓰기**. **한도 소진 우회**: ZIP export→Claude Code 이관 레시피. **Extra Usage ROI**: <$50 유지 / $100~200 Max 20x 업그레이드 / Claude Design에 소급 적용 불가 사용자 보고 있음(공식 침묵, 업그레이드 전 본인 계정 테스트 필수).
+Next-TODO:
+  (1) **실전 적용** — Claude Design으로 작업 시작 전 리포트의 "실전 적용 체크리스트" 스캔. 특히 CDS 관련 작업이면 `use_figma`로 전환 검토.
+  (2) **.fig 업로드 공식 문서 부재 확인** — 이 프로젝트 SESSION 기록 "CDS .fig 업로드"가 실제 Claude Design 경로인지, Pencil/Figma MCP 경로인지 교차 확인 필요.
+  (3) **Claude Design Extra Usage 소급 테스트** — Settings → Usage에서 Claude Design 한도에 Extra Usage 적용되는지 본인 계정 확인.
+  (4) **Claude Design 실 사용 시 쿼터 벤치마크** — 커뮤니티 추측(Pro 2~3프롬프트 등) 외 Max 20x 실수치 공백. CDS 라이브러리로 온보딩 시 본인 측정 권장.
+  (5) **대기** — CDS-max 시안 §4.1~§4.8, P0-3 Slot→Instance Swap, P0-4 Participant Card 분리, Rev.19 drift monitor 주간 체크(2026-04-28 시작).
+Key-Files:
+  - 리포트: `report/2026-04-23_claude-design-token-saving-tips.md`
+  - CDS-max 재개: `.ai/RESUME-CDS-MAX.md`
+  - Pencil 활성: `exports/2026-04-20_cds-migration/pen/cds.pen` (158 reusables)
+Commits: (이번 세션 기록 commit)
+---
+
+---
 HANDOFF: Claude -> 재현 (Stitch 사본 `25548:18524` 이미지 11건 맥락 교체 완료)
 Date: 2026-04-22 00:51:10
 Project: /Users/zen/Project/CDS
