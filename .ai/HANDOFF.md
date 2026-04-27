@@ -1,4 +1,21 @@
 ---
+HANDOFF: Codex -> 재현 (Spotlight Creator Card CDS 컴포넌트 생성)
+Date: 2026-04-27 18:32:00
+Project: /Users/zenkim_office/Project/CDS
+Agent: Codex
+Summary: 프로덕트 파일 `2026-04` node `25745:18478` "Card Wrap"을 CDS 컴포넌트화. CDS Components `Lounge Cards`에 `.Creator Tag`, `.Spotlight Creator Metric`, `Spotlight Creator Card`를 생성하고 Avatar/Creator Badge/Button/Icon 기존 CDS 컴포넌트 인스턴스로 조합. 소스 hero/avatar 이미지를 import해 fill 적용했고, 사용자 지적 후 custom text node에 CDS typography token을 적용.
+Next-TODO:
+  (1) 필요 시 `Spotlight Creator Card` publish 및 프로덕트 파일 인스턴스 교체.
+  (2) Footer anatomy는 당장 적용하지 않음. shadcn 매핑 정리 시 `CardFooter`/`DrawerFooter`/`Action Row` 분리 검토.
+  (3) Button 228v 후속 use-site survey 및 시나리오 A 실행 판단은 이전 HANDOFF TODO 계승.
+Key-Files:
+  - CDS file: `H36eNEd6o7ZTv4R7VcyLf2`
+  - Product source: `t0SK7XaNqw8qIY3PpZw4s7` node `25745:18478`
+  - New CDS nodes: `.Creator Tag` `21194:6635`, `.Spotlight Creator Metric` `21194:6637`, `Spotlight Creator Card` `21196:6625`
+Commits: (이번 세션 기록 commit)
+---
+
+---
 HANDOFF: Claude -> 재현 (CDS Button 228v Audit + 6분류 Framework 합의)
 Date: 2026-04-27 14:25:00
 Project: /Users/zenkim_office/Project/CDS
