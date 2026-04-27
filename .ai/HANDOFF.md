@@ -1,4 +1,21 @@
 ---
+HANDOFF: Claude -> 재현 (CDS Button 228v Audit + 6분류 Framework 합의)
+Date: 2026-04-27 14:25:00
+Project: /Users/zenkim_office/Project/CDS
+Agent: Claude (Opus 4.7 1M)
+Summary: 사용자 "variant 줄이자" 합의 트리거. 두 lens(Claude Design 이관 / shadcn+React+Tailwind 바이브) 기준 평가로 재정렬. **6분류 framework 합의** — Structural(Variant) / Token-only(Variant+Variable 바인딩) / Theme(Variable Mode) / Pseudo state(token+States 페이지) / Runtime state(Boolean Property) / Content(Slot/Instance Swap). Variant 정의 층위 분리: 메커니즘(Component Property 5종 중 하나) vs 정책(Structural에만). Button 228v Plugin API 전수: Type 8 × Size 6 × State 6, State 100% 균등 38건씩. **시나리오 A 권고**(228→48, -79%): Pseudo state 3종(114v) 제거 + Runtime state 2종(76v) Boolean 전환. B/C는 가치 없음 또는 shadcn 정합성 후퇴. 분석까지만 — 실 수정 없음.
+Next-TODO:
+  (1) **Use-site survey** — Challify 240 Button instance state/type/size 분포 측정. 시나리오 A 마이그레이션 정량화.
+  (2) **시나리오 A 실행 승인 대기** — survey 데이터 본 후 결정.
+  (3) **6분류 정책 ADR 문서화** — Rev.14-2 Variant Mapping Strategy 정식 승격.
+  (4) **계승**: P0-3 Slot→Instance Swap, P0-4 Participant Card 분리, Pencil drift monitor 주간 체크(2026-04-28 시작).
+Key-Files:
+  - 본 SESSION.md "CDS Button 228v Audit + 6분류 Framework 합의" 엔트리
+  - 정책 참조: Rev.14-2 Variant Mapping Strategy (이미 운영 중)
+Commits: (이번 세션 기록 commit)
+---
+
+---
 HANDOFF: Claude -> 재현 (Claude Design 토큰 절약 꿀팁 리서치 완료)
 Date: 2026-04-24 09:10:00
 Project: /Users/zenkim_office/Project/CDS
