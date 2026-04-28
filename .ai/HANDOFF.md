@@ -1,4 +1,22 @@
 ---
+HANDOFF: Claude -> 재현 (Spotlight Creator Card Hero overflow fix + Card fill 토큰 바인딩)
+Date: 2026-04-28 10:30:00
+Project: /Users/zenkim_office/Project/CDS
+Agent: Claude (Opus 4.7 1M)
+Summary: 사용자 보고 "프로필 이미지가 #Hero 영역에 하단이 잘림"(node `21196:6625`, Codex 어제 생성·publish 전). Evidence-First 진단 후 2건 수정. **수정 1**: Body(`21196:6653`) fills `[SOLID #FFFFFF]` → `[]`. 원인: Card children `[Hero, Body]`에서 Body z-order 위 + 흰색 fill이 Avatar(12,154,80×80) bottom 234의 Hero(208) overflow 26px를 덮음. 원본(`t0SK7XaNqw8qIY3PpZw4s7/25745:18478`) Body fills `[]` 일치. **수정 2**: `/codex-review` PASS(medium) Low finding 후속 — Card fill 미바인딩(`boundVariables {}`) → `card` 토큰(`VariableID:20005:977`)에 color alias 바인딩. R6 토큰 준수. publish 전이라 인스턴스 영향 0.
+Next-TODO:
+  (1) **재현 직접**: Spotlight Creator Card publish 실행 + 프로덕트 파일 인스턴스 교체.
+  (2) Codex HANDOFF 계승: Footer anatomy 검토(shadcn 매핑 정리 시 `CardFooter`/`DrawerFooter`/`Action Row` 분리).
+  (3) Button 228v use-site survey + 시나리오 A 실행 판단 계승.
+  (4) Pencil drift monitor 주간 체크(2026-04-28 시작) 계승.
+Key-Files:
+  - 노드: `Spotlight Creator Card` `21196:6625` (Card), Body `21196:6653`
+  - Variable: `card` `VariableID:20005:977`
+  - Peer review: `.ai/peer-review/runs/20260428-101853-codex-review-37520.md`
+Commits: (이번 record commit)
+---
+
+---
 HANDOFF: Codex -> 재현 (Spotlight Creator Card CDS 컴포넌트 생성)
 Date: 2026-04-27 18:32:00
 Project: /Users/zenkim_office/Project/CDS
@@ -536,4 +554,15 @@ Agent: Claude
 Summary: TDS 컴포넌트 정리 — shadcn Kit 잔여물 9종 삭제 + Slot Holder 단순화(6→1 variant) + Footer 불필요 3종 삭제. 프로토타입 연결은 사용자가 직접 복구 완료.
 Next-TODO: Content Header+Content Section Header 통합, Challenge Mission Card/Participant Card 하위 파트 내부화(. 접두어), TDS Publish
 Commits: (이번 커밋)
+---
+
+---
+HANDOFF: Claude -> Codex (peer review)
+Date: 2026-04-28 10:20:47
+Project: /Users/zenkim_office/Project/CDS
+Agent: Claude via peer-agent-review
+Summary: codex peer review completed. Verdict: PASS. Focus: # Spotlight Creator Card Body fills 수정 리뷰 ## 컨텍스트 CDS Figma 라이브러리(fileKey `H36eNEd6o7ZTv4R7VcyLf2`)의 신규 컴포넌트 `Spotlight Creator Card`(node `21196:6625`, 어제 Codex가 생성, publish 전)에서 사용자가 "프로필 이미지가 Hero 영역에 하단이 잘린다"고 보고. 원본 디자인 노드는 프로덕트 파일 `t0
+Next-TODO: Review result file and address FAIL/NEEDS_USER_DECISION items before completion.
+Review-Result: /Users/zenkim_office/Project/CDS/.ai/peer-review/runs/20260428-101853-codex-review-37520.md
+Commits: pending
 ---
