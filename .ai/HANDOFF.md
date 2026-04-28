@@ -777,3 +777,13 @@ Next-TODO: Review result file and address FAIL/NEEDS_USER_DECISION items before 
 Review-Result: /Users/zenkim_office/Project/CDS/.ai/peer-review/runs/20260428-144254-codex-plan-70836.md
 Commits: pending
 ---
+
+---
+HANDOFF: Claude -> Claude (or Codex)
+Date: 2026-04-28 15:39:12
+Project: /Users/zenkim_office/Project/CDS
+Agent: Claude
+Summary: CDS Asset 섹션 11개 컴포넌트 정리 Wave 0~4 실행 완료. Codex peer review 2회 반영(plan v3). canary로 swap 회피→rename 전략 채택. rename + sub-group 재배치 + 미사용 3건 삭제 + Character/Circle Progress/Ticket Item variant 정리/확장 + publish + library update + 검증. 955건 instance 무변동, 0 detached.
+Next-TODO: (1) Quantity=3 신규 variant 일러스트 디테일 보강 (1↔5 보간 image fill 교체) — 디자이너 follow-up. (2) Wave 5 Scale→Size 통일 (Coin/Fire/Nudge/Gift Illustration 150건 swap) 별도 세션. (3) 6분류 Variant Mapping Strategy ADR 정식화.
+Commits: (이번 record)
+---
