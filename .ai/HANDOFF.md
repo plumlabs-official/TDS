@@ -1,4 +1,23 @@
 ---
+HANDOFF: Claude -> 재현 (CDS OS/Native description 보강 완료, Wave 2 trigger 대기)
+Date: 2026-04-28 16:30:00
+Project: /Users/zenkim_office/Project/CDS
+Agent: Claude
+Summary: 사용자 `20057:1488` "콤포넌트 최적화할게 있나" 질의 → /director + Plan mode 통합 후 Wave 1만 실행. 3 ComponentSet description 작성: Keyboard `20057:1281`(526자, mockup-only/D16/R3·R7 면제), iOS StatusBar `20057:1490`(624자, Light=mode-aware/Dark=임시/6분류 통합 예정), iOS HomeIndicator `20057:1511`(388자, 동일). 인스턴스 영향 0. Pre-flight 발견: `Mode` Collection Light(`20005:11`)/Dark(`20005:10`) 65 vars 존재, Light variant는 이미 mode-aware 바인딩, Dark variant는 background를 colors/light/foreground 직접 바인딩(임시 운용 — 사용자 확인). Wave 2(Theme variant 통합, 인스턴스 223건 영향)는 다크모드 variable 정리 완료 후 trigger. Wave 3(Keyboard 구조 재구성)은 D16 ROI 음수로 보류.
+Next-TODO:
+  (1) 다크모드 `Mode/Dark` 65 vars 정리 완료 후 Wave 2 실행 — StatusBar/HomeIndicator의 `Style=Light/Dark` Variant 제거 + Mode Collection 자동 전환 통합. Asset Cleanup Wave 0~4 패턴 적용.
+  (2) Wave 2 완료 시 ADR `docs/architecture/ADRs/` 추가 — "OS/Native Theme via Variable Mode" 정책 명문화.
+  (3) Wave 2 완료 시 StatusBar/HomeIndicator description의 "임시 운용" 문구 제거 + 작성일 갱신.
+Key-Files:
+  - Plan: `~/.claude/plans/sleepy-foraging-lovelace.md`
+  - Review: `reviews/2026-04-28_os-native-description-augment.md`
+  - CDS components: `H36eNEd6o7ZTv4R7VcyLf2/20057:1281`, `20057:1490`, `20057:1511`
+  - 6분류 정책 출처: `.ai/SESSION.md` L138
+  - D16 결정 출처: `exports/2026-04-20_cds-migration/qa-tickets.md`
+Commits: (이번 record commit)
+---
+
+---
 HANDOFF: Codex -> 재현 (Lounge Hero Banner responsive fix + 소식 작성 섹션 리뷰)
 Date: 2026-04-28 16:06:41
 Project: /Users/zenkim_office/Project/CDS
@@ -805,4 +824,15 @@ Agent: Claude
 Summary: CDS Asset 섹션 11개 컴포넌트 정리 Wave 0~4 실행 완료. Codex peer review 2회 반영(plan v3). canary로 swap 회피→rename 전략 채택. rename + sub-group 재배치 + 미사용 3건 삭제 + Character/Circle Progress/Ticket Item variant 정리/확장 + publish + library update + 검증. 955건 instance 무변동, 0 detached.
 Next-TODO: (1) Quantity=3 신규 variant 일러스트 디테일 보강 (1↔5 보간 image fill 교체) — 디자이너 follow-up. (2) Wave 5 Scale→Size 통일 (Coin/Fire/Nudge/Gift Illustration 150건 swap) 별도 세션. (3) 6분류 Variant Mapping Strategy ADR 정식화.
 Commits: (이번 record)
+---
+
+---
+HANDOFF: Codex -> Claude (peer plan)
+Date: 2026-04-28 16:32:19
+Project: /Users/zenkim_office/Project/CDS
+Agent: Codex via peer-agent-review
+Summary: claude peer plan completed. Verdict: unknown. Focus: Review this implementation plan before execution. Target Figma product section: https://www.figma.com/design/t0SK7XaNqw8qIY3PpZw4s7/2026-04?node-id=24119-16618 Product fileKey: t0SK7XaNqw8qIY3PpZw4s7 CDS fileKey: H36eNEd6o7ZTv4R7VcyLf2 Plan
+Next-TODO: Review result file and address FAIL/NEEDS_USER_DECISION items before completion.
+Review-Result: /Users/zenkim_office/Project/CDS/.ai/peer-review/runs/20260428-162734-claude-plan-14609.md
+Commits: pending
 ---
