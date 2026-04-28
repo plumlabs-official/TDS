@@ -1,4 +1,23 @@
 ---
+HANDOFF: Codex -> 재현 (Lounge Hero Banner responsive fix + 소식 작성 섹션 리뷰)
+Date: 2026-04-28 16:06:41
+Project: /Users/zenkim_office/Project/CDS
+Agent: Codex
+Summary: CDS `Lounge Hero Banner`(`21320:6725`, key `55133e898d97dbe3bf370cc5fc3cda6009c2d0c2`)의 반응형 오류 수정. `Hero Banner`/Title/Subtitle을 FILL+STRETCH 구조로 바꾸고 `Close Button`을 absolute + horizontal MAX로 보정. 320/375/430px CDS probe와 제품 파일 `26158:397` 320/430px probe 모두 close right 20px, text 좌우 34px 유지 PASS. 사용자 publish 후 제품 파일 remote update 확인 완료. `qa-rubric.md`에 Responsive Probe/edge-pinned control/L+R text bounds 기준 추가. `소식 작성` 섹션(`24119:16618`) 리뷰도 진행: 89 PASS, Creator Pro Alert 후보 2건(`Frame 1430107483`), local Select 1건, local HomeBar 1건, slash naming 2건 확인.
+Next-TODO:
+  (1) `소식 작성` 섹션 후속 수정 시 `Frame 1430107483` 2건은 `Creator Pro Alert`로 rename 또는 CDS composed component화 판단.
+  (2) `25913:20944` local Select를 CDS Select 인스턴스로 교체 가능한지 비교 후 처리.
+  (3) `21852:20937` HomeBar는 CDS `iOS HomeIndicator`로 교체 권장.
+  (4) `Updates Range Selected / Challenge` 2건은 slash 제거 rename.
+Key-Files:
+  - Rule: `.claude/rules/qa-rubric.md`
+  - CDS component: `H36eNEd6o7ZTv4R7VcyLf2/21320:6725`
+  - Product instance: `t0SK7XaNqw8qIY3PpZw4s7/26158:397`
+  - Review section: `t0SK7XaNqw8qIY3PpZw4s7/24119:16618`
+Commits: (이번 record commit)
+---
+
+---
 HANDOFF: Codex -> 재현 (Lounge Hero Banner 완료 + asset cleanup 기록)
 Date: 2026-04-28 15:25:35
 Project: /Users/zenkim_office/Project/CDS
