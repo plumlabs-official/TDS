@@ -1,4 +1,21 @@
 ---
+HANDOFF: Codex -> 재현 (CDS 컴포넌트 생성 QA 하네스 강화)
+Date: 2026-04-28 13:20:00
+Project: /Users/zenkim_office/Project/CDS
+Agent: Codex
+Summary: Spotlight Creator Card 사후 이슈와 Popular Section 프로필 카드 테스트 중 나온 재발 방지 기준을 `.claude/rules/qa-rubric.md`에 반영. Component Creation Decision Gate(신규 생성/기존 대체/variant 확장 판단)와 Component Completion Gate(원본·완성본 screenshot pair, visual diff, bounds/intentional delta)를 추가.
+Next-TODO:
+  (1) Popular Section `25897:15912`의 프로필 카드 컴포넌트화를 새 Decision Gate 기준으로 재개.
+  (2) 현재 판단 초안: 기존 CDS `Profile Card`(`20199:6243`)에 `Type=Popular` variant 추가가 유력. variant 축 값 1개 추가라 explosion risk 낮음.
+  (3) 이전 시도는 Figma API `setProperties` key 오류로 중단됐고, 확인 결과 불완전한 `Type=Popular` variant는 남지 않음.
+Key-Files:
+  - QA rubric: `.claude/rules/qa-rubric.md`
+  - Source node: `t0SK7XaNqw8qIY3PpZw4s7/25897:15912`
+  - Candidate CDS component: `H36eNEd6o7ZTv4R7VcyLf2/20199:6243`
+Commits: (이번 record commit)
+---
+
+---
 HANDOFF: Claude -> 재현 (Spotlight Creator Card Hero overflow fix + Card fill 토큰 바인딩)
 Date: 2026-04-28 10:30:00
 Project: /Users/zenkim_office/Project/CDS

@@ -163,12 +163,78 @@ WCAG 2.1 AA 기준.
 
 ---
 
+## Component Creation Decision Gate
+
+CDS 컴포넌트 생성 요청을 받으면 제작 전에 아래 판단을 먼저 완료하고 기록해야 한다. 이 게이트를 통과하기 전에는 새 컴포넌트 생성, 기존 컴포넌트 수정, variant 추가를 시작하지 않는다.
+
+| Gate | 확인 질문 | PASS 기준 | 실패 처리 |
+|------|-----------|-----------|-----------|
+| Source Scope | 원본에서 재사용 단위가 정확히 무엇인가? | 반복/재사용되는 최소 UI 단위와 포함 범위가 명시됨 | FAIL |
+| Existing Match | CDS에 대체 가능한 기존 컴포넌트/variant가 있는가? | 후보 컴포넌트 ID, type, props, 시각 차이를 근거로 기록 | FAIL |
+| Composition First | 기존 컴포넌트 조합으로 해결 가능한가? | Avatar/Button/Icon/Tag/Card 등 기존 primitive/composed 사용 여부 판단 | Major |
+| Variant Safety | 기존 컴포넌트에 type/variant를 추가해도 variant explosion이 없는가? | variant 축 1개 추가 또는 기존 축 확장만 발생하고 조합 수 증가가 제한적 | FAIL |
+| New Component Justification | 새 컴포넌트가 필요한 이유가 있는가? | 기존 컴포넌트와 역할/구조/props가 달라 새 이름이 더 명확함 | Major |
+| Decision Record | 최종 선택과 배제한 선택을 기록했는가? | `reuseExisting`, `extendExisting`, `createNew` 중 하나로 결론 기록 | FAIL |
+
+**판단 순서:**
+1. 원본 노드에서 반복되는 최소 단위를 찾는다.
+2. CDS에서 이름/역할/구조가 가까운 컴포넌트를 검색한다.
+3. 기존 컴포넌트 인스턴스 조합으로 만들 수 있으면 새 컴포넌트를 만들지 않는다.
+4. 기존 컴포넌트의 의미와 props가 맞고 variant 축이 폭발하지 않으면 기존 컴포넌트를 확장한다.
+5. 기존 컴포넌트가 의미상 다르거나 props가 불필요하게 오염되면 새 composed 컴포넌트를 만든다.
+
+**variant explosion 기준:**
+- 기존 variant 축에 값 1개 추가: 대체로 허용.
+- 독립 축을 새로 추가해 전체 조합이 곱셈으로 증가: 기본 FAIL.
+- 새 variant 때문에 무관한 props/slots가 다수 생김: 새 컴포넌트 우선.
+- 실제 사용처가 한 화면의 특수 레이아웃뿐이면 기존 공용 컴포넌트 확장보다 composed wrapper 우선.
+
+**필수 산출물:**
+- `sourceUnitNodeId`
+- `candidateComponents`
+- `decision`
+- `decisionReason`
+- `rejectedOptions`
+- `variantExplosionRisk`
+
+---
+
+## Component Completion Gate
+
+CDS 컴포넌트 생성/수정 완료 전에는 점수와 별도로 아래 게이트를 통과해야 한다.
+
+| Gate | 조건 | 실패 처리 |
+|------|------|-----------|
+| Source Evidence | 원본 노드 ID와 완성 컴포넌트 노드 ID를 QA 리포트에 기록 | FAIL |
+| Screenshot Pair | `get_screenshot`으로 원본 노드와 완성 컴포넌트 각각 캡처 | FAIL |
+| Visual Diff | 두 스크린샷을 나란히 비교하고 주요 차이를 기록 | Major |
+| Bounds Check | 카드/이미지/Avatar/overlay/slot/action row의 잘림·가림·겹침 없음 | FAIL |
+| Intentional Delta | 원본과 다른 부분은 CDS화 목적(토큰, 인스턴스, slot, prop)으로 설명 가능 | Major |
+
+**비교 기준:**
+- 원본과 완성본의 전체 크기, radius, shadow, padding, gap, 이미지 crop, overlay 위치를 비교한다.
+- Avatar처럼 부모 bounds를 넘는 요소는 z-order와 clipping을 함께 확인한다.
+- 태그/칩/리스트처럼 개수가 늘 수 있는 영역은 고정 텍스트 1:1 복제보다 slot 또는 exposed instance 설계가 우선이다.
+- 시각 차이가 의도된 CDS 정규화인지, 제작 실수인지 리포트에 구분해서 남긴다.
+- 원본 노드가 없거나 접근 불가하면 스크린샷 비교를 생략하지 말고 “원본 비교 불가”로 FAIL 처리한다.
+
+**필수 산출물:**
+- `sourceNodeId`
+- `componentNodeId`
+- `sourceScreenshot`
+- `componentScreenshot`
+- `visualDiffSummary`
+- `intentionalDeltas`
+
+---
+
 ## 리포트 템플릿
 
 ```
 ## QA Report: [화면명]
 
 > 날짜: YYYY-MM-DD | 루브릭: v1.1 | 노드: [node-id]
+> Source: [source-node-id] | Component: [component-node-id]
 
 ### 총점: XX/100 — [PASS/CONDITIONAL/FAIL]
 
@@ -187,6 +253,24 @@ WCAG 2.1 AA 기준.
 ### Major 이슈
 ### Minor 이슈
 ### Warnings
+
+### Component Creation Decision Gate
+| 항목 | 결과 |
+|------|------|
+| Source unit | |
+| Candidate components | |
+| Decision | |
+| Decision reason | |
+| Rejected options | |
+| Variant explosion risk | |
+
+### Component Completion Gate
+| 항목 | 결과 |
+|------|------|
+| Source screenshot | |
+| Component screenshot | |
+| Visual diff summary | |
+| Intentional deltas | |
 
 ### 수정 가이드 (--fix)
 | Phase | 작업 | 건수 |
