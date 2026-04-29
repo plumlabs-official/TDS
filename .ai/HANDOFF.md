@@ -1,4 +1,17 @@
 ---
+HANDOFF: Claude -> 재현 (Radio Group Wave A description 보류 + plan 파일 저장)
+Date: 2026-04-29 12:02:36
+Project: /Users/zenkim_office/Project/CDS
+Agent: Claude
+Summary: 어제 Wave A 컨펌 대기 상태 재개 → A 옵션(즉시 적용) 선택 후 Figma read-only Evidence(3 ComponentSet, 0/12/36 instances, 32v 5축 분석) + 6분류 정책 적용 분석(32v→7v -78%) + Wave A description 본문 3종 작성(Radio Group ~460자 / Item ~760자 / Toggle ~580자, OS/Native Wave 1 동일 패턴). 사용자 "라운지 디자인 변경 예정으로 보류" 결정 → B 옵션(초안 파일 저장) 전환. `~/.claude/plans/cds-radio-group-wave-a.md` 생성으로 Evidence + description 본문 + Plugin API 실행 코드 + Gates WA-G1~G4 + Wave B trigger 조건 보존. SESSION.md TODO #30/#32 보류 상태 + plan 파일 경로 명시. Figma 변경 0건.
+Next-TODO:
+  (1) 라운지 디자인 변경 완료 확인 후 plan 파일 description 본문 컨펌 → use_figma 단일 호출 일괄 적용 → /record docs trigger.
+  (2) Wave A 완료 후 옆 그룹 진단 재개(Index 9 Textarea → 10 Progress → 11 Badge → 12 Page Indicator). Radio Group 패턴(read-only Evidence → 6분류 적용 → description 본문 → 컨펌 → 적용) 재사용.
+  (3) State variant 위반 13개 일괄 변환은 Button 228v audit follow-up + Pseudo state ADR 작성 후 trigger.
+Commits: (이번 record commit)
+---
+
+---
 HANDOFF: Codex -> 재현 (소식 작성 화면 2변형 CDS 리뷰 완료)
 Date: 2026-04-28 18:05:48
 Project: /Users/zenkim_office/Project/CDS
