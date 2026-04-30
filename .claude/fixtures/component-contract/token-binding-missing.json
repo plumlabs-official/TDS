@@ -1,0 +1,16 @@
+{
+  "name": "token-binding-missing",
+  "mode": "synthetic",
+  "input": {
+    "node": {
+      "id": "title",
+      "name": "Title",
+      "type": "TEXT",
+      "tokenEligible": true
+    }
+  },
+  "expected": {
+    "pass": false,
+    "missingTextStyle": 1
+  }
+}

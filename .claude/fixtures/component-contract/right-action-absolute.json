@@ -1,0 +1,26 @@
+{
+  "name": "right-action-absolute",
+  "mode": "synthetic",
+  "input": {
+    "node": {
+      "id": "root",
+      "name": "Card",
+      "type": "COMPONENT",
+      "layoutMode": "VERTICAL",
+      "children": [
+        {
+          "id": "row",
+          "name": "Plain Row",
+          "type": "FRAME",
+          "children": [
+            { "id": "timestamp", "name": "Timestamp", "type": "TEXT" }
+          ]
+        }
+      ]
+    }
+  },
+  "expected": {
+    "pass": false,
+    "layoutIssues": 1
+  }
+}

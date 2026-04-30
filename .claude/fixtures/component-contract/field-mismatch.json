@@ -1,0 +1,26 @@
+{
+  "name": "field-mismatch",
+  "mode": "synthetic",
+  "input": {
+    "node": {
+      "id": "root",
+      "name": "Card",
+      "type": "COMPONENT",
+      "componentPropertyDefinitions": {
+        "Title#1": { "type": "TEXT", "name": "Title" }
+      },
+      "children": [
+        {
+          "id": "title",
+          "name": "Title",
+          "type": "TEXT",
+          "componentPropertyReferences": { "visible": "Title#1" }
+        }
+      ]
+    }
+  },
+  "expected": {
+    "pass": false,
+    "fieldMismatches": 1
+  }
+}

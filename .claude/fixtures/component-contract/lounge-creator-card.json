@@ -1,0 +1,34 @@
+{
+  "name": "lounge-creator-card",
+  "mode": "live",
+  "fileKey": "H36eNEd6o7ZTv4R7VcyLf2",
+  "componentNodeId": "21450:2811",
+  "expected": {
+    "unreferenced": 0,
+    "danglingRefs": 0,
+    "fieldMismatches": 0,
+    "overrideProbe": true,
+    "longTextOverlap": false,
+    "structuralALIssues": 0
+  },
+  "exceptions": [
+    {
+      "ruleId": "layout.spacer",
+      "nodeId": "21476:27",
+      "nodeName": "Hero Spacer",
+      "reason": "Fixed visual spacer intentionally has no children.",
+      "evidence": "Final audit records the node as a spacer, not a content wrapper.",
+      "sourceReference": ".claude/rules/component-contract.md#layout-contract",
+      "revisit": "Revisit if Hero Spacer gains visible content."
+    },
+    {
+      "ruleId": "layout.spacer",
+      "nodeId": "21476:51",
+      "nodeName": "Hero Spacer",
+      "reason": "Fixed visual spacer intentionally has no children.",
+      "evidence": "Final audit records the node as a spacer, not a content wrapper.",
+      "sourceReference": ".claude/rules/component-contract.md#layout-contract",
+      "revisit": "Revisit if Hero Spacer gains visible content."
+    }
+  ]
+}

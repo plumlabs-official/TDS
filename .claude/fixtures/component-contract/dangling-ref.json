@@ -1,0 +1,24 @@
+{
+  "name": "dangling-ref",
+  "mode": "synthetic",
+  "input": {
+    "node": {
+      "id": "root",
+      "name": "Card",
+      "type": "COMPONENT",
+      "componentPropertyDefinitions": {},
+      "children": [
+        {
+          "id": "title",
+          "name": "Title",
+          "type": "TEXT",
+          "componentPropertyReferences": { "characters": "Missing#1" }
+        }
+      ]
+    }
+  },
+  "expected": {
+    "pass": false,
+    "danglingRefs": 1
+  }
+}

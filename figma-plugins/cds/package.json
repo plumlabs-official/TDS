@@ -4,14 +4,18 @@
   "description": "CDS Figma Plugin — Rename, Migrate, Generate",
   "main": "dist/code.js",
   "scripts": {
-    "build": "esbuild src/code.ts --bundle --outfile=dist/code.js --format=iife --target=es6 && cp src/ui.html dist/ui.html",
+    "build": "esbuild src/code.ts --bundle --outfile=dist/code.js --format=iife --target=es6 && npm run build:qa && cp src/ui.html dist/ui.html",
+    "build:qa": "esbuild src/modules/qa/use-figma-entry.ts --bundle --outfile=dist/qa-contract-audit.js --format=iife --target=es6",
     "watch": "esbuild src/code.ts --bundle --outfile=dist/code.js --format=iife --target=es6 --watch",
     "build:ui": "cp src/ui.html dist/ui.html",
+    "test:contract": "vitest run src/modules/qa",
     "typecheck": "tsc --noEmit"
   },
   "devDependencies": {
     "@figma/plugin-typings": "^1.90.0",
+    "@types/node": "^24.12.2",
     "esbuild": "^0.20.0",
-    "typescript": "^5.3.0"
+    "typescript": "^5.3.0",
+    "vitest": "^2.1.9"
   }
 }

@@ -13,6 +13,7 @@ CDS 라이브러리 컴포넌트의 프로퍼티를 점검하고 최적화합니
 ## SSOT
 
 - 규칙 원본: `.claude/rules/naming-policy.md` v2.0 (Section 2: 케이싱)
+- 컴포넌트 property 실행 계약: `.claude/rules/component-contract.md#property-reference-matrix`
 - 로직 원본: `figma-plugins/cds/src/modules/renamer/property-checker.ts`
 
 ## 오탐 방지 원칙
@@ -23,6 +24,7 @@ CDS 라이브러리 컴포넌트의 프로퍼티를 점검하고 최적화합니
 | `figma.root.findAll` 전체 트리 검색 | 중첩 프레임 안 컴포넌트 누락 방지 |
 | `componentKey` 기반 CDS 소속 판별 | 이름 기반 매칭 금지 |
 | Property 검사는 반드시 CDS 원본(COMPONENT_SET)에서 | 인스턴스 오버라이드 값이 아닌 원본 정의 기준 |
+| Property 정의와 reference를 함께 검사 | 정의만 있고 연결되지 않은 property는 사용자에게 작동하지 않음 |
 | 일관성 검사: 동일 의미 property를 전체 라이브러리에서 비교 | 예: `Show Reddot` vs `Show Red Dot` 혼재 탐지 |
 
 ## Workflow
@@ -43,6 +45,10 @@ if (node.type === "COMPONENT_SET" || node.type === "COMPONENT") {
 
 | 검사 항목 | 대상 | 감점 |
 |----------|------|------|
+| stale property (definition은 있으나 reference 없음) | VARIANT 예외 외 전체 | Critical -20 |
+| dangling reference (존재하지 않는 definition key 참조) | 전체 `componentPropertyReferences` | Critical -20 |
+| field mismatch (TEXT→characters 등 타입/field 불일치) | 전체 reference | Major -10 |
+| instance override probe 실패 | 주요 content property | Critical -20 |
 | Boolean 접두어 없음 (`show`/`is`/`has`) | BOOLEAN 프로퍼티 | Minor -5 |
 | camelCase 아님 (공백 포함) | BOOLEAN, VARIANT key | Minor -5 |
 | Variant value lowercase 아님 | VARIANT 값 | Warning -2 |
@@ -50,6 +56,8 @@ if (node.type === "COMPONENT_SET" || node.type === "COMPONENT") {
 | prop 이름 충돌 (같은 이름 2개+) | 전체 | Major -10 |
 | prop 20개 초과 | 전체 | Major -10 |
 | prop 16~20개 | 전체 | Minor -5 |
+
+Reference matrix 산출물은 `.claude/rules/component-contract.md#property-reference-matrix`를 따른다.
 
 ### Step 3: 이슈 리포트
 
@@ -60,6 +68,7 @@ if (node.type === "COMPONENT_SET" || node.type === "COMPONENT") {
 |---|----------|-------|---------|-----------|----------|
 | 1 | Show Icon | missing-prefix → not-camelCase | Show Icon | showIcon | Minor |
 | 2 | Size=Medium | value-not-lowercase | Medium | medium | Warning |
+| 3 | Title | stale-property | no target reference | connect to Title.characters | Critical |
 ```
 
 ### Step 4: 사용자 승인

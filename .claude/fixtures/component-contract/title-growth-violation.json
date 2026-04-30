@@ -1,0 +1,28 @@
+{
+  "name": "title-growth-violation",
+  "mode": "synthetic",
+  "input": {
+    "node": {
+      "id": "root",
+      "name": "Card",
+      "type": "COMPONENT",
+      "layoutMode": "VERTICAL",
+      "children": [
+        {
+          "id": "slot",
+          "name": "Title Slot",
+          "type": "FRAME",
+          "layoutMode": "VERTICAL",
+          "primaryAxisAlignItems": "MIN",
+          "children": [
+            { "id": "title", "name": "Title", "type": "TEXT", "textAlignVertical": "TOP" }
+          ]
+        }
+      ]
+    }
+  },
+  "expected": {
+    "pass": false,
+    "layoutIssues": 1
+  }
+}

@@ -5,7 +5,8 @@
  * --define:__AGENT_SERVER_URL__='"https://production-server.com"'
  */
 
-// @ts-ignore - esbuild define으로 빌드 시 대체됨
+declare const __AGENT_SERVER_URL__: string | undefined;
+
 const DEFINED_URL = typeof __AGENT_SERVER_URL__ !== 'undefined'
   ? __AGENT_SERVER_URL__
   : null;

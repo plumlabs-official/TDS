@@ -1,0 +1,19 @@
+{
+  "name": "unreferenced-property",
+  "mode": "synthetic",
+  "input": {
+    "node": {
+      "id": "root",
+      "name": "Card",
+      "type": "COMPONENT",
+      "componentPropertyDefinitions": {
+        "Title#1": { "type": "TEXT", "name": "Title" }
+      },
+      "children": []
+    }
+  },
+  "expected": {
+    "pass": false,
+    "unreferenced": 1
+  }
+}
