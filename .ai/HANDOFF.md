@@ -1,5 +1,15 @@
 ---
 HANDOFF: Codex -> User
+Date: 2026-05-01 15:44:36 +0900
+Project: /Users/zenkim_office/Project/CDS
+Agent: Codex
+Summary: 사용자 직접 수정본 `2026-05` Figma `Lounge Screen`(`CS2ZhrORl4E1szQfTe2UvO/25429:16849`)을 Team Mode로 리뷰. 결론은 `업데이트`/`즐겨찾기` chip 패턴을 filter/view switch로 정의하는 방향이 가장 좋고, 개별 avatar favorite marker나 group surface는 보류. 구현 전 Profile Card row dimension drift 정규화 필요.
+Next-TODO: `즐겨찾기` selected sibling state를 만들어 favorites-only view로 검증하거나, 현재 `업데이트` selected state만 유지한다면 item-level favorite 식별은 의도하지 않는다고 명확화.
+Commits: (이번 커밋)
+---
+
+---
+HANDOFF: Codex -> User
 Date: 2026-05-01 14:20:00 +0900
 Project: /Users/zenkim_office/Project/CDS
 Agent: Codex
