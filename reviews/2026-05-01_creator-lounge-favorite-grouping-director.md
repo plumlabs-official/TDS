@@ -13,7 +13,8 @@
 | G1 Favorite identity | The lower list must show which lounge cards are favorites, not only that favorites are included somewhere. | PASS | First two Profile Cards are grouped inside `Favorite Lounge Group` with `즐겨찾기` label. |
 | G2 Badge metaphor separation | The pattern must not compete with `Creator Badge` or unread red-dot semantics. | PASS | Per-card favorite star overlays removed; Creator Badge property remains untouched. |
 | G3 Existing instance preservation | Existing `Profile Card` instances should not be detached or recreated. | PASS | Only a non-component grouping surface was added around the first two cards. |
-| G4 Compact mobile fit | The section remains within the original 375 x 188 area without increasing screen height. | PASS | `Updates Area` kept at 375 x 188; Profile List shifted to y=92. |
+| G4 Comparison visibility | Non-favorite lounge cards must be visible in the same row for comparison. | PASS | Two `General Lounge Card` instances were added after the favorite group, with a neutral `일반` label. |
+| G5 Compact mobile fit | The section remains compact without clipping card labels. | PASS | `Updates Area` is 375 x 204; card width tightened to 88 so two favorite and two general cards fit. |
 
 ## Completed Work
 
@@ -21,6 +22,9 @@
 - Removed per-card favorite star overlays because they conflicted with `Creator Badge` and unread red-dot semantics.
 - Added a subtle `Favorite Lounge Group` surface behind the first two Profile Cards.
 - Added a small `즐겨찾기` group label inside the surface.
+- Added two general lounge cards to the right of the favorite group for direct comparison.
+- Added a small neutral `일반` label above the general cards.
+- Tightened card width to 88px and moved `모두 보기` behind the comparison set.
 - Preserved the existing Profile Card instances and their existing creator/unread indicators.
 
 ## Changed Files

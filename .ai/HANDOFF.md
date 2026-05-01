@@ -3,7 +3,7 @@ HANDOFF: Codex -> User
 Date: 2026-05-01 14:20:00 +0900
 Project: /Users/zenkim_office/Project/CDS
 Agent: Codex
-Summary: `Updates Area`(`t0SK7XaNqw8qIY3PpZw4s7/25972:52553`)의 즐겨찾기 포함 상태를 Design Director 관점으로 재설계. 헤더-only 칩과 카드별 favorite star overlay를 제거하고 첫 두 Profile Card를 `Favorite Lounge Group` surface로 묶어, Creator Badge/unread dot과 충돌하지 않게 즐겨찾기 항목을 식별하도록 조정.
+Summary: `Updates Area`(`t0SK7XaNqw8qIY3PpZw4s7/25972:52553`)의 즐겨찾기 포함 상태를 Design Director 관점으로 재설계. 헤더-only 칩과 카드별 favorite star overlay를 제거하고 첫 두 Profile Card를 `Favorite Lounge Group` surface로 묶은 뒤, 일반 라운지 카드 2개 + `일반` 라벨을 같은 row에 추가해 비교 가능하게 보정. Creator Badge/unread dot과 충돌하지 않게 유지.
 Next-TODO: 같은 패턴이 다른 섹션에도 반복되면 CDS list-group 패턴으로 승격 검토. favorite 정렬이 정책화되면 favorites pinned-to-start 여부 명문화.
 Commits: (이번 커밋)
 ---
