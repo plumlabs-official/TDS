@@ -68,3 +68,10 @@ Visual screenshots were exported under `exports/2026-05-01_lounge-design-review/
 - **D6/D9/D13**: Backlog per planning document.
 - **D10/D11/D12**: Out of current canvas/screen scope unless those frames are explicitly selected later.
 - **CDS component creation**: No new or extended CDS component was required, so the Component Creation Gate did not need to interrupt execution.
+
+## Director QA Follow-Up
+
+- Claude completed-work review: `.ai/peer-review/runs/20260501-124544-claude-review-89138.md` — PASS.
+- Reasonable feedback reflected: Wave 1 D7 verification now records explicit `d7Status.discoverEmptyStateSurfacePresent: false`, `blockerRecorded: true`, and `routedToMyTab: false` semantics instead of relying on the ambiguous `d7EmptyStateAbsent` wording.
+- Live Figma re-read after Claude review: `exports/2026-05-01_lounge-design-review/director-qa/final-live-verify.json` — PASS.
+- Remaining non-blocking follow-up: Challenge Ranking subtitle uses `인기 챌린지`; keep neutral copy under consideration when ranking criteria are finalized.

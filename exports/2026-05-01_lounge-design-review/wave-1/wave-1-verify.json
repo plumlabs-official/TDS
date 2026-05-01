@@ -46,6 +46,12 @@
     "topCompact": true,
     "rankingTitle": true,
     "oldRankingAbsent": true,
-    "d7EmptyStateAbsent": true
+    "d7DiscoverEmptyStateAbsenceRecorded": true,
+    "d7NotRoutedToMyTab": true
+  },
+  "d7Status": {
+    "discoverEmptyStateSurfacePresent": false,
+    "blockerRecorded": true,
+    "routedToMyTab": false
   }
 }

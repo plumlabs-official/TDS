@@ -1,0 +1,88 @@
+{
+  "createdAt": "2026-05-01T03:49:27.565Z",
+  "file": "t0SK7XaNqw8qIY3PpZw4s7",
+  "nodes": [
+    "26360:54933",
+    "25830:40998",
+    "24025:20532",
+    "25972:55974",
+    "24112:14273",
+    "25972:55996",
+    "25972:55997",
+    "25958:47232",
+    "25958:47262"
+  ],
+  "checks": {
+    "creatorRankingInDiscover": true,
+    "oldLoungeRankingAbsentInDiscover": true,
+    "favoriteLoungeInMy": true,
+    "challengeRankingInChallengeList": true,
+    "challengeToolsInChallengeList": true,
+    "consumerChatTools": true,
+    "creatorChatTools": true,
+    "noChallengeRankingLeakToChatLists": true,
+    "allPrimarySlotsUseAvatarGroup": true,
+    "noPrimarySlotChallengeThumbnails": true,
+    "allAvatarGroupsHaveThreeAvatars": true,
+    "unreadSignalPreserved": true,
+    "internalAvatarBadgesHidden": true,
+    "noNewCdsComponentCreated": true
+  },
+  "d7Status": {
+    "discoverEmptyStateSurfacePresent": false,
+    "blockerRecorded": true,
+    "routedToMyTab": false
+  },
+  "counts": {
+    "favoriteLoungeSection": 1,
+    "challengeRankingToolsSection": 1,
+    "consumerChatToolsSection": 1,
+    "creatorChatToolsSection": 1
+  },
+  "cards": {
+    "25972:55996": {
+      "slotFound": true,
+      "directChildren": [
+        "User Avatar Group"
+      ],
+      "hasUserAvatarGroup": true,
+      "directChallengeThumbnails": 0,
+      "directAvatars": 3,
+      "unreadDots": 1,
+      "visibleInternalBadges": 0
+    },
+    "25972:55997": {
+      "slotFound": true,
+      "directChildren": [
+        "User Avatar Group"
+      ],
+      "hasUserAvatarGroup": true,
+      "directChallengeThumbnails": 0,
+      "directAvatars": 3,
+      "unreadDots": 1,
+      "visibleInternalBadges": 0
+    },
+    "25958:47232": {
+      "slotFound": true,
+      "directChildren": [
+        "User Avatar Group"
+      ],
+      "hasUserAvatarGroup": true,
+      "directChallengeThumbnails": 0,
+      "directAvatars": 3,
+      "unreadDots": 1,
+      "visibleInternalBadges": 0
+    },
+    "25958:47262": {
+      "slotFound": true,
+      "directChildren": [
+        "User Avatar Group"
+      ],
+      "hasUserAvatarGroup": true,
+      "directChallengeThumbnails": 0,
+      "directAvatars": 3,
+      "unreadDots": 1,
+      "visibleInternalBadges": 0
+    }
+  }
+}
