@@ -1,0 +1,44 @@
+{
+  "file": "t0SK7XaNqw8qIY3PpZw4s7",
+  "createdAt": "2026-05-01T02:04:46.529Z",
+  "nodeIds": [
+    "26360:54933",
+    "25830:40998",
+    "24025:20532",
+    "25972:55974",
+    "24112:14273",
+    "24112:14086"
+  ],
+  "images": {
+    "26360:54933": {
+      "status": "exported",
+      "filename": "discover-lounge-screen__26360-54933.png",
+      "bytes": 2081405
+    },
+    "25830:40998": {
+      "status": "exported",
+      "filename": "my-lounge-screen__25830-40998.png",
+      "bytes": 215362
+    },
+    "24025:20532": {
+      "status": "exported",
+      "filename": "challenge-list-screen__24025-20532.png",
+      "bytes": 2750371
+    },
+    "25972:55974": {
+      "status": "exported",
+      "filename": "consumer-chatting-list-screen__25972-55974.png",
+      "bytes": 230493
+    },
+    "24112:14273": {
+      "status": "exported",
+      "filename": "creator-chatting-list-screen__24112-14273.png",
+      "bytes": 230211
+    },
+    "24112:14086": {
+      "status": "exported",
+      "filename": "creator-lounge-home-screen__24112-14086.png",
+      "bytes": 776998
+    }
+  }
+}

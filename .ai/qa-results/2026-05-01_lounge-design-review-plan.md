@@ -1,31 +1,31 @@
-## QA Review: 2026-05-01 Creator Lounge Design Review Plan
+# QA Review: Creator Lounge Design Review Plan
 
-### 판정: **PASS**
+**판정: PASS**
 
-### Gate-by-Gate 점검
+## 게이트별 점검
 
-**G1 — 의사결정 매핑** ✅ PASS
-D1–D13 전부 Wave/Backlog로 매핑됨 (Decision Map 표). Wave 1=D1·D2·D3, Wave 2=D5·D7, Wave 3=D4, Wave 4=D8, 나머지(D6·D9·D10·D11·D12·D13)는 Backlog로 명시. 누락 없음.
+### 1. D3 Challenge Ranking은 Challenge List 범위로 한정되어야 함
+- **PASS**. L30에서 "Wave 3 for Challenge Ranking in `24025:20532`"로 명시, L66 Wave 3 본문에서도 동일 노드 ID로 못 박음. L70 체크포인트에서 "Challenge Ranking must be visible in Challenge List"로 검증 조건까지 일치. D3의 Creator Ranking 부분(Wave 1)과 Challenge Ranking 부분(Wave 3)이 분리되어 범위 혼동 위험 없음.
 
-**G2 — 정책 발명 금지** ✅ PASS
-"without inventing ranking algorithms"(L52), "no badge policy invention"(L39), "no UI invention"(L38), Backlog 처리 명시(L126)로 ranking metric/paid tier/grade badge/CP policy 발명 차단 조항이 명시적임.
+### 2. D7 empty state가 My Tab으로 잘못 라우팅되면 안 됨
+- **PASS**. 4단 안전장치 확인.
+  - L22 Evidence: "Do not treat the `My Lounge Screen` empty state as the D7 target..."
+  - L34 결정 매핑: discover empty-state 없으면 blocker/backlog
+  - L54 Wave 1: "record a blocker/backlog item instead of modifying the My tab as a substitute"
+  - L61 Wave 2: My tab 가이던스 조정 시 "label it as My-tab information hierarchy work, not D7"
 
-**G3 — CDS 커버리지/블로커 기록** ✅ PASS
-Wave 5에 reuse → extend → create 우선순위, Creation Gate `CreationDecision` 9필드 전부 명시(L80–90). Blocker 스키마(`pattern`/`sourceNodeIds`/`reason`/`blockedAction`/`requiredUserAction`/`revisitCondition`)도 명시(L91–97). detached local 대체 금지 조항(L125)도 있음.
+### 3. D10-D12는 "회의에서 보류"가 아니라 "현재 캔버스 범위 밖"으로 표기되어야 함
+- **PASS**. L37-39 모두 "Out of current canvas/screen scope unless ... explicitly selected"로 표기. D6/D9/D13의 Backlog 표기와 명확히 구분됨. L131·L144에서 실행 규칙으로도 재확인("Do not edit paywall, INVITE+, CP ... in this canvas unless those frames are explicitly added to scope later").
 
-**G4 — Wave 3 공유 툴바** ✅ PASS
-Challenge List + Creator Lounge Chatting List Screen 양쪽 동일 패턴 적용(L65) + 체크포인트에서 양 화면 동일성 검증(L67).
+### 4. 컴포넌트 Creation Gate는 어떤 Wave든 컴포넌트 변경 전에 인터럽트 가능해야 함
+- **PASS**. L83 Wave 5: "This is not a late-only cleanup wave. During Waves 1-4, if a new or extended CDS component is needed, pause the current wave before mutation, run Creation Gate, perform the component mutation, collect Completion Evidence and use-site replacement, then continue the current wave." L127 Execution Order에서도 동일 원칙 재확인. 이전 리뷰에서 지적된 "late wave 전용" 오해 해소됨.
 
-**G5 — Wave 4 채팅 프리뷰** ✅ PASS
-challenge thumbnail → grouped user avatars 교체(L70), 44px 터치 타겟(L72), QA 체크포인트(L73) 명시.
+### 5. Wave 3/4 스크린샷 경로 명시
+- **PASS**.
+  - Wave 3 (L70): `exports/2026-05-01_lounge-design-review/wave-3/` + 대상 노드 `24025:20532`, `25972:55974`, `24112:14273` 명시
+  - Wave 4 (L76): `exports/2026-05-01_lounge-design-review/wave-4/` + 대상 노드 `25972:55974`, `24112:14273` 명시
+  - 이전 리뷰의 "경로 불명확" 지적 모두 반영됨.
 
-**G6 — 순차 mutation/스냅샷/스크린샷** ✅ PASS
-순차 실행(L122), 병렬 금지(L123), Wave 0 before snapshot(L45), wave별 export 경로(L55, L61), Wave 6 after export(L117), 실패 시 rollback(L124) 명시.
+## 결론
 
-### 보조 점검 (Component Contract 정합성)
-- Creation Gate evidence 9필드 — `component-contract.md` schema와 1:1 일치 ✅
-- Completion Evidence — `sourceScreenshot`/`componentScreenshot`/`visualDiffSummary`/`propertyIntegrity`/`propertyReferenceMatrix`/`instanceOverrideProbe`/`useSiteReplacement`/`layoutContract`/`tokenBindingSummary`/`responsiveProbe`/`longTextProbe`/`boundsCheck` 12항목 모두 명시 ✅
-- Naming policy 강제 조항(L103) — Title Case/금지 접미사/Frame*/슬래시/Lucide 일관성 모두 포함 ✅
-
-### 결론
-플랜이 Figma mutation을 가이드하기에 충분함. 의사결정 추적성, 발명 금지, CDS gate, 순차 실행/롤백, QA evidence schema 모두 갖춤. **Wave 0부터 진행 가능**.
+다섯 가지 사전 Codex 지적 모두 본문에 명시적으로 반영되었고, Gates(G1-G6)·Execution Order·실패 시 롤백 절차가 Figma 편집을 가이드하기에 충분히 구체적이다. **PASS — Wave 0/Wave 1 구현 진행 가능.**

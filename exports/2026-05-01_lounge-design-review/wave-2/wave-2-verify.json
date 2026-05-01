@@ -1,0 +1,15 @@
+{
+  "wave": 2,
+  "target": "25830:40998",
+  "checks": {
+    "favoriteSectionVisible": true,
+    "favoriteAccessCopyVisible": true,
+    "favoriteEmptyCopyVisible": true,
+    "favoriteSectionCount": 1
+  },
+  "extractedText": [
+    "즐겨찾기 라운지",
+    "자주 가는 라운지를 상단에 고정하세요",
+    "가입 후 핀한 라운지가 여기에 보여요"
+  ]
+}

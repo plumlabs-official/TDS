@@ -1,0 +1,51 @@
+{
+  "createdAt": "2026-05-01T02:20:38.935Z",
+  "file": "t0SK7XaNqw8qIY3PpZw4s7",
+  "nodeId": "26360:54933",
+  "geometry": [
+    {
+      "id": "26360:54941",
+      "name": "Spotlight Creator Card",
+      "type": "FRAME",
+      "box": {
+        "w": 375,
+        "h": 430
+      }
+    },
+    {
+      "id": "26375:56689",
+      "name": "Today Badge",
+      "type": "FRAME",
+      "box": {
+        "w": 375,
+        "h": 160
+      }
+    },
+    {
+      "id": "26360:54944",
+      "name": "Body",
+      "type": "FRAME",
+      "box": {
+        "w": 375,
+        "h": 260
+      }
+    }
+  ],
+  "texts": [
+    {
+      "id": "I26360:55034;20082:14027",
+      "name": "Title",
+      "characters": "크리에이터 랭킹"
+    }
+  ],
+  "image": {
+    "filename": "discover-lounge-screen__26360-54933.png",
+    "bytes": 2067834
+  },
+  "checks": {
+    "topCompact": true,
+    "rankingTitle": true,
+    "oldRankingAbsent": true,
+    "d7EmptyStateAbsent": true
+  }
+}

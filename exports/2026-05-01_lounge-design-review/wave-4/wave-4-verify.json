@@ -1,0 +1,78 @@
+{
+  "wave": 4,
+  "targets": [
+    "25972:55974",
+    "24112:14273"
+  ],
+  "cards": {
+    "25972:55996": {
+      "slotFound": true,
+      "directChildren": [
+        {
+          "id": "I25972:55996;20845:3448;26456:12069",
+          "name": "User Avatar Group",
+          "type": "FRAME"
+        }
+      ],
+      "hasUserAvatarGroup": true,
+      "directChallengeThumbnails": 0,
+      "directAvatars": 3,
+      "unreadDots": 1,
+      "visibleInternalBadges": 0
+    },
+    "25972:55997": {
+      "slotFound": true,
+      "directChildren": [
+        {
+          "id": "I25972:55997;20845:3448;26456:12301",
+          "name": "User Avatar Group",
+          "type": "FRAME"
+        }
+      ],
+      "hasUserAvatarGroup": true,
+      "directChallengeThumbnails": 0,
+      "directAvatars": 3,
+      "unreadDots": 1,
+      "visibleInternalBadges": 0
+    },
+    "25958:47232": {
+      "slotFound": true,
+      "directChildren": [
+        {
+          "id": "I25958:47232;20845:3448;26456:12533",
+          "name": "User Avatar Group",
+          "type": "FRAME"
+        }
+      ],
+      "hasUserAvatarGroup": true,
+      "directChallengeThumbnails": 0,
+      "directAvatars": 3,
+      "unreadDots": 1,
+      "visibleInternalBadges": 0
+    },
+    "25958:47262": {
+      "slotFound": true,
+      "directChildren": [
+        {
+          "id": "I25958:47262;20845:3448;26456:12765",
+          "name": "User Avatar Group",
+          "type": "FRAME"
+        }
+      ],
+      "hasUserAvatarGroup": true,
+      "directChallengeThumbnails": 0,
+      "directAvatars": 3,
+      "unreadDots": 1,
+      "visibleInternalBadges": 0
+    }
+  },
+  "checks": {
+    "allPrimarySlotsFound": true,
+    "allPrimarySlotsUseAvatarGroup": true,
+    "noPrimarySlotChallengeThumbnails": true,
+    "allGroupsHaveThreeAvatars": true,
+    "allGroupsPreserveUnreadDot": true,
+    "internalAvatarBadgesHidden": true
+  },
+  "note": "Challenge Sub List thumbnails remain unchanged; D8 only required replacing the primary chat preview identity."
+}

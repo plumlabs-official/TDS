@@ -1,0 +1,36 @@
+{
+  "wave": 3,
+  "targets": [
+    "24025:20532",
+    "25972:55974",
+    "24112:14273"
+  ],
+  "checks": {
+    "challengeRankingVisible": true,
+    "challengeRankingSectionCount": 1,
+    "challengeTools": true,
+    "consumerChatToolsSectionCount": 1,
+    "consumerChatTools": true,
+    "creatorChatToolsSectionCount": 1,
+    "creatorChatTools": true
+  },
+  "extractedText": {
+    "challengeList": [
+      "챌린지 랭킹",
+      "인기 챌린지를 빠르게 찾고 고정하세요",
+      "검색",
+      "정렬",
+      "핀"
+    ],
+    "consumerChat": [
+      "검색",
+      "정렬",
+      "핀"
+    ],
+    "creatorChat": [
+      "검색",
+      "정렬",
+      "핀"
+    ]
+  }
+}
