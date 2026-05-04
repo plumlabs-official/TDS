@@ -1,5 +1,15 @@
 ---
 HANDOFF: Codex -> User
+Date: 2026-05-05 01:29:29 +0900
+Project: /Users/zen/Project/CDS
+Agent: Codex
+Summary: CDS `Invite Profile Card`에서 초대와 무관한 `Type=Ranked` variant를 분리해 standalone `Ranked Profile Item`으로 이동. 기존 key `050351101bee816a24bbc48e2b5226f9ad046f45`는 보존했고, 위치는 `Components > Composed > Lounge Cards > Main content`. `Invite Profile Card`는 `Vertical/Horizontal`만 남기고 `↳ Rank` property를 제거함.
+Next-TODO: CDS publish 후 제품 파일 `2026-05`의 같은 key 사용처 6건을 library update하고, `Rank/Name/Description` override 보존 및 새 standalone component 표시 여부를 재검증.
+Commits: (이번 커밋)
+---
+
+---
+HANDOFF: Codex -> User
 Date: 2026-05-01 15:44:36 +0900
 Project: /Users/zenkim_office/Project/CDS
 Agent: Codex

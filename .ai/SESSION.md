@@ -2,7 +2,7 @@
 
 > 세션 단기 기억 (compact 후 이어갈 내용)
 >
-> Last updated: 2026-04-28
+> Last updated: 2026-05-05
 
 ---
 
@@ -163,6 +163,7 @@
 | **크리에이터 라운지 완료물 Director QA 루프** (2026-05-01) | 사용자 요청 `-review--claude` + `-director`에 따라 완료물 Maker-Checker 실행. QA inbox `.ai/qa-inbox/2026-05-01_lounge-design-review-final-claude.md` 작성 후 Claude peer review `20260501-124544-claude-review-89138` PASS. 합리적 Low 피드백 반영: Wave 1 D7 검증을 `d7Status.discoverEmptyStateSurfacePresent=false`, `blockerRecorded=true`, `routedToMyTab=false`로 명확화. post-review live Figma REST re-read PASS(`exports/2026-05-01_lounge-design-review/director-qa/final-live-verify.json`). Director 기록: `reviews/2026-05-01_lounge-design-review-director-qa.md`. |
 | **크리에이터 라운지 즐겨찾기 그룹 표현** (2026-05-01) | 사용자 지적 "Creator Badge property를 켜면 favorite star badge와 메타포가 겹치고 복잡" 및 "즐겨찾지 않는 라운지도 같이 보여야 비교 가능" 반영. `Updates Area`(`25972:52553`)에서 헤더-only `즐겨찾기 포함` 칩과 카드별 favorite star overlay를 제거하고, 첫 두 Profile Card 뒤에 옅은 `Favorite Lounge Group` surface + `즐겨찾기` 라벨을 추가. 같은 row 오른쪽에 일반 라운지 카드 2개 + `일반` 라벨을 추가하고 card width 88px로 조정해 즐겨찾기 2개/일반 2개가 한 화면에 보이게 보정. Creator Badge/unread red-dot은 유지. 기록: `reviews/2026-05-01_creator-lounge-favorite-grouping-director.md`. |
 | **라운지 즐겨찾기 필터 Team 리뷰** (2026-05-01) | 사용자 직접 수정본 `2026-05` Figma `Lounge Screen`(`CS2ZhrORl4E1szQfTe2UvO/25429:16849`) 검토. Team Mode 결론: `업데이트`/`즐겨찾기` chip 패턴은 group surface보다 우수하며, 개별 avatar favorite marker가 아니라 view switch/filter로 정의하는 방향 권장. 단 `업데이트` selected 상태에서는 item-level favorite 식별이 아니라 activity-first view로 읽힘. 구현 전 Profile Card row dimension drift(90x108/90x88/100x82) 정규화 필요. 기록: `meetings/2026-05-01_lounge-favorite-filter-team-review.md`. |
+| **Ranked Profile Item 분리** (2026-05-05) | 사용자 확인: `Ranked`는 초대와 무관한 랭킹 리스트 아이템. CDS `Invite Profile Card`의 `Type=Ranked` variant(`21554:2`)를 key `050351101bee816a24bbc48e2b5226f9ad046f45` 보존 상태로 `Components > Composed > Lounge Cards > Main content`의 standalone `Ranked Profile Item`으로 이동. `Invite Profile Card`는 `Vertical/Horizontal`만 유지하고 `↳ Rank` 제거. 신규 컴포넌트 props는 `Rank/Name/Description/Show Description/Show Avatar/Show Action`, hidden invite-only `.Invite Item` 제거, `Avatar`/`Button` expose. Contract check: parent-scoped property matrix PASS, root A/L PASS, instance probe PASS. 제품 파일 `2026-05`에는 같은 key 사용처 6건이 아직 구형 remote `Invite Profile Card / Type=Ranked`로 보이며, CDS publish + product library update 후 override 보존 재검증 필요. |
 
 ---
 
@@ -175,6 +176,7 @@
 **P0 (CDS 컴포넌트):**
 3. Slot → Instance Swap 전환 (~25건, 단일 인스턴스 패턴)
 4. Participant Card 분리 — `Participant Card`(미인증 12 variant) + `Participant Card Authed`(인증 3 variant). 프로퍼티 완전 분리
+5. `Ranked Profile Item` publish/update 후 제품 파일 `2026-05` 사용처 6건(`CS2ZhrORl4E1szQfTe2UvO`, key `050351101bee816a24bbc48e2b5226f9ad046f45`)이 새 standalone component로 표시되고 `Rank/Name/Description` override가 보존되는지 재검증
 
 **스크린 리뷰 (Creator Case 잔여):**
 6. Creator Lounge Updates Screen 리뷰
